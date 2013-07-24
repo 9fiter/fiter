@@ -27,6 +27,8 @@
 </section>
 <div style="clear:both"></div>
 
+{% include 'FiterMinecraftAuthBundle:Authme:parcial/search.html.twig' %}
+
 <a>{{ entity.username }}</a>
 <div style="margin-right:3px;width:53px;height:53px">
     <img src="{{ path('authme_skin', { 'id': entity.id, 't' : '1' }) }}" />

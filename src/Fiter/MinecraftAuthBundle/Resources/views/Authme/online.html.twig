@@ -5,6 +5,9 @@
 {% block main %}
 
 <h2>Minecraft {{ 'main.usuarios' | trans }} online</h2>
+
+{% include 'FiterMinecraftAuthBundle:Authme:parcial/search.html.twig' %}
+
 {% for entity in entities %}
     <strong>{{ entity.id }}</strong> - 
     <a href="{{ path('authme_show', { 'id': entity.id }) }}">{{ entity.username }}</a><br/>
