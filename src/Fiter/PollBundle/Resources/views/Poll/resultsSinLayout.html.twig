@@ -1,0 +1,9 @@
+<script class="code" type="text/javascript">
+  datas[{{entity.id}}] = [
+    {% for field in fields %}
+      ['{{field}}', {{results[loop.index-1]}}, '<a href="{{ path('answer_create', { 'fieldId': field.id }) }}"><img class="ico" alt="likes" src="/img/like.png" /></a>'],
+    {% endfor %}
+  ];
+</script>
+{% include 'FiterPollBundle:Poll:parcial/show.html.twig' with {'entity': entity, 'busqueda': true} %}
+<div id="poll_{{entity.getId()}}"></div>

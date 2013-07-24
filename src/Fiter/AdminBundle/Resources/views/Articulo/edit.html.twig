@@ -1,0 +1,81 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}Editar artículo{% endblock %}
+ 
+{% block main %}
+    <h2>Editar artículo</h2>
+
+    <form id="form_update_articulo" action="{{ path('admin_articulo_update', { 'id': entity.id, 'slug': entity.slug  }) }}" method="post" {{ form_enctype(edit_form) }}>
+        {{ form_errors(edit_form) }}  
+            
+        {{ form_label(edit_form.titulo) }}
+        {{ form_widget(edit_form.activo) }}<span>{{ form_label(edit_form.activo,label|default(null)) }}</span><br>
+        {{ form_widget(edit_form.titulo) }}
+        
+        {{ form_row(edit_form.categoria) }}
+        
+        {% if edit_form.vars.value.path %}
+            <img id="blah" src="/uploads/documents/{{ edit_form.vars.value.path }}" alt="your image" />
+        {% else %}
+            <img id="blah" src="/img/vacio.png" alt="your image" />
+        {% endif %}<br/> 
+        {{ form_label(edit_form.imagen) }}     
+        {{ form_widget(edit_form.mostrarImagen) }}<span>{{ form_label(edit_form.mostrarImagen,label|default(null)) }}</span><br>
+        {{ form_widget(edit_form.imagen) }}  
+        
+        {{ form_row(edit_form.contenido) }}
+        
+        {{ form_label(edit_form.videosYoutube) }}
+        <ul class="videosYoutube" data-prototype="{{ form_widget(edit_form.videosYoutube.vars.prototype)|e }}">
+            {% for videoYoutube in edit_form.videosYoutube %}
+                <li>{{ form_row(videoYoutube.enlace) }}</li>
+            {% endfor %}
+        </ul>   
+        
+        {{ form_label(edit_form.listasYoutube) }}
+        <ul class="listasYoutube" data-prototype="{{ form_widget(edit_form.listasYoutube.vars.prototype)|e }}">
+            {% for listaYoutube in edit_form.listasYoutube %}
+                <li>{{ form_row(listaYoutube.enlace) }}</li>
+            {% endfor %}
+        </ul>    
+            {{ form_row(edit_form._token) }}
+            
+        {#{ form_rest(edit_form) }#}
+    </form>
+    <form id="form_delete_articulo" action="{{ path('admin_articulo_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+    </form>
+    
+    <button form="form_update_articulo" type="submit">Guardar</button>
+    <button form="form_delete_articulo" type="submit">Eliminar</button>
+    <a class="boton" href="{{ path('admin_articulo') }}">Volver</a>
+{% endblock %}
+    
+    
+    
+    
+{% block javascripts %}
+<script src="/js/chosen/chosen.jquery.js"></script>
+<script type="text/javascript"> 
+    $("#fiter_adminbundle_articulotype_categoria").chosen();
+    $('#fiter_adminbundle_articulotype_categoria_chzn').css('width','100%');
+    $('.chzn-drop').css('width','100%');
+    $('.chzn-search input').css('width','100%');
+    
+    $("#fiter_adminbundle_articulotype_categoria").data("chosen").default_text = "Selecciona categorías..";
+    $("#fiter_adminbundle_articulotype_categoria").trigger("liszt:updated");
+    $("li.search-field input").css("width","auto");
+</script>
+<link rel="stylesheet" href="/js/chosen/chosen.css" />
+<style>
+        #fiter_adminbundle_articulotype_categoria{width: 100%;}
+        #fiter_adminbundle_articulotype_categoria_chzn{width: 100%;}
+</style>
+
+<script type="text/javascript" src="/js/formoid/jquery.uniform.min.js"></script>
+<script type="text/javascript"> 
+    $("form").find("input[type=file]").uniform();
+    $(".uploader span.filename").text("No se ha seleccionado ningún archivo");
+    $(".uploader span.action").text("Seleccionar");
+</script>
+{% endblock %}    

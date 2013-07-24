@@ -1,0 +1,54 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     fiter2
+    database_user:     root
+    database_password: ~
+
+    minecraft_database_driver:   pdo_mysql
+    minecraft_database_host:     127.0.0.1
+    minecraft_database_port:     ~
+    minecraft_database_name:     minecraft
+    minecraft_database_user:     root
+    minecraft_database_password: ~
+
+    #default email
+    #mailer_transport:  smtp
+    #mailer_host:       127.0.0.1
+    #mailer_user:       ~
+    #mailer_password:   ~
+
+    #gmail email
+    mailer_transport:  gmail
+    mailer_encryption: ssl
+    mailer_auth_mode:  login
+    mailer_host:       smtp.gmail.com
+    mailer_user:       ~
+    mailer_password:   ~
+
+    locale:            en
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    twitter_feed: 9fiter
+    
+    fiter_contact.emails.contact_email: "examplexamplaexaple@gmail.com"
+    domain: example.org
+    minecraft_server: example.org
+    keywords: "word, word, word, word"
+    description: "example.org - Lorem ipsum dolor sit amet"
+
+    ts3_host: examplets3example.org
+    ts3_port: 10011
+    ts3_user: userquerylogin
+    ts3_pass: passwordquerylogin
+
+    web_path: %kernel.root_dir%/../web
+
+    isprod: true
+
+    googleAnalytics_id: UA-XXXXXXXX-X
+    googleAnalytics_dm: domain.com
+
+    infolinks_pid: XXXXXXX
+    infolinks_wsid: 0

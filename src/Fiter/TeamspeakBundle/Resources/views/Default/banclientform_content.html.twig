@@ -1,0 +1,9 @@
+<h3>Ban {{nickname}}</h3>
+<form action="{{ path('teamspeak_banclient')}}" method="POST" >
+	<input type="hidden" name="clid" value="{{clid}}">
+	time in seconds
+	<input type="text" name="time" value="60" placeholder="">
+	banreason: 
+	<input type="text" name="banreason" value="" placeholder="">
+	<input type="submit" name="" value="ban client">
+</form>

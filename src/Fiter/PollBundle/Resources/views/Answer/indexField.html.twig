@@ -1,0 +1,12 @@
+{% for entity in entities %}
+    <div class="indexUsuarios">
+        <a class="nombre" href="{{ path('articulousuario', { 'nombre': entity.answerGroup.author.username }) }}">{{entity.answerGroup.author.username}}</a><br/>
+        <a href="{{ path('articulousuario', { 'nombre': entity.answerGroup.author.username }) }}">
+        {% if entity.answerGroup.author.path %}
+            <img class="sombra" src="{{ asset(  ['/uploads/userimages/', entity.answerGroup.author.path]|join  )|imagine_filter('thumb_50x50') }}" alt="imagen no encontrada" />
+        {% else %}
+            <img class="sombra" src="/uploads/userimages/anon.png" alt="imagen no encontrada" />
+        {% endif %}
+        </a>
+    </div>
+{% endfor %}

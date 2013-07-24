@@ -1,0 +1,9 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}clientgetnamefromdbid{% endblock %}
+
+{% block main %}
+	{% for key,value in element %}
+    	{{key}}: {{value}}<br/>
+	{% endfor %}
+{% endblock %}

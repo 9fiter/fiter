@@ -1,0 +1,62 @@
+/********
+ *  listas
+ ********/
+#tabs li .ui-icon-close { float: left; margin: -.9em -.5em 0 0; cursor: pointer; }
+ul.connectedSortable li { height: auto; min-height:64px; margin: 0 5px 5px 0;  font-size: 1.2em;   font-size: .9em;}
+ul.connectedSortable li:hover{background-color: rgba(34, 159, 207, 0.29);}
+ul.connectedSortable li p{display: inline-block;}
+div.imgenlace{padding: .3em;}
+div.yta{float: right;margin-top: 13px;}
+td.imagenVideo{height:64px; width:100px }
+span.video_duration {color:white; background-color: black; padding-left: 2px; font-size: .7em; }
+div.masInfo{ display:none; min-height: 100px;border-top: 1px solid lightGrey;background-color: #fff;}
+div.ytclip, div.ytlisten, div.ytweb, div.ytcomment,
+div.ytconfig, div.ytstar, div.ytstarb, div.ytsearch, div.ytwatch, div.ytsend{
+    margin-top: .3em;
+    width:32px;height:32px;background-image:url(/img/vector/iconos.png);
+    border:none;
+    display:inline-block;
+}
+div.ytclip{background-position: 0 0;}
+div.ytlisten{background-position: -32px 0;}
+div.ytweb{background-position: -64px 0;}
+div.ytcomment{background-position: -96px 0;}
+div.ytconfig{background-position: -128px 0;}
+div.ytstar{background-position: -160px 0;}
+div.ytstarb{background-position: -192px 0;}
+div.ytsearch{background-position: -224px 0;}
+div.ytwatch{background-position: -256px 0;}
+div.ytsend{background-position: -288px 0;}
+select.region,select.safeSearch{display:none;}
+div.divytsi input{width: 99%;background: none;margin: .2em 0 .3em 0;}
+#genre{max-width: 5em;}
+#region{max-width: 5em;}
+li.ui-state-default.selected{ background: rgba(34, 159, 207, 0.29); }
+.error{ background:#fdf; }
+
+
+
+select{
+    max-width: 105px;
+    -webkit-appearance: none;
+    background-color: Transparent; 
+    /*background: url(/img/down_arrow2.png) no-repeat 0 0; */
+    background-position: center right;
+    
+    
+   
+
+}
+.ui-tabs-panel select{
+    border: 1px solid #AAA;
+    margin-right: -1px;
+    
+}
+.ui-tabs-panel select:hover{
+    background-color: #BDE3F1;
+}
+.ui-tabs-panel select:hover option{
+    background-color: #fff;
+}
+
+.ui-tabs-panel input[type="checkbox"]{margin-left: .5em}

@@ -1,0 +1,10 @@
+# Time ago in words - Twig Extension
+less than %seconds seconds ago: fa menys de %seconds segons
+half a minute ago: fa mig minut
+less than a minute ago: "fa menys d'1 minut"
+1 minute ago: fa 1 minut
+%minutes minutes ago: fa %minutes minuts
+about 1 hour ago: fa gairebé 1 hora
+about %hours hours ago: fa %hours hores
+1 day ago: fa 1 día
+%days days ago: fa %days dies

@@ -1,0 +1,45 @@
+{#% extends '::base.html.twig' %}
+
+{% block title %}map - {{ app.request.host }}{% endblock %}
+
+{% block main %}
+
+<article>#}
+    <div id="map-canvas" class="sombra"></div>{#
+</article>
+{% endblock %#}
+
+{% block javascripts %}
+<style>
+#map-canvas {
+  margin: 0;
+  padding: 0;
+  height: {{height}}px;
+  width: 100%;
+  margin-bottom: 1em;
+}
+</style>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script>
+var map;
+function mapa() {
+  var mapOptions = {
+    zoom: {{zoom}},
+    center: new google.maps.LatLng({{lat}},{{lang}}),
+    mapTypeId: google.maps.MapTypeId.SATELLITE
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
+
+  marker = new google.maps.Marker({
+    position: new google.maps.LatLng({{lat}}, {{lang}}),
+    map: map
+  });
+
+}
+google.maps.event.addDomListener(window, 'load', mapa);
+</script>
+{% endblock %}
+
+
+
+

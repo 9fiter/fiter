@@ -1,0 +1,23 @@
+<span class="bloque">
+    <img class="ico" alt="editar" src="/img/edit.png" />
+    <a href="{{ path('articulo_edit', { 'id': entity.id, 'slug': entity.slug }) }}">{{ 'main.editar' | trans }}</a>
+</span>
+
+<p>
+    Por <a href="{{ path('articulousuario', { 'nombre': entity.usuario }) }}">{{ entity.usuario }} </a>
+    {% if busqueda is not defined %}
+    en 
+        {% for categoria in entity.categoria|slice(0, 3) %}
+             <a href="{{ path('articulocategoria', { 'slug': categoria.slug }) }}">{{ categoria }}</a> 
+        {% endfor %}
+    {% endif %}
+
+    {% if entity.fechaPublicacion %}{{ entity.fechaPublicacion|time_ago_in_words }}{% endif %}
+    
+
+      
+  
+    <br/>
+
+</p>
+

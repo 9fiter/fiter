@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Añadir subcategoría{% endblock %}
+ 
+{% block main %}
+<h1>Añadir subcategoría</h1>
+
+<form action="{{ path('subcategoria_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p><button type="submit">Añadir</button></p>
+</form>
+
+<a href="{{ path('subcategoria') }}">Volver a la lista</a>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+<span class="bloque">
+    <img class="ico" alt="editar" src="/img/edit.png">
+    <a href="{{ path('categoria_edit', { 'id': entity.id, 'slug': entity.slug }) }}">editar</a>
+</span>
+
+<p>
+    Por <a href="#">{{ entity.usuario }} </a>
+    {% if entity.fechaPublicacion %}{{ entity.fechaPublicacion|time_ago_in_words }}{% endif %}
+    <img class="ico" alt="visitas" src="/img/ojo.png" /> {{ entity.visitas }}
+    <a href="{{ path('categoria_like', { 'id': entity.id }) }}"><img class="ico" alt="likes" src="/img/like.png" /></a> {{ entity.likes }}
+    <a href="{{ path('categoria_dislike', { 'id': entity.id }) }}"><img class="ico" alt="likes" src="/img/dislike.png" /></a> {{ entity.disLikes }}<br/>
+</p>
+

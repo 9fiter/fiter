@@ -1,0 +1,10 @@
+# Time ago in words - Twig Extension
+less than %seconds seconds ago: fai menos de %seconds segundos
+half a minute ago: fai medio minuto
+less than a minute ago: fai menos dun minuto
+1 minute ago: hace 1 minuto
+%minutes minutes ago: fai %minutes minutos
+about 1 hour ago: fai casi 1 hora
+about %hours hours ago: fai %hours horas
+1 day ago: fai 1 día
+%days days ago: fai %days días

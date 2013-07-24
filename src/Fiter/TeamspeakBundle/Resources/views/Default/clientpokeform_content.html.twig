@@ -1,0 +1,7 @@
+<h3>Poke {{nickname}}</h3>
+<form action="{{ path('teamspeak_clientpoke')}}" method="POST" >
+	<input type="hidden" name="clid" value="{{clid}}">
+	msg
+	<input type="text" name="msg" value="" placeholder="">
+	<input type="submit" name="" value="poke client">
+</form>

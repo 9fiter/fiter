@@ -1,0 +1,75 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Minecraft jobs - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+
+<h2>Minecraft Jobs</h2>
+
+    {% for entity in entities %}
+        <a href="{{ path('jobs_show', { 'id': entity.id }) }}">{{ entity.username }}</a>: 
+        {{ entity.job }} - Experience: {{ entity.experience }} - Level: {{ entity.level }}
+        
+        {#
+        <img class="ico" alt="editar" src="/img/edit.png" />
+        <a href="{{ path('jobs_edit', { 'id': entity.id }) }}">{{ 'main.editar' | trans }}</a>#}
+        </br>
+    {% endfor %}
+    <!--<a href="{{ path('jobs_new') }}">Create a new entry</a>-->
+
+{% endblock %}
+
+
+{% block paginador %}
+<section style="" class="paginador">
+    <ul>
+        {% if paginador.currentPage > 1 %}
+            <li><a href="{{ path('jobs', { 'page': paginador.previousPage}) }}">Anterior</a></li>
+        {% endif %}
+
+        {% for page in paginador.minPageInRange..paginador.maxPageInRange %}
+            {% if page == paginador.currentPage %}
+                <li class="active"><a href="#">{{ page }}</a></li>
+            {% else %}
+                <li><a href="{{ path('jobs', { 'page': page }) }}">{{ page}}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if paginador.currentPage < paginador.lastPage %}
+            <li><a href="{{ path('jobs', { 'page': paginador.nextPage })}}">Siguiente</a></li>
+        {% else %}
+            
+        {% endif %}
+    </ul>
+</section>
+{% endblock %}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,125 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Añadir medio{% endblock %}
+
+{% block main %}
+<article>
+    <header>
+       <h2>Añadir medio</h2>
+    </header>
+    <form id="form_add_medio" action="{{ path('medio_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}  
+            
+        {{ form_label(form.titulo) }}
+        {{ form_widget(form.activo) }}<span>{{ form_label(form.activo,label|default(null)) }}</span><br>
+        {{ form_widget(form.titulo) }}
+            
+        {{ form_row(form.categoria) }}
+        
+        <img id="blah" src="/img/vacio.png" alt="your image" />
+        {{ form_label(form.imagen) }}     
+        {{ form_widget(form.mostrarImagen) }}<span>{{ form_label(form.mostrarImagen,label|default(null)) }}</span><br>
+        {{ form_widget(form.imagen) }}  
+            
+        {{ form_label(form.contenido) }}
+        {{ form_widget(form.mostrarContenido) }}<span>{{ form_label(form.mostrarContenido,label|default(null)) }}</span><br>
+        {{ form_widget(form.contenido) }}
+            
+        {{ form_row(form.rss) }}
+        {{ form_row(form.twitter) }}
+        
+        {{ form_label(form.videosYoutube) }}
+        <ul class="videosYoutube" data-prototype="{{ form_widget(form.videosYoutube.vars.prototype)|e }}">
+            {% for videoYoutube in form.videosYoutube %}
+                <li>{{ form_row(videoYoutube.enlace) }}</li>
+            {% endfor %}
+        </ul>
+            
+            
+        {{ form_label(form.listasYoutube) }}
+        <ul class="listasYoutube" data-prototype="{{ form_widget(form.listasYoutube.vars.prototype)|e }}">
+            {% for listaYoutube in form.listasYoutube %}
+                <li>{{ form_row(listaYoutube.enlace) }}</li>
+            {% endfor %}
+        </ul>    
+            
+
+        {{ form_row(form.canalYoutube) }}
+        {{ form_row(form.aleatorio) }}    
+        {{ form_row(form._token) }}
+        
+        
+        {#{ form_rest(form) }#}
+    </form>
+    <button  id="form_add_medio_submit" form="form_add_medio" type="submit">Añadir</button>
+    <a class="boton" href="{{ path('medio') }}">Volver</a>
+</article>
+{% endblock %}
+
+{% block javascripts %}
+<script src="/js/chosen/chosen.jquery.js"></script>
+<script type="text/javascript"> 
+    $("#fiter_defaultbundle_mediotype_categoria").chosen();
+    $('#fiter_defaultbundle_mediotype_categoria_chzn').css('width','100%');
+    $('.chzn-drop').css('width','100%');
+    $('.chzn-search input').css('width','100%');
+    
+    $("#fiter_defaultbundle_mediotype_categoria").data("chosen").default_text = "Selecciona categorías..";
+    $("#fiter_defaultbundle_mediotype_categoria").trigger("liszt:updated");
+    $("li.search-field input").css("width","auto");
+</script>
+<link rel="stylesheet" href="/js/chosen/chosen.css" />
+<style>
+        #fiter_defaultbundle_mediotype_categoria{width: 100%;}
+        #fiter_defaultbundle_mediotype_categoria_chzn{width: 100%;}
+</style>
+
+
+<script type="text/javascript" src="/js/formoid/jquery.uniform.min.js"></script>
+<script type="text/javascript"> 
+    $("form").find("input[type=file]").uniform();
+    $("form").find("input[type=file]").change(function() {
+        readURL(this)
+    });
+    $(".uploader span.filename").text("No se ha seleccionado ningún archivo");
+    $(".uploader span.action").text("Seleccionar");
+
+    $("#form_add_medio").submit(function(e){
+        //e.preventDefault();
+        var inputsVideosYoutube = $('.videosYoutube input');
+        var removeVideosYoutube = $('.videosYoutube a.remove_tag_link');
+        for (var i=0;i<inputsVideosYoutube.size();i++){ 
+            if(inputsVideosYoutube.get(i).value.length==0){
+                removeVideosYoutube.trigger('click');
+            }
+        }
+
+        var inputsVideosYoutube2 = $('.listasYoutube input');
+        var removeVideosYoutube2 = $('.listasYoutube a.remove_tag_link');
+        for (var i=0;i<inputsVideosYoutube2.size();i++){ 
+            if(inputsVideosYoutube2.get(i).value.length==0){
+                removeVideosYoutube2.trigger('click');
+            }
+        }
+        //$(this).submit();
+    });
+</script>
+{% endblock %}
+
+
+
+{% block listaMasVistos %}
+    <header><h3 id="listaMasVistos">Más vistos</h3></header>
+    {% render 'FiterDefaultBundle:Medio:listaMasVistos' %}
+    <br/>
+{% endblock %}    
+    
+{% block listaMasValorados %}
+    <header><h3 id="listaMasValorados">Más valorados</h3></header>
+    {% render 'FiterDefaultBundle:Medio:listaMasValorados' %}
+    <br/>
+{% endblock %} 
+    
+{% block asideL %}
+    {% render 'FiterDefaultBundle:Categoria:menu' with {'slug': "inicio", 'tipo' : 'medio'} %}
+{% endblock %}   

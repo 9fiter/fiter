@@ -1,0 +1,34 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}banlist{% endblock %}
+ 
+{% block main %}
+	<h3>Banlist</h3>
+
+	{{ element|length }}
+	{% if element|length > 1 %}
+		<a href="{{ path('teamspeak_bandelall') }}">bandelall</a> | delete all ban rules<br/><br/>
+		{% for t in element %}
+			{% set enforcements = t[11]|replace({'enforcements=': ''}) %}
+			{% set banid = t[0]|replace({'banid=': ''}) %}
+			{#% if enforcements == 0 %#}
+				banid: {{banid}} <a href="{{ path('teamspeak_bandel', { 'banid' : banid }) }}">delete</a></br>
+				ip: {{t[1]|replace({'ip=': ''})}}<br/>
+				name: {{t[2]|replace({'name=': ''})}}<br/>
+				uid: {{t[3]|replace({'uid=': ''})}}<br/>
+				lastnickname: {{t[4]|replace({'lastnickname=': ''})}}<br/>
+				created: {{t[5]|replace({'created=': ''})|date()}}<br/>
+				duration: {{t[6]|replace({'duration=': ''})}}<br/>
+				invokername: {{t[7]|replace({'invokername=': ''})}}<br/>
+				invokercldbid: {{t[8]|replace({'invokercldbid=': ''})}}<br/>
+				invokeruid: {{t[9]|replace({'invokeruid=': ''})}}<br/>
+				reason: {{t[10]|replace({'reason=': ''})}}<br/>
+				enforcements: {{t[11]|replace({'enforcements=': ''})}}<br/>
+				<br/>
+			{#% endif %#}
+		{% endfor %}
+
+	{% else %}
+		Empty
+	{% endif %}
+{% endblock %}

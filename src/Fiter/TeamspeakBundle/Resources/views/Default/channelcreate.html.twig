@@ -1,0 +1,12 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}clientkick{% endblock %}
+
+{% block main %}
+	{% if element %}
+	Canal creado satisfactoriamente
+	{% else %}
+	No se pudo crear el canal<br/>
+	{{e}}<br/>
+	{% endif %}
+{% endblock %}

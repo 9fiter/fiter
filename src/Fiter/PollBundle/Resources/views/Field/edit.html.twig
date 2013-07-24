@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{'main.fieldEdit'|trans}}{% endblock %}
+
+{% block main %} 
+    <h1>{{'main.fieldEdit'|trans}}</h1>
+    <form action="{{ path('field_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+        {#{ form_widget(edit_form) }#}
+        <span>{{ form_label(edit_form.title) }}</span>
+        {{ form_widget(edit_form.isActive) }}<span>{{ form_label(edit_form.isActive,label|default(null)) }}</span>
+        {{ form_widget(edit_form.required) }}<span>{{ form_label(edit_form.required,label|default(null)) }}</span><br/>
+        {{ form_widget(edit_form.title) }}
+
+        <span>{{ form_label(edit_form.poll) }}</span><br/>
+        {{ form_widget(edit_form.poll) }}<br/>
+
+        <!-- <span>{#{ form_label(edit_form.type) }#}</span> -->
+        {#{ form_widget(edit_form.type) }#}        
+
+        {{ form_rest(edit_form) }}
+        <p><button type="submit">Edit</button></p>
+    </form>
+    <a class="boton" href="{{ path('field') }}">Back to the list</a>
+    <form action="{{ path('field_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+        <button type="submit">Delete</button>
+    </form>
+{% endblock %}

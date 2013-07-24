@@ -1,0 +1,23 @@
+{% extends '::admin.html.twig' %}
+	 
+{% block title %}Categoría{% endblock %}
+
+{% block main %}
+<h2>Categoría</h2>
+<article>
+    <header>
+        <h3><a href="{{ path('categoria_show', { 'id': entity.id, 'slug': entity.slug }) }}">{{ entity.slug }}</a></h3>
+        {% include 'FiterDefaultBundle:Categoria:datos.html.twig' with {'entity': entity} %}
+    </header>
+    
+    {% if entity.path %}
+        <img class="imgCategoria clearfix" src="{{ asset(['uploads/categoriaimages/', entity.path]|join) }}" alt="imagen no encontrada" />
+    {% endif %}
+    <div style="clear: both;"></div>    
+        
+    <form action="{{ path('categoria_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+        <button type="submit">Eliminar</button>
+    </form>
+</article>  
+{% endblock %}        

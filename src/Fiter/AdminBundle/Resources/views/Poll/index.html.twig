@@ -1,0 +1,35 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}{{ 'main.pollList' | trans }}{% endblock %}
+
+{% block main %} 
+    <h1>{{ 'main.polls' | trans }}</h1>
+    {% for entity in entities %}
+        {% include 'FiterAdminBundle:Poll:parcial/show.html.twig' with {'entity': entity, 'busqueda': true} %}
+    {% endfor %}
+    {% include 'FiterPollBundle:Poll:parcial/actions.html.twig' %}
+{% endblock %}
+
+{% block paginador %}
+<section style="" class="paginador">
+    <ul>
+        {% if paginador.currentPage > 1 %}
+            <li><a href="{{ path('articulo', { 'page': paginador.previousPage}) }}">Anterior</a></li>
+        {% endif %}
+
+        {% for page in paginador.minPageInRange..paginador.maxPageInRange %}
+            {% if page == paginador.currentPage %}
+                <li class="active"><a href="#">{{ page }}</a></li>
+            {% else %}
+                <li><a href="{{ path('articulo', { 'page': page }) }}">{{ page}}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if paginador.currentPage < paginador.lastPage %}
+            <li><a href="{{ path('articulo', { 'page': paginador.nextPage })}}">Siguiente</a></li>
+        {% else %}
+            
+        {% endif %}
+    </ul>
+</section>
+{% endblock %}       

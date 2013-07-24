@@ -1,0 +1,17 @@
+<nav>
+<ul>
+    <li><a href="{{ path( 'inicio' ) }}">Inicio</a></li>
+    {% for entity in entities %}
+    <li>
+        <a href="{{ path('articulocategoria', { 'slug': entity.slug }) }}">{{ entity.nombre }}</a> 
+        <ul>
+            {% for subcategoria in entity.subcategoria %}
+            <li>
+                <a href="{{ path('subcategoria_show', { 'slug': entity.slug }) }}">{{ subcategoria.nombre}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+</nav>

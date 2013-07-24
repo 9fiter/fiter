@@ -1,0 +1,10 @@
+# Time ago in words - Twig Extension
+less than %seconds seconds ago: less than %seconds seconds ago
+half a minute ago: half a minute ago
+less than a minute ago: les than a minute ago
+1 minute ago: 1 minute ago
+%minutes minutes ago: %minutes minutes ago
+about 1 hour ago: about 1 hour ago
+about %hours hours ago: about %hours hours ago
+1 day ago: 1 day ago
+%days days ago: %days days ago

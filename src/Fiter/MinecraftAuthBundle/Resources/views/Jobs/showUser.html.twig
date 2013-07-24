@@ -1,0 +1,4 @@
+{% for entity in entities %}
+	<strong>{{ entity.job }}:</strong> {{ entity.level }} - {{ entity.experience }}xp </br>
+	<!--<a href="{#{ path('jobs_edit', { 'id': entity.id }) }#}">Edit</a></br>-->
+{% endfor %}

@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Lista de jugadores online - {{ app.request.host }}{% endblock %}
+
+{% block main %}
+<article>
+    <header>
+       <h2>Lista de jugadores online</h2>
+    </header>
+     Jugadores: {{numplayers}}/{{maxplayers}}<br/><br/>
+
+	 {% for player in playerlist %}
+	 	{{player}}</br>    
+	 {% endfor %}
+
+</article>
+{% endblock %}
+
+{#% block javascripts %}{% endblock %#}

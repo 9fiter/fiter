@@ -1,0 +1,59 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}channellist{% endblock %}
+ 
+{% block asideL %}{% endblock %}
+{% block asideR %}{% endblock %}
+
+{% block main %}
+<table>
+	<tr>
+		<th>cid</th>
+		<th>pid</th>
+ 		<th>order</th>
+		<th>name</th>
+ 		<th>clients</th>
+		<th>subscribe</th>
+		<th style="min-width:6em;">delete</th>
+		<th>permlist</th>
+	</tr>
+	{% for t in element %}
+		<tr>
+			<td>{{t.cid}}</td>
+			<td>{{t.pid}}</td>
+			<td>{{t.channel_order}}</td>
+			<td>{{t.channel_name|replace({"\\s": ' '}) }} </td>
+			<td>{{t.total_clients}} </td>
+			<td>{{t.channel_needed_subscribe_power}}</td>
+			<td>
+				<a href="{{ path('teamspeak_channeldelete', { 'cid' : t.cid, 'force':'0'}) }}">delete</a> /
+				<a href="{{ path('teamspeak_channeldelete', { 'cid' : t.cid, 'force':'1'}) }}">force</a>
+			</td>
+			<td><a href="{{ path('teamspeak_channelpermlist', { 'cid' : t.cid }) }}">permlist</a></td>
+		</tr>	
+	{% endfor %}
+</table>
+
+<h3>Create channel</h3>
+<form action="{{ path('teamspeak_channelcreate') }}" method="GET" >
+	Name: <input type="text" name="channel_name" value="" >
+	Topic: <input type="text" name="channel_topic" value="" placeholder="">
+	<input type="submit" name="" value="Create channel">
+</form>
+
+
+{% endblock %}
+
+
+
+{% block stylesheets %}
+<style>
+table{
+	border-collapse: collapse;
+}
+table td,table th{
+	border:1px solid #ccc;
+	padding: 0 .5em;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ 'main.fields'|trans}}{% endblock %}
+
+{% block main %} 
+    <h1>{{ 'main.fields'|trans}}</h1>
+    {% for entity in entities %}
+        {{ 'main.title' | trans }}: <a href="{{ path('field_show', { 'id': entity.id }) }}">{{ entity.title }}</a>
+        <span class="bloque">
+            <img class="ico" alt="editar" src="/img/edit.png" />
+            <a href="{{ path('field_edit', { 'id': entity.id }) }}">{{ 'main.edit' | trans }}</a>
+        </span><br/>
+        {{ 'main.description' | trans }}: {{ entity.description }}<br/>
+        {{ 'main.assetPath' | trans }}: {{ entity.assetPath }}<br/>
+        {{ 'main.createdAt' | trans }}: {% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}<br/>
+        {{ 'main.deletedAt' | trans }}: {% if entity.deletedAt %}{{ entity.deletedAt|date('Y-m-d H:i:s') }}{% endif %}<br/>
+        {{ 'main.isActive' | trans }}: {{ entity.isActive }}<br/>
+        {{ 'main.type' | trans }}: {{ entity.type }}<br/>
+        {{ 'main.required' | trans }}: {{ entity.required }}<br/>
+        {{ 'main.position' | trans }}: {{ entity.position }}<br/>
+        {{ 'main.validationConstraints' | trans }}: {{ entity.validationConstraints }}<br/>
+        
+    {% endfor %}
+    <a class="boton" href="{{ path('field_new') }}">{{ 'main.createField' | trans }}</a>
+{% endblock %}

@@ -1,0 +1,6 @@
+security:
+    login:
+        forgot: Forgot your password?
+
+registration:
+    title: Sign up

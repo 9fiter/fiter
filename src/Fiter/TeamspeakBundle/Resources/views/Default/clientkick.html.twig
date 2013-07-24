@@ -1,0 +1,12 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}clientkick{% endblock %}
+
+{% block main %}
+	{% if element %}
+	Cliente kickeado satisfactoriamente
+	{% else %}
+	No se pudo kickear el cliente<br/>
+	{{e}}<br/>
+	{% endif %}
+{% endblock %}

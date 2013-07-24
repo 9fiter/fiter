@@ -1,0 +1,364 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+framework:
+    #esi:             ~
+    translator:      { fallback: "%locale%" }
+    default_locale:  "%locale%"
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: "%kernel.debug%"
+    form:            true
+    csrf_protection: true
+    validation:      { enable_annotations: true }
+    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+    trust_proxy_headers: false # Deprecated in 2.0; will be removed in 2.3 (used trusted_proxies instead)
+    trusted_proxies: ~
+    session:         ~
+    #session:
+    #    cookie_domain: fiter.local
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    globals:
+        domain: %domain%
+        minecraft_server: %minecraft_server%
+        keywords: %keywords%
+        description: %description%
+        twitter_feed: %twitter_feed%
+        web_path: %web_path%
+        css_version: "0.11"
+        isprod: %isprod%
+
+        googleAnalytics_id: %googleAnalytics_id%
+        googleAnalytics_dm: %googleAnalytics_dm%
+
+        infolinks_pid: %infolinks_pid%
+        infolinks_wsid: %infolinks_wsid%
+
+    form:
+        resources:
+            - 'A2lixTranslationFormBundle::form.html.twig'
+
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles: []
+        #- FiterDefaultBundle
+        #- FOSCommentBundle
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        #closure:
+        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
+        #yui_css:
+        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        default_connection:       default
+        connections:
+            default:
+                driver:   "%database_driver%"
+                host:     "%database_host%"
+                port:     "%database_port%"
+                dbname:   "%database_name%"
+                user:     "%database_user%"
+                password: "%database_password%"
+                charset:  UTF8
+            minecraft:
+                driver:   "%minecraft_database_driver%"
+                host:     "%minecraft_database_host%"
+                port:     "%minecraft_database_port%"
+                dbname:   "%minecraft_database_name%"
+                user:     "%minecraft_database_user%"
+                password: "%minecraft_database_password%"
+                charset:  UTF8
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        default_entity_manager:   default
+        entity_managers:
+            default:
+                #auto_mapping: true
+                connection:       default
+                mappings:
+                    FiterDefaultBundle: ~             
+                    FiterPollBundle: ~
+                    RaulFraileLadybugBundle: ~
+                    FOSCommentBundle: ~
+                    gedmo_translatable:
+                        type: annotation
+                        prefix: Gedmo\Translatable\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+                        alias: GedmoTranslatable # this one is optional and will default to the name set for the mapping
+                        is_bundle: false
+            minecraft:
+                #auto_mapping: true
+                connection:       minecraft
+                mappings:
+                    FiterMinecraftAuthBundle: ~
+
+
+
+stof_doctrine_extensions:
+    #default_locale: en_US
+    default_locale: %locale%
+    translation_fallback: true
+    orm:
+        default:
+            #tree: true
+            #timestampable: false # not needed: listeners are not enabled by default
+            translatable : true
+        #other:
+            #timestampable: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+services:
+    defaultbundle.twig.timeago_extension:
+        class: Fiter\DefaultBundle\Twig\TimeAgoExtension
+        arguments: ["@translator"]
+        tags:
+            - { name: twig.extension }
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }
+    defaultbundle.twig.parseurl_extension:
+        class: Fiter\DefaultBundle\Twig\ParseUrlExtension
+        tags:
+            - { name: twig.extension }
+    fiter.minecraft:
+        class: Fiter\DefaultBundle\Util\MinecraftServerStatus
+    sybio.twig_extension:
+        class: Fiter\DefaultBundle\Twig\TwigExtension
+        tags:
+            - { name: twig.extension }
+
+
+
+
+
+trsteel_ckeditor:
+    class: Trsteel\CkeditorBundle\Form\Type\CkeditorType
+    transformers: ['strip_js', 'strip_css', 'strip_comments']
+    #toolbar: ['document', 'clipboard', 'editing', 'basicstyles', 'paragraph', 'links', '/', 'insert', 'styles', 'tools']
+    toolbar: ['document', 'clipboard', 'editing', 'basicstyles', 'paragraph', 'links', 'insert', 'styles', 'tools']
+    toolbar_groups:
+        #document: ['Source','-','-','Templates']
+        document: ['Source','-']
+        #clipboard: ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo']
+        clipboard: []
+        #editing: ['Find','Replace','-','SelectAll']
+        editing: ['Find','Replace']
+        #basicstyles: ['Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat']
+        basicstyles: ['Bold','Strike','RemoveFormat']
+        #paragraph: ['NumberedList','BulletedList','-','Outdent','Indent','-','JustifyLeft', 'JustifyCenter','JustifyRight','JustifyBlock']
+
+        paragraph: ['JustifyLeft', 'JustifyCenter','JustifyRight','JustifyBlock']
+
+        links: ['Link','Unlink','Anchor']
+        #insert: ['Image','Flash','Table','HorizontalRule']
+        insert: ['Image']
+        #styles: ['Styles','Format']
+        styles: ['Format']
+        #tools: ['Maximize', 'ShowBlocks']
+        tools: ['ShowBlocks']
+    ui_color: '#eeeeee'
+    startup_outline_blocks: false
+    #width: 97% #Integer or %
+    height: 300 #Integer or %
+    language: "%locale%"        
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Fiter\DefaultBundle\Entity\Usuario
+    service:
+        mailer: fos_user.mailer.twig_swift
+    from_email:
+        address:        dejamejugar.com@gmail.com
+        sender_name:    dejamejugar.com
+    registration:
+        confirmation:
+            enabled:    true
+            from_email:
+                address:        dejamejugar.com@gmail.com
+                sender_name:    dejamejugar.com
+    resetting:
+        email:
+            template: FiterDefaultBundle:Usuario:resetting.email.twig
+            from_email:
+                address:        dejamejugar.com@gmail.com
+                sender_name:    dejamejugar.com    
+
+liip_imagine:
+    cache_mkdir_mode:     0777
+    cache_prefix:         /uploads/cache
+    filter_sets:
+        thumb_50x50:
+            quality: 75
+            filters:
+                thumbnail: { size: [50, 50], mode: outbound, allow_upscale: true }
+        thumb_170x114:
+            quality: 75
+            filters:
+                thumbnail: { size: [170, 114], mode: outbound, allow_upscale: true }   
+        thumb_666x375:
+            quality: 75
+            filters:
+                thumbnail: { size: [666, 375], mode: outbound, allow_upscale: true }
+        thumb_790x444:
+            quality: 75
+            filters:
+                thumbnail: { size: [790, 444], mode: inset, allow_upscale: true }
+
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: Fiter\DefaultBundle\Entity\Comment
+            thread: Fiter\DefaultBundle\Entity\Thread
+            vote: Fiter\DefaultBundle\Entity\Vote
+    acl: true
+    service:
+        manager:
+            thread:  fos_comment.manager.thread.acl
+            comment: fos_comment.manager.comment.acl
+            vote:    fos_comment.manager.vote.acl
+
+    acl_roles:
+        comment:
+            create: IS_AUTHENTICATED_ANONYMOUSLY
+            view: IS_AUTHENTICATED_ANONYMOUSLY
+            edit: IS_AUTHENTICATED_ANONYMOUSLY
+            delete: IS_AUTHENTICATED_ANONYMOUSLY
+        thread:
+            create: IS_AUTHENTICATED_ANONYMOUSLY
+            view: IS_AUTHENTICATED_ANONYMOUSLY
+            edit: IS_AUTHENTICATED_ANONYMOUSLY
+            delete: IS_AUTHENTICATED_ANONYMOUSLY
+        vote:
+            create: IS_AUTHENTICATED_ANONYMOUSLY
+            view: IS_AUTHENTICATED_ANONYMOUSLY
+            edit: IS_AUTHENTICATED_ANONYMOUSLY
+            delete: IS_AUTHENTICATED_ANONYMOUSLY
+
+assetic:
+    bundles: [ "FOSCommentBundle" ]
+
+
+ivory_lucene_search:
+    identifier1:
+        # Path to store the index (Required)
+        path: "../lucene/index1"
+    identifier2:
+        # Path to store the index (Required)
+        path: "../lucene/index2"
+        # Index analyser (Optional)
+        # See http://framework.zend.com/manual/en/zend.search.lucene.charset.html
+        analyzer: Zend\Search\Lucene\Analysis\Analyzer\Common\Text\CaseInsensitive
+        # Max Buffered documents (Optional)
+        # See http://framework.zend.com/manual/en/zend.search.lucene.index-creation.html#zend.search.lucene.index-creation.optimization.maxbuffereddocs
+        max_buffered_docs: 10
+        # Max merged documents (Optional)
+        # See http://framework.zend.com/manual/en/zend.search.lucene.index-creation.html#zend.search.lucene.index-creation.optimization.maxmergedocs
+        #max_merged_docs: 10000 # (default: PHP_INT_MAX)
+        # Merge factor (Optional)
+        # See http://framework.zend.com/manual/en/zend.search.lucene.index-creation.html#zend.search.lucene.index-creation.optimization.mergefactor
+        merge_factor: 10
+        # Index directory permission (Optional)
+        # See http://framework.zend.com/manual/en/zend.search.lucene.index-creation.html#zend.search.lucene.index-creation.permissions
+        permissions: 0777
+        # Auto optmized flag (Optional)
+        # If this flag is true, each time you request an index, it will be optmized
+        # See http://framework.zend.com/manual/en/zend.search.lucene.index-creation.html#zend.search.lucene.index-creation.optimization
+        auto_optimized: false
+
+be_simple_i18n_routing: ~
+
+bait_poll:
+    db_driver:  orm
+    ##upload_dir: %kernel.root_dir%/../web/poll
+    poll:
+        class:  Fiter\PollBundle\Entity\Poll
+    field:
+        class:  Fiter\PollBundle\Entity\Field
+    answer:
+        class:  Fiter\PollBundle\Entity\Answer
+    answer_group:
+        class:  Fiter\PollBundle\Entity\AnswerGroup
+
+
+genemu_form: ~
+
+
+
+
+sonata_admin:
+    #security:
+        #handler: sonata.admin.security.handler.role
+
+    title:      'dejamejugar.com - Backend'
+    #title_logo: /bundles/backend/logotipo.png
+    templates:
+        layout:  SonataAdminBundle::standard_layout.html.twig
+        ajax:    SonataAdminBundle::ajax_layout.html.twig
+        dashboard: SonataAdminBundle:Core:dashboard.html.twig
+
+        list:    SonataAdminBundle:CRUD:list.html.twig
+        show:    SonataAdminBundle:CRUD:show.html.twig
+        edit:    SonataAdminBundle:CRUD:edit.html.twig
+    dashboard:
+        blocks:
+            # display a dashboard block
+            - { position: left, type: sonata.admin.block.admin_list }
+
+            # Customize this part to add new block configuration
+            #- { position: right, type: sonata.block.service.text, settings: { content: "<h2>Welcome to the Sonata Admin</h2> <p>This is a <code>sonata.block.service.text</code> from the Block Bundle, you can create and add new block in these area by configuring the <code>sonata_admin</code> section.</p> <br /> For instance, here a RSS feed parser (<code>sonata.block.service.rss</code>):"} }
+            - { position: right, type: sonata.block.service.rss, settings: { title: Sonata Project's Feeds, url: http://sonata-project.org/blog/archive.rss }}
+        # groups:
+        #     sonata_page:
+        #         label: sonata_page
+        #         items: 
+        #             - sonata.page.admin.page
+
+    # set to true to persist filter settings per admin module in the user's session
+    ##persist_filters: true
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+
+        sonata.block.service.text:   ~
+        sonata.block.service.action: ~
+        sonata.block.service.rss:    ~
+
+        #profiler:
+            #enabled:        %kernel.debug%
+            #renderer_class: Sonata\BlockBundle\Block\TraceableBlockRenderer
+            #template:       SonataBlockBundle:Profiler:block.html.twig
+
+
+a2lix_translation_form:
+    #object_manager:             # [optional] Defaults to doctrine.orm.entity_manager. Name of the object manager. For instance, 'doctrine.orm.default_entity_manager' or 'doctrine_mongodb.odm.default_document_manager'
+    locales: [gl, ca, en]       # [optional] Array of the translation locales (The default locale have to be excluded). Can also be specified in the form builder.
+    default_required: false     # [optional] Defaults to false. In this case, translation fields are not mark as required with HTML5.
+    use_aop: true               # [optional] Defaults to false.
+

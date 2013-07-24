@@ -1,0 +1,15 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}connect{% endblock %}
+
+{% block main %}
+	{% if element %}
+	Token generado satisfactoriamente<br/>
+	token={{token}}<br/>
+	<a class="btn-custom" href="{{link}}">Crear bookmark y conectar</a><br/>
+
+	{% else %}
+	No se pudo generar el token<br/>
+	{{e}}<br/>
+	{% endif %}
+{% endblock %}

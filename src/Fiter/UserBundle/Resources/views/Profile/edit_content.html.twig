@@ -1,0 +1,5 @@
+<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+    {{ form_widget(form) }}
+        <br/>
+        <button class="boton" type="submit" >{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}</button>
+</form>

@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Answer{% endblock %}
+
+{% block main %} 
+    <h1>Answer</h1>
+    Id: {{ entity.id }}<br/>            
+    Value: {{ entity.value }}<br/>    
+    <a class="boton" href="{{ path('answer') }}">Back to the list</a>
+
+    <a class="boton" href="{{ path('answer_edit', { 'id': entity.id }) }}">Edit</a>
+    <form action="{{ path('answer_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+        <button type="submit">Delete</button>
+    </form>
+{% endblock %}

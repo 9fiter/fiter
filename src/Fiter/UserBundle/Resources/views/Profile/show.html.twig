@@ -1,0 +1,6 @@
+{% extends '::base.html.twig' %}
+{% block title %}{{ 'main.perfil' | trans }} - {{ app.request.host }}{% endblock %}
+
+{% block main %}
+    {% include "FiterUserBundle:Profile:show_content.html.twig" %}
+{% endblock %}

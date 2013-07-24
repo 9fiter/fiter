@@ -1,0 +1,30 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Answer creation{% endblock %}
+
+{% block main %} 
+	<h1>Answer creation</h1>
+	<form action="{#{ path('answer_create') }#}" method="post" {{ form_enctype(form) }}>
+	    {{ form_widget(form) }}
+
+
+
+
+<!-- 	<h3>answerGroup</h3>
+    <ul class="tags">
+        {# itera sobre cada etiqueta existente y reproduce su único campo: name #}
+        {#% for answerGroup in form.answerGroup %#}
+            <li>{#{ form_widget(answerGroup) }#}</li>
+        {#% endfor %#}
+    </ul> -->
+
+
+
+
+
+
+	    <p><button type="submit">Create</button></p>
+	</form>
+	<a class="boton" href="{{ path('answer') }}">Back to the list</a>
+{% endblock %}
+

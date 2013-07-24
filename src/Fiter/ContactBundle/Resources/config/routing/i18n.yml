@@ -1,0 +1,5 @@
+fiter_contact:
+    locales:  { es: "/contacto", en: "/contact", gl: "/contacta", ca: "/contacte" }
+    defaults: { _controller: FiterContactBundle:Page:contact  }
+    requirements:
+        _method:  GET|POST

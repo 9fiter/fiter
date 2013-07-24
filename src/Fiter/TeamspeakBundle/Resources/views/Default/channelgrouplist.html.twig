@@ -1,0 +1,49 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}channelgrouplist{% endblock %}
+ 
+{% block asideL %}{% endblock %}
+{% block asideR %}{% endblock %}
+
+{% block main %}
+<table>
+	<tr>
+		<th>cgid</th>
+		<th>name</th>
+		<th>type</th>
+		<th>iconid</th>
+		<th>savedb</th>
+		<th>sortid</th>
+		<th>namemode</th>
+		<th>n_modifyp</th>
+		<th>n_member_addp</th>
+		<th>n_member_removep</th>
+		<th>permlist</th>
+	</tr>
+	{% for t in element %}
+		<tr>
+			<td>{{t.cgid}}</td>
+			<td>{{t.name}}</td>
+			<td>{{t.type}}</td>
+			<td>{{t.iconid}}</td>
+			<td>{{t.savedb}}</td>
+			<td>{{t.sortid}}</td>
+			<td>{{t.namemode}}</td>
+			<td>{{t.n_modifyp}}</td>
+			<td>{{t.n_member_addp}}</td>
+			<td>{{t.n_member_removep}}</td>
+			<td><a href="{{ path('teamspeak_channelgrouppermlist' , { 'cgid' : t.cgid }) }}">permlist</a></td>
+		</tr>	
+	{% endfor %}
+</table>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+table{border-collapse: collapse;}
+table td,table th{
+	border:1px solid #ccc;
+	padding: 0 .5em;
+}
+</style>
+{% endblock %}

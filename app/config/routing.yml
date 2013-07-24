@@ -1,0 +1,130 @@
+
+articulo_show_permanent:
+    pattern:  /art/pl/{id}
+    defaults: { _controller: FiterDefaultBundle:Articulo:show }
+    requirements:
+        _method:  GET|POST
+
+
+
+
+fiter_minecraft_auth:
+    resource: "@FiterMinecraftAuthBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}/
+
+fiter_minecraft:
+    resource: "@FiterMinecraftBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}/
+
+fiter_teamspeak:
+    resource: "@FiterTeamspeakBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}/
+
+sonata:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix:   /{_locale}/sonata
+
+_sonata_admin:
+    resource: .
+    type:     sonata_admin
+    prefix:   /{_locale}/sonata
+
+my_yaml_i18n_routes:
+    resource: "@FiterDefaultBundle/Resources/config/routing/i18n.yml"
+    type: be_simple_i18n
+    prefix:   /{_locale}
+
+my_yaml_i18n_routes2:
+    resource: "@FiterContactBundle/Resources/config/routing/i18n.yml"
+    type: be_simple_i18n
+    prefix:   /{_locale}
+
+my_yaml_i18n_routes3:
+    resource: "@FiterPollBundle/Resources/config/routing/i18n.yml"
+    type: be_simple_i18n
+    prefix:   /{_locale}
+
+my_yaml_i18n_routes4:
+    resource: "@FiterAdminBundle/Resources/config/routing/i18n.yml"
+    type: be_simple_i18n
+    prefix:   /{_locale}/admin
+
+_imagine:
+    resource: .
+    type: imagine    
+
+fiter_admin:
+    resource: "@FiterAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}/admin
+
+fos_user_security:
+    resource: "@FiterUserBundle/Resources/config/routing/security.xml"
+    prefix: /{_locale}
+
+fos_user_profile:
+    resource: "@FiterUserBundle/Resources/config/routing/profile.xml"
+    prefix: /{_locale}/profile/
+
+fos_user_register:
+    resource: "@FiterUserBundle/Resources/config/routing/registration.xml"
+    prefix: /{_locale}/register
+
+fos_user_resetting:
+    resource: "@FiterUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /{_locale}/resetting
+
+fos_user_change_password:
+    resource: "@FiterUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /{_locale}/profile
+
+fos_comment_api:
+    type: rest
+    resource: "@FiterCommentBundle/Resources/config/routing.yml"
+    prefix: /api
+    defaults: { _format: html }
+
+fiter_default:
+    resource: "@FiterDefaultBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}/
+    defaults: { _locale: es }
+
+
+fiter_sitemap:
+    resource: "@FiterDefaultBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}/
+    defaults: { _locale: es }
+
+fiter_contact:
+    resource: "@FiterContactBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}/
+    defaults: { _locale: es }
+
+# fiter_contact:
+#     pattern:  /{_locale}/contacto
+#     defaults: { _controller: FiterContactBundle:Page:contact }
+#     requirements:
+#         _method:  GET|POST
+
+fiter_poll:
+    resource: "@FiterPollBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}
+
+_portada:
+    pattern:  /
+    defaults: { _controller: FiterDefaultBundle:Default:index , _locale: es}
+
+portada:
+    pattern:  /{_locale}/
+    defaults: { _controller: FiterDefaultBundle:Default:index, _locale: es }
+
+
+
+

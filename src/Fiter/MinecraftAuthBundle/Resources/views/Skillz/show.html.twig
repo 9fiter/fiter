@@ -1,0 +1,45 @@
+<h1>Skillz</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Player</th>
+            <td>{{ entity.player }}</td>
+        </tr>
+        <tr>
+            <th>Skill</th>
+            <td>{{ entity.skill }}</td>
+        </tr>
+        <tr>
+            <th>Xp</th>
+            <td>{{ entity.xp }}</td>
+        </tr>
+        <tr>
+            <th>Level</th>
+            <td>{{ entity.level }}</td>
+        </tr>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('skillz') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('skillz_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('skillz_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

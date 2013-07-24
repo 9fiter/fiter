@@ -1,0 +1,23 @@
+<section style="" class="paginador">
+    <ul>
+        {% if paginador.currentPage > 1 %}
+            <li><a href="{{ path('articulousuario', { 'page': paginador.previousPage, 'nombre': nombre}) }}">Anterior</a></li>
+        {% else %}
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+        {% endif %}
+
+        {% for page in paginador.minPageInRange..paginador.maxPageInRange %}
+            {% if page == paginador.currentPage %}
+                <li class="actual">{{ page }}</li>
+            {% else %}
+                <li><a href="{{ path('articulousuario', { 'page': page, 'nombre': nombre }) }}">{{ page}}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if paginador.currentPage < paginador.lastPage %}
+            <li><a href="{{ path('articulousuario', { 'page': paginador.nextPage, 'nombre': nombre })}}">Siguiente</a></li>
+        {% else %}
+            
+        {% endif %}
+    </ul>
+</section>

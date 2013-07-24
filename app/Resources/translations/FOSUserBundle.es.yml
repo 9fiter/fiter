@@ -1,0 +1,6 @@
+security:
+    login:
+        forgot: Olvidaste la contraseña?
+
+registration:
+    title: Regístrate

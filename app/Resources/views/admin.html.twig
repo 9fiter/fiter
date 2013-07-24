@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <!--[if ie]>
+            <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+        <![endif]-->
+        <title>{% block title %}Bienvenido!{% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="/css/normalize.min.css">
+        <link rel="stylesheet" href="/css/main.css">
+        
+        <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
+        
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="/css/estructura.css" type="text/css"/>
+        
+        <style type="text/css">
+            body{background-image: url('data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAEBAQEBAQEBAQECAQEBAgIBAQEBAgICAgICAgIDAgICAgICAwMDAwQDAwMEBAUFBAQGBgYGBgcHBwcHBwcHBwf/2wBDAQEBAQICAgQDAwQGBQQFBgcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwf/wAARCAAEAAQDAREAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAACv/EAB8QAAEDBQADAAAAAAAAAAAAAAMBBAYCBQcRFBIVIv/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwAvmLxx3M8GsmSsnRamVTiSdPu78a9y1pUfjdlYNtt2F3ACjwAEdHwNN62u1VVUP//Z');}
+        </style>
+        {% block stylesheets %}{% endblock %}
+        
+        <!--[if gte IE 9]>
+            <style type="text/css">
+              .gradient {
+                 filter: none;
+              }
+            </style>
+          <![endif]-->
+        
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <div id="contenidoBody">
+            <div id="menuCategorias">
+            
+            </div>
+            {% block header %}
+                <header>
+                    <div class="cabecera">
+                        <a href="{{path('admin_inicio') }}">
+                            <img class="logo" alt="logo" src="/img/dejamejugar.png" />
+                        </a>
+                    </div>
+                    {% include 'FiterDefaultBundle:Articulo:parcial/formBuscar.html.twig' %}
+
+                    <div class="idioma">
+                        <a href="{{ path('admin_articulo', { '_locale': 'gl' }) }}"><img src="/img/flags/gl.png" alt=""></a>
+                        <a href="{{ path('admin_articulo', { '_locale': 'es' }) }}"><img src="/img/flags/es.png" alt=""></a>
+                        <a href="{{ path('admin_articulo', { '_locale': 'en' }) }}"><img src="/img/flags/en.png" alt=""></a>
+                        <!--<a href="{{ path('admin_articulo', { '_locale': 'es' }) }}"><img src="/img/flags/gl.png"></a>-->
+                    </div>
+
+                    <div class="usuario">
+                        <a id="btn_menu" class="nav-button">
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                        </a>
+                        <a id="btn_usuario" href="#">
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                {% if app.user.path %}
+                                    <img src="{{ asset(  ['/uploads/userimages/', app.user.path]|join  )|imagine_filter('thumb_50x50') }}">
+                                {% else %}
+                                    <img alt="usuario" src="/img/anon.png" />
+                                {% endif %}
+                            {% else %}
+                                <img alt="usuario" src="/img/anon.png" />
+                            {% endif %}    
+                        </a>
+                        <span class="nombreUsuario"><a href="{{ path('fos_user_profile_show') }}">
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                {{ app.user.username }}&nbsp;
+                            {% else %}
+                                Anónimo
+                            {% endif %}</a>
+                            {% if ( is_granted('ROLE_ADMIN')) %}
+                                <a href="{{ path('portada') }}">Frontend</a>
+                                <a href="{{ path('sonata_admin_dashboard') }}">Sonata</a>
+                            {% endif %}
+
+                        </span>
+                    </div>
+                    <div style="clear:both;"></div>
+                </header>
+                <div id="menuUsuario">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <a href="{{ path('fos_user_profile_show') }}">Perfil</a><br/>
+                        <!--
+                        <a href="#">Amigos</a><br/>
+                        <a href="#">Opciones</a><br/>
+                        <a href="#">Configuración</a><br/>
+                        -->
+                        <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a><br/>
+                    {% else %}  
+                        {% render "FiterUserBundle:Security:login" with {'layout':false}  %} 
+                    {% endif %} 
+                </div>
+            {% endblock %}
+
+            {% block nav %}
+            <nav>
+                <ul>
+                    <li><a href="{{ path('admin_articulo') }}">{{ 'main.articulos' | trans }}</a></li>
+                    <li><a href="{{ path('admin_articulo_new') }}">{{ 'main.addArticulo' | trans }}</a></li>
+                    <li><a href="{{ path('admin_categoria') }}">{{ 'main.categorias' | trans }}</a></li>
+                    <!-- <li><a href="{#{ path('fos_user_profile_show') }#}">{#{ 'main.perfil' | trans }#}</a></li>
+                    <li><a href="{#{ path('fos_user_profile_index') }#}">{#{ 'main.usuarios' | trans }#}</a></li> -->
+                    <li><a href="{{ path('admin_poll') }}">{{ 'main.polls' | trans }}</a></li>
+                    <li><a href="{{ path('admin_poll_new') }}">{{ 'main.addPoll' | trans }}</a></li>
+                    <li><a href="{{ path('teamspeak') }}">Teamspeak</a></li>
+                </ul>
+            </nav>
+            {% endblock %}
+
+            <aside class="asideLeft">
+            {% block asideL %}    
+                {% render 'FiterAdminBundle:Categoria:menu' with {'slug': "inicio"} %}
+            {% endblock %}
+            </aside>
+
+            <section class="main">    
+            {% block main %}{% endblock %}
+                    
+            {% block paginador %}{% endblock %}
+            </section>
+
+            {% block asideR %}
+            <aside class="asideRight">
+                <section class="col300">
+                    
+                    {% block listaMasVistos %}
+                    <header><h3 id="listaMasVistos">Más vistos</h3></header>
+                    {% render 'FiterDefaultBundle:Articulo:listaMasVistos' %}
+                    <br/>
+                    {% endblock %}
+                    
+                    {% block listaMasValorados %}
+                    <header><h3 id="listaMasValorados">Más valorados</h3></header>
+                    {% render 'FiterDefaultBundle:Articulo:listaMasValorados' %}
+                    <br/>
+                    {% endblock %}
+                    
+                    <div class="banner300-300">
+                        <a href="http://symfony.com/">
+                            <img alt="symfony" src="http://live.symfony.com/bundles/sensiosymfonylive/images/landing/sfl_portland.png"/>
+                        </a>
+                    </div>
+                    <div class="banner300-300">
+                        <!--<img src="/img/banner-symfony.jpg"/></div>-->
+                        <a href="http://www.phptherightway.com">
+                            <img src="/img/med-rect-300x250.png" alt="PHP: The Right Way"/>
+                        </a>
+                    </div>
+                        
+                        
+                        
+                </section>
+
+                <section class="col300">
+                    
+                    
+                    <div class="banner300-300"><img alt="responsive" src="/img/banner-responsive.jpg" /></div>
+                    
+                    <div id="twitterweb"></div>
+                    
+                    <div class="banner300-300"><img alt="freesoft" src="/img/banner-freesoft.jpg" /></div>
+                    
+                    <header><h3>Siguenos en:</h3></header>
+                    <div>
+                        <figure>
+                            <a target="_blank" href="https://www.facebook.com/9fiter"><div class="socialmod_facebook"></div></a>
+                            <figcaption>facebook</figcaption>
+                        </figure>
+                        <figure>
+                            <a target="_blank" href="https://twitter.com/9fiter"><div class="socialmod_twitter"></div></a>
+                            <figcaption>twitter</figcaption>
+                        </figure>
+                        <figure>
+                            <a target="_blank" href="https://plus.google.com/+Ferrari/posts"><div class="socialmod_google"></div></a>
+                            <figcaption>google</figcaption>
+                        </figure>
+                        <figure>
+                            <div class="socialmod_rss"></div>
+                            <figcaption>rss</figcaption>
+                        </figure>
+                        <figure>
+                            <div class="socialmod_github"></div>
+                            <figcaption>github</figcaption>
+                        </figure>
+                        <div style="clear:both"></div>
+                    </div>
+                    <br/>
+                </section>
+
+            </aside>    
+            {% endblock %}
+
+
+            {% block asideR2 %}
+            <aside >
+
+            </aside>    
+            {% endblock %}
+
+            <div style="clear:both;height: 5em;"></div>
+        </div><!-- div#contenidoBody-->
+        
+        {% block footer %}
+        <footer>
+            <div id="contenidoFooter">
+                <section class="col1-4">
+                    <h3 id="footerMasVistos">Más vistos</h3>
+                    
+                </section>
+                <section class="col1-4">
+                    <h3 id="footerMasValorados">Más valorados</h3>
+                   
+                </section>
+                <div class="separador"></div>
+                <section class="col1-4">
+                    <h3>Actualizaciones</h3>
+                    {% render 'FiterDefaultBundle:Articulo:listaActualizaciones' %}
+                    <br/>
+                </section>
+                <section class="col1-4">
+                    <h3>Relacionados</h3>
+                    {#% render 'FiterDefaultBundle:Articulo:listaMasVistos' %#}
+                    
+                    {% block relacionados %}
+                        {% render 'FiterDefaultBundle:Articulo:listaRelacionados' with {'slug': "inicio"} %}
+                    {% endblock %}
+                    
+                    <br/>
+                </section>
+                
+                <div style="clear:both;height:  4em;"></div>
+                <section class="col1-4">
+                    <a href="http://validator.w3.org/check?uri=referer">
+                        <img src="http://www.w3.org/html/logo/badge/html5-badge-h-connectivity-css3-device-graphics-multimedia-performance-semantics-storage.png" 
+                             width="357" height="64" 
+                             alt="HTML5 Powered with Connectivity / Realtime, CSS3 / Styling, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage"
+                             title="HTML5 Powered with Connectivity / Realtime, CSS3 / Styling, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage"
+                         >
+                    </a>
+                </section>
+                <section class="col1-4"></section>
+                <section class="col1-4"></section>
+                <section class="col1-4"> </section>
+                <div style="clear:both"></div>
+                    <nav>
+                        <ul>
+                            <li><a href="{{ path( 'estatica', { 'pagina': 'ayuda' } ) }}">Ayuda</a></li>
+                            <li><a href="{{ path( 'estatica', { 'pagina': 'terminos-y-condiciones' } ) }}">Terminos y condiciones</a></li>
+                            <li><a href="{{ path( 'estatica', { 'pagina': 'privacidad' } ) }}">Privacidad</a></li>
+                        </ul>
+                    </nav>
+                <div style="clear:both;height:  1em;"></div>
+            </div>
+        </footer>
+        {% endblock %}
+        
+        <!--
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.8.3.min.js"><\/script>')</script>
+        -->
+        <script src="/js/jquery-1.7.min.js"></script>
+        <script src="/js/plugins.js"></script>
+        <script src="/js/ztwitterfeed/jquery.ztwitterfeed.min.js" type="text/javascript"></script>
+        {% block javascripts %}{% endblock %}
+        <script src="/js/main.js"></script>
+        
+        <!--<script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>-->
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

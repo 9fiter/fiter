@@ -1,0 +1,12 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}clientlist{% endblock %}
+ 
+
+{% block main %}
+	{% if element %}
+	Mensaje enviado satisfactoriamente
+	{% else %}
+	No se pudo enviar el mensaje
+	{% endif %}
+{% endblock %}

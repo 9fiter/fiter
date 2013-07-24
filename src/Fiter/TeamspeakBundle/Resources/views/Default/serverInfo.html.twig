@@ -1,0 +1,10 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}serverinfo{% endblock %}
+ 
+
+{% block main %}
+	{% for item in element %}
+		{{item}}<br/>    
+	{% endfor %}
+{% endblock %}

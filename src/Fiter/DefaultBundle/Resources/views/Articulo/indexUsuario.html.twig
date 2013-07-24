@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+ 
+ {% block rss_header %}
+    <link rel="alternate" type="application/rss+xml" title="RSS de los artículos más recientes" href="{{ path('articulousuario', {'nombre':nombre, '_format': 'rss' }) }}" />
+{% endblock %}
+
+{% block rss_icon %}
+    <a href="{{ path('articulousuario', {'nombre':nombre, '_format': 'rss' }) }}">
+        <div class="socialmod_rss"></div>
+    </a>
+{% endblock %}
+
+{% block main %}
+    {% include "FiterDefaultBundle:Articulo:indexUsuarioSinLayout.html.twig" %}
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}tokenlist{% endblock %}
+ 
+
+{% block main %}
+<table>
+	<tr>
+		<th>Usuario</th>
+		<th>Token</th>
+		<th>Eliminar</th>
+	</tr>
+	{% for t in element %}
+		<tr>
+			{% set token = t[0]|replace({'token=':''}) %}
+			<td>{{t[5]|replace({'token_description=automaticallyscreatedstokensfor': ''})}} </td>
+			<td>{{token}}</td>
+			<td><a href="{{ path('teamspeak_tokendelete', { 'token' : token }) }}">eliminar</a></td>
+		</tr>	
+	{% endfor %}
+</table>
+{% endblock %}
+
+
+
+{% block stylesheets %}
+<style>
+table{
+	border-collapse: collapse;
+}
+table td,table th{
+	border:1px solid #ccc;
+	padding: 0 .5em;
+}
+</style>
+{% endblock %}

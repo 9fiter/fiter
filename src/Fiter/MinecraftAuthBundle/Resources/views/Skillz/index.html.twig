@@ -1,0 +1,67 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Minecraft skills - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+	<h2>Minecraft skills</h2>
+	{% for entity in entities %}
+	    <a href="{{ path('authme_show', { 'id': entity.id }) }}">{{ entity.player }}</a> {{ entity.skill }}: {{ entity.level }} - {{ entity.xp }} xp </br>
+	    {#<a href="{{ path('skillz_show', { 'id': entity.id }) }}">show</a>
+	    <a href="{{ path('skillz_edit', { 'id': entity.id }) }}">edit</a>#}
+	{% endfor %}
+	{#<a href="{{ path('skillz_new') }}">Create a new entry</a>#}
+{% endblock %}
+
+{% block paginador %}
+<section style="" class="paginador">
+    <ul>
+        {% if paginador.currentPage > 1 %}
+            <li><a href="{{ path('skillz', { 'page': paginador.previousPage}) }}">Anterior</a></li>
+        {% endif %}
+
+        {% for page in paginador.minPageInRange..paginador.maxPageInRange %}
+            {% if page == paginador.currentPage %}
+                <li class="active"><a href="#">{{ page }}</a></li>
+            {% else %}
+                <li><a href="{{ path('skillz', { 'page': page }) }}">{{ page}}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if paginador.currentPage < paginador.lastPage %}
+            <li><a href="{{ path('skillz', { 'page': paginador.nextPage })}}">Siguiente</a></li>
+        {% else %}
+            
+        {% endif %}
+    </ul>
+</section>
+{% endblock %}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ 'main.usuarios' | trans }} - {{ app.request.host }}{% endblock %}
+ 
+{% block main %} 
+    <article>
+    <h2>{{ 'main.usuarios' | trans }}</h2>
+    {% for entity in users %}
+        <div class="indexUsuarios">
+            <a class="nombre" href="{{ path('articulousuario', { 'nombre': entity.username }) }}">{{entity.username}}</a><br/>
+            <a href="{{ path('articulousuario', { 'nombre': entity.username }) }}">
+            {% if entity.path %}
+                <img class="sombra" src="{{ asset(  ['/uploads/userimages/', entity.path]|join  )|imagine_filter('thumb_50x50') }}" alt="imagen no encontrada" />
+            {% else %}
+                <img class="sombra" src="/uploads/userimages/anon.png" alt="imagen no encontrada" />
+            {% endif %}
+            </a>
+        </div>
+    {% endfor %}
+    <div style="clear: both;"></div>
+    </article>
+{% endblock %}
+    
+    
+    
+    
+   

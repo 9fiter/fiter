@@ -1,0 +1,30 @@
+Fiter\MinecraftAuthBundle\Entity\Skillz:
+    type: entity
+    table: Skillz
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        player:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        skill:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        xp:
+            type: integer
+            unsigned: false
+            nullable: true
+        level:
+            type: integer
+            unsigned: false
+            nullable: true
+    lifecycleCallbacks: {  }

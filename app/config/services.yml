@@ -1,0 +1,141 @@
+services:
+    sonata.fiter.admin.articulo:
+        class: Fiter\DefaultBundle\Admin\ArticuloAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Principal', label: Articulos }
+        arguments:
+            - null
+            - Fiter\DefaultBundle\Entity\Articulo
+            - FiterDefaultBundle:Admin
+
+    sonata.fiter.admin.categoria:
+        class: Fiter\DefaultBundle\Admin\CategoriaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Principal', label: Categorias }
+        arguments:
+            - null
+            - Fiter\DefaultBundle\Entity\Categoria
+            - FiterDefaultBundle:Admin
+
+    sonata.fiter.admin.subCategoria:
+        class: Fiter\DefaultBundle\Admin\SubCategoriaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Principal', label: Subcategorias }
+        arguments:
+            - null
+            - Fiter\DefaultBundle\Entity\SubCategoria
+            - FiterDefaultBundle:Admin
+
+    sonata.fiter.admin.videoYoutube:
+        class: Fiter\DefaultBundle\Admin\VideoYoutubeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Principal', label: VideoYoutube }
+        arguments:
+            - null
+            - Fiter\DefaultBundle\Entity\VideoYoutube
+            - FiterDefaultBundle:Admin
+
+    sonata.fiter.admin.listaYoutube:
+        class: Fiter\DefaultBundle\Admin\ListaYoutubeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Principal', label: ListaYoutube }
+        arguments:
+            - null
+            - Fiter\DefaultBundle\Entity\ListaYoutube
+            - FiterDefaultBundle:Admin
+
+    sonata.fiter.admin.vote:
+        class: Fiter\DefaultBundle\Admin\VoteAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Comment', label: Vote }
+        arguments:
+            - null
+            - Fiter\DefaultBundle\Entity\Vote
+            - FiterDefaultBundle:Admin
+
+    sonata.fiter.admin.comment:
+        class: Fiter\DefaultBundle\Admin\CommentAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Comment', label: Comment }
+        arguments:
+            - null
+            - Fiter\DefaultBundle\Entity\Comment
+            - FiterDefaultBundle:Admin
+
+    sonata.fiter.admin.usuario:
+        class: Fiter\DefaultBundle\Admin\UsuarioAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Principal', label: Usuario }
+        arguments:
+            - null
+            - Fiter\DefaultBundle\Entity\Usuario
+            - FiterDefaultBundle:Admin
+
+    sonata.fiter.admin.thread:
+        class: Fiter\DefaultBundle\Admin\ThreadAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Comment', label: Thread }
+        arguments:
+            - null
+            - Fiter\DefaultBundle\Entity\Thread
+            - FiterDefaultBundle:Admin
+
+
+    sonata.fiter.admin.poll:
+        class: Fiter\PollBundle\Admin\PollAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Poll', label: Poll }
+        arguments:
+            - null
+            - Fiter\PollBundle\Entity\Poll
+            - FiterDefaultBundle:Admin
+
+    sonata.fiter.admin.field:
+        class: Fiter\PollBundle\Admin\FieldAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Poll', label: Field }
+        arguments:
+            - null
+            - Fiter\PollBundle\Entity\Field
+            - FiterDefaultBundle:Admin
+
+    fos_user.profile.form.type:
+        class: Fiter\UserBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: fos_user_profile }
+
+
+    # fos.user.admin.user:
+    #     class: Fiter\DefaultBundle\Admin\UsuarioAdmin
+    #     tags:
+    #         - { name: sonata.admin, manager_type: orm, group: 'fos_user'}
+    #     arguments:
+    #         - null
+    #         - Fiter\DefaultBundle\Entity\Usuario
+    #         - null
+    #     calls:
+    #         - [setUserManager, ["@fos_user.user_manager"]]
+
+    # <service id="fos.user.admin.user" class="%fos.user.admin.user.class%">
+    #     <tag name="sonata.admin" manager_type="orm" group="fos_user" />
+    #     <argument />
+    #     <argument>%fos.user.admin.user.entity%</argument>
+    #     <argument />
+
+    #     <call method="setUserManager">
+    #         <argument type='service' id='fos_user.user_manager' />
+    #     </call>
+    # </service>
+
+    form.type.translatable:
+        class: Fiter\DefaultBundle\Form\TranslatedFieldType
+        arguments: ["@service_container"]
+        tags:
+            - { name: form.type, alias: translatable_field }
+
+    # <service id="form.type.translatable" class="Acme\DemoBundle\Form\TranslatedFieldType">
+    #     <tag name="form.type" alias="translatable_field"/>
+    #     <argument type="service" id="service_container" />
+    # </service>
+

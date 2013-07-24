@@ -1,0 +1,63 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Medios{% endblock %}
+ 
+{% block main %} 
+    <h2>Medios</h2>
+    {% for entity in entities %}
+    <article>
+        <header>
+            <h3><a href="{{ path('medio_show', { 'id': entity.id , 'slug': entity.slug}) }}">{{ entity.titulo }}</a></h3>
+            {% include 'FiterDefaultBundle:Medio:parcial/datos.html.twig' with {'entity': entity} %}
+        </header>
+        
+        {% include 'FiterDefaultBundle:Medio:parcial/imgCat.html.twig' with {'entity': entity} %}
+            
+        <div >{{ entity.contenido(true)|striptags|raw }}</div>
+        <div style="clear: both;"></div>
+    </article>
+    {% endfor %}
+{% endblock %}
+    
+{% block paginador %}
+<section style="" class="paginador">
+    <ul>
+        {% if paginador.currentPage > 1 %}
+            <li><a href="{{ path('medio', { 'page': paginador.previousPage}) }}">Anterior</a></li>
+        {% else %}
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+        {% endif %}
+
+        {% for page in paginador.minPageInRange..paginador.maxPageInRange %}
+            {% if page == paginador.currentPage %}
+                <li class="actual">{{ page }}</li>
+            {% else %}
+                <li><a href="{{ path('medio', { 'page': page }) }}">{{ page}}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if paginador.currentPage < paginador.lastPage %}
+            <li><a href="{{ path('medio', { 'page': paginador.nextPage })}}">Siguiente</a></li>
+        {% else %}
+            
+        {% endif %}
+    </ul>
+</section>
+{% endblock %}      
+    
+    
+{% block listaMasVistos %}
+    <header><h3 id="listaMasVistos">Más vistos</h3></header>
+    {% render 'FiterDefaultBundle:Medio:listaMasVistos' %}
+    <br/>
+{% endblock %}    
+    
+{% block listaMasValorados %}
+    <header><h3 id="listaMasValorados">Más valorados</h3></header>
+    {% render 'FiterDefaultBundle:Medio:listaMasValorados' %}
+    <br/>
+{% endblock %}     
+    
+{% block asideL %}    
+    {% render 'FiterDefaultBundle:Categoria:menu' with {'slug': 'inicio', 'tipo':'medio'} %}
+{% endblock %} 

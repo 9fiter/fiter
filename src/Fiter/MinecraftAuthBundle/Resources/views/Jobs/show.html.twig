@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ entity.username }} Minecraft jobs - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+
+<h2>{{ entity.username }} Jobs</h2>
+
+Username: {{ entity.username }} <a href="{{ path('jobs_edit', { 'id': entity.id }) }}">Edit</a></br>
+Experience: {{ entity.experience }}</br>
+Level: {{ entity.level }}</br>
+Job: {{ entity.job }}</br></br>
+
+<a href="{{ path('jobs') }}">Back to the list</a>
+
+<form action="{{ path('jobs_delete', { 'id': entity.id }) }}" method="post">
+    {{ form_widget(delete_form) }}
+    <button type="submit">Delete</button>
+</form>
+
+
+{% endblock %}

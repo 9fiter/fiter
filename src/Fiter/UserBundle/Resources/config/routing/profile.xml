@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="_fos_user_profile_index" pattern="/index">
+        <default key="_controller">FiterUserBundle:Profile:index</default>
+    </route>
+    
+    <route id="_fos_user_profile_show" pattern="/">
+        <default key="_controller">FiterUserBundle:Profile:show</default>
+        <requirement key="_method">GET</requirement>
+    </route>
+
+    <route id="_fos_user_profile_edit" pattern="/edit">
+        <default key="_controller">FiterUserBundle:Profile:edit</default>
+    </route>
+
+</routes>

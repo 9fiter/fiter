@@ -1,0 +1,12 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}clientupdate{% endblock %}
+
+{% block main %}
+	{% if element %}
+		Cliente actualizado satisfactoriamente
+	{% else %}
+		No se pudo actualizar el cliente<br/>
+		{{e}}<br/>
+	{% endif %}
+{% endblock %}

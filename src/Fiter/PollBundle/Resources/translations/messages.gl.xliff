@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>main.poll</source>
+                <target>Enquisa</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>main.actions</source>
+                <target>Accions</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>main.polls</source>
+                <target>Enquisas</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>main.addPoll</source>
+                <target>Engadir enquisa</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>main.field</source>
+                <target>Campo</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>main.fields</source>
+                <target>Campos</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>main.addField</source>
+                <target>Engadir campo</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>main.answer</source>
+                <target>Resposta</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>main.answers</source>
+                <target>Respostas</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>main.addAnswer</source>
+                <target>Engadir resposta</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>main.answerGroup</source>
+                <target>Grupo de respostas</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>main.answerGroups</source>
+                <target>Grupos de respostas</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>main.addAnswerGroup</source>
+                <target>Engadir grupo de respostas</target>
+            </trans-unit>
+
+
+
+
+            <trans-unit id="14">
+                <source>main.title</source>
+                <target>Título</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>main.createdAt</source>
+                <target>Creado o</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>main.startAt</source>
+                <target>Comeza o</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>main.endAt</source>
+                <target>Finaliza o</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>main.isActive</source>
+                <target>Activo</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>main.answersVisible</source>
+                <target>Respostas visibles</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>main.type</source>
+                <target>Tipo</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>main.show</source>
+                <target>Ver</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>main.edit</source>
+                <target>Editar</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>main.create</source>
+                <target>Crear unha nova enquisa</target>
+            </trans-unit>
+
+            <trans-unit id="24">
+                <source>main.pollList</source>
+                <target>Listaxe de enquisas</target>
+            </trans-unit>
+
+            <trans-unit id="25">
+                <source>main.pollEdit</source>
+                <target>Editar enquisa</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>main.deletedAt</source>
+                <target>Eliminado o</target>
+            </trans-unit>
+
+            <trans-unit id="27">
+                <source>main.backList</source>
+                <target>Volver o listaxe</target>
+            </trans-unit>
+
+            <trans-unit id="28">
+                <source>main.delete</source>
+                <target>Eliminar</target>
+            </trans-unit>
+
+            <trans-unit id="29">
+                <source>main.createField</source>
+                <target>Crear un novo campo</target>
+            </trans-unit>
+
+            <trans-unit id="30">
+                <source>main.description</source>
+                <target>Descripción</target>
+            </trans-unit>
+
+            <trans-unit id="31">
+                <source>main.assetPath</source>
+                <target>Asset path</target>
+            </trans-unit>
+
+            <trans-unit id="32">
+                <source>main.required</source>
+                <target>Requerido</target>
+            </trans-unit>
+            
+            <trans-unit id="33">
+                <source>main.position</source>
+                <target>Posición</target>
+            </trans-unit>
+
+            <trans-unit id="34">
+                <source>main.validationConstraints</source>
+                <target>Restriccions de validación</target>
+            </trans-unit>
+            
+            <trans-unit id="35">
+                <source>main.fieldEdit</source>
+                <target>Editar campo</target>
+            </trans-unit>
+
+            <trans-unit id="36">
+                <source>main.question</source>
+                <target>Pregunta</target>
+            </trans-unit>
+
+            <trans-unit id="37">
+                <source>main.answer</source>
+                <target>Resposta</target>
+            </trans-unit>
+
+            <trans-unit id="38">
+                <source>main.addMore</source>
+                <target>Añadir mais</target>
+            </trans-unit>
+            
+        </body>
+    </file>
+</xliff>

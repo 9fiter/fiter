@@ -1,0 +1,9 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}channellist{% endblock %}
+
+{% block main %}
+	{% for key,item in element %}
+		<strong>{{key}}</strong>: {{item}}<br/>    
+	{% endfor %}
+{% endblock %}

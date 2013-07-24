@@ -1,0 +1,54 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}servergrouplist{% endblock %}
+ 
+
+{% block main %}
+<table>
+	<tr>
+		<th>sgid</th>
+		<th>name</th>
+ 		<th>type</th>
+		<!-- <th>iconid</th> -->
+ 		<th>savedb</th>
+		<!-- <th>sortid</th> -->
+		<!-- <th>namemode</th> -->
+		<th>modifyp</th>
+		<th>member_addp</th>
+		<th>member_removep</th>
+	</tr>
+	{% for t in element %}
+		<tr>
+			<td>{{t[0]|replace({'sgid=': ''})}} </td>
+			<td>{{t[1]|replace({'name=': ''})}} </td>
+			<td>{{t[2]|replace({'type=': ''})}} </td>
+			<!-- <td>
+				<img class="ts3ch" src="/img/ts3/servericons/icon_{{t[3]|replace({'iconid=': ''})}}" alt="">
+				{#{t[3]|replace({'iconid=': ''})}#}
+			</td> -->
+			<td>{{t[4]|replace({'savedb=': ''})}} </td>
+			<!-- <td>{{t[5]|replace({'sortid=': ''})}} </td> -->
+			<!-- <td>{{t[6]|replace({'namemode=': ''})}} </td> -->
+			<td>{{t[7]|replace({'n_modifyp=': ''})}} </td>
+			<td>{{t[8]|replace({'n_member_addp=': ''})}} </td>
+			<td>{{t[9]|replace({'n_member_removep=': ''})}} </td>
+			
+			
+		</tr>	
+	{% endfor %}
+</table>
+{% endblock %}
+
+
+
+{% block stylesheets %}
+<style>
+table{
+	border-collapse: collapse;
+}
+table td,table th{
+	border:1px solid #ccc;
+	padding: 0 .5em;
+}
+</style>
+{% endblock %}

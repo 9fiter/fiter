@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>main.ayuda</source>
+                <target>Help</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>main.terminos</source>
+                <target>Terms and conditions</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>main.privacidad</source>
+                <target>Privacy</target>
+            </trans-unit>
+
+            <trans-unit id="4">
+                <source>main.articulos</source>
+                <target>Articles</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>main.addArticulo</source>
+                <target>Add article</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>main.categorias</source>
+                <target>Categories</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>main.perfil</source>
+                <target>Profile</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>main.usuarios</source>
+                <target>Users</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>main.contacto</source>
+                <target>Contact</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>main.buscar</source>
+                <target>Search</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>main.inicio</source>
+                <target>Articles</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>main.masVistos</source>
+                <target>Most viewed</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>main.masValorados</source>
+                <target>Top rated</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>main.siguenosEn</source>
+                <target>Follow us on</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>main.visitanosDesde</source>
+                <target>Visit us on your phone</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>main.editar</source>
+                <target>edit</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>main.admin</source>
+                <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>main.updates</source>
+                <target>Updates</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>main.related</source>
+                <target>Related</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>main.save</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>main.delete</source>
+                <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>main.back</source>
+                <target>Back</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>main.addMore</source>
+                <target>Add more</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>main.published</source>
+                <target>Add more</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>main.active</source>
+                <target>Active</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>main.showImage</source>
+                <target>Show image</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>main.showContent</source>
+                <target>Show content</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>main.content</source>
+                <target>Content</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>main.image</source>
+                <target>Image</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>main.yt_channel</source>
+                <target>Youtube channel</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>main.yt_list</source>
+                <target>Youtube playlist</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>main.yt_video</source>
+                <target>Youtube video</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>main.contactoq</source>
+                <target>Want to contact us?</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>main.name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>main.subject</source>
+                <target>Subject</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>main.articulosDeNombre</source>
+                <target>%name% articles</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>main.pollsDeNombre</source>
+                <target>%name% polls</target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source>main.editarPerfil</source>
+                <target>edit profile</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>main.changePassword</source>
+                <target>Change password</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>main.title</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source>main.seleccionaCategorias</source>
+                <target>Select categories...</target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>main.noFileSelected</source>
+                <target>No file selected</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>main.principal</source>
+                <target>Main</target>
+            </trans-unit>     
+            <trans-unit id="44">
+                <source>main.por</source>
+                <target>By</target>
+            </trans-unit>          
+        </body>
+    </file>
+</xliff>

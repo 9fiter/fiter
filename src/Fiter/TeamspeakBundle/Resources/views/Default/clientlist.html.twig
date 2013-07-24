@@ -1,0 +1,89 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}clientdblist{% endblock %}
+ 
+{% block asideL %}{% endblock %}
+{% block asideR %}{% endblock %}
+
+{% block main %}
+<table>
+	<tr>
+		<th>clid</th>
+		<th>cid</th>
+ 		<th>database_id</th>
+ 		<th>nickname</th>
+		<th>type</th>
+		<th>ban</th>
+		<th style="min-width: 7em;">kick</th>
+	</tr>
+	{% for t in element %}
+		<tr>
+			<td>{{t.clid}} </td>
+			<td>{{t.cid}}</td>
+			<td>{{t.client_database_id}}</td>
+			<td>
+				<a href="{{ path('teamspeak_clientinfo' , { 'clid' : t.clid }) }}">{{t.client_nickname|replace({'\\s': ' '}) }}</a>
+			</td>
+			<td>{{t.client_type}}</td>
+			<td><a data-clid="{{t.clid}}" data-nickname="{{t.client_nickname}}" class="btn_banclient" href="{{ path('teamspeak_banclientform', { 'clid' : t.clid, 'nickname' : t.client_nickname }) }}">ban</a></td>
+			<td>
+				<a href="{{ path('teamspeak_clientkick', { 'reasonid' : 'channel', 'reasonmsg':'Go\saway!', 'clid': t.clid}) }}">channel</a> /
+				<a href="{{ path('teamspeak_clientkick', { 'reasonid' : 'server', 'reasonmsg':'Go\saway!', 'clid': t.clid}) }}">server</a>
+			</td>
+		</tr>	
+	{% endfor %}
+</table>
+
+<div id="twitterweb"></div>
+
+{% endblock %}
+
+
+
+{% block stylesheets %}
+<style>
+table{border-collapse: collapse;}
+table td,table th{
+	border:1px solid #ccc;
+	padding: 0 .5em;
+}
+#popup{
+position: absolute;
+top: 50%;
+left: 50%;
+width: 320px;
+padding: .4em;
+background-color: #F5F5F5;
+box-shadow: 0px 0px 10px 0px #000;
+}
+#popup .btn_popup_close{
+position: absolute;
+top: 0;
+right: 0;
+}
+</style>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+	$(document).ready(function(){
+		$(".btn_banclient").click(function (e) {
+			e.preventDefault();
+			$("body").append('<div id="popup">loading</div>');
+			var clid = $(this).data('clid');
+			var nickname = $(this).data('nickname');
+			$.post("{{ path('teamspeak_banclientform_content')}}", {
+				clid: clid,
+				nickname: nickname
+			},function(data, textStatus, xhr) {
+			  $('#popup').html(data);
+			  $('#popup').append('<input class="btn_popup_close" type="button" value="close">');
+
+			  $(".btn_popup_close").click(function (e) {
+			  	$('#popup').remove();
+			  });
+			});
+		});
+	});
+</script>
+{% endblock %}

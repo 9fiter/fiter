@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ 'main.contacto' | trans }} - {{ app.request.host }}{% endblock%}
+
+{% block main %}
+    <header>
+        <h1>{{ 'main.contacto' | trans }}</h1>
+    </header>
+    <p>{{ 'main.contactoq' | trans }}</p>
+    <form action="{{ path('fiter_contact') }}" method="post" {{ form_enctype(form) }} class="form">
+        {{ form_errors(form) }}
+
+        {{ form_row(form.name) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.subject) }}
+        {{ form_row(form.body) }}
+        {{ form_rest(form) }}
+
+        <br/>
+        <input type="submit" value="Enviar" />
+    </form>
+{% endblock %}

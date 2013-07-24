@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}error{% endblock %}
+ 
+{% block main %} 
+    <h2>Error{{ status_code }} {{ status_text }}</h2>
+    <article>
+        <p>{{ exception.message|nl2br|format_file_from_text }}</p>
+    </article>
+{% endblock %}

@@ -1,0 +1,135 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}view{% endblock %}
+{% block asideL %}{% endblock %}
+{% block asideR %}{% endblock %}
+
+{% block main %}
+
+	{% for t in element %}
+			
+		{#{t.cid}#}
+		{#{t[1]|replace({'pid=': ''})}#}
+		<!-- {#{t[2]|replace({'channel_order=': ''})}#} -->
+		<img class="ts3ch" src="/img/ts3/16x16_channel_green_subscribed.png" alt="">
+		{{t.channel_name|replace({"\\s":' '}) }}
+
+		<a alt="edit channel" title="edit channel" href="#">
+			<img class="ico" alt="editar" src="/img/ts3/16x16_channel_edit.png" />
+		</a>
+		
+		
+		<a alt="delete channel" title="delete channel" href="{{ path('teamspeak_channeldelete', { 'cid' : t.cid, 'force':'1'}) }}">
+			<img class="ts3ch" src="/img/ts3/16x16_delete.png" alt="delete">
+		</a><!-- /
+		 <a href="{{ path('teamspeak_channeldelete', { 'cid' : t.cid, 'force':'1'}) }}">force</a> -->
+		<br/>
+
+		{% if t.clients %}
+			{% for client in t.clients %}
+				<img class="ts3cl" src="/img/ts3/16x16_player_off.png" alt="">{{client.client_nickname}}
+			    
+				<a alt="kick from channel" title="kick from channel" href="{{ path('teamspeak_clientkick', { 'reasonid' : 'channel', 'reasonmsg':'Go\saway!', 'clid': client.clid}) }}">
+					<img class="ts3ch" src="/img/ts3/16x16_kick_from_channel.png" alt="kick from channel">
+				</a>
+
+				<a alt="kick from server" title="kick from server" href="{{ path('teamspeak_clientkick', { 'reasonid' : 'server', 'reasonmsg':'Go\saway!', 'clid': client.clid}) }}">
+					<img class="ts3ch" src="/img/ts3/16x16_kick_from_server.png" alt="kick from server">
+				</a>
+
+				<a alt="ban client" title="ban client" data-clid="{{client.clid}}" data-nickname="{{client.client_nickname}}" class="btn_banclient" href="{{ path('teamspeak_banclientform', { 'clid' : client.clid, 'nickname' : client.client_nickname }) }}">
+					<img class="ts3ch" src="/img/ts3/16x16_ban_client.png" alt="ban client">
+				</a>
+				
+				<a alt="poke client" title="poke client" data-clid="{{client.clid}}" data-nickname="{{client.client_nickname}}" class="btn_clientpoke" href="{{ path('teamspeak_clientpokeform', { 'clid' : client.clid, 'nickname' : client.client_nickname }) }}">
+					<img class="ts3ch" src="/img/ts3/16x16_poke.png" alt="poke client">
+				</a>
+
+				<img class="ts3ch" src="/img/ts3/16x16_new_chat.png" alt="message client">
+
+				
+				
+			    <br/>
+			{% endfor %}
+		{% endif %}
+		{#{t[4]|replace({'total_clients=': ''})}#}
+		<!-- {#{t[5]|replace({'channel_needed_subscribe_power=': ''})}#} -->
+		
+			
+			
+	{% endfor %}
+
+
+	<h3>Create channel</h3>
+	<form action="{{ path('teamspeak_channelcreate') }}" method="GET" >
+		Name: <input type="text" name="channel_name" value="" >
+		Topic: <input type="text" name="channel_topic" value="" placeholder="">
+		<input type="submit" name="" value="Create channel">
+	</form>
+
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+.ts3ch {margin-right: .1em;}
+.ts3cl{margin: 0 .3em 0 1.4em;}
+#popup{
+position: absolute;
+top: 50%;
+left: 50%;
+width: 320px;
+padding: .4em;
+background-color: #F5F5F5;
+box-shadow: 0px 0px 10px 0px #000;
+}
+#popup .btn_popup_close{
+position: absolute;
+top: 0;
+right: 0;
+}
+</style>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+	$(document).ready(function(){
+		$(".btn_banclient").click(function (e) {
+			e.preventDefault();
+			$("body").append('<div id="popup">loading</div>');
+			var clid = $(this).data('clid');
+			var nickname = $(this).data('nickname');
+			$.post("{{ path('teamspeak_banclientform_content')}}", {
+				clid: clid,
+				nickname: nickname
+			},function(data, textStatus, xhr) {
+			  $('#popup').html(data);
+			  $('#popup').append('<input class="btn_popup_close" type="button" value="close">');
+
+			  $(".btn_popup_close").click(function (e) {
+			  	$('#popup').remove();
+			  });
+			});
+		});
+
+
+
+		$(".btn_clientpoke").click(function (e) {
+			e.preventDefault();
+			$("body").append('<div id="popup">loading</div>');
+			var clid = $(this).data('clid');
+			var nickname = $(this).data('nickname');
+			$.post("{{ path('teamspeak_clientpokeform_content')}}", {
+				clid: clid,
+				nickname: nickname
+			},function(data, textStatus, xhr) {
+			  $('#popup').html(data);
+			  $('#popup').append('<input class="btn_popup_close" type="button" value="close">');
+
+			  $(".btn_popup_close").click(function (e) {
+			  	$('#popup').remove();
+			  });
+			});
+		});
+	});
+</script>
+{% endblock %}

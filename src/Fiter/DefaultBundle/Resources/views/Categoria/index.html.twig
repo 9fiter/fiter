@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Categorías - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+    <h2>Categorias</h2>
+    {% for entity in entities %}
+    <article>
+        <header>
+            {% if entity.path %}
+                <img class="indexCategorias"
+                     src="{{ asset(  ['/uploads/categoriaimages/', entity.path]|join  )|imagine_filter('thumb_50x50') }}" alt="imagen no encontrada" />
+  
+            {% endif %}
+            <h3><a href="{{ path('categoria_show', { 'id': entity.id, 'slug': entity.slug }) }}">{{ entity.nombre }}</a></h3>
+            {% include 'FiterDefaultBundle:Categoria:datos.html.twig' with {'entity': entity} %}
+        </header>
+        
+        <div style="clear: both;"></div> 
+    </article>
+    {% endfor %}
+    
+    <a class="boton" href="{{ path('categoria_new') }}">Añadir una categoría</a>
+{% endblock %}

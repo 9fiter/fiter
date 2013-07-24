@@ -1,0 +1,17 @@
+<h2>Artículos de {{nombre}}</h2>
+
+{% for entity in entities %}
+<article>
+    <header>
+        <h3><a href="{{ path('articulo_show', { 'id': entity.id , 'slug': entity.slug}) }}">{{ entity.titulo }}</a></h3>
+        {% include 'FiterDefaultBundle:Articulo:parcial/datos.html.twig' with {'entity': entity} %}
+    </header>
+        
+    {% include 'FiterDefaultBundle:Medio:parcial/imgCat.html.twig' with {'entity': entity} %}
+        
+    <div >{{ entity.contenido(true)|striptags|raw }}</div>
+    <div style="clear: both;"></div>
+</article>
+{% endfor %}
+
+{% include "FiterDefaultBundle:Articulo:indexUsuarioPaginador.html.twig" %}

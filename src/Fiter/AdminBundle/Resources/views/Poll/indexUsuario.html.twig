@@ -1,0 +1,11 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}{{ 'main.pollList' | trans }}{% endblock %}
+
+{% block main %} 
+    <h1>{{ 'main.polls' | trans }}</h1>
+    {% for entity in entities %}
+        {% include 'FiterPollBundle:Poll:parcial/show.html.twig' with {'entity': entity, 'busqueda': true} %}
+    {% endfor %}
+    {% include 'FiterPollBundle:Poll:parcial/actions.html.twig' %}
+{% endblock %}

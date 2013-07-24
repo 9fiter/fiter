@@ -1,0 +1,65 @@
+{% extends '::admin.html.twig' %}
+	 
+{% block title %}Articulo{% endblock %}
+
+{% block main %}
+{#{ entity|ladybug_dump }#}
+<article>
+    <header>
+        <h3><a href="{{ path('admin_articulo_show', { 'id': entity.id, 'slug': entity.slug }) }}">{{ entity.titulo }}</a></h3>
+        {% include 'FiterAdminBundle:Articulo:parcial/datos.html.twig' with {'entity': entity} %}
+    </header>
+        
+    {% if entity.path and entity.mostrarImagen %}
+        <img src="{{ asset(['uploads/documents/', entity.path]|join) }}" alt="{{ entity.titulo}} imagen no encontrada" class="imgArticulo" />
+    {% endif %}
+        
+    <div style="clear: both"></div>
+    <div>{{ entity.contenido|raw }}</div>
+    <div style="clear: both"></div>
+    
+    {% if entity.videosYoutube or entity.canalYoutube or entity.listasYoutube %}
+        <div id="my-widget1"></div>
+    {% endif %} 
+        
+        
+    <div class="comentarios"><a href="#">Comentarios</a></div>
+    {#% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': entity.id } %#}
+    {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'type_' ~ entity.id } %}
+    
+    <a class="boton" href="{{ path('admin_articulo') }}">Volver</a>
+</article>   
+{% endblock %}
+
+
+
+
+
+
+{% block javascripts %}
+    <script type="text/javascript" src="/js/jquery-ui.js"></script>      
+    <script type="text/javascript" src="/js/jQuery.tubeplayer.js"></script>
+    <script type="text/javascript" src="/js/videoSearch.js"></script>
+    <script type="text/javascript" src="/js/videoSearchStr.js"></script>
+    <script type="text/javascript" src="/js/ytApi.js"></script>
+    {% if entity.videosYoutube|length or entity.canalYoutube or entity.listasYoutube|length %}
+       <script>
+            $(document).ready(function(){
+                $( "#my-widget1" ).videoSearch({
+                     {% if entity.videosYoutube|length  %}
+                        videoInicial: "{{entity.videosYoutube['0'].enlace|youtube_id}}",
+                     {% endif %}     
+                        busquedaInicial: "{{ entity.titulo }}",
+                        listaVideos: [ {% for video in entity.videosYoutube %}"{{video.enlace|youtube_id}}"{% if loop.last != loop.index %},{% endif %}{% endfor %} ],
+                        listaPlaylists: [ {% for lista in entity.listasYoutube %}"{{lista.enlace|youtube_playlist_id}}"{% if loop.last != loop.index %},{% endif %}{% endfor %} ],
+                        canal: "{{ entity.canalYoutube|youtube_user_id }}",
+                });
+            });
+        </script>
+    {% endif %}    
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/themes/moi/jquery.ui.all.css">
+    <link rel="stylesheet" href="/css/default.css">
+{% endblock %}

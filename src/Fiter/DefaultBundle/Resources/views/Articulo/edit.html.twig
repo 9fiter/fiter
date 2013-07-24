@@ -1,0 +1,187 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Editar artículo - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+
+    <!--
+    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/blueimp-gallery.min.css" />
+    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/jquery.fileupload-ui.css" />
+    -->
+    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap-responsive.min.css" />     
+    <script src="/bundles/fiterdefault/js/jquery-ui.min.js"></script>
+    <script src="/bundles/fiterdefault/js/underscore-min.js"></script> 
+    <script src="/bundles/punkavefileuploader/js/jquery.fileupload.js"></script>
+    <script src="/bundles/punkavefileuploader/js/FileUploader.js"></script>
+
+    {% include "PunkAveFileUploaderBundle:Default:templates.html.twig" %}
+
+    <form id="edit-formm" class="edit-form" action="{{ path('articulo_update', { id: entity.id,'slug': entity.slug }) }}" method="post" {{ form_enctype(edit_form) }}>
+        {#{ form_widget(edit_form) }#}
+
+        {{ form_errors(edit_form) }}  
+            
+        {{ form_label(edit_form.titulo) }}
+        {{ form_widget(edit_form.activo) }}<span>{{ form_label(edit_form.activo,label|default(null)) }}</span>
+        {{ form_widget(edit_form.activarComentarios) }}<span>{{ form_label(edit_form.activarComentarios,label|default(null)) }}</span><br>
+        {{ form_widget(edit_form.titulo) }}
+            
+        {{ form_row(edit_form.categoria) }}
+        {{ form_row(edit_form.subCategoria) }}
+        
+        {% if edit_form.vars.value.path %}
+            <img id="blah" src="/uploads/documents/{{ edit_form.vars.value.path }}" alt="your image" />
+        {% else %}
+            <img id="blah" src="/img/vacio.png" alt="your image" />
+        {% endif %}<br/> 
+        {{ form_label(edit_form.imagen) }}     
+        {{ form_widget(edit_form.mostrarImagen) }}<span>{{ form_label(edit_form.mostrarImagen,label|default(null)) }}</span><br>
+        {{ form_widget(edit_form.imagen) }}  
+
+
+        <label>Galería de imágenes</label>
+
+        {{ form_widget(edit_form.mostrarMiniaturas) }}<span>{{ form_label(edit_form.mostrarMiniaturas,label|default(null)) }}</span>
+        {{ form_widget(edit_form.mostrarSlide) }}<span>{{ form_label(edit_form.mostrarSlide,label|default(null)) }}</span><br>
+        {# Hydrated by javascript #}
+        <div class="file-uploader"></div>
+
+
+        <label>Enlaces de la galería de imágenes</label><br/>
+
+        {% for file in existingFiles %}
+            /uploads/attachments/{{entity.id}}/large/{{file}}<br/>
+        {% endfor %}
+        <br/><br/>
+  
+  
+            
+        
+        {{ form_label(edit_form.contenido) }}
+        {{ form_widget(edit_form.mostrarContenido) }}<span>{{ form_label(edit_form.mostrarContenido,label|default(null)) }}</span><br>
+        {{ form_widget(edit_form.contenido) }}
+
+        {{ form_row(edit_form.translations) }}
+
+        {#{ form_widget(edit_form.translations, {'fields': [edit_form.titulo, edit_form.contenido]}) }#}
+        
+        
+        {#{ form_label(edit_form.videosYoutube) }#}<h3>Videos de youtube</h3>
+        <ul class="videosYoutube" data-prototype="{{ form_widget(edit_form.videosYoutube.vars.prototype)|e }}">
+            {% for videoYoutube in edit_form.videosYoutube %}
+                <li>{{ form_row(videoYoutube.enlace) }}</li>
+            {% endfor %}
+        </ul>   
+        
+        {#{ form_label(edit_form.listasYoutube) }#}<h3>Listas de youtube</h3>
+        <ul class="listasYoutube" data-prototype="{{ form_widget(edit_form.listasYoutube.vars.prototype)|e }}">
+            {% for listaYoutube in edit_form.listasYoutube %}
+                <li>{{ form_row(listaYoutube.enlace) }}</li>
+            {% endfor %}
+        </ul>    
+
+        <h3>Canal de youtube</h3>
+        {{ form_widget(edit_form.canalYoutube) }}    
+
+        
+        {{ form_label(edit_form.maps) }}
+        <ul class="maps" data-prototype="{{ form_widget(edit_form.maps.vars.prototype)|e }}">
+            {% for map in edit_form.maps %}
+                <li>{{ form_row(map.lat) }}</li>
+                <li>{{ form_row(map.lang) }}</li>
+            {% endfor %}
+        </ul> 
+
+
+        {{ form_row(edit_form.poll) }}  
+
+
+
+            
+        {{ form_row(edit_form.aleatorio) }}    
+        {{ form_row(edit_form._token) }}    
+            
+        {{ form_rest(edit_form) }}
+        <br/><br/>
+
+
+
+
+    </form>
+
+
+    <form id="form_delete_articulo" action="{{ path('articulo_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+    </form>
+    
+    <button class="btn btn-success" form="edit-formm" type="submit">{{ 'main.save' | trans }}</button>
+    <button class="btn btn-danger" form="form_delete_articulo" type="submit">{{ 'main.delete' | trans }}</button>
+    <button class="btn btn-primary" href="{{ path('articulo') }}">{{ 'main.back' | trans }}</button>
+
+
+    <br/><br/>
+    <script type="text/javascript">
+
+    // Enable the file uploader
+
+    $(function() {
+        new PunkAveFileUploader({ 
+            'uploadUrl': {{ path('upload', { editId: entity.id }) | json_encode | raw }},
+            //'viewUrl': '{{ '/uploads/tmp/attachments/' ~ entity.id | json_encode | raw }}',
+            'viewUrl': '{{ '/uploads/tmp/attachments/' ~ entity.id }}',
+            'el': '.file-uploader',
+            'existingFiles': {{ existingFiles | json_encode | raw }},
+            'delaySubmitWhileUploading': '.edit-form'
+        });
+    });
+    </script>
+
+
+
+
+
+<!--
+    <h2>Editar artículo</h2>
+
+    <form id="form_update_articulo" action="{{ path('articulo_update', { 'id': entity.id, 'slug': entity.slug  }) }}" method="post" {{ form_enctype(edit_form) }}>
+        
+-->
+{% endblock %}
+    
+    
+    
+    
+{% block javascripts %}
+<script src="/js/chosen/chosen.jquery.js"></script>
+<script type="text/javascript"> 
+    $("#fiter_defaultbundle_articulotype_categoria").chosen();
+    $("#fiter_defaultbundle_articulotype_subCategoria").chosen();
+
+    $('#fiter_defaultbundle_articulotype_categoria_chzn').css('width','100%');
+    $('.chzn-drop').css('width','100%');
+    $('.chzn-search input').css('width','100%');
+    
+    $("#fiter_defaultbundle_articulotype_categoria").data("chosen").default_text = "Selecciona categorías..";
+    $("#fiter_defaultbundle_articulotype_categoria").trigger("liszt:updated");
+    $("li.search-field input").css("width","auto");
+</script>
+<link rel="stylesheet" href="/js/chosen/chosen.css" />
+<style>
+        #fiter_defaultbundle_articulotype_categoria{width: 100%;}
+        #fiter_defaultbundle_articulotype_categoria_chzn{width: 100%;}
+</style>
+
+<script type="text/javascript" src="/js/formoid/jquery.uniform.min.js"></script>
+<script type="text/javascript"> 
+$(function () {
+       $("form").find("input[type=file]").uniform();
+    //$("form").find("input[type=file]").change(function() {
+    //    readURL(this);
+    //});
+    //$(".uploader span.filename").text("No se ha seleccionado ningún archivo");
+    $(".uploader span.action").text("Seleccionar"); 
+});
+
+</script>
+{% endblock %}    

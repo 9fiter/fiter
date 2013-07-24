@@ -1,0 +1,6 @@
+{% extends '::base.html.twig' %}
+
+{% block main %}
+    <h3><a href="#">Comprueba tu email</a></h3>
+    <p>{{ 'registration.check_email'|trans({'%email%': user.email}, 'FOSUserBundle') }}</p>
+{% endblock %}    

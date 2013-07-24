@@ -1,0 +1,148 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}tokenlist{% endblock %}
+ 
+ 
+{% block main %}
+<!-- help                   | read help files<br/>
+login                       | authenticate with the server<br/>
+logout                      | deselect virtual server and log out<br/>
+quit                        | close connection<br/>
+use                         | select virtual server<br/>
+*banadd                     | create a ban rule<br/>
+*banclient                  | ban a client<br/>-->
+<!-- <a href="{{ path('teamspeak_bandelall') }}">bandelall</a> | delete all ban rules<br/> -->
+<!--
+*bandel                     | delete a ban rule<br/>-->
+<a href="{{ path('teamspeak_banlist') }}">banlist</a> | list ban rules on a virtual server<br/>
+<!--bindinglist             | list IP addresses used by the server instance<br/>
+channeladdperm              | assign permission to channel<br/>
+channelclientaddperm        | assign permission to channel-client combi<br/>
+channelclientdelperm        | remove permission from channel-client combi<br/>
+channelclientpermlist       | list channel-client specific permissions<br/>
+*channelcreate               | create a channel<br/>
+*channeldelete               | delete a channel<br/>
+channeldelperm              | remove permission from channel<br/>
+channeledit                 | change channel properties<br/>
+channelfind                 | find channel by name<br/>
+channelgroupadd             | create a channel group<br/>
+channelgroupaddperm         | assign permission to channel group<br/>
+channelgroupclientlist      | find channel groups by client ID<br/>
+channelgroupcopy            | copy a channel group<br/>
+channelgroupdel             | delete a channel group<br/>
+channelgroupdelperm         | remove permission from channel group<br/>-->
+<a href="{{ path('teamspeak_channelgrouplist') }}">channelgrouplist</a>  | list channel groups<br/>
+<!--<a href="{#{ path('teamspeak_channelgrouppermlist' , { 'cgid' : 8 }) }#}">channelgrouppermlist cgid=8</a>  | list channel group permissions<br/>
+channelgrouprename          | rename a channel group<br/>
+channelinfo                 | display channel properties<br/>-->
+<a href="{{ path('teamspeak_channellist') }}">channellist</a>  | list channels on a virtual server<br/>
+<!--channelmove             | move channel to new parent<br/>
+*channelpermlist             | list channel specific permissions<br/>
+clientaddperm               | assign permission to client<br/>
+clientdbdelete              | delete client database properties<br/>
+clientdbedit                | change client database properties<br/>
+clientdbfind                | find client database ID by nickname or UID<br/>
+clientdbinfo                | display client database properties<br/>-->
+<a href="{{ path('teamspeak_clientdblist') }}">clientdblist</a> | list known client UIDs<br/>
+<!--clientdelperm           | remove permission from client<br/>
+clientedit                  | change client properties<br/>
+clientfind                  | find client by nickname<br/>
+clientgetdbidfromuid        | find client database ID by UID<br/>
+clientgetids                | find client IDs by UID<br/>
+*clientgetnamefromdbid      | find client nickname by database ID<br/>
+clientgetnamefromuid        | find client nickname by UID<br/>
+clientgetuidfromclid        | find client UID by client ID<br/>
+*clientinfo                 | display client properties<br/>
+*clientkick                 | kick a client<br/>-->
+<a href="{{ path('teamspeak_clientlist') }}">clientlist</a> | list clients online on a virtual server<br/>
+<!--
+clientmove                  | move a client<br/>
+clientpermlist              | list client specific permissions<br/>
+*clientpoke                 | poke a client<br/>
+clientsetserverquerylogin   | set own login credentials<br/>
+*clientupdate               | set own properties<br/>
+complainadd                 | create a client complaint<br/>
+complaindelall              | delete all client complaints<br/>
+complaindel                 | delete a client complaint<br/>
+complainlist                | list client complaints on a virtual server<br/>
+custominfo                  | display custom client properties<br/>
+customsearch                | search for custom client properties<br/>
+ftcreatedir                 | create a directory<br/>
+ftdeletefile                | delete a file<br/>
+ftgetfileinfo               | display details about a file<br/>
+ftgetfilelist               | list files stored in a channel filebase<br/>
+ftinitdownload              | init a file download<br/>
+ftinitupload                | init a file upload<br/>
+ftlist                      | list active file transfers<br/>
+ftrenamefile                | rename a file<br/>
+ftstop                      | stop a file transfer<br/>
+****gm                      | send global text message<br/>
+hostinfo                    | display server instance connection info<br/>
+instanceedit                | change server instance properties<br/>
+instanceinfo                | display server instance properties<br/>
+logadd                      | add custom entry to log<br/>
+logview                     | list recent log entries<br/>
+messageadd                  | send an offline message<br/>
+messagedel                  | delete an offline message from your inbox<br/>
+messageget                  | display an offline message from your inbox<br/>
+messagelist                 | list offline messages from your inbox<br/>
+messageupdateflag           | mark an offline message as read<br/>
+permfind                    | find permission assignments by ID<br/>
+permget                     | display client permission value for yourself<br/>
+permidgetbyname             | find permission ID by name<br/>
+permissionlist              | list permissions available<br/>
+permoverview                | display client permission overview<br/>
+permreset                   | delete all server and channel groups and restore default permissions<br/>
+privilegekeyadd             | creates a new privilege key<br/>
+privilegekeydelete          | delete an existing privilege key<br/>
+privilegekeylist            | list all existing privilege keys on this server<br/>
+privilegekeyuse             | use a privilege key<br/>
+*sendtextmessage            | send text message<br/>
+servercreate                | create a virtual server<br/>
+serverdelete                | delete a virtual server<br/>
+serveredit                  | change virtual server properties<br/>
+servergroupaddclient        | add client to server group<br/>
+servergroupadd              | create a server group<br/>
+servergroupaddperm          | assign permissions to server group<br/>
+servergroupautoaddperm      | globally assign permissions to server groups<br/>
+servergroupbyclientid       | get all server groups of specified client<br/>
+servergroupclientlist       | list clients in a server group<br/>
+servergroupcopy             | create a copy of an existing server group<br/>
+servergroupdelclient        | remove client from server group<br/>
+servergroupdel              | delete a server group<br/>
+servergroupdelperm          | remove permissions from server group<br/>
+servergroupautodelperm      | globally remove permissions from server group<br/>-->
+<a href="{{ path('teamspeak_servergrouplist') }}">servergrouplist</a> | list server groups<br/>
+<!--servergrouppermlist     | list server group permissions<br/>
+servergrouprename           | rename a server group<br/>
+servergroupsbyclientid      | find server groups by client ID<br/>
+serveridgetbyport           | find database ID by virtual server port<br/>-->
+<a href="{{ path('teamspeak_serverinfo') }}">serverinfo</a> | display virtual server properties<br/>
+<!--serverlist              | list virtual servers<br/>
+servernotifyregister        | register for event notifications<br/>
+servernotifyunregister      | unregister from event notifications<br/>
+serverprocessstop           | shutdown server process<br/>
+serverrequestconnectioninfo | display virtual server connection info<br/>
+serversnapshotcreate        | create snapshot of a virtual server<br/>
+serversnapshotdeploy        | deploy snapshot of a virtual server<br/>
+serverstart                 | start a virtual server<br/>
+servertemppasswordadd       | create a new temporary server password<br/>
+servertemppassworddel       | delete an existing temporary server password<br/>
+servertemppasswordlist      | list all existing temporary server passwords<br/>
+serverstop                  | stop a virtual server<br/>
+setclientchannelgroup       | set a clients channel group<br/>
+*tokenadd                    | create a privilege key (token)<br/>
+<h3>Token</h3>
+<a href="{#{ path('teamspeak_tokenlist') }#}">tokendelete</a> | delete a privilege key (token)<br/>-->
+<a href="{{ path('teamspeak_tokenlist') }}">tokenlist</a> | list privilege keys (tokens) available<br/>
+<!-- tokenuse               | use a privilege key (token)<br/>
+version                     | display version information<br/>
+whoami                      | display current session info<br/> -->
+<a href="{{ path('teamspeak_view') }}">teamspeak viewer</a> | list all channel and clients<br/>
+{% endblock %}
+
+
+
+
+
+

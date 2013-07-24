@@ -1,0 +1,12 @@
+<nav>
+<ul class="menuLateral before">
+    <li {% if slug=="inicio" %}class="activa"{% endif %}>
+        <a href="{{ path( 'inicio' ) }}">Inicio</a>
+    </li>
+    {% for entity in entities %}
+    <li {% if slug==entity.slug %}class="activa"{% endif %}>
+        <a href="{{ path('admin_articulocategoria', { 'slug': entity.slug }) }}">{{ entity.nombre }}</a> 
+    </li>
+    {% endfor %}
+</ul>
+</nav>

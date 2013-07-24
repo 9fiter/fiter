@@ -1,0 +1,28 @@
+build/
+composer.phar
+
+# Bootstrap
+app/bootstrap*
+ 
+# Symfony directories
+vendor/*
+*/logs/*
+*/cache/*
+lucene/*
+web/uploads/*
+#web/uploads/cache/*
+web/bundles/*
+
+# Configuration files
+app/config/parameters.ini
+app/config/parameters.yml
+ 
+# Netbeans files
+nbproject/*
+
+
+
+web/spaceBukkit
+web/phpbb3
+web/mcskin/img
+web/coreprotect/config.php

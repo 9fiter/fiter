@@ -1,0 +1,49 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}clientdblist{% endblock %}
+ 
+{% block asideL %}{% endblock %}
+{% block asideR %}{% endblock %}
+
+{% block main %}
+<table>
+	<tr>
+		<th>cldbid</th>
+		<th>unique_identifier</th>
+ 		<th>nickname</th>
+		<th style="min-width:10em;">created</th>
+		<th style="min-width:9em;">lastconnected</th>
+		<th>totalconnections</th>
+		<!-- <th>description</th> -->
+		<th>lastip</th>
+	</tr>
+	{% for t in element %}
+		<tr>
+			<td>{{t.cldbid}} </td>
+			<td>{{t.client_unique_identifier}}</td>
+			<td>
+				<a href="{{ path('teamspeak_clientdbinfo' , { 'cldbid' : t.cldbid }) }}">{{t.client_nickname|replace({'\\s': ' '}) }}</a>
+			</td>
+			<td>{{t.client_created|date() }}</td>
+			<td>{{t.client_lastconnected|time_ago_in_words }}</td>
+			<td>{{t.client_totalconnections}}</td>
+			<!-- <td>{#{t.client_description}#}</td> -->
+			<td>{{t.client_lastip}}</td>
+		</tr>	
+	{% endfor %}
+</table>
+{% endblock %}
+
+
+
+{% block stylesheets %}
+<style>
+table{
+	border-collapse: collapse;
+}
+table td,table th{
+	border:1px solid #ccc;
+	padding: 0 .5em;
+}
+</style>
+{% endblock %}

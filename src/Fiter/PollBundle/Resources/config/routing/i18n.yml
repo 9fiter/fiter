@@ -1,0 +1,47 @@
+poll_results:
+    locales:  
+        es: "/encuestas/{pollId}/resultados"
+        en: "/polls/{pollId}/results"
+        gl: "/enquisas/{pollId}/resultados"
+        ca: "/enquestes/{pollId}/resultats"
+    defaults: { _controller: FiterPollBundle:Poll:results  }
+
+poll:
+    locales:
+        es: "/encuestas"
+        en: "/polls"
+        gl: "/enquisas"
+        ca: "/enquestes"
+    defaults: { _controller: FiterPollBundle:Poll:index  }
+
+pollusuario:
+    locales:
+        es: "/encuestas/usuario/{nombre}"
+        en: "/polls/user/{nombre}"
+        gl: "/enquisas/usuario/{nombre}"
+        ca: "/enquestes/usuari/{nombre}"
+    defaults: { _controller: FiterPollBundle:Poll:indexUsuario  }
+
+poll_show:
+    locales:  
+        es: "/encuestas/{id}/ver"
+        en: "/polls/{id}/show"
+        gl: "/enquisas/{id}/ver"
+        ca: "/enquestes/{id}/veure"
+    defaults: { _controller: FiterPollBundle:Poll:show  }
+
+poll_new:
+    locales:  
+        es: "/encuestas/añadir"
+        en: "/polls/new"
+        gl: "/enquisas/engadir"
+        ca: "/enquestes/afegir"
+    defaults: { _controller: FiterPollBundle:Poll:new  }
+
+poll_edit:
+    locales:  
+        es: "/encuestas/{id}/editar"
+        en: "/polls/{id}/edit"
+        gl: "/enquisas/{id}/editar"
+        ca: "/enquestes/{id}/modificar"
+    defaults: { _controller: FiterPollBundle:Poll:edit  }

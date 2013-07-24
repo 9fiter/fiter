@@ -1,0 +1,25 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}clientdbinfo{% endblock %}
+ 
+{% block asideL %}{% endblock %}
+{% block asideR %}{% endblock %}
+
+{% block main %}
+	{% for t in element %}
+		<strong>unique_identifier</strong>: {{t.client_unique_identifier}}<br/>
+		<strong>nickname</strong>: {{t.client_nickname}}<br/>
+		<strong>database_id</strong>: {{t.client_database_id}}<br/>
+		<strong>created</strong>: {{t.client_created}}<br/>
+		<strong>lastconnected</strong>: {{t.client_lastconnected}}<br/>
+		<strong>connections</strong>: {{t.client_totalconnections}}<br/>
+		<strong>client_description</strong>: {{t['']}}<br/>
+		<strong>month_bytes_uploaded</strong>: {{t.client_month_bytes_uploaded}}<br/>
+		<strong>month_bytes_downloaded</strong>: {{t.client_month_bytes_downloaded}}<br/>
+		<strong>total_bytes_uploaded</strong>: {{t.client_total_bytes_uploaded}}<br/>
+		<strong>total_bytes_downloaded</strong>: {{t.client_total_bytes_downloaded}}<br/>
+		<strong>icon_id</strong>: {{t.client_icon_id}}<br/>
+		<strong>base64HashClientUID</strong>: {{t.client_base64HashClientUID}}<br/>
+		<strong>lastip</strong>: {{t.client_lastip}}<br/>
+	{% endfor %}
+{% endblock %}

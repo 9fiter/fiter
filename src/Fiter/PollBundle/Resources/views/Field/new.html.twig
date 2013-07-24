@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Field creation{% endblock %}
+
+{% block main %} 
+    <h1>Field creation</h1>
+	<form action="{{ path('field_create') }}" method="post" {{ form_enctype(form) }}>
+	    <span>{{ form_label(form.title) }}</span>
+        <!-- {#{ form_widget(form.isActive) }#}<span>{#{ form_label(form.isActive,label|default(null)) }#}</span>
+        {#{ form_widget(form.required) }#}<span>{#{ form_label(form.required,label|default(null)) }#}</span><br/> -->
+        {{ form_widget(form.title) }}
+
+        <!-- <span>{#{ form_label(form.poll) }#}</span><br/>
+        {#{ form_widget(form.poll) }#}<br/> -->
+
+        <!-- <span>{#{ form_label(form.type) }#}</span> -->
+        {#{ form_widget(form.type) }#} 
+               
+
+        {{ form_rest(form) }}
+	    <p><button type="submit">Create</button></p>
+	</form>
+	<a href="{{ path('field') }}">Back to the list</a>
+{% endblock %}
+

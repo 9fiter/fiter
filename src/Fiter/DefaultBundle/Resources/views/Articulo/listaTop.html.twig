@@ -1,0 +1,12 @@
+<ul class="listaMas recorta before" style="padding: 0">
+    {% for entity in entities %}
+        <li><a href="{{ path('articulo_show', { 'id': entity.id, 'slug':entity.slug }) }}">{{ entity.titulo }}...</a></li>
+    {% endfor %}                        
+</ul>
+
+
+
+    
+    
+    
+     

@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Subcategorias{% endblock %}
+ 
+{% block main %}
+    <h1>Subcategorias</h1>
+    {% for entity in entities %}
+    <article>
+        <header>
+            <h3><a href="{{ path('subcategoria_show', { 'id': entity.id, 'nombre': entity.slug }) }}">{{ entity.slug }}</a></h3>
+            <a href="{{ path('subcategoria_edit', { 'id': entity.id, 'slug': entity.slug }) }}">editar</a>
+        </header>
+        
+        Imagen {{ entity.imagen }}<br/>
+        
+        <div>
+            <p>
+            Por: <a href="#">{{ entity.usuario }} </a>
+            Visitas {{ entity.visitas }}
+            Likes {{ entity.likes }}<br/>
+            </p>
+            Fechapublicacion {% if entity.fechaPublicacion %}{{ entity.fechaPublicacion|date('Y-m-d H:i:s') }}{% endif %}<br/>
+            Fechaactualizacion {% if entity.fechaActualizacion %}{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}{% endif %}
+        </div>
+    </article>
+    {% endfor %}
+    <a href="{{ path('subcategoria_new') }}">Añadir una subcategoría</a>
+{% endblock %}

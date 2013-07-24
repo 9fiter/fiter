@@ -1,0 +1,38 @@
+<article>
+    <header>
+            <h2>{{ user.username }}</h2>
+            <span class="bloque">
+                <img class="ico" alt="editar" src="/img/edit.png" />
+                <a href="{{ path('fos_user_profile_edit') }}">
+                    {{ 'main.editarPerfil' | trans }}
+                </a>
+            </span>
+    </header>
+    {% if user.path %}
+        <img class="imgCategoria" src="{{ asset(['uploads/userimages/', user.path]|join) }}" alt="imagen no encontrada" />
+    {% endif %}
+    <div style="clear: both;"></div>
+
+    <!--<p>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}: {{ user.username }}</p>-->
+    <p>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}: {{ user.email }}</p>
+
+    <a href="{{ path('fos_user_change_password') }}">
+        {{ 'main.changePassword' | trans }}
+    </a><br/><br/>
+
+    <a href="{{ path('teamspeak_connect') }}">Conectar a teamspeak</a><br/>
+
+    {#% render "FiterTeamspeakBundle:Default:myclientgetnamefromdbid" %#} 
+
+    {% render "FiterDefaultBundle:Articulo:indexUsuario" with {'nombre':user.username,'layout':false}  %} 
+    {% render "FiterPollBundle:Poll:indexUsuario" with {'nombre':user.username,'layout':false}  %} 
+
+    
+
+
+
+
+
+
+</article>
+

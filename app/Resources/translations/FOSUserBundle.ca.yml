@@ -1,0 +1,6 @@
+security:
+    login:
+        forgot: Has oblidat la contrasenya?
+
+registration:
+    title: Registra't

@@ -1,0 +1,6 @@
+<div style="clear:both"></div>
+<h2>{{ "main.pollsDeNombre"|trans({'%name%': nombre}) }} - {{ app.request.host }}</h2>
+
+{% for entity in entities %}
+    {% include 'FiterPollBundle:Poll:parcial/show.html.twig' with {'entity': entity, 'busqueda': true} %}
+{% endfor %}

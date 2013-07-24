@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}AnswerGroup list{% endblock %}
+
+{% block main %} 
+    <h1>AnswerGroup list</h1>
+    {% for entity in entities %}
+    Id: <a href="{{ path('answergroup_show', { 'id': entity.id }) }}">{{ entity.id }}</a><br/>
+    Author: {{ entity.author }}<br/>
+    Clientip: {{ entity.clientIp }}<br/>
+    Createdat: {% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}<br/>
+    <a class="boton" href="{{ path('answergroup_show', { 'id': entity.id }) }}">show</a>
+    <a class="boton" href="{{ path('answergroup_edit', { 'id': entity.id }) }}">edit</a>
+    <br/><br/>
+    {% endfor %}
+    <a class="boton" href="{{ path('answergroup_new') }}">Create a new entry</a>
+{% endblock %}

@@ -1,0 +1,110 @@
+Fiter\MinecraftAuthBundle\Entity\Authme:
+    type: entity
+    table: authme
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        username:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        password:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        ip:
+            type: string
+            length: 40
+            fixed: false
+            nullable: false
+        lastlogin:
+            type: bigint
+            nullable: true
+        x:
+            type: smallint
+            nullable: true
+        y:
+            type: smallint
+            nullable: true
+        z:
+            type: smallint
+            nullable: true
+        world:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        email:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        countryCode:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        countryCode3:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        countryName:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        region:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        city:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        postalCode:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        latitude:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        longitude:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        areaCode:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        metroCode:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        continentCode:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        created:
+            type: datetime
+        skin:
+            type: integer
+        premium:
+            type: boolean
+    lifecycleCallbacks: {  }

@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>main.poll</source>
+                <target>Poll</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>main.actions</source>
+                <target>actions</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>main.polls</source>
+                <target>Polls</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>main.addPoll</source>
+                <target>Add poll</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>main.field</source>
+                <target>Field</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>main.fields</source>
+                <target>Fields</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>main.addField</source>
+                <target>Add field</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>main.answer</source>
+                <target>Answer</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>main.answers</source>
+                <target>Answers</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>main.addAnswer</source>
+                <target>Add answer</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>main.answerGroup</source>
+                <target>Answer group</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>main.answerGroups</source>
+                <target>Answer groups</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>main.addAnswerGroup</source>
+                <target>Add answer group</target>
+            </trans-unit>
+
+
+
+
+
+            <trans-unit id="14">
+                <source>main.title</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>main.createdAt</source>
+                <target>Created at</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>main.startAt</source>
+                <target>Start at</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>main.endAt</source>
+                <target>End at</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>main.isActive</source>
+                <target>Active</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>main.answersVisible</source>
+                <target>Answers visible</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>main.type</source>
+                <target>Type</target>
+            </trans-unit>
+
+            <trans-unit id="21">
+                <source>main.show</source>
+                <target>Show</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>main.edit</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>main.create</source>
+                <target>Create a new poll</target>
+            </trans-unit>
+
+            <trans-unit id="24">
+                <source>main.pollList</source>
+                <target>Poll list</target>
+            </trans-unit>
+            
+            <trans-unit id="25">
+                <source>main.pollEdit</source>
+                <target>Poll edit</target>
+            </trans-unit>
+
+            <trans-unit id="26">
+                <source>main.deletedAt</source>
+                <target>Deleted at</target>
+            </trans-unit>
+
+            <trans-unit id="27">
+                <source>main.backList</source>
+                <target>Back to the list</target>
+            </trans-unit>
+
+            <trans-unit id="28">
+                <source>main.delete</source>
+                <target>Delete</target>
+            </trans-unit>
+
+            <trans-unit id="29">
+                <source>main.createField</source>
+                <target>Create a new field</target>
+            </trans-unit>
+
+            <trans-unit id="30">
+                <source>main.description</source>
+                <target>Description</target>
+            </trans-unit>
+
+            <trans-unit id="31">
+                <source>main.assetPath</source>
+                <target>Asset path</target>
+            </trans-unit>
+
+            <trans-unit id="32">
+                <source>main.required</source>
+                <target>Required</target>
+            </trans-unit>
+            
+            <trans-unit id="33">
+                <source>main.position</source>
+                <target>Position</target>
+            </trans-unit>
+
+            <trans-unit id="34">
+                <source>main.validationConstraints</source>
+                <target>Validation constraints</target>
+            </trans-unit>
+
+            <trans-unit id="35">
+                <source>main.fieldEdit</source>
+                <target>Field edita</target>
+            </trans-unit>
+
+            <trans-unit id="36">
+                <source>main.question</source>
+                <target>Question</target>
+            </trans-unit>
+
+            <trans-unit id="37">
+                <source>main.answer</source>
+                <target>Answer</target>
+            </trans-unit>
+
+            <trans-unit id="38">
+                <source>main.addMore</source>
+                <target>Add more</target>
+            </trans-unit>
+            
+            
+
+        </body>
+    </file>
+</xliff>

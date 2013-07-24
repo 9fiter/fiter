@@ -1,0 +1,8 @@
+<div class="sombra">
+	{% for ch in status %}
+        {#% for key,item in channel %}
+        	{{key}}: {{item}}<br/>
+    	{% endfor %#}
+    	{{ch.channel_name}} - {{ch.total_clients}}<br/>
+    {% endfor %}
+</div>

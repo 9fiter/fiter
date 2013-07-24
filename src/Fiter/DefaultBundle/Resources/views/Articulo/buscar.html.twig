@@ -1,0 +1,62 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Artículos - {{ app.request.host }}{% endblock %}
+ 
+{% block rss_header %}
+<link rel="alternate" type="application/rss+xml" title="RSS de los artículos más recientes" href="{{ path('alt_articulo', { '_format': 'rss' }) }}" />
+{% endblock %}
+
+{% block rss_icon %}
+    <a href="{{ path('alt_articulo', { '_format': 'rss' }) }}">
+        <div class="socialmod_rss"></div>
+    </a>
+{% endblock %}
+
+
+{% block main %} 
+    <h2>Busqueda: "{{busqueda}}" </h2>
+    {% for entity in entities %}
+    <article>
+        <header>
+            <h3><a href="{{ path('articulo_show', { 'id': entity.num_id , 'slug': entity.slug}) }}">{{ entity.titulo }}</a></h3>
+            {% include 'FiterDefaultBundle:Articulo:parcial/datosBuscar.html.twig' with {'entity': entity} %}
+        </header>
+        
+        {% include 'FiterDefaultBundle:Articulo:parcial/imgCat.html.twig' with {'entity': entity} %}
+      
+            
+        <div>{{ entity.contenido|striptags|raw }}</div>
+        <div style="clear: both;"></div>
+    </article>
+
+    {% endfor %}
+{% endblock %}
+    
+    
+    
+    
+{% block paginador %}
+<section style="" class="paginador">
+    <ul>
+        {% if paginador.currentPage > 1 %}
+            <li><a href="{{ path('articulo', { 'page': paginador.previousPage}) }}">Anterior</a></li>
+        {% else %}
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+        {% endif %}
+
+        {% for page in paginador.minPageInRange..paginador.maxPageInRange %}
+            {% if page == paginador.currentPage %}
+                <li class="actual">{{ page }}</li>
+            {% else %}
+                <li><a href="{{ path('articulo', { 'page': page }) }}">{{ page}}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if paginador.currentPage < paginador.lastPage %}
+            <li><a href="{{ path('articulo', { 'page': paginador.nextPage })}}">Siguiente</a></li>
+        {% else %}
+            
+        {% endif %}
+    </ul>
+</section>
+{% endblock %}      

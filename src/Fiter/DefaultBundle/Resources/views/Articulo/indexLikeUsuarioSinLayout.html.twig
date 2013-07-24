@@ -1,0 +1,25 @@
+
+
+
+
+{% for entity in entities %}
+<article>
+    <header>
+        <h3><a href="{{ path('articulo_show', { 'id': entity.articulo.id , 'slug': entity.articulo.slug}) }}">{{ entity.articulo.titulo }}</a></h3>
+        {% include 'FiterDefaultBundle:Articulo:parcial/datos.html.twig' with {'entity': entity.articulo} %}
+    </header>
+
+
+        
+    <a href="{{ path('articulo_show', { 'id': entity.articulo.id , 'slug': entity.articulo.slug}) }}">
+        {% if entity.articulo.path %}
+            <img class="imgCategoria" src="{{ asset(['uploads/documents/', entity.articulo.path]|join) }}" alt="{{ entity.articulo.titulo}} imagen no encontrada" />
+        {% elseif entity.articulo.categoria[0].path %}
+            <img style="float: left;margin-right: .7em;" src="{{ asset(  ['/uploads/categoriaimages/', entity.articulo.categoria[0].path]|join  )|imagine_filter('thumb_170x114') }}" alt="imagen no encontrada" />
+        {% endif %}
+    </a>
+        
+    <div >{{ entity.articulo.contenido(true)|striptags|raw }}</div>
+    <div style="clear: both;"></div>
+</article>
+{% endfor %}

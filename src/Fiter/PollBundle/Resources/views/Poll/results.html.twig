@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ entity.title }} - {{ 'main.poll' | trans }} - {{ app.request.host }}{% endblock %}
+
+{% block javascripts %}
+<script class="code" type="text/javascript">
+var data = [
+  {% for field in fields %}
+    ['{{field}}', {{results[loop.index-1]}}, '<a href="{{ path('answer_create', { 'fieldId': field.id }) }}"><img class="ico" alt="likes" src="/img/like.png" /></a>'],
+  {% endfor %}
+];
+function ini(){grafico(data,"poll");}
+window.onload=ini;
+</script>
+{% endblock %}
+
+{% block main %} 
+    {% include 'FiterPollBundle:Poll:parcial/show.html.twig' with {'entity': entity, 'busqueda': true} %}
+    <div id="poll"></div>
+    {% for field in fields %}
+        <h3>{{ field.title }}</h3>
+        {% render 'FiterPollBundle:Answer:indexField' with {'fieldId': field.getId() } %}    
+        <div style="clear:both"></div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Field creation{% endblock %}
+
+{% block main %} 
+    <h1>Field</h1>
+    Id: {{ entity.id }}<br/>
+    Title: {{ entity.title }}<br/>
+    Description: {{ entity.description }}<br/>
+    Assetpath: {{ entity.assetPath }}<br/>
+    Createdat: {{ entity.createdAt|date('Y-m-d H:i:s') }}<br/>
+    Deletedat: {{ entity.deletedAt|date('Y-m-d H:i:s') }}<br/>
+    Isactive: {{ entity.isActive }}<br/>
+    Type: {{ entity.type }}<br/>
+    Required: {{ entity.required }}<br/>
+    Position: {{ entity.position }}<br/>
+    Validationconstraints: {{ entity.validationConstraints }}<br/>
+    <a class="boton" href="{{ path('field') }}">Back to the list</a>
+    <a class="boton" href="{{ path('field_edit', { 'id': entity.id }) }}">Edit</a>
+    <form action="{{ path('field_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+        <button type="submit">Delete</button>
+    </form>
+{% endblock %}
+
+

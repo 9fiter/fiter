@@ -1,0 +1,6 @@
+security:
+    login:
+        forgot: Olvidaste o contrasinal?
+
+registration:
+    title: Rexístrate

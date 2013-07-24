@@ -1,0 +1,115 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Minecraft - {{ entity.username }} - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+
+<h2>{{ entity.username }}</h2>	
+
+    <!--<strong>Register:</strong> &nbsp;{{ entity.created|date("Y-m-d h:i:s") }} ({{ entity.created|time_ago_in_words }})<br/>-->
+    <strong>Lastlogin:</strong> {{ entity.lastlogin }} ({{ entity.lastlogin|time_ago_in_words }})<br/>
+
+    {% if accounts|length > 0 %}
+	    <strong>Cuentas alternativas:</strong>
+	    {% for account in accounts %}
+	    	<a href="{{ path('authme_show', { 'id': account.id }) }}">{{account.username}}</a> 
+	    {% endfor %}
+	    <br/>
+    {% endif %}
+
+    <!--<img style="float:left;margin-right:3px" src='/mcskin/minecraft.php?u={{ entity.username }}&a=true' />-->
+    <div style="float:left;margin-right:3px;width:53px;height:53px">
+        <img src="{{ path('authme_skin', { 'id': entity.id, 't' : '1' }) }}" />
+    </div>
+
+    <img style="float:left;heigth:53px" src="/img/flags/res-36x36/{{entity.countryCode|lower}}.png">
+
+    {{entity.city}} ({{entity.region}}) <br/>
+    {{entity.countryName}}- {{entity.countryCode}}<br/>
+    <!--<strong>&nbsp;IP:</strong> {#{ entity.ip }#}<br/>-->
+    <strong>&nbsp;Premium:</strong> {% if entity.premium==1 %}Si{% else %}No{% endif %}
+    
+    <div style="clear:both"></div>
+    {% render "FiterMinecraftAuthBundle:Jobs:showUser" with { 'username': entity.username } %}
+    {% render "FiterMinecraftAuthBundle:Skillz:showUser" with { 'username': entity.username } %}
+
+{#
+<!--
+X: {{ entity.x }}<br/>
+Y: {{ entity.y }}<br/>
+Z: {{ entity.z }}<br/>
+World: {{ entity.world }}<br/>
+Email: {{ entity.email }}<br/>-->
+
+<!--countryCode3: {{entity.countryCode3}}<br/>
+CountryName: {{entity.countryName}}<br/>-->
+<!--postalCode: {{entity.postalCode}}<br/>
+
+areaCode: {{entity.areaCode}}<br/>
+metroCode: {{entity.metroCode}}<br/>
+continentCode: {{entity.continentCode}}<br/>
+
+latitude: {{entity.latitude}}<br/>
+longitude: {{entity.longitude}}<br/>
+-->
+#}
+<br/>
+
+
+<div id="skinpreview"></div>
+
+<h4>Descargar skin</h4>
+<a href="{{ path('authme_skin', { 'id': entity.id, 't' : '0' }) }}" type="application/octet-stream" download>
+	<img src="{{ path('authme_skin', { 'id': entity.id, 't' : '0' }) }}">
+</a><br/><br/>
+
+<form name="imageform">
+	<strong>Select a skin:</strong> <input type=file name="fileinput" accept="image/png"><br>
+	Accepts 64x32 sized PNG images
+</form>
+<br/><br/>
+
+{% render "FiterDefaultBundle:Default:map" with { lat : entity.latitude , lang :entity.longitude, height : 300, zoom :2 } %}
+
+<script type="text/javascript" src="/mcskin/three.js"></script>
+<script type="text/javascript">
+	//var defaultImages = ['/mcskin/{{ entity.username }}.png'];
+	//var defaultImages = ['/mcskin/img/{{ entity.username }}.png'];
+	//var defaultImages = ['/mcskin/minecraft.php?u={{ entity.username }}'];
+	var defaultImages = ["{{ path('authme_skin', { 'id': entity.id, 't' : '0' }) }}"];
+</script>
+<script type="text/javascript" src="/mcskin/bundle.js"></script>
+
+
+
+
+<form id="form_delete_authme" action="{{ path('authme_delete', { 'id': entity.id }) }}" method="post">
+    {{ form_widget(delete_form) }}
+</form>
+
+
+
+	<link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+    <style type="text/css">
+		#skinpreview input[type="checkbox"]{margin-right: .2em;vertical-align: initial;}
+	</style>
+
+
+    <a class="btn btn-success" href="{{ path('authme_edit', { 'id': entity.id }) }}">{{ 'main.edit' | trans }}</a>
+    <button class="btn btn-danger" form="form_delete_authme" type="submit">{{ 'main.delete' | trans }}</button>
+    <a class="btn btn-primary" href="{{ path('authme') }}">{{ 'main.back' | trans }}</a>
+
+<script type="text/javascript" src="/js/formoid/jquery.uniform.min.js"></script>
+<script type="text/javascript"> 
+$(function () {
+       $("form").find("input[type=file]").uniform();
+
+    $(".uploader22 span.filename").text("No se ha seleccionado ningún archivo");
+    $(".uploader22 span.action").text("Seleccionar"); 
+    $(".uploader22 span.action").text("Seleccionar");
+});
+
+</script>
+
+
+{% endblock %}

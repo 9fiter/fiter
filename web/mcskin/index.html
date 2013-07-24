@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Minecraft skin viewer</title>
+	<style>
+		body {
+			font-family: Verdana;
+			font-size: 13px;
+		}
+		#skinpreview canvas {
+			
+		}
+		
+		#skinpreview canvas.dragenter {
+			box-shadow: inset 0px 0px 32px rgba(0, 0, 0, 0.5);
+		}
+	</style>
+</head>
+<body>
+<div id="skinpreview"></div>
+<form name="imageform">
+	<strong>Subir un skin:</strong> <input type=file name="fileinput" accept="image/png"><br>
+	Accepta imagenes png de 64x32 pixeles
+</form>
+
+<script type="text/javascript" src="three.js"></script>
+<script type="text/javascript" src="bundle.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% extends '::base.html.twig' %}
+	 
+{% block title %}Video - {{ app.request.host }}{% endblock %}
+
+{% block main %}
+<article>
+    <div id="my-widget1"></div>
+</article>   
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="/js/jquery-ui.js"></script>      
+    <script type="text/javascript" src="/js/jQuery.tubeplayer.js"></script>
+    <script type="text/javascript" src="/js/videoSearch.js"></script>
+    <script type="text/javascript" src="/js/videoSearchStr.js"></script>
+    <script type="text/javascript" src="/js/ytApi.js"></script>
+       <script>
+            $(document).ready(function(){
+                $( "#my-widget1" ).videoSearch({
+                        videoInicial: "{{ v }}",
+                });
+            });
+        </script>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/themes/moi/jquery.ui.all.css">
+    <link rel="stylesheet" href="/css/default.css">
+{% endblock %}

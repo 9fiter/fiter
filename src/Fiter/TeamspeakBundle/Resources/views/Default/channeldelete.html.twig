@@ -1,0 +1,12 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}channeldelete{% endblock %}
+
+{% block main %}
+	{% if element %}
+	Canal eliminado satisfactoriamente
+	{% else %}
+	No se pudo eliminar el canal<br/>
+	{{e}}<br/>
+	{% endif %}
+{% endblock %}

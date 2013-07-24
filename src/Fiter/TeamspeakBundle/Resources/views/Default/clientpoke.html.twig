@@ -1,0 +1,12 @@
+{% extends '::admin.html.twig' %}
+ 
+{% block title %}clientpoke{% endblock %}
+
+{% block main %}
+	{% if element %}
+	Poke enviado satisfactoriamente
+	{% else %}
+	No se pudo enviar el poke<br/>
+	{{e}}<br/>
+	{% endif %}
+{% endblock %}

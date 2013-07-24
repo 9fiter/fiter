@@ -1,0 +1,204 @@
+## ArticuloController
+
+alt_articulo:
+    locales:
+        es: "/alt/articulos.{_format}"
+        en: "/alt/articles.{_format}"
+        gl: "/alt/artigos.{_format}"
+        ca: "/alt/articles.{_format}"
+    defaults: { _controller: FiterDefaultBundle:Articulo:index  }
+    requirements:
+        _format:  html|rss|xml
+
+articulo:
+    locales:
+        es: "/articulos"
+        en: "/articles"
+        gl: "/artigos"
+        ca: "/articles"
+    defaults: { _controller: FiterDefaultBundle:Articulo:index }
+
+articulocategoria:
+    locales:
+        es: "/categoria/{slug}.{_format}"
+        en: "/categorie/{slug}.{_format}"
+        gl: "/categoria/{slug}.{_format}"
+        ca: "/categorie/{slug}.{_format}"
+    defaults: { _controller: FiterDefaultBundle:Articulo:indexCategoria , _format: html }
+    requirements:
+        _format:  html|rss
+
+articulosubcategoria:
+    locales:
+        es: "/categoria/{slugCategoria}/{slug}.{_format}"
+        en: "/categorie/{slugCategoria}/{slug}.{_format}"
+        gl: "/categoria/{slugCategoria}/{slug}.{_format}"
+        ca: "/categorie/{slugCategoria}/{slug}.{_format}"
+    defaults: { _controller: FiterDefaultBundle:Articulo:indexSubCategoria , _format: html }
+    requirements:
+        _format:  html|rss
+
+articulousuario:
+    locales:
+        es: "/usuario/{nombre}.{_format}"
+        en: "/user/{nombre}.{_format}"
+        gl: "/usuario/{nombre}.{_format}"
+        ca: "/usuari/{nombre}.{_format}"
+    defaults: { _controller: FiterDefaultBundle:Articulo:indexUsuario , _format: html }
+    requirements:
+        _format:  html|rss
+
+
+articulolikeusuario:
+    locales:
+        es: "/like/usuario/{nombre}.{_format}"
+        en: "/like/user/{nombre}.{_format}"
+        gl: "/like/usuario/{nombre}.{_format}"
+        ca: "/like/usuari/{nombre}.{_format}"
+    defaults: { _controller: FiterDefaultBundle:Articulo:indexLikeUsuario , _format: html }
+    requirements:
+        _format:  html|rss
+
+articulo_show:
+    locales:
+        es: "/articulo/{id}/{slug}/ver"
+        en: "/article/{id}/{slug}/show"
+        gl: "/artigo/{id}/{slug}/ver"
+        ca: "/article/{id}/{slug}/veure"
+    defaults: { _controller: FiterDefaultBundle:Articulo:show }
+
+articulo_new:
+    locales:
+        es: "/articulo/añadir"
+        en: "/article/new"
+        gl: "/artigo/engadir"
+        ca: "/article/afegir"
+    defaults: { _controller: FiterDefaultBundle:Articulo:new }
+
+articulo_create:
+    locales:
+        es: "/articulo/crear"
+        en: "/article/create"
+        gl: "/artigo/crear"
+        ca: "/article/crear"
+    defaults: { _controller: FiterDefaultBundle:Articulo:create }
+
+articulo_edit:
+    locales:
+        es: "/articulo/{id}/{slug}/editar"
+        en: "/article/{id}/{slug}/edit"
+        gl: "/artigo/{id}/{slug}/editar"
+        ca: "/article/{id}/{slug}/modificar"
+    defaults: { _controller: FiterDefaultBundle:Articulo:edit }
+
+articulo_update:
+    locales:
+        es: "/articulo/{id}/{slug}/actualizar"
+        en: "/article/{id}/{slug}/update"
+        gl: "/artigo/{id}/{slug}/actualizar"
+        ca: "/article/{id}/{slug}/actualitzar"
+    defaults: { _controller: FiterDefaultBundle:Articulo:update }
+
+articulo_delete:
+    locales:
+        es: "/articulo/{id}/eliminar"
+        en: "/article/{id}/delete"
+        gl: "/artigo/{id}/eliminar"
+        ca: "/article/{id}/eliminar"
+    defaults: { _controller: FiterDefaultBundle:Articulo:delete }
+
+articulobuscar:
+    locales:
+        es: "/articulo/buscar"
+        en: "/article/search"
+        gl: "/artigo/buscar"
+        ca: "/article/buscar"
+    defaults: { _controller: FiterDefaultBundle:Articulo:buscar }
+
+## CategoriaController
+
+categoria:
+    locales:
+        es: "/categorias"
+        en: "/categories"
+        gl: "/categorias"
+        ca: "/categories"
+    defaults: { _controller: FiterDefaultBundle:Categoria:index }
+
+categoria_show:
+    locales:
+        es: "/categorias/{id}/{slug}/ver"
+        en: "/categories/{id}/{slug}/show"
+        gl: "/categorias/{id}/{slug}/ver"
+        ca: "/categories/{id}/{slug}/veure"
+    defaults: { _controller: FiterDefaultBundle:Categoria:show }
+
+categoria_new:
+    locales:
+        es: "/categorias/añadir"
+        en: "/categories/new"
+        gl: "/categorias/engadir"
+        ca: "/categories/afegir"
+    defaults: { _controller: FiterDefaultBundle:Categoria:new }
+
+
+
+
+categoria_create:
+    locales:
+        es: "/categorias/crear"
+        en: "/categories/create"
+        gl: "/categorias/crear"
+        ca: "/categories/crear"
+    defaults: { _controller: FiterDefaultBundle:Categoria:create }
+
+
+categoria_edit:
+    locales:
+        es: "/categorias/{id}/{slug}/editar"
+        en: "/categories/{id}/{slug}/edit"
+        gl: "/categorias/{id}/{slug}/editar"
+        ca: "/categories/{id}/{slug}/modificar"
+    defaults: { _controller: FiterDefaultBundle:Categoria:edit }
+
+categoria_update:
+    locales:
+        es: "/categorias/{id}/{slug}/actualizar"
+        en: "/categories/{id}/{slug}/update"
+        gl: "/categorias/{id}/{slug}/actualizar"
+        ca: "/categories/{id}/{slug}/actualitzar"
+    defaults: { _controller: FiterDefaultBundle:Categoria:update }
+
+categoria_delete:
+    locales:
+        es: "/categorias/{id}/{slug}/eliminar"
+        en: "/categories/{id}/{slug}/delete"
+        gl: "/categorias/{id}/{slug}/eliminar"
+        ca: "/categories/{id}/{slug}/eliminar"
+    defaults: { _controller: FiterDefaultBundle:Categoria:delete }
+
+## UsuarioController
+
+fos_user_profile_index:
+    locales:
+        es: "/usuarios"
+        en: "/users"
+        gl: "/usuarios"
+        ca: "/usuaris"
+    defaults: { _controller: FiterUserBundle:Profile:index  }
+
+fos_user_profile_show:
+    locales:
+        es: "/perfil"
+        en: "/profile"
+        gl: "/perfil"
+        ca: "/perfil"
+    defaults: { _controller: FiterUserBundle:Profile:show  }
+
+fos_user_profile_edit:
+    locales:
+        es: "/perfil/editar"
+        en: "/profile/edit"
+        gl: "/perfil/editar"
+        ca: "/perfil/modificar"
+    defaults: { _controller: FiterUserBundle:Profile:edit  }

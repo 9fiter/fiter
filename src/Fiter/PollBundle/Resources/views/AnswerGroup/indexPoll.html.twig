@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}AnswerGroup list by poll{% endblock %}
+
+{% block main %} 
+    {% for entity in entities %}
+        Author: {{ entity.author }}<br/>
+        Clientip: {{ entity.clientIp }}<br/>
+        Createdat: {% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}<br/>
+        <br/><br/>
+    {% endfor %}
+{% endblock %}
