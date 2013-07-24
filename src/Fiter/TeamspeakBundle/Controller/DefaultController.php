@@ -122,7 +122,7 @@ class DefaultController extends Controller{
         } else {
             $out  = "login client_login_name=$user client_login_password=$pass\n";
             $out .= "use 1\n";
-            $out .= "tokenadd tokentype=0 tokenid1=9 tokenid2=0 tokendescription=automaticallyscreatedstokensfor$usuario tokencustomset=ident=forum_user\svalue=$usuario|ident=forum_id\svalue=$usuarioId\n";
+            $out .= "tokenadd tokentype=0 tokenid1=22 tokenid2=0 tokendescription=automaticallyscreatedstokensfor$usuario tokencustomset=ident=forum_user\svalue=$usuario|ident=forum_id\svalue=$usuarioId\n";
             fwrite($fp, $out);
             $res = fgets($fp); //TS3
             if (strpos($res,'TS3') !== false) {
