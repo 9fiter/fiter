@@ -21,6 +21,39 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class AuthmeController extends Controller{
 
     /**
+     * Lists all online Authme entities.
+     * @Route("/search", name="authme_search")
+     * @Template("FiterMinecraftAuthBundle:Authme:index.html.twig")
+     */
+    public function searchAction(Request $request){
+        $em = $this->getDoctrine()->getManager('minecraft');
+        //$entities = $em->getRepository('FiterMinecraftAuthBundle:Authme')->findAll();
+        //ladybug_dump($em->getRepository('FiterMinecraftAuthBundle:Authme'));
+
+
+        $username = $request->query->get('q');
+
+
+        $paginador = $this->get('ideup.simple_paginator');
+        $paginador->setItemsPerPage(10);
+        $paginador->setMaxPagerItems(10);
+        $entities = 
+        $paginador->paginate(
+            //$em->getRepository('FiterMinecraftAuthBundle:Authme')->findOrdenadosDQL()
+            $em->createQuery('SELECT o FROM FiterMinecraftAuthBundle:Authme o WHERE o.username LIKE  :opc')->setParameter('opc', "%".$username."%")
+        )->getResult();
+
+        foreach ($entities as $entity){
+            $entity->setLastLogin(date('Y-m-d H:i:s',$entity->getLastLogin()/ 1000)) ;
+        }
+        return array(
+            'entities' => $entities,
+            'paginador' => $paginador,
+        );
+    }
+
+
+    /**
      * Dowload and save skin for an Authme entity.
      * @Route("/{id}/skin/avatar/{{t}}", name="authme_skin"  )
      * @Template()
