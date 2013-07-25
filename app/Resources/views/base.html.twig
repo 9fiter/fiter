@@ -165,9 +165,13 @@
                     
                     <div style="position:relative;height:137px;background-color:#000" class="banner300-300 sombra">
                         <img class="asd" src="/img/Minecraft-Logo.png">
-                        <a class="mcuser s1" href="{{ path('authme_online')}}">Usuarios online</a>
-                        <a class="mcuser s2" href="{{ path('authme')}}">Usuarios registrados</a>
-                        <a class="mcuser s3" href="{{ path('authme_show_skin')}}">Skins de usuarios</a>
+                        <a class="mcuser s1" href="{{ path('authme_online')}}">{{ 'main.onlineUsers' | trans }}</a>
+                        <a class="mcuser s2" href="{{ path('authme')}}">{{ 'main.registeredUsers' | trans }}</a>
+
+
+                        
+                        
+                        <a class="mcuser s3" href="{{ path('authme_show_skin')}}">{{ 'main.userSkins' | trans }}</a>
                         <a href="{{ path('authme_online')}}">
                             <img alt="minecraft_users" src="/img/bannerusuarios.png"/>
                         </a>

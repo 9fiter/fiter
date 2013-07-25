@@ -179,8 +179,69 @@
             <trans-unit id="44">
                 <source>main.por</source>
                 <target>Por</target>
+            </trans-unit>
+
+            <trans-unit id="45">
+                <source>main.User</source>
+                <target>Usuario</target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>main.user</source>
+                <target>usuario</target>
+            </trans-unit>
+            <trans-unit id="47">
+                <source>mc.Lastlogin</source>
+                <target>Último login</target>
+            </trans-unit> 
+
+            <trans-unit id="48">
+                <source>main.users</source>
+                <target>usuarios</target>
             </trans-unit> 
             
+            <trans-unit id="49">
+                <source>main.onlineUsers</source>
+                <target>Usuarios online</target>
+            </trans-unit> 
+            <trans-unit id="50">
+                <source>main.userSkins</source>
+                <target>Skins de usuarios</target>
+            </trans-unit> 
+
+            <trans-unit id="51">
+                <source>main.registeredUsers</source>
+                <target>Usuarios rexistrados</target>
+            </trans-unit> 
+            <trans-unit id="52">
+                <source>main.needyourhelp</source>
+                <target>Necesitamos a tua axuda</target>
+            </trans-unit> 
+
+
+            <trans-unit id="53">
+                <source>main.skinDownload</source>
+                <target>Descargar skin</target>
+            </trans-unit> 
+
+            <trans-unit id="54">
+                <source>main.skinSelect</source>
+                <target>Selecciona un skin</target>
+            </trans-unit> 
+
+            <trans-unit id="55">
+                <source>main.skinAccepts</source>
+                <target>Acepta imaxes de 64x32 pixeles de tamano</target>
+            </trans-unit>
+
+            <trans-unit id="56">
+                <source>main.players</source>
+                <target>Xogadores</target>
+            </trans-unit> 
+
+            <trans-unit id="57">
+                <source>main.moreInfo</source>
+                <target>Mais información</target>
+            </trans-unit> 
             
 
         </body>

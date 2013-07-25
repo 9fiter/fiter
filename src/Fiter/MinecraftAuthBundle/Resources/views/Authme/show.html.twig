@@ -4,10 +4,12 @@
  
 {% block main %}
 
+{% include 'FiterMinecraftAuthBundle:Authme:parcial/search.html.twig' %}
+
 <h2>{{ entity.username }}</h2>	
 
     <!--<strong>Register:</strong> &nbsp;{{ entity.created|date("Y-m-d h:i:s") }} ({{ entity.created|time_ago_in_words }})<br/>-->
-    <strong>Lastlogin:</strong> {{ entity.lastlogin }} ({{ entity.lastlogin|time_ago_in_words }})<br/>
+    <strong>{{ 'mc.Lastlogin' | trans }}:</strong> {{ entity.lastlogin }} ({{ entity.lastlogin|time_ago_in_words }})<br/>
 
     {% if accounts|length > 0 %}
 	    <strong>Cuentas alternativas:</strong>
@@ -58,14 +60,14 @@ longitude: {{entity.longitude}}<br/>
 
 <div id="skinpreview"></div>
 
-<h4>Descargar skin</h4>
+<h4>{{ 'main.skinDownload' | trans }}</h4>
 <a href="{{ path('authme_skin', { 'id': entity.id, 't' : '0' }) }}" type="application/octet-stream" download>
 	<img src="{{ path('authme_skin', { 'id': entity.id, 't' : '0' }) }}">
 </a><br/><br/>
 
 <form name="imageform">
-	<strong>Select a skin:</strong> <input type=file name="fileinput" accept="image/png"><br>
-	Accepts 64x32 sized PNG images
+	<strong>{{ 'main.skinSelect' | trans }}:</strong> <input type=file name="fileinput" accept="image/png"><br>
+	{{ 'main.skinAccepts' | trans }}
 </form>
 <br/><br/>
 

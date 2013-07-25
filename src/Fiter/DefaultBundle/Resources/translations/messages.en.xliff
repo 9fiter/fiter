@@ -178,7 +178,73 @@
             <trans-unit id="44">
                 <source>main.por</source>
                 <target>By</target>
-            </trans-unit>          
+            </trans-unit>
+            <trans-unit id="45">
+                <source>main.User</source>
+                <target>User</target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>main.user</source>
+                <target>user</target>
+            </trans-unit>
+            <trans-unit id="47">
+                <source>mc.Lastlogin</source>
+                <target>Last login</target>
+            </trans-unit> 
+
+            <trans-unit id="48">
+                <source>main.users</source>
+                <target>users</target>
+            </trans-unit> 
+
+            <trans-unit id="49">
+                <source>main.onlineUsers</source>
+                <target>Online users</target>
+            </trans-unit> 
+            <trans-unit id="50">
+                <source>main.userSkins</source>
+                <target>User skins</target>
+            </trans-unit> 
+
+            <trans-unit id="51">
+                <source>main.registeredUsers</source>
+                <target>Registered users</target>
+            </trans-unit> 
+
+            <trans-unit id="52">
+                <source>main.needyourhelp</source>
+                <target>We need your help</target>
+            </trans-unit> 
+
+
+
+
+            <trans-unit id="53">
+                <source>main.skinDownload</source>
+                <target>Download skin</target>
+            </trans-unit> 
+
+            <trans-unit id="54">
+                <source>main.skinSelect</source>
+                <target>Select a skin</target>
+            </trans-unit> 
+
+            <trans-unit id="55">
+                <source>main.skinAccepts</source>
+                <target>Accepts 64x32 sized PNG images</target>
+            </trans-unit> 
+
+            <trans-unit id="56">
+                <source>main.players</source>
+                <target>Players</target>
+            </trans-unit> 
+
+            <trans-unit id="57">
+                <source>main.moreInfo</source>
+                <target>More info</target>
+            </trans-unit> 
+
+
         </body>
     </file>
 </xliff>
