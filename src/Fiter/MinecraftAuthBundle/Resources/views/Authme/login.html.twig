@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Minecraft {{ 'main.usuarios' | trans }} - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+
+<h2>Minecraft login</h2>
+
+<form action="{{ path('authme_checkpassword') }}" method="post">
+    <label>{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}:</label>
+    <input name="user" type="text" required="required"/><br/>
+
+    <label>{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}:</label>
+    <input type="password" name="pass" required="required" /><br/><br/>
+    <button type="submit">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+</form>
+
+{% endblock %}

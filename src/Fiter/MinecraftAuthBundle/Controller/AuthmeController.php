@@ -22,6 +22,46 @@ class AuthmeController extends Controller{
 
 
     /**
+     * login
+     * @Route("/login", name="authme_login")
+     * @Template()
+     */
+    public function loginAction(Request $request){
+        return array();
+    }
+
+    /**
+     * checkpassword
+     * @Route("/checkpassword", name="authme_checkpassword")
+     * @Template()
+     */
+    public function checkPasswordAction(Request $request){
+        $post = $this->get('request')->request->all();
+        $user = $post['user'];
+        $pass = $post['pass'];
+        $em = $this->getDoctrine()->getManager('minecraft');
+        $entity = $em->getRepository('FiterMinecraftAuthBundle:Authme')->findOneByUsername($user);
+        $res = false;
+        if($entity){
+            $sha_info = explode("$",$entity->getPassword());
+            if( $sha_info[1] === "SHA" ) {
+                $salt = $sha_info[2];
+                $sha256_pass = hash('sha256', $pass);
+                $sha256_pass .= $sha_info[2];;
+                if( strcasecmp(trim($sha_info[3]),hash('sha256', $sha256_pass) ) == 0 ) $res = true;
+            }
+        }
+        if($res){
+            $session  = $this->get("session");
+            $session->set("MinecraftUser", $user);
+            return new RedirectResponse($this->generateUrl('authme'));
+        }else return new RedirectResponse($this->generateUrl('authme_login'));
+    }
+
+
+
+
+    /**
      * main
      * @Route("/main", name="authme_main")
      * @Template()
@@ -335,7 +375,7 @@ class AuthmeController extends Controller{
     /**
      * Obtener nacionalidades
      *
-     * @Route("/getNacionalidades", name="getnacionalidades")
+     * @Route("/getNacionalidades", name="authme_getnacionalidades")
      * @Template()
      */
     public function getNacionalidadesAction(){
