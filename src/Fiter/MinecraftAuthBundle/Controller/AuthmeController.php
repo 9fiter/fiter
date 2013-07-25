@@ -19,8 +19,90 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  * @Route("/minecraft/users")
  */
 class AuthmeController extends Controller{
+
+
     /**
-     * Ban ip
+     * main
+     * @Route("/main", name="authme_main")
+     * @Template()
+     */
+    public function mainAction(){
+        return array();
+    }
+
+
+    /**
+     * show banned users
+     * @Route("/banned/ips", name="authme_banned_ips")
+     * @Template()
+     */
+    public function bannedIpsAction(){
+        $securityContext = $this->get('security.context');
+        if(!$securityContext->isGranted('ROLE_ADMIN')) throw new AccessDeniedException("No tienes permiso para ver las IP's baneadas");
+
+        $ruta = '/opt/juegos/minecraft/craftopia/banned-ips.txt';
+        if(file_exists($ruta)){
+            $archivo=\file($ruta);//ladybug_dump($archivo);
+            $bans = [];
+            foreach ($archivo as $key => $value) {
+                if($key>2){
+                    $value= explode("|",trim($value));
+                    array_push($bans, $value);
+                }
+            }//ladybug_dump($bans);
+        }  
+        return array(
+            'bans' => $bans
+        );
+    }
+
+    /**
+     * show banned users
+     * @Route("/banned", name="authme_banned")
+     * @Template()
+     */
+    public function bannedAction(){
+        $securityContext = $this->get('security.context');
+        if(!$securityContext->isGranted('ROLE_ADMIN')) throw new AccessDeniedException("No tienes permiso para ver los usuarios baneados");
+
+        $ruta = '/opt/juegos/minecraft/craftopia/banned-players.txt';
+        if(file_exists($ruta)){
+            $archivo=\file($ruta);//ladybug_dump($archivo);
+            $bans = [];
+            foreach ($archivo as $key => $value) {
+                if($key>2){
+                    $value= explode("|",trim($value));
+                    array_push($bans, $value);
+                }
+            }//ladybug_dump($bans);
+        }
+        
+        return array(
+            'bans' => $bans
+        );
+
+    }
+
+    /**
+     * Pardon ip
+     * @Route("/pardon/ip/{ip}", name="authme_pardon_ip")
+     * @Template()
+     */
+    public function pardonIpAction($ip){
+        $securityContext = $this->get('security.context');
+        if(!$securityContext->isGranted('ROLE_ADMIN')) throw new AccessDeniedException("No tienes permiso para perdonar IP's");
+
+        $websend = $this->get('fiter.websend');
+        $pass = $this->container->getParameter('minecraft_websend_pass');
+        $websend->connect($pass);
+        $websend->doCommandAsConsole("pardon-ip ".$ip);
+        return array(
+            'ip' => $ip
+        );
+    }
+
+    /**
+     * Pardon user
      * @Route("/pardon/{username}", name="authme_pardon")
      * @Template()
      */

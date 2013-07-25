@@ -242,7 +242,42 @@
                 <source>main.moreInfo</source>
                 <target>Mais información</target>
             </trans-unit> 
+
+
+            <trans-unit id="58">
+                <source>mc.banDate</source>
+                <target>Data do ban</target>
+            </trans-unit> 
+
+            <trans-unit id="59">
+                <source>mc.bannedBy</source>
+                <target>Baneado por</target>
+            </trans-unit> 
+
+            <trans-unit id="60">
+                <source>mc.bannedUntil</source>
+                <target>Baneado ata</target>
+            </trans-unit> 
+
+            <trans-unit id="61">
+                <source>mc.reason</source>
+                <target>Razón</target>
+            </trans-unit> 
+
+            <trans-unit id="62">
+                <source>mc.bannedUsers</source>
+                <target>usuarios baneados</target>
+            </trans-unit> 
             
+            <trans-unit id="63">
+                <source>mc.BannedUsers</source>
+                <target>Usuarios baneados</target>
+            </trans-unit> 
+
+            <trans-unit id="64">
+                <source>mc.BannedIps</source>
+                <target>IP's baneadas</target>
+            </trans-unit> 
 
         </body>
     </file>

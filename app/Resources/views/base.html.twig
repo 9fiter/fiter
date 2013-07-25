@@ -95,8 +95,8 @@
                             {% if ( is_granted('ROLE_ADMIN')) %}
                                 <a href="{{ path('admin_inicio') }}">{{ 'main.admin' | trans }}</a>
                                 <a href="{{ path('sonata_admin_dashboard') }}">Sonata</a>
-                                <a href="/spaceBukkit/SpaceBukkitPanel-1.2.1/index.php">Spacebukkit</a>
-                                <a href="{{ path('authme') }}">AuthMe</a>
+                                <!--<a href="/spaceBukkit/SpaceBukkitPanel-1.2.1/index.php">Spacebukkit</a>-->
+                                <a href="{{ path('authme_main') }}">Minecraft</a>
                                 <a href="{{ path('teamspeak') }}">Teamspeak</a>
                             {% endif %}
                         </span>

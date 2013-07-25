@@ -247,7 +247,40 @@
                 <target>Més informació</target>
             </trans-unit> 
 
-            
+            <trans-unit id="58">
+                <source>mc.banDate</source>
+                <target>Data del ban</target>
+            </trans-unit> 
+
+            <trans-unit id="59">
+                <source>mc.bannedBy</source>
+                <target>Banejat per</target>
+            </trans-unit> 
+
+            <trans-unit id="60">
+                <source>mc.bannedUntil</source>
+                <target>Banejat fins</target>
+            </trans-unit> 
+
+            <trans-unit id="61">
+                <source>mc.reason</source>
+                <target>Raó</target>
+            </trans-unit> 
+
+            <trans-unit id="62">
+                <source>mc.bannedUsers</source>
+                <target>usuaris banejats</target>
+            </trans-unit> 
+
+            <trans-unit id="63">
+                <source>mc.BannedUsers</source>
+                <target>Usuaris banejats</target>
+            </trans-unit> 
+
+            <trans-unit id="64">
+                <source>mc.BannedIps</source>
+                <target>IP's baneadas</target>
+            </trans-unit> 
             
 
         </body>

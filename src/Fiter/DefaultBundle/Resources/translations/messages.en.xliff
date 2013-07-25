@@ -245,6 +245,44 @@
             </trans-unit> 
 
 
+
+            <trans-unit id="58">
+                <source>mc.banDate</source>
+                <target>Ban date</target>
+            </trans-unit> 
+
+            <trans-unit id="59">
+                <source>mc.bannedBy</source>
+                <target>Banned by</target>
+            </trans-unit> 
+
+            <trans-unit id="60">
+                <source>mc.bannedUntil</source>
+                <target>Banned until</target>
+            </trans-unit> 
+
+            <trans-unit id="61">
+                <source>mc.reason</source>
+                <target>Reason</target>
+            </trans-unit> 
+
+
+            <trans-unit id="62">
+                <source>mc.bannedUsers</source>
+                <target>banned users</target>
+            </trans-unit> 
+
+            <trans-unit id="63">
+                <source>mc.BannedUsers</source>
+                <target>Banned users</target>
+            </trans-unit> 
+
+            <trans-unit id="64">
+                <source>mc.BannedIps</source>
+                <target>Banned IP's</target>
+            </trans-unit> 
+
+
         </body>
     </file>
 </xliff>
