@@ -464,6 +464,118 @@ class AuthmeController extends Controller{
         );
     }
 
+    /**
+     * Finds and displays a Authme entity by username.
+     * @Route("/show/{username}", name="authme_show_by_username")
+     * @Template("FiterMinecraftBundle:Authme:show.html.twig")
+     */
+    public function showByUsernameAction($username){
+        $em = $this->getDoctrine()->getManager('minecraft');
+        $entity = $em->getRepository('FiterMinecraftBundle:Authme')->findOneByUsername($username);
+        if (!$entity) throw $this->createNotFoundException('Unable to find Authme entity.');
+        $deleteForm = $this->createDeleteForm($entity->getId());
+
+        $save = true;
+        $geoip = $this->get('raindrop.geoip')->lookup($entity->getIp());
+        if($geoip){
+            $entity->setCountryCode($geoip->getCountryCode());
+            $entity->setCountryCode3($geoip->getCountryCode3());
+            $entity->setCountryCode3($geoip->getCountryName());
+            //ladybug_dump($geoip);
+            //$entity->setRegion($geoip->getRegion());
+            try {$entity->setRegion($geoip->getRegion()); } catch(\Exception $e){ 
+                //ladybug_dump('Caught exception: '.$e->getMessage());
+            }
+            $entity->setCity(utf8_encode($geoip->getCity()));
+            $entity->setPostalCode($geoip->getPostalCode());
+            $entity->setLatitude($geoip->getLatitude());
+            $entity->setLongitude($geoip->getLongitude());
+            $entity->setAreaCode($geoip->getAreaCode());
+            $entity->setMetroCode($geoip->getMetroCode());
+            $entity->setContinentCode($geoip->getContinentCode());
+            $save = true;
+        }
+        if($entity->getPremium()==0){
+            $premium = file_get_contents("http://www.minecraft.net/haspaid.jsp?user=".$entity->getUserName());
+            if($premium == "true") $premium = 1; else $premium=0;
+            $entity->setPremium(   $premium   );
+            $save = true;
+        }
+        if($save){
+            $em->persist($entity);
+            $em->flush();
+        }
+        //$fecha = date('jS F Y h:i:s A (T)', $entity->getLastLogin()/ 1000);
+        //$fecha2 = date("Y-m-d\TH:i:sO", $entity->getLastLogin()/ 1000);
+        $fecha = date('Y-m-d H:i:s',$entity->getLastLogin()/ 1000) ;
+        $entity->setLastLogin(date('Y-m-d H:i:s',$entity->getLastLogin()/ 1000)) ;
+        $accounts = $em->getRepository('FiterMinecraftBundle:Authme')->findByIp($entity->getIp());
+        foreach ($accounts as $key => $value) if($value->getId()==$entity->getId()) unset($accounts[$key]);
+        return array(
+            'entity'      => $entity,
+            'accounts'      => $accounts,
+            'delete_form' => $deleteForm->createView(),
+        );
+    }
+
+
+
+
+    /**
+     * Finds and displays a Authme entity by username.
+     * @Route("/show/ip/{ip}", name="authme_show_by_ip")
+     * @Template("FiterMinecraftBundle:Authme:show.html.twig")
+     */
+    public function showByIpAction($ip){
+        $em = $this->getDoctrine()->getManager('minecraft');
+        $entity = $em->getRepository('FiterMinecraftBundle:Authme')->findOneByIp($ip);
+        if (!$entity) throw $this->createNotFoundException('Unable to find Authme entity.');
+        $deleteForm = $this->createDeleteForm($entity->getId());
+
+        $save = true;
+        $geoip = $this->get('raindrop.geoip')->lookup($entity->getIp());
+        if($geoip){
+            $entity->setCountryCode($geoip->getCountryCode());
+            $entity->setCountryCode3($geoip->getCountryCode3());
+            $entity->setCountryCode3($geoip->getCountryName());
+            //ladybug_dump($geoip);
+            //$entity->setRegion($geoip->getRegion());
+            try {$entity->setRegion($geoip->getRegion()); } catch(\Exception $e){ 
+                //ladybug_dump('Caught exception: '.$e->getMessage());
+            }
+            $entity->setCity(utf8_encode($geoip->getCity()));
+            $entity->setPostalCode($geoip->getPostalCode());
+            $entity->setLatitude($geoip->getLatitude());
+            $entity->setLongitude($geoip->getLongitude());
+            $entity->setAreaCode($geoip->getAreaCode());
+            $entity->setMetroCode($geoip->getMetroCode());
+            $entity->setContinentCode($geoip->getContinentCode());
+            $save = true;
+        }
+        if($entity->getPremium()==0){
+            $premium = file_get_contents("http://www.minecraft.net/haspaid.jsp?user=".$entity->getUserName());
+            if($premium == "true") $premium = 1; else $premium=0;
+            $entity->setPremium(   $premium   );
+            $save = true;
+        }
+        if($save){
+            $em->persist($entity);
+            $em->flush();
+        }
+        //$fecha = date('jS F Y h:i:s A (T)', $entity->getLastLogin()/ 1000);
+        //$fecha2 = date("Y-m-d\TH:i:sO", $entity->getLastLogin()/ 1000);
+        $fecha = date('Y-m-d H:i:s',$entity->getLastLogin()/ 1000) ;
+        $entity->setLastLogin(date('Y-m-d H:i:s',$entity->getLastLogin()/ 1000)) ;
+        $accounts = $em->getRepository('FiterMinecraftBundle:Authme')->findByIp($entity->getIp());
+        foreach ($accounts as $key => $value) if($value->getId()==$entity->getId()) unset($accounts[$key]);
+        return array(
+            'entity'      => $entity,
+            'accounts'      => $accounts,
+            'delete_form' => $deleteForm->createView(),
+        );
+    }
+
+
 
     /**
      * Finds and displays a Authme entity.

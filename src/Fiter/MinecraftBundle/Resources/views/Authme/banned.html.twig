@@ -9,8 +9,7 @@
 {% include 'FiterMinecraftBundle:Authme:parcial/search.html.twig' %}
 
 {% for ban in bans %}
-    <!--<a href="#{#{ path('authme_show', { 'id': ban.id }) }#}">{#{ ban[0] }#}</a><br/>-->
-    <a href="{{ path('authme_search', { 'q': ban[0] }) }}">{{ ban[0] }}</a><br/>
+    <a href="{{ path('authme_show_by_username', { 'username': ban[0] }) }}">{{ ban[0] }}</a><br/>
     
     {% include 'FiterMinecraftBundle:Authme:parcial/bannedDatos.html.twig' %}
 
