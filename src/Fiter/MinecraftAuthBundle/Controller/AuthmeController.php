@@ -19,27 +19,78 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  * @Route("/minecraft/users")
  */
 class AuthmeController extends Controller{
+    /**
+     * Ban ip
+     * @Route("/pardon/{username}", name="authme_pardon")
+     * @Template()
+     */
+    public function pardonAction($username){
+        $securityContext = $this->get('security.context');
+        if(!$securityContext->isGranted('ROLE_ADMIN')) throw new AccessDeniedException('No tienes permiso para perdonar usuarios');
+
+        $websend = $this->get('fiter.websend');
+        $pass = $this->container->getParameter('minecraft_websend_pass');
+        $websend->connect($pass);
+        $websend->doCommandAsConsole("pardon ".$username);
+        return array(
+            'username' => $username
+        );
+    }
 
     /**
-     * Lists all online Authme entities.
+     * Ban ip
+     * @Route("/banIp/{ip}", name="authme_banIp")
+     * @Template()
+     */
+    public function banIpAction($ip){
+        $securityContext = $this->get('security.context');
+        if(!$securityContext->isGranted('ROLE_ADMIN')) throw new AccessDeniedException("No tienes permiso para bannear IP's.");
+
+        $websend = $this->get('fiter.websend');
+        $pass = $this->container->getParameter('minecraft_websend_pass');
+        $websend->connect($pass);
+        $websend->doCommandAsConsole("w esemoi hola esemoi");
+        //$websend->doCommandAsPlayer('!dejamejugar.com','udrul');
+        //$websend->doCommandAsConsole('say dejamejugar.com');
+        //$websend->doCommandAsConsole('ban esemoi testing bans');
+        //$websend->doCommandAsConsole('pardon esemoi');
+        //ladybug_dump($websend);
+        return array(
+            'ip' => $ip
+        );
+    }
+
+    /**
+     * Ban user
+     * @Route("/ban/{username}", name="authme_ban")
+     * @Template("FiterMinecraftAuthBundle:Authme:ban.html.twig")
+     */
+    public function banAction($username){
+        $securityContext = $this->get('security.context');
+        if(!$securityContext->isGranted('ROLE_ADMIN')) throw new AccessDeniedException("No tienes permiso para bannear usuarios.");
+
+        $websend = $this->get('fiter.websend');
+        $pass = $this->container->getParameter('minecraft_websend_pass');
+        $websend->connect($pass);
+        $websend->doCommandAsConsole('ban esemoi');
+        return array(
+            'username' => $username
+        );
+    }
+
+    /**
+     * Search Authme entities.
      * @Route("/search", name="authme_search")
      * @Template("FiterMinecraftAuthBundle:Authme:index.html.twig")
      */
     public function searchAction(Request $request){
         $em = $this->getDoctrine()->getManager('minecraft');
-        //$entities = $em->getRepository('FiterMinecraftAuthBundle:Authme')->findAll();
-        //ladybug_dump($em->getRepository('FiterMinecraftAuthBundle:Authme'));
-
-
         $username = $request->query->get('q');
-
-
         $paginador = $this->get('ideup.simple_paginator');
         $paginador->setItemsPerPage(10);
         $paginador->setMaxPagerItems(10);
         $entities = 
         $paginador->paginate(
-            //$em->getRepository('FiterMinecraftAuthBundle:Authme')->findOrdenadosDQL()
             $em->createQuery('SELECT o FROM FiterMinecraftAuthBundle:Authme o WHERE o.username LIKE  :opc')->setParameter('opc', "%".$username."%")
         )->getResult();
 
@@ -139,7 +190,7 @@ class AuthmeController extends Controller{
      * @Route("/", name="authme")
      * @Template()
      */
-    public function indexAction(){
+    public function indexAction(){      
         $em = $this->getDoctrine()->getManager('minecraft');
         $paginador = $this->get('ideup.simple_paginator');
         $paginador->setItemsPerPage(10);

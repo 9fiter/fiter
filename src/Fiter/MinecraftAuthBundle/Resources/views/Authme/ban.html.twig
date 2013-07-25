@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Minecraft {{ 'main.usuarios' | trans }} - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+
+<h2>Usuario baneado</h2>
+
+El usuario <strong>{{username}}</strong> ha sido baneado satisfactoriamente.</br></br>
+
+{% include 'FiterMinecraftAuthBundle:Authme:parcial/search.html.twig' %}
+
+{% endblock %}
+
+
+
+ 

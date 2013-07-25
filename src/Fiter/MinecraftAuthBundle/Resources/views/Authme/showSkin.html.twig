@@ -34,19 +34,7 @@
     <img src="{{ path('authme_skin', { 'id': entity.id, 't' : '1' }) }}" />
 </div>
 
-
-<div id="skinpreview"></div>
-
-<h4>{{ 'main.skinDownload' | trans }}</h4>
-<a href="{{ path('authme_skin', { 'id': entity.id, 't' : '0' }) }}" type="application/octet-stream" download>
-	<img src="{{ path('authme_skin', { 'id': entity.id, 't' : '0' }) }}">
-</a><br/><br/>
-
-<form name="imageform">
-	<strong>{{ 'main.skinSelect' | trans }}:</strong> <input type=file name="fileinput" accept="image/png"><br>
-	{{ 'main.skinAccepts' | trans }}
-</form>
-<br/><br/>
+{% include 'FiterMinecraftAuthBundle:Authme:parcial/skinPreview.html.twig' %}
 
 <script type="text/javascript" src="/mcskin/three.js"></script>
 <script type="text/javascript">

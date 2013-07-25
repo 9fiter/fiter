@@ -23,7 +23,10 @@
     {{entity.city}} ({{entity.region}}) <br/>
     {{entity.countryName}}- {{entity.countryCode}}<br/>
     <!--<strong>&nbsp;IP:</strong> {#{ entity.ip }#}<br/>-->
-    <strong>&nbsp;Premium:</strong> {% if entity.premium==1 %}Si{% else %}No{% endif %}
+    <strong>&nbsp;Premium:</strong> {% if entity.premium==1 %}Si{% else %}No{% endif %}<br/>
+
+    {% include 'FiterMinecraftAuthBundle:Authme:parcial/banButtons.html.twig' %}
+
     <div style="clear:both"></div>
     <!--
     X: {{ entity.x }}<br/>

@@ -31,10 +31,12 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     twitter_feed: 9fiter
-    
+
     fiter_contact.emails.contact_email: "examplexamplaexaple@gmail.com"
     domain: example.org
     minecraft_server: example.org
+    minecraft_websend_port: 4445
+    minecraft_websend_pass: YourPassHere
     keywords: "word, word, word, word"
     description: "example.org - Lorem ipsum dolor sit amet"
 

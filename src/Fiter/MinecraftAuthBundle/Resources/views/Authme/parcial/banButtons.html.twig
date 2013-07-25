@@ -1,0 +1,6 @@
+{% if ( is_granted('ROLE_ADMIN')) %}
+    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+    <a class="btn btn-primary" href="{{ path('authme_ban', { 'username': entity.username }) }}">Banear usuario</a>
+    <a class="btn btn-danger" href="{{ path('authme_banIp', { 'ip': entity.ip }) }}">Banear IP</a>
+    <a class="btn btn-success" href="{{ path('authme_pardon', { 'username': entity.username }) }}">Perdonar usuario</a>
+{% endif %}

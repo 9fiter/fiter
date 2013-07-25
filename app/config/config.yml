@@ -144,6 +144,11 @@ services:
             - { name: twig.extension }
     fiter.minecraft:
         class: Fiter\DefaultBundle\Util\MinecraftServerStatus
+    fiter.websend:
+        class: Fiter\MinecraftAuthBundle\Util\Websend
+        arguments:    
+            host: "%minecraft_server%"
+            port: "%minecraft_websend_port%"
     sybio.twig_extension:
         class: Fiter\DefaultBundle\Twig\TwigExtension
         tags:
