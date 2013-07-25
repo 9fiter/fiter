@@ -45,7 +45,7 @@ class ArticuloAdmin extends Admin{
 
     protected function configureFormFields(FormMapper $mapper){
         $mapper
-        	//->add('activo')
+        	->add('activo')
             ->add('titulo')
 
 
