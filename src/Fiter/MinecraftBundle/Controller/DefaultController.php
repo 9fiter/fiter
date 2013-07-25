@@ -47,7 +47,7 @@ class DefaultController extends Controller{
 
         $ok=false;
         if ($status!=null) $ok=true;
-            
+
         return array(
             'status' => $status,
             'ok' => $ok,
