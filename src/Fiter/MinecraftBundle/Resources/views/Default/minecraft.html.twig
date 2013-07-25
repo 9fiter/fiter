@@ -61,6 +61,8 @@ text-shadow: 2px 2px 9px #000;
 </style>
 {#% for status in statusarray %#}
 	<div class="minecraftStatus sombra">
+
+		
 		{% if ok %}
 			<span class="name">{{minecraft_server}} - v1.6.2{#{status.version}#}</span>
 			<span class="players">{{ 'main.players' | trans }}: {{status.players}}/{{status.maxplayers}}</span>
