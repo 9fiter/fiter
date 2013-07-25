@@ -213,7 +213,33 @@ class AuthmeController extends Controller{
         $paginador->setMaxPagerItems(10);
         $entities = 
         $paginador->paginate(
-            $em->createQuery('SELECT o FROM FiterMinecraftBundle:Authme o WHERE o.username LIKE  :opc')->setParameter('opc', "%".$username."%")
+            $em->getRepository('FiterMinecraftBundle:Authme')->findByUsername($username)
+        )->getResult();
+
+        foreach ($entities as $entity){
+            $entity->setLastLogin(date('Y-m-d H:i:s',$entity->getLastLogin()/ 1000)) ;
+        }
+        return array(
+            'entities' => $entities,
+            'paginador' => $paginador,
+        );
+    }
+
+
+    /**
+     * Search Authme entities by IP
+     * @Route("/search/ip", name="authme_search_ip")
+     * @Template("FiterMinecraftBundle:Authme:index.html.twig")
+     */
+    public function searchIpAction(Request $request){
+        $em = $this->getDoctrine()->getManager('minecraft');
+        $ip = $request->query->get('q');
+        $paginador = $this->get('ideup.simple_paginator');
+        $paginador->setItemsPerPage(10);
+        $paginador->setMaxPagerItems(10);
+        $entities = 
+        $paginador->paginate(
+            $em->getRepository('FiterMinecraftBundle:Authme')->findByIp($ip)
         )->getResult();
 
         foreach ($entities as $entity){

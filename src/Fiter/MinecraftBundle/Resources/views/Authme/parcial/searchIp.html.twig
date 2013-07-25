@@ -1,0 +1,14 @@
+<style type="text/css">
+    button.btn{
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+</style>
+<form action="{{ path('authme_search_ip') }}" method="get">
+	IP:
+    <div style="display:inline-block;width:100%">
+        <input name="q" style="max-width:500px" type="text"/>
+        <button class="btn" type="submit">{{ 'main.buscar' | trans }}</button>
+    </div>
+</form>
+</br>

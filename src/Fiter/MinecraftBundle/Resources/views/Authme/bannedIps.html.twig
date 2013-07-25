@@ -4,9 +4,9 @@
  
 {% block main %}
 
-<h2>Minecraft {{ 'mc.bannedUsers' | trans }}</h2>
+<h2>Minecraft {{ 'mc.BannedIps' | trans }}</h2>
 
-{% include 'FiterMinecraftBundle:Authme:parcial/search.html.twig' %}
+{% include 'FiterMinecraftBundle:Authme:parcial/searchIp.html.twig' %}
 
 {% for ban in bans %}
 
