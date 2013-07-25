@@ -34,7 +34,21 @@ class PollRepository extends EntityRepository{
         return $this->findAllPollsByUserDQL($usuario)->getResult();
     }
 
-
+    public function findAllPollsActiveNotFinalizedFieldsOrderByCreatedAtDQL(){
+        $em = $this->getEntityManager();
+        $consulta = $em->createQuery('
+            SELECT o FROM FiterPollBundle:Poll o
+            JOIN o.fields c
+            WHERE o.isActive = true and 
+            o.endAt > :endAt
+            ORDER BY o.createdAt DESC
+        ');
+        $consulta->setParameter('endAt', new \DateTime("now"));
+        return $consulta;
+    }
+    public function findAllPollsActiveNotFinalizedFieldsOrderByCreatedAt(){
+        return $this->findAllPollsActiveNotFinalizedFieldsOrderByCreatedAtDQL()->getResult();
+    }
     
 
     

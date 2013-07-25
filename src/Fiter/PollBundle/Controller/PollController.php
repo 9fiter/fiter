@@ -65,7 +65,7 @@ class PollController extends Controller{
         $paginador->setMaxPagerItems(10);
         $entities = 
         $paginador->paginate(
-            $em->getRepository('FiterPollBundle:Poll')->findAllPollsActiveNotFinalizedFields()
+            $em->getRepository('FiterPollBundle:Poll')->findAllPollsActiveNotFinalizedFieldsOrderByCreatedAt()
         )->getResult();
         if (!$entities) throw $this->createNotFoundException('No se ha encontrado ningun resultado');
         return array(

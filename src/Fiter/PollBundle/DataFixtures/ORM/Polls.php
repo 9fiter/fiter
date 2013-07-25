@@ -27,7 +27,7 @@ class Polls extends AbstractFixture implements OrderedFixtureInterface, Containe
         $poll[1] = new Poll();
         $poll[1]->setUsuario($this->getReference('usr-moi'));
         $poll[1]->setTitle('Pellentesque habitant morbi tristique senectus et netus');
-        $poll[1]->setCreatedAt(new \DateTime("2011-07-23 06:15:20"));
+        $poll[1]->setCreatedAt(new \DateTime("2013-07-23 06:15:20"));
         $manager->persist($poll[1]);
 
 
@@ -35,7 +35,7 @@ class Polls extends AbstractFixture implements OrderedFixtureInterface, Containe
         $poll[2] = new Poll();
         $poll[2]->setUsuario($this->getReference('usr-moi'));
         $poll[2]->setTitle('Suspendisse in justo eu magna?');
-        $poll[2]->setCreatedAt(new \DateTime("2011-07-23 06:15:20"));
+        $poll[2]->setCreatedAt(new \DateTime("2012-07-23 06:15:20"));
         $manager->persist($poll[2]);
 
         $poll[3] = new Poll();
