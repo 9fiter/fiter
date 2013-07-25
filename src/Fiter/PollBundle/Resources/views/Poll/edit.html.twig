@@ -4,7 +4,7 @@
 
 {% block main %} 
     <h1>{{ 'main.pollEdit' | trans }}</h1>
-    <form action="{{ path('poll_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    <form id="form1" action="{{ path('poll_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
         <span>{{ form_label(edit_form.title) }}</span>
         {{ form_widget(edit_form.isActive) }}<span>{{ form_label(edit_form.isActive,label|default(null)) }}</span>
 
@@ -22,16 +22,23 @@
         </ul> 
         {{ form_row(edit_form._token) }}  
         {{ form_rest(edit_form) }}
-
-
-
-        <p><button type="submit">{{ 'main.edit' | trans }}</button></p>
     </form>
-    <a href="{{ path('poll') }}">{{ 'main.backList' | trans }}</a>
-    <form action="{{ path('poll_delete', { 'id': entity.id }) }}" method="post">
+
+    <form id="form2" action="{{ path('poll_delete', { 'id': entity.id }) }}" method="post">
         {{ form_widget(delete_form) }}
-        <button type="submit">{{ 'main.delete' | trans }}</button>
     </form>
+
+    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+    <br/>
+    <button form="form1" class="btn btn-success" type="submit">{{ 'main.save' | trans }}</button>
+    <button class="btn btn-primary" href="{{ path('poll') }}">{{ 'main.backList' | trans }}</button>
+    <button form="form2" class="btn btn-danger" type="submit">{{ 'main.delete' | trans }}</button>
+    <br/><br/>
+    
+        
+
+
+
 {% endblock %}
 
 

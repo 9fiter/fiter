@@ -61,8 +61,18 @@
 
         {{ form_rest(form) }}
     </form>
-    <button  id="form_add_articulo_submit" form="form_add_articulo" type="submit">{{ 'main.save' | trans }}</button>
-    <a class="boton" href="{{ path('articulo') }}">{{ 'main.back' | trans }}</a>
+
+    
+
+
+    <br/>
+    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+    <button id="form_add_articulo_submit" class="btn btn-success" form="form_add_articulo" type="submit">{{ 'main.save' | trans }}</button>
+    <button class="btn btn-primary" href="{{ path('articulo') }}">{{ 'main.back' | trans }}</button>
+
+
+
+
 </article>
 {% endblock %}
 
