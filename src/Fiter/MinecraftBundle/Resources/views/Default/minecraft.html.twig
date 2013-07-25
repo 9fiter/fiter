@@ -63,21 +63,25 @@ text-shadow: 2px 2px 9px #000;
 	<div class="minecraftStatus sombra">
 		{% if ok %}
 			<span class="name">{{minecraft_server}} - v1.6.2{#{status.version}#}</span>
-			<span class="players">Players: {{status.players}}/{{status.maxplayers}}</span>
+			<span class="players">{{ 'main.players' | trans }}: {{status.players}}/{{status.maxplayers}}</span>
 			<span class="ping">Ping: {{ '%d'|format(status.ping/10) }}</span>
 		{% else %}
 			<span class="name">{{minecraft_server}} - 1.5.2{#{status.version}#}</span>
-			<span class="players">Players: 0/150</span>
+			<span class="players">{{ 'main.players' | trans }}: 0/150</span>
 			<span class="ping">No disponible</span>
 		{% endif %}
 			<div class="masInfo">
-				<a href="http://dejamejugar.com/es/articulo/105/servidor-de-minecraft-no-premium-152-dejamejugarcom/ver">Más información</a>
+				<a href="http://dejamejugar.com/es/articulo/105/servidor-de-minecraft-no-premium-152-dejamejugarcom/ver">{{ 'main.moreInfo' | trans }}</a>
 			</div>
 			<!--motd: {#{status.motd}#}
 			<span class="hostname">hostame: {#{status.hostname}#}</span>
 			<span class="maxplayers">Status:</span>-->
 	</div>
 {#% endfor %#}
+
+
+
+
 
 
 

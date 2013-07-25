@@ -9,12 +9,11 @@
 {% include 'FiterMinecraftAuthBundle:Authme:parcial/search.html.twig' %}
 
 {% for entity in entities %}
-    <strong>{{ entity.id }}</strong> - 
     <a href="{{ path('authme_show', { 'id': entity.id }) }}">{{ entity.username }}</a><br/>
     <!--<a href="{{ path('authme_edit', { 'id': entity.id }) }}">edit</a><br/>-->
     
     <!--<strong>Register:</strong> &nbsp;{{ entity.created|date("Y-m-d h:i:s") }} ({{ entity.created|time_ago_in_words }})<br/>-->
-    <strong>Lastlogin:</strong> {{ entity.lastlogin }} ({{ entity.lastlogin|time_ago_in_words }})<br/>
+    <strong>{{ 'mc.Lastlogin' | trans }}:</strong> {{ entity.lastlogin }} ({{ entity.lastlogin|time_ago_in_words }})<br/>
     <img style="float:left;margin-right:3px" src='/mcskin/minecraft.php?u={{ entity.username }}&a=true' />
     <!--<img style="float:left;margin-right:3px" src="{{ path('authme_skin', { 'id': entity.id, 't' : '1' }) }}" />-->
     <img style="float:left;" src="/img/flags/res-36x36/{{entity.countryCode|lower}}.png">

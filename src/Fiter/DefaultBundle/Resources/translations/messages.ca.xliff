@@ -179,7 +179,74 @@
             <trans-unit id="44">
                 <source>main.por</source>
                 <target>Per</target>
+            </trans-unit>
+            <trans-unit id="45">
+                <source>main.User</source>
+                <target>Usuari</target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>main.user</source>
+                <target>usuari</target>
+            </trans-unit>
+            <trans-unit id="47">
+                <source>mc.Lastlogin</source>
+                <target>Última sessió</target>
             </trans-unit> 
+
+            <trans-unit id="48">
+                <source>main.users</source>
+                <target>usuaris</target>
+            </trans-unit> 
+
+
+            <trans-unit id="49">
+                <source>main.onlineUsers</source>
+                <target>Usuaris en línia</target>
+            </trans-unit> 
+
+
+            <trans-unit id="50">
+                <source>main.usersSkins</source>
+                <target>Skins d'Usuaris</target>
+            </trans-unit> 
+
+            <trans-unit id="51">
+                <source>main.registeredUsers</source>
+                <target>Usuaris Registrats</target>
+            </trans-unit> 
+
+            <trans-unit id="52">
+                <source>main.needyourhelp</source>
+                <target>Necessitem la teva ajuda</target>
+            </trans-unit> 
+
+
+
+            <trans-unit id="53">
+                <source>main.skinDownload</source>
+                <target>Descarregar skin</target>
+            </trans-unit> 
+
+            <trans-unit id="54">
+                <source>main.skinSelect</source>
+                <target>Seleccioneu un skin</target>
+            </trans-unit> 
+
+            <trans-unit id="55">
+                <source>main.skinAccepts</source>
+                <target>Accepta 64x32 imatges PNG de mida</target>
+            </trans-unit> 
+
+            <trans-unit id="56">
+                <source>main.players</source>
+                <target>Jugadors</target>
+            </trans-unit> 
+
+            <trans-unit id="57">
+                <source>main.moreInfo</source>
+                <target>Més informació</target>
+            </trans-unit> 
+
             
             
 
