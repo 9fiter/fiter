@@ -37,6 +37,7 @@ parameters:
     minecraft_server: example.org
     minecraft_websend_port: 4445
     minecraft_websend_pass: YourPassHere
+    minecraft_folder: /opt/juegos/minecraft/craftopia/
     keywords: "word, word, word, word"
     description: "example.org - Lorem ipsum dolor sit amet"
 

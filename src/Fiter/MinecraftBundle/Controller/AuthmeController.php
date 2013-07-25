@@ -58,9 +58,6 @@ class AuthmeController extends Controller{
         }else return new RedirectResponse($this->generateUrl('authme_login'));
     }
 
-
-
-
     /**
      * main
      * @Route("/main", name="authme_main")
@@ -69,7 +66,6 @@ class AuthmeController extends Controller{
     public function mainAction(){
         return array();
     }
-
 
     /**
      * show banned users
@@ -80,9 +76,11 @@ class AuthmeController extends Controller{
         $securityContext = $this->get('security.context');
         if(!$securityContext->isGranted('ROLE_ADMIN')) throw new AccessDeniedException("No tienes permiso para ver las IP's baneadas");
 
-        $ruta = '/opt/juegos/minecraft/craftopia/banned-ips.txt';
+        $mc_folder = $this->container->getParameter('minecraft_folder');
+        $ruta = $mc_folder."banned-ips.txt";
+
         if(file_exists($ruta)){
-            $archivo=\file($ruta);//ladybug_dump($archivo);
+            $archivo=file($ruta);//ladybug_dump($archivo);
             $bans = [];
             foreach ($archivo as $key => $value) {
                 if($key>2){
@@ -105,9 +103,11 @@ class AuthmeController extends Controller{
         $securityContext = $this->get('security.context');
         if(!$securityContext->isGranted('ROLE_ADMIN')) throw new AccessDeniedException("No tienes permiso para ver los usuarios baneados");
 
-        $ruta = '/opt/juegos/minecraft/craftopia/banned-players.txt';
+        $mc_folder = $this->container->getParameter('minecraft_folder');
+        $ruta = $mc_folder."banned-players.txt";
+
         if(file_exists($ruta)){
-            $archivo=\file($ruta);//ladybug_dump($archivo);
+            $archivo=file($ruta);//ladybug_dump($archivo);
             $bans = [];
             foreach ($archivo as $key => $value) {
                 if($key>2){
