@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Minecraft {{ 'main.usuarios' | trans }} - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+
+<h2>Usuario perdonado</h2>
+
+El usuario <strong>{{username}}</strong> ha sido perdonado satisfactoriamente.</br></br>
+
+{% include 'FiterMinecraftBundle:Authme:parcial/search.html.twig' %}
+
+{% endblock %}
+
+
+
+ 

@@ -8,11 +8,6 @@ articulo_show_permanent:
 
 
 
-fiter_minecraft_auth:
-    resource: "@FiterMinecraftAuthBundle/Controller/"
-    type:     annotation
-    prefix:   /{_locale}/
-
 fiter_minecraft:
     resource: "@FiterMinecraftBundle/Controller/"
     type:     annotation

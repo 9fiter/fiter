@@ -55,7 +55,7 @@ class AppKernel extends Kernel
 
             new PunkAve\FileUploaderBundle\PunkAveFileUploaderBundle(),
 
-            new Fiter\MinecraftAuthBundle\FiterMinecraftAuthBundle(),
+            
             new Raindrop\GeoipBundle\RaindropGeoipBundle(),
 
 

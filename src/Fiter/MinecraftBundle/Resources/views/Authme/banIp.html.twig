@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Minecraft {{ 'main.usuarios' | trans }} - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+
+<h2>IP baneada</h2>
+
+La ip <strong>{{ip}}</strong> ha sido baneada satisfactoriamente.</br></br>
+
+{% include 'FiterMinecraftBundle:Authme:parcial/search.html.twig' %}
+
+{% endblock %}
+
+
+
+ 

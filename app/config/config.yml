@@ -104,7 +104,7 @@ doctrine:
                 #auto_mapping: true
                 connection:       minecraft
                 mappings:
-                    FiterMinecraftAuthBundle: ~
+                    FiterMinecraftBundle: ~
 
 
 
@@ -145,7 +145,7 @@ services:
     fiter.minecraft:
         class: Fiter\DefaultBundle\Util\MinecraftServerStatus
     fiter.websend:
-        class: Fiter\MinecraftAuthBundle\Util\Websend
+        class: Fiter\MinecraftBundle\Util\Websend
         arguments:    
             host: "%minecraft_server%"
             port: "%minecraft_websend_port%"

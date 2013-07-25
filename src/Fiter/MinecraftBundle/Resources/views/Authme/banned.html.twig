@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Minecraft {{ 'main.usuarios' | trans }} - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+
+<h2>Minecraft {{ 'mc.bannedUsers' | trans }}</h2>
+
+{% include 'FiterMinecraftBundle:Authme:parcial/search.html.twig' %}
+
+{% for ban in bans %}
+    <!--<a href="#{#{ path('authme_show', { 'id': ban.id }) }#}">{#{ ban[0] }#}</a><br/>-->
+    <a href="{{ path('authme_search', { 'q': ban[0] }) }}">{{ ban[0] }}</a><br/>
+    
+    {% include 'FiterMinecraftBundle:Authme:parcial/bannedDatos.html.twig' %}
+
+    {% if ( is_granted('ROLE_ADMIN')) %}
+        <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+        <a class="btn btn-success" href="{{ path('authme_pardon', { 'username': ban[0] }) }}">Perdonar usuario</a>
+    {% endif %}
+    
+    <div style="clear:both"></div><br/>
+{% endfor %}
+
+{% endblock %}

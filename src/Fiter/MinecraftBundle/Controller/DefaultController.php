@@ -6,10 +6,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+
+/**
+ * Authme controller.
+ *
+ * @Route("/minecraft")
+ */
 class DefaultController extends Controller{
 
     /**
-     * @Route("/minecraft/playerlist")
+     * @Route("/playerlist")
      * @Template()
      */
     public function indexAction(){
@@ -37,7 +43,7 @@ class DefaultController extends Controller{
     /**
      * Minecraft status
      *
-     * @Route("/minecraft/status", name="minecraft" )     
+     * @Route("/status", name="minecraft" )     
      * @Template()
      */
     public function minecraftAction(){
@@ -57,7 +63,7 @@ class DefaultController extends Controller{
     /**
      * Minecraft status2
      *
-     * @Route("/minecraft/status2", name="minecraft2" )     
+     * @Route("/status2", name="minecraft2" )     
      * @Template()
      */
     public function minecraft2Action(){
