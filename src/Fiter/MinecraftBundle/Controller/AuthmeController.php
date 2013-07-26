@@ -88,6 +88,8 @@ class AuthmeController extends Controller{
                     array_push($bans, $value);
                 }
             }//ladybug_dump($bans);
+        }else{
+            throw $this->createNotFoundException('No se ha encontrado el archivo: banned-ips.txt');
         }  
         return array(
             'bans' => $bans
@@ -115,6 +117,8 @@ class AuthmeController extends Controller{
                     array_push($bans, $value);
                 }
             }//ladybug_dump($bans);
+        }else{
+            throw $this->createNotFoundException('No se ha encontrado el archivo: banned-players.txt');
         }
         
         return array(
@@ -365,7 +369,7 @@ class AuthmeController extends Controller{
      */
     public function onlineAction(){
 
-        $host = $this->container->getParameter('ts3_host'); $port = 25566;
+        $host = $this->container->getParameter('minecraft_server'); $port = 25566;
         $ts = fsockopen($host, $port, $errno, $errstr, 5);
         if ($ts){
             $out  = "QUERY\n";

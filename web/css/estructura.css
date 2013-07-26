@@ -1369,3 +1369,15 @@ div.poll div.vote{
     right: 12px;
     top: 7px;
 }
+.mcdonations{
+    display: inline-block;
+    font-size: 2.4em;
+    color: rgba(236, 255, 207, 0.65);
+    text-shadow: 6px 6px 11px rgba(0, 0, 0, 1);
+    font-weight: bolder;
+    margin-top: 71px;
+}
+.mcdonations:hover{
+    color: rgba(168, 255, 100, 0.69);
+    text-shadow: 2px 2px 8px #2A6900;
+}
