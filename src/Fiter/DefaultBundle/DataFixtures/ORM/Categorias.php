@@ -57,7 +57,7 @@ class Categorias extends AbstractFixture implements OrderedFixtureInterface, Con
         $cat[2] = new Categoria();
         $cat[2]->setUsuario($this->getReference('usr-anon'));
         $cat[2]->setNombre('Diseño web');
-        //$cat[2]->setPath('d5ffc42f02c2ee4493ee1515987a601d9ed9490e.jpeg');
+        $cat[2]->setPath('d5ffc42f02c2ee4493ee1515987a601d9ed9490e.jpeg');
         $cat[2]->setVisitas(78);
         $manager->persist($cat[2]);
         $manager->flush();
