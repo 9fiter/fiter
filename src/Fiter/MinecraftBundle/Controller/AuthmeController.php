@@ -632,7 +632,7 @@ class AuthmeController extends Controller{
             $accounts = $em->getRepository('FiterMinecraftBundle:Authme')->findByIp($entity->getIp());
             foreach ($accounts as $key => $value) if($value->getId()==$entity->getId()) unset($accounts[$key]);
         }
-        ladybug_dump($entities);
+        //ladybug_dump($entities);
         return array(
             'entity'      => $entities[0],
             'accounts'      => $accounts,
