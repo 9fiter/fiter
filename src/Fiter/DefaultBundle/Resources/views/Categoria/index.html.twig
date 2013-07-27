@@ -10,8 +10,11 @@
             {% if entity.path %}
                 <img class="indexCategorias"
                      src="{{ asset(  ['/uploads/categoriaimages/', entity.path]|join  )|imagine_filter('thumb_50x50') }}" alt="imagen no encontrada" />
-  
+            {% else %}
+                <img class="indexCategorias" src="/img/category_50_50.png" alt="imagen no encontrada" />
             {% endif %}
+
+
             <h3><a href="{{ path('categoria_show', { 'id': entity.id, 'slug': entity.slug }) }}">{{ entity.nombre }}</a></h3>
             {% include 'FiterDefaultBundle:Categoria:datos.html.twig' with {'entity': entity} %}
         </header>

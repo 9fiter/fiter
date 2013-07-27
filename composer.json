@@ -61,7 +61,7 @@
         "sonata-project/block-bundle": "2.1.*@dev",
         "knplabs/knp-menu-bundle": "1.1.x-dev",
 
-        "lifo/remote-control": "dev-master",
+        
         "a2lix/translation-form-bundle": "0.*@dev",
 
         "punkave/symfony2-file-uploader-bundle": "master",

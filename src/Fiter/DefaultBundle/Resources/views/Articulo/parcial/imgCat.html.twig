@@ -1,9 +1,11 @@
 <a href="{{ path('articulo_show', { 'id': entity.id, 'slug': entity.slug }) }}">
     {% if entity.path %}
         <img style="float: left;margin-right: .7em;" src="{{ asset(  ['/uploads/documents/', entity.path]|join  )|imagine_filter('thumb_170x114') }}" alt="imagen no encontrada" />
-    {% elseif entity.categoria[0].path is defined %}
+    {% elseif entity.categoria[0].path %}
         <img style="float: left;margin-right: .7em;" src="{{ asset(  ['/uploads/categoriaimages/', entity.categoria[0].path]|join  )|imagine_filter('thumb_170x114') }}" alt="imagen no encontrada" />
     {#% elseif entity.path2 %#}
         <!-- <img style="float: left;margin-right: .7em;" src="{#{ asset(  ['/uploads/categoriaimages/', entity.path2]|join  )|imagine_filter('thumb_170x114') }#}" alt="imagen no encontrada" /> -->
+    {% else %}
+    	<img style="float: left;margin-right: .7em;" src="/img/category_170_114.png" alt="imagen no encontrada" />
     {% endif %}
 </a>

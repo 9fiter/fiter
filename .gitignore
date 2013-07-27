@@ -8,7 +8,7 @@ app/bootstrap*
 vendor/*
 */logs/*
 */cache/*
-lucene/*
+lucene/index1/*
 web/uploads/*
 #web/uploads/cache/*
 web/bundles/*

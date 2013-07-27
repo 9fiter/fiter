@@ -28,6 +28,7 @@ class ArticuloType extends AbstractType{
             ))
             ->add('titulo', 'text' ,array(
                  'label'=> 'main.title',
+                 'required' => true,
             ))
             ->add('categoria', null ,array(
                  'label'=> 'main.categorias',

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "adab533077be710bfeac0f67429c7130",
+    "hash": "f36efbce28fa20b270202ef45ce51c9f",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -1136,12 +1136,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRest.git",
-                "reference": "0.8.0"
+                "reference": "b836af42daef72117b1694934a77fffa9d4a82a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRest/zipball/0.8.0",
-                "reference": "0.8.0",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRest/zipball/b836af42daef72117b1694934a77fffa9d4a82a8",
+                "reference": "b836af42daef72117b1694934a77fffa9d4a82a8",
                 "shasum": ""
             },
             "require": {
@@ -1178,7 +1178,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2013-03-02 20:35:05"
+            "time": "2013-07-24 18:23:56"
         },
         {
             "name": "friendsofsymfony/rest-bundle",
@@ -1187,12 +1187,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "b5ba32718c036ba42a32354d854b8397c70773b0"
+                "reference": "4c573ca06686134a11388d2de55633db0e123e2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/b5ba32718c036ba42a32354d854b8397c70773b0",
-                "reference": "b5ba32718c036ba42a32354d854b8397c70773b0",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/4c573ca06686134a11388d2de55633db0e123e2e",
+                "reference": "4c573ca06686134a11388d2de55633db0e123e2e",
                 "shasum": ""
             },
             "require": {
@@ -1252,7 +1252,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2013-07-18 08:40:32"
+            "time": "2013-07-26 14:24:53"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -1261,12 +1261,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "6fc28e41805868c6c635de12266c40595c2e7ce8"
+                "reference": "be211eced9820a7ed4cb5bd80b0774e00eef1845"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/6fc28e41805868c6c635de12266c40595c2e7ce8",
-                "reference": "6fc28e41805868c6c635de12266c40595c2e7ce8",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/be211eced9820a7ed4cb5bd80b0774e00eef1845",
+                "reference": "be211eced9820a7ed4cb5bd80b0774e00eef1845",
                 "shasum": ""
             },
             "require": {
@@ -1321,7 +1321,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2013-07-18 14:23:03"
+            "time": "2013-07-25 15:37:42"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -2303,57 +2303,6 @@
                 "http client"
             ],
             "time": "2013-06-04 15:32:22"
-        },
-        {
-            "name": "lifo/remote-control",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lifo101/remote-control.git",
-                "reference": "187d2cb17c3d74ede80ce7cbf815d9445d4497ec"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lifo101/remote-control/zipball/187d2cb17c3d74ede80ce7cbf815d9445d4497ec",
-                "reference": "187d2cb17c3d74ede80ce7cbf815d9445d4497ec",
-                "shasum": ""
-            },
-            "require": {
-                "ext-expect": "*",
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": [
-
-                ]
-            },
-            "autoload": {
-                "psr-0": {
-                    "Lifo\\RemoteControl\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jason Morriss",
-                    "email": "lifo2013@gmail.com"
-                }
-            ],
-            "description": "Remote control for network devices",
-            "keywords": [
-                "cisco",
-                "control",
-                "expect",
-                "network",
-                "remote",
-                "ssh",
-                "telnet"
-            ],
-            "time": "2013-06-20 11:02:19"
         },
         {
             "name": "liip/imagine-bundle",
@@ -3800,7 +3749,6 @@
         "sonata-project/doctrine-orm-admin-bundle": 20,
         "sonata-project/block-bundle": 20,
         "knplabs/knp-menu-bundle": 20,
-        "lifo/remote-control": 20,
         "a2lix/translation-form-bundle": 20,
         "raindrop/geoip-bundle": 20
     },

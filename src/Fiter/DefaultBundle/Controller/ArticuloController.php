@@ -63,7 +63,7 @@ class ArticuloController extends Controller{
         $paginador->paginate(
             $em->getRepository('FiterDefaultBundle:Articulo')->findAllArticulosActivosSubCategoria($slug)
         )->getResult();
-        if (!$entities) { throw $this->createNotFoundException('No se ha encontrado ningun resultado'); }
+        //if (!$entities) { throw $this->createNotFoundException('No se ha encontrado ningun resultado'); }
         $formato = $this->get('request')->getRequestFormat();
         return $this->render('FiterDefaultBundle:Articulo:indexSubCategoria.'.$formato.'.twig', array(
             'entities' => $entities,
@@ -94,7 +94,7 @@ class ArticuloController extends Controller{
         $paginador->paginate(
             $em->getRepository('FiterDefaultBundle:Articulo')->findAllArticulosActivosCategoria($slug)
         )->getResult();
-        if (!$entities) { throw $this->createNotFoundException('No se ha encontrado ningun resultado'); }
+        //if (!$entities) { throw $this->createNotFoundException('No se ha encontrado ningun resultado'); }
         $formato = $this->get('request')->getRequestFormat();
         return $this->render('FiterDefaultBundle:Articulo:indexCategoria.'.$formato.'.twig', array(
             'entities' => $entities,
@@ -173,7 +173,7 @@ class ArticuloController extends Controller{
     public function listaMasVistosAction(){
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('FiterDefaultBundle:Articulo')->findListaMasVistos();
-        if (!$entities) throw $this->createNotFoundException('No se ha encontrado ningun resultado');
+        //if (!$entities) throw $this->createNotFoundException('No se ha encontrado ningun resultado');
 
         return array(
             'entities' => $entities
@@ -188,7 +188,7 @@ class ArticuloController extends Controller{
     public function listaMasValoradosAction(){
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('FiterDefaultBundle:Articulo')->findListaMasValorados();
-        if (!$entities) throw $this->createNotFoundException('No se ha encontrado ningun resultado');
+        //if (!$entities) throw $this->createNotFoundException('No se ha encontrado ningun resultado');
 
         return array(
             'entities' => $entities
@@ -203,7 +203,7 @@ class ArticuloController extends Controller{
     public function listaActualizacionesAction(){
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('FiterDefaultBundle:Articulo')->findListaActualizaciones();
-        if (!$entities) throw $this->createNotFoundException('No se ha encontrado ningun resultado');
+        //if (!$entities) throw $this->createNotFoundException('No se ha encontrado ningun resultado');
 
         return array(
             'entities' => $entities
@@ -218,7 +218,7 @@ class ArticuloController extends Controller{
     public function listaRelacionadosAction($slug){
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('FiterDefaultBundle:Articulo')->findListaRelacionados($slug);
-        if (!$entities) throw $this->createNotFoundException('No se ha encontrado ningun resultado');
+        //if (!$entities) throw $this->createNotFoundException('No se ha encontrado ningun resultado');
         return array('entities' => $entities);
     }
     /**
@@ -409,7 +409,7 @@ class ArticuloController extends Controller{
     public function crearIndiceAction(){
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('FiterDefaultBundle:Articulo')->findTodosLosArticulos();
-        if (!$entities) throw $this->createNotFoundException('No se ha encontrado ningun resultado');
+        //if (!$entities) throw $this->createNotFoundException('No se ha encontrado ningun resultado');
         //Reconstruir el indice
         $luceneSearch = $this->get('ivory_lucene_search');
         $luceneSearch->eraseIndex('identifier1');
@@ -444,7 +444,7 @@ class ArticuloController extends Controller{
         $paginador->setItemsPerPage(10);
         $paginador->setMaxPagerItems(10);
         $entities = $this->get('ivory_lucene_search')->getIndex('identifier1')->find($texto); 
-        if (!$entities) { throw $this->createNotFoundException('No se ha encontrado ningun resultado'); }
+        //if (!$entities) { throw $this->createNotFoundException('No se ha encontrado ningun resultado'); }
         return $this->render('FiterDefaultBundle:Articulo:buscar.html.twig', array(
             'entities' => $entities,
             'paginador' => $paginador,
