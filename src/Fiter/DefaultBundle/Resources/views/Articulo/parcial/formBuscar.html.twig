@@ -1,4 +1,9 @@
 <form class="buscar" action="{{ path('articulobuscar') }}" method="GET">
 <input type="text" name="q" id="q"/><br>
-  <input type="submit" value="{{ 'main.buscar' | trans }}">
+  {#<input type="submit" value="{{ 'main.buscar' | trans }}">#}
+  <button type="submit">
+  		{#{ 'main.buscar' | trans }#}
+  		<img src="/img/lupa27.png" />
+  </button>
+  
 </form>
