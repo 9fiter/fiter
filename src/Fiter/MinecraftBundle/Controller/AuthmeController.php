@@ -496,7 +496,7 @@ class AuthmeController extends Controller{
 
     /**
      * Finds and displays a Authme entity by username.
-     * @Route("/show/{username}", name="authme_show_by_username")
+     * @Route("/show/name/{username}", name="authme_show_by_username")
      * @Template("FiterMinecraftBundle:Authme:show.html.twig")
      */
     public function showByUsernameAction($username){
@@ -621,7 +621,7 @@ class AuthmeController extends Controller{
         $paginador->setMaxPagerItems(10);
         $entities = 
         $paginador->paginate(
-            //$em->getRepository('FiterMinecraftBundle:Authme')->findOrdenadosDQL()
+            //$em->getRepository('FiterMinecraftBundle:Authme')->findAll()
             $em->createQuery('SELECT o FROM FiterMinecraftBundle:Authme o WHERE o.skin=1 ORDER BY o.lastlogin DESC')
         )->getResult();
 
@@ -632,8 +632,9 @@ class AuthmeController extends Controller{
             $accounts = $em->getRepository('FiterMinecraftBundle:Authme')->findByIp($entity->getIp());
             foreach ($accounts as $key => $value) if($value->getId()==$entity->getId()) unset($accounts[$key]);
         }
+        ladybug_dump($entities);
         return array(
-            'entity'      => $entity,
+            'entity'      => $entities[0],
             'accounts'      => $accounts,
             'paginador' => $paginador
         );
