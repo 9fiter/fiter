@@ -512,6 +512,7 @@ class AuthmeController extends Controller{
             $em->persist($entity);
             $em->flush();
         }
+        ladybug_dump($entity);
         //$fecha = date('jS F Y h:i:s A (T)', $entity->getLastLogin()/ 1000);
         //$fecha2 = date("Y-m-d\TH:i:sO", $entity->getLastLogin()/ 1000);
         $fecha = date('Y-m-d H:i:s',$entity->getLastLogin()/ 1000) ;
