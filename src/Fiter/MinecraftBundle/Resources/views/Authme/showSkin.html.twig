@@ -40,7 +40,13 @@
     <img src="{{ path('authme_skin', { 'id': entity.id, 't' : '0' }) }}">
 </a>
 <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
-<a href="http://www.minecraft.net/profile/skin/remote?url=http://{{domain}}{{ path('authme_skin', { 'id': entity.id, 't' : '0' }) }}" class="btn btn-success">Ponte este skin</a>
+{#<a href="http://www.minecraft.net/profile/skin/remote?url=http://{{domain}}{{ path('authme_skin', { 'id': entity.id, 't' : '0' }) }}" class="btn btn-success">Ponte este skin</a>#}
+<a href="http://www.minecraft.net/profile/skin/remote?url=http://{{domain}}/mcskin/img/{{entity.username}}.png" class="btn btn-success">Ponte este skin</a>
+
+
+
+/mcskin/img/roijas.png
+
 <a href="{{ path('authme_skin', { 'id': entity.id, 't' : '0' }) }}" type="application/octet-stream" download class="btn btn-success">{{ 'main.skinDownload' | trans }}</a><br/>
 <div id="skinpreview"></div>
 <h1></h1>
