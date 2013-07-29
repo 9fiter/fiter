@@ -484,7 +484,7 @@ class Categoria{
     public function preUpload()    {
         if($this->noActualizar==false) $this->setFechaActualizacion(new \DateTime("now"));
         if (null !== $this->imagen) {
-            if ($imagen = $this->getAbsolutePath() && file_exists($this->getAbsolutePath()) ) unlink($imagen); //borrar la imagen anterior si existe
+            if ( file_exists($this->getAbsolutePath()) ) unlink($this->getAbsolutePath()); //borrar la imagen anterior si existe
             // do whatever you want to generate a unique name
             $filename = sha1(uniqid(mt_rand(), true));
             $this->path = $filename.'.'.$this->imagen->guessExtension();

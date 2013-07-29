@@ -8,12 +8,19 @@
 
 {% include 'FiterMinecraftBundle:Authme:parcial/search.html.twig' %}
 
-<a href="{{ path('authme_login')}}">{{ 'mc.login' | trans }}</a><br/>
+<h3>Admin</h3>
+<a href="/coreprotect">Coreprotect</a></br>
 <a href="{{ path('authme_getnacionalidades')}}">{{ 'main.getNacionalidades' | trans }}</a><br/>
 <a href="{{ path('authme_banned_ips')}}">{{ 'mc.BannedIps' | trans }}</a><br/>
 <a href="{{ path('authme_banned')}}">{{ 'mc.BannedUsers' | trans }}</a><br/>
+<a href="/spaceBukkit/SpaceBukkitPanel-1.2.1/index.php">Spacebukkit</a></br>
+
+<h3>Más</h3>
 <a href="{{ path('authme_online')}}">{{ 'main.onlineUsers' | trans }}</a><br/>
 <a href="{{ path('authme')}}">{{ 'main.registeredUsers' | trans }}</a><br/>
 <a href="{{ path('authme_show_skin')}}">{{ 'main.userSkins' | trans }}</a><br/>
+<a href="{{ path('authme_login')}}">{{ 'mc.login' | trans }}</a><br/>
+
+
 
 {% endblock %}

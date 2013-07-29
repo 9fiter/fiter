@@ -91,9 +91,8 @@
                                 Anónimo
                             {% endif %}</a>
                             {% if ( is_granted('ROLE_ADMIN')) %}
-                                <a href="{{ path('admin_inicio') }}">{{ 'main.admin' | trans }}</a>
+                                {#<a href="{{ path('admin_inicio') }}">{{ 'main.admin' | trans }}</a>#}
                                 <a href="{{ path('sonata_admin_dashboard') }}">Sonata</a>
-                                <!--<a href="/spaceBukkit/SpaceBukkitPanel-1.2.1/index.php">Spacebukkit</a>-->
                                 <a href="{{ path('authme_main') }}">Minecraft</a>
                                 <a href="{{ path('teamspeak') }}">Teamspeak</a>
                             {% endif %}
@@ -136,6 +135,15 @@
                         <li><a href="{{ path('poll_new') }}">{{ 'main.addPoll' | trans }}</a></li>
                         <li><a href="{{ path('articulolikeusuario', { 'nombre': app.user.username }) }}">Likes</a></li>
                     {% endif %}
+
+
+
+                    
+                    {% if ( is_granted('ROLE_ADMIN')) %}
+                        <li><a href="{{ path('categoria') }}">{{ 'main.categorias' | trans }}</a></li>
+                    {% endif %}
+
+
                     
                 </ul>
             </nav>
