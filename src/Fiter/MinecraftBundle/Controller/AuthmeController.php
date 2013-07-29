@@ -359,7 +359,13 @@ class AuthmeController extends Controller{
         }
         $headers = array(
             'Content-Type'     => 'image/png',
-            'Content-Disposition' => 'inline; filename="image.png"'
+           // 'Content-Disposition' => 'inline; filename=".$id."X".$t.".png"'
+
+            'Accept-Ranges'     => 'bytes',
+            'Cache-Control'     => 'max-age=2592000',
+            'Content-Length'     => '3414',
+
+
         );
         if (!$avatar) return new Response($av, 200, $headers);
         else return new Response($skin, 200);
