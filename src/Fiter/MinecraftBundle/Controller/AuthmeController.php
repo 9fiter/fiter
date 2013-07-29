@@ -359,7 +359,7 @@ class AuthmeController extends Controller{
         }
         $headers = array(
             'Content-Type'     => 'image/png',
-            'Content-Disposition' => 'inline; filename=".$id."X".$t.".png"'
+            'Content-Disposition' => 'inline; filename='.$id.'X'.$t.'.png'
             
 
 
