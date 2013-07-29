@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Minecraft {{ 'main.usuarios' | trans }} - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+
+<h2>{{ username }}</h2>
+
+<pre>
+{% for i in info %}
+    {{i}}
+{% endfor %}
+</pre>
+
+{% endblock %}

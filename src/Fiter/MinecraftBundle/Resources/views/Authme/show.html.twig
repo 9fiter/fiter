@@ -26,10 +26,11 @@
     {% include 'FiterMinecraftBundle:Authme:parcial/datos.html.twig' %}
     {% include 'FiterMinecraftBundle:Authme:parcial/banButtons.html.twig' %}
     {% if ( is_granted('ROLE_ADMIN')) %}
-        <input class="btn btn-danger" form="form_delete_authme" type="submit" value="Eliminar cuenta"></input>
+        <input class="btn btn-danger" form="form_delete_authme" type="submit" value="Eliminar cuenta"></input><br/><br/>
     {% endif %}
     
     <div style="clear:both"></div>
+    <br/>
     {% render "FiterMinecraftBundle:Jobs:showUser" with { 'username': entity.username } %}
     {% render "FiterMinecraftBundle:Skillz:showUser" with { 'username': entity.username } %}
     <br/>

@@ -16,10 +16,10 @@
     <strong>{{ 'mc.Lastlogin' | trans }}:</strong> {{ entity.lastlogin }} ({{ entity.lastlogin|time_ago_in_words }})<br/>
     <img style="float:left;margin-right:3px" src='/mcskin/minecraft.php?u={{ entity.username }}&a=true' />
     <!--<img style="float:left;margin-right:3px" src="{{ path('authme_skin', { 'id': entity.id, 't' : '1' }) }}" />-->
-    
 
     {% include 'FiterMinecraftBundle:Authme:parcial/datos.html.twig' %}
     {% include 'FiterMinecraftBundle:Authme:parcial/banButtons.html.twig' %}
+
     <div style="clear:both"></div><br/><br/>
 {% endfor %}
 {#<a href="{{ path('authme_new') }}">Create a new entry</a>#}

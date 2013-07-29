@@ -3,4 +3,5 @@
     <a class="btn btn-primary" href="{{ path('authme_ban', { 'username': entity.username }) }}">Banear usuario</a>
     <a class="btn btn-danger" href="{{ path('authme_banIp', { 'ip': entity.ip }) }}">Banear IP</a>
     <a class="btn btn-success" href="{{ path('authme_pardon', { 'username': entity.username }) }}">Perdonar usuario</a>
+    <a href="{{ path('authme_info', { 'username': entity.username }) }}" class="btn btn-success">Mas info</a><br/><br/>
 {% endif %}

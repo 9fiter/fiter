@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
+use \Symfony\Component\Yaml\Parser;
+
 /**
  * Authme controller.
  *
@@ -96,6 +98,7 @@ class AuthmeController extends Controller{
         );
     }
 
+
     /**
      * show banned users
      * @Route("/banned", name="authme_banned")
@@ -117,14 +120,38 @@ class AuthmeController extends Controller{
                     array_push($bans, $value);
                 }
             }//ladybug_dump($bans);
-        }else{
-            throw $this->createNotFoundException('No se ha encontrado el archivo: banned-players.txt');
-        }
+        }else throw $this->createNotFoundException('No se ha encontrado el archivo: banned-players.txt');
         
         return array(
             'bans' => $bans
         );
 
+    }
+
+    /**
+     * show more info about users
+     * @Route("/info/{username}", name="authme_info")
+     * @Template()
+     */
+    public function infoAction($username){
+        $securityContext = $this->get('security.context');
+        if(!$securityContext->isGranted('ROLE_ADMIN')) throw new AccessDeniedException("No tienes permiso para ver los usuarios baneados");
+
+        $mc_folder = $this->container->getParameter('minecraft_folder');
+        $ruta = $mc_folder."plugins/Essentials/userdata/".$username.".yml";
+        if(file_exists($ruta)){
+            $archivo=file($ruta);//ladybug_dump($archivo);
+            //$yml_arr =  yaml_parse_file($archivo); ladybug_dump($yml_arr);
+            $info = [];
+            foreach ($archivo as $key => $value) {
+                array_push($info, $value);
+            }//ladybug_dump($info);
+        }else throw $this->createNotFoundException('No se ha encontrado el archivo: '.$username.'.yml');
+        return array(
+            'username' => $username,
+            'info' => $info,
+
+        );
     }
 
     /**
