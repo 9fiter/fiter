@@ -360,9 +360,7 @@ class AuthmeController extends Controller{
         $headers = array(
             'Content-Type'     => 'image/png',
            // 'Content-Disposition' => 'inline; filename=".$id."X".$t.".png"'
-
             'Accept-Ranges'     => 'bytes',
-            'Cache-Control'     => 'max-age=2592000',
             'Content-Length'     => '3414',
 
 
