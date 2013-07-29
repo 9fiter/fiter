@@ -217,7 +217,8 @@ class AuthmeController extends Controller{
         $paginador->setMaxPagerItems(10);
         $entities = 
         $paginador->paginate(
-            $em->getRepository('FiterMinecraftBundle:Authme')->findByUsername($username)
+            //$em->getRepository('FiterMinecraftBundle:Authme')->findByUsername($username)
+            $em->createQuery('SELECT o FROM FiterMinecraftBundle:Authme o WHERE o.username LIKE  :opc')->setParameter('opc', "%".$username."%")
         )->getResult();
 
         foreach ($entities as $entity){
@@ -412,7 +413,7 @@ class AuthmeController extends Controller{
         $em = $this->getDoctrine()->getManager('minecraft');
         $entities = $em->getRepository('FiterMinecraftBundle:Authme')->findAll();
         foreach ($entities as $entity){
-            if($entity->getCountryCode()==null){
+            if($entity->getCountryName()==null){
                 $geoip = $this->get('raindrop.geoip')->lookup($entity->getIp());
                 if($geoip){
                     $entity->setCountryCode($geoip->getCountryCode());
@@ -456,7 +457,7 @@ class AuthmeController extends Controller{
         if($geoip){
             $entity->setCountryCode($geoip->getCountryCode());
             $entity->setCountryCode3($geoip->getCountryCode3());
-            $entity->setCountryCode3($geoip->getCountryName());
+            $entity->setCountryName($geoip->getCountryName());
             //ladybug_dump($geoip);
             //$entity->setRegion($geoip->getRegion());
             try {$entity->setRegion($geoip->getRegion()); } catch(\Exception $e){ 
