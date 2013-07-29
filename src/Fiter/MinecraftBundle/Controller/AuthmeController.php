@@ -361,7 +361,7 @@ class AuthmeController extends Controller{
             'Content-Type'     => 'image/png',
            // 'Content-Disposition' => 'inline; filename=".$id."X".$t.".png"'
             'Accept-Ranges'     => 'bytes',
-            'Content-Length'     => '3414',
+            
 
 
         );
