@@ -286,7 +286,7 @@ class AuthmeController extends Controller{
 
     /**
      * Dowload and save skin for an Authme entity.
-     * @Route("/{id}/skin/avatar/{{t}}", name="authme_skin"  )
+     * @Route("/{id}/skin/avatar/{{t}}.png", name="authme_skin"  )
      * @Template()
      */
     public function skinAction($id,$t ){
