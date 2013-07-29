@@ -8,9 +8,37 @@
         <h3><a href="{{ path('articulo_show', { 'id': entity.id, 'slug': entity.slug }) }}">{{ entity.titulo }}</a></h3>
         {% include 'FiterDefaultBundle:Articulo:parcial/datos.html.twig' with {'entity': entity} %}
     </header>
-        
+
+    <style type="text/css">
+    #menu_imagen{
+        position:relative;
+        display: inline-block;
+    }
+    #menu_imagen:hover .menu{ display: inline-block;}
+    .menu{
+        position: absolute;
+        color: #fff;
+        z-index: 99;
+        right: 0;
+        top: 1em;
+        padding: .5em 1em;
+        border-radius: 0;
+        border-top-left-radius: 1.5em;
+        border-bottom-left-radius: 1.5em;
+        background-color: rgba(0, 0, 0, 0.11);
+        box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 0.47);
+        display: none;
+    }
+    </style>
+
     {% if entity.path and entity.mostrarImagen %}
-        <img src="{{ asset(['uploads/documents/', entity.path]|join) }}" alt="{{ entity.titulo}} imagen no encontrada" class="imgArticulo" />
+        <div id="menu_imagen">
+            <div class="menu">
+                <a target="_blank" href="{{ asset(['uploads/documents/', entity.path]|join) }}"><img src="/img/lupa27.png" title="Aumentar" /></a>
+                {#<a target="_blank" href="{{ asset(['uploads/documents/', entity.path]|join) }}"><img src="/img/lupa27.png" title="Descargar" /></a>#}
+            </div>
+            <img id="menu_imagen" src="{{ asset(['uploads/documents/', entity.path]|join) }}" alt="{{ entity.titulo}} imagen no encontrada" class="imgArticulo" />
+        </div>
     {% endif %}
         
     <div style="clear: both"></div>
@@ -112,31 +140,27 @@
     {% if entity.activarComentarios %}   
         <div class="comentarios"><a href="#">Comentarios</a></div>
         {#% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': entity.id } %#}
-    {#% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'type_' ~ entity.id } %#}
+                    {#% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'type_' ~ entity.id } %#}
         {#% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': entity.id } %#}
         {#% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'foo'} %#}
-
         <!--
         <script src="/js/35a8e64_comments_1.js"></script>
         <script src="/js/35a8e64.js"></script>    
         <script src="/js/jquery.form.min.js"></script>
         -->
-
         <div id="fos_comment_thread" data-thread="{{ thread.id }}">
         {% include 'FiterCommentBundle:Thread:comments.html.twig' with {
             'comments': comments,
             'thread': thread
         } %}
         </div>
-        
-    <script src="/js/35a8e64_comments_1.js"></script>
-{% endif %} 
-
-
-
-    
-    
-    <a class="boton" href="{{ path('articulo') }}">Volver</a>
+        <script src="/js/35a8e64_comments_1.js"></script>
+    {% else %}
+        <div class="vetealforo">
+            <p>Los comentarios de este artículo están desactivados.</p>
+            <p><a href="/phpbb3/">Utiliza el Foro</a></p>
+        </div>
+    {% endif %}
 </article>   
 {% endblock %}
 
@@ -161,15 +185,6 @@
             });
         </script>
     {% endif %}
-
-
-
-
-
-
-
-
-
 
     {% if entity.poll %}
     <script class="code" type="text/javascript">
@@ -210,8 +225,6 @@
             $('#twitter').find('a').attr('target' , 'blank');
              
         });
-        
-
     });
     </script>
     {% endif %}

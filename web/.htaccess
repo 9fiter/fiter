@@ -14,21 +14,11 @@
 
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.*)$ app.php [QSA,L]
-    
-    
-    
+
+    RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?fiter.local [NC]
+    #RewriteRule \.(jpg|jpeg|png|gif)$ /img/nohotlinkimage.png [NC,R,L]
+    RewriteRule \.(jpg|jpeg|png|gif)$ / [NC,R,L]
 </IfModule>
-
-
-
-
-
-
-
-
-
-
-
 
 
 

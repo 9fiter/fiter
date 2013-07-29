@@ -1399,3 +1399,22 @@ div.poll div.vote{
     color: rgba(168, 255, 100, 0.69);
     text-shadow: 2px 2px 8px #2A6900;
 }
+.vetealforo{
+background-color: #929292;
+color: #F1F1F1;
+width: 96%;
+max-width: 390px;
+border-radius: 5em 0 5em 0;
+padding: 1em 2%;
+margin: 2em auto 0 auto;
+box-shadow: 1px 1px 12px 0px rgba(26, 26, 26, 1);
+text-align: center;
+}
+.vetealforo a{
+color: #fff;
+font-size: 1.3em;
+font-weight: bolder;
+}
+.vetealforo a:hover{
+color: #79DFFF;
+}
