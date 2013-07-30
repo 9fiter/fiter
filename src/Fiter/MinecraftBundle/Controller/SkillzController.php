@@ -17,6 +17,36 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  * @Route("/minecraft/skills")
  */
 class SkillzController extends Controller{
+
+
+    /**
+     * show more info about users
+     * @Route("/info", name="skillz_info")
+     * @Template()
+     */
+    public function infoAction(){
+        $securityContext = $this->get('security.context');
+        if(!$securityContext->isGranted('ROLE_ADMIN')) throw new AccessDeniedException("No tienes permiso para ver los usuarios baneados");
+
+        $mc_folder = $this->container->getParameter('minecraft_folder');
+        $ruta = $mc_folder."plugins/Skillz/skills.yml";
+        if(file_exists($ruta)) {
+            $info =  yaml_parse_file($ruta); //ladybug_dump($info); 
+            unset($info['useMySQL']);
+            unset($info['MySQL-User']);
+            unset($info['MySQL-Pass']);
+            unset($info['MySQL-Host']);
+            unset($info['MySQL-Port']);
+            unset($info['MySQL-Database']);
+            unset($info['MySQL-Table']);
+        }else throw $this->createNotFoundException('No se ha encontrado el archivo: skills.yml');
+        return array(
+            'info' => $info,
+        );
+    }
+
+
+
     /**
      * Lists all Skillz entities.
      * @Route("/", name="skillz")

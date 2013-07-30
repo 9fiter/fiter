@@ -21,6 +21,27 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  */
 class JobsController extends Controller{
 
+
+    /**
+     * show more info about users
+     * @Route("/info", name="jobs_info")
+     * @Template()
+     */
+    public function infoAction(){
+        $securityContext = $this->get('security.context');
+        if(!$securityContext->isGranted('ROLE_ADMIN')) throw new AccessDeniedException("No tienes permiso para ver los usuarios baneados");
+
+        $mc_folder = $this->container->getParameter('minecraft_folder');
+        $ruta = $mc_folder."plugins/Jobs/jobConfig.yml";
+        if(file_exists($ruta)) {
+            $info =  yaml_parse_file($ruta); //ladybug_dump($info); 
+        }else throw $this->createNotFoundException('No se ha encontrado el archivo: jobConfig.yml');
+        return array(
+            'info' => $info,
+        );
+    }
+
+
     /**
      * Lists all Jobs entities.
      * @Route("/", name="jobs")

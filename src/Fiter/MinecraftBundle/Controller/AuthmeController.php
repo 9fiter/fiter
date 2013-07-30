@@ -140,17 +140,15 @@ class AuthmeController extends Controller{
         $mc_folder = $this->container->getParameter('minecraft_folder');
         $ruta = $mc_folder."plugins/Essentials/userdata/".$username.".yml";
         if(file_exists($ruta)){
-            $archivo=file($ruta);//ladybug_dump($archivo);
-            //$yml_arr =  yaml_parse_file($archivo); ladybug_dump($yml_arr);
-            $info = [];
-            foreach ($archivo as $key => $value) {
-                array_push($info, $value);
-            }//ladybug_dump($info);
+            //$str = ""; foreach ($archivo as $key => $value) $str=$str.$value;
+            $info =  yaml_parse_file($ruta); //ladybug_dump($info);
+            $info['timestamps']['login'] = date('Y-m-d H:i:s',$info['timestamps']['login']/ 1000) ;
+            $info['timestamps']['logout'] = date('Y-m-d H:i:s',$info['timestamps']['logout']/ 1000) ;
+            $info['timestamps']['lastteleport'] = date('Y-m-d H:i:s',$info['timestamps']['lastteleport']/ 1000) ;
         }else throw $this->createNotFoundException('No se ha encontrado el archivo: '.$username.'.yml');
         return array(
             'username' => $username,
             'info' => $info,
-
         );
     }
 

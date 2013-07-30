@@ -6,10 +6,52 @@
 
 <h2>{{ username }}</h2>
 
-<pre>
-{% for i in info %}
-    {{i}}
+
+{{ladybug_dump(info)}}
+
+<strong>ipAddress: </strong>{{info.ipAddress}}<br/>
+<strong>Login: </strong>{{info.timestamps.login}} ({{info.timestamps.login|time_ago_in_words}})<br/>
+<strong>Logout: </strong>{{info.timestamps.logout}} ({{info.timestamps.logout|time_ago_in_words}})<br/>
+<strong>Last teleport: </strong>{{info.timestamps.lastteleport}} ({{info.timestamps.lastteleport|time_ago_in_words}})<br/>
+<br/>
+
+
+
+
+
+<strong>Money: </strong>{{info.money}}<br/>
+<strong>afk: </strong>{{info.afk}}<br/>
+<br/>
+
+<strong>Logout location:</strong> /tppos {{info.logoutlocation.x|number_format}} {{info.logoutlocation.1|number_format}} {{info.logoutlocation.z|number_format}}<br/>
+{#world: {{info.logoutlocation.world}}<br/>#}
+<strong>yaw: </strong>{{info.logoutlocation.yaw}}<br/>
+<strong>pitch: </strong>{{info.logoutlocation.pitch}}<br/>
+<br/>
+
+<strong>Last location: </strong> /tppos {{info.lastlocation.x|number_format}} {{info.lastlocation.1|number_format}} {{info.lastlocation.z|number_format}}<br/>
+{#world: {{info.lastlocation.world}}<br/>#}
+<strong>yaw: </strong>{{info.lastlocation.yaw}}<br/>
+<strong>pitch: </strong>{{info.lastlocation.pitch}}<br/>
+<br/>
+
+
+{% if info.ban is defined %}
+	<h2>Ban</h2>
+	<strong>Ban reason: </strong>{{info.ban.reason}}<br/>
+	<strong>Ban timeout: </strong>{{info.ban.timeout}}<br/>
+	<br/>
+{% endif %}
+
+<h2>Homes</h2>
+{% for key, home in info.homes %}
+	<strong>{{key}}:</strong> /tppos {{home.x|number_format}} {{home.1|number_format}} {{home.z|number_format}}<br/>
+    {#world: {{home.world}}<br/>#}
+	<strong>yaw: </strong>{{home.yaw}}<br/>
+	<strong>pitch: </strong>{{home.pitch}}<br/>
+	<br/>
 {% endfor %}
-</pre>
+
+<br/>
 
 {% endblock %}
