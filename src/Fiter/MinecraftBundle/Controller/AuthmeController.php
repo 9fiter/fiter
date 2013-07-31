@@ -90,6 +90,7 @@ class AuthmeController extends Controller{
                     array_push($bans, $value);
                 }
             }//ladybug_dump($bans);
+            $bans = array_reverse($bans,true);
         }else{
             throw $this->createNotFoundException('No se ha encontrado el archivo: banned-ips.txt');
         }  
@@ -120,6 +121,7 @@ class AuthmeController extends Controller{
                     array_push($bans, $value);
                 }
             }//ladybug_dump($bans);
+            $bans = array_reverse($bans,true);
         }else throw $this->createNotFoundException('No se ha encontrado el archivo: banned-players.txt');
         
         return array(
