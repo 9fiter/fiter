@@ -1,0 +1,113 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ 'main.photoContest' | trans }} - {{ app.request.host }}{% endblock %}
+
+{% block main %}
+
+    <style>
+    .flash-error,
+    .flash-notice{
+    max-width: 658px;
+    }
+    </style>
+
+    <div>
+      {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+      {% endfor %}
+      {% for flashMessage in app.session.flashbag.get('error') %}
+        <div class="flash-error">
+            {{ flashMessage }}
+        </div>
+      {% endfor %}
+    </div>
+    {% if entities|length > 0 %}
+      {% for entity in entities %}
+      <article>
+        <header>
+           <h1 style="margin: 0 0 0.4em 0;"><a href="{{ path('contest_show', { 'id': contest.id }) }}">{{ contest.titulo }}</a></h1>
+           {#<a href="{{ path('photo_new', { 'contestId': entity.id }) }}">{{ 'main.photoContestParticipe' | trans }}</a>#}
+           <h3><a href="#{#{ path('photo_show', { 'id': entity.id }) }#}">{{ entity.titulo }}</a></h3>
+           {% include 'FiterPhotoContestBundle:Photo:parcial/datos.html.twig' with {'entity': entity} %}
+        </header>
+      
+
+        <img style="margin-bottom:1em;" src="{{ asset(  ['/uploads/photoContest/', entity.path]|join  )|imagine_filter('thumb_666x375') }}" alt="imagen no encontrada" />
+
+        <div>
+        <section style="margin: .5em auto 0 auto;" class="paginador">
+          <ul>
+              {% if paginador.currentPage > 1 %}
+                  <li><a href="{{ path('photo_by_context', { 'page': paginador.previousPage, 'contestSlug': contest.slug}) }}">Anterior</a></li>
+              {% endif %}
+
+              {% for page in paginador.minPageInRange..paginador.maxPageInRange %}
+                  {% if page == paginador.currentPage %}
+                      <li class="active"><a href="#">{{ page }}</a></li>
+                  {% else %}
+                      <li><a href="{{ path('photo_by_context', { 'page': page, 'contestSlug': contest.slug }) }}">{{ page}}</a></li>
+                  {% endif %}
+              {% endfor %}
+
+              {% if paginador.currentPage < paginador.lastPage %}
+                  <li><a href="{{ path('photo_by_context', { 'page': paginador.nextPage, 'contestSlug': contest.slug })}}">Siguiente</a></li>
+              {% else %}
+                  
+              {% endif %}
+          </ul>
+        </section>
+        <div style="clear:both"></div>
+        <br/>
+        </div>
+
+        {{ entity.descripcion|raw }}<br/>
+
+        <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+        <a class="btn btn-primary" href="{{ path('photo') }}">{{ 'main.back' | trans }}</a>
+        <a class="btn btn-success" href="{{ path('photo_new', { 'contestId': entity.id }) }}">{{ 'main.photoContestParticipe' | trans }}</a>
+        {#<a class="btn btn-success" href="{{ path('photo_edit', { 'id': entity.id }) }}">{{ 'main.edit' | trans }}</a>
+        <button class="btn btn-danger" form="photo_delete_form" type="submit">{{ 'main.delete' | trans }}</button>#}
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+        <br/><br/>
+      </article>
+      {% endfor %}
+    {% else %}
+      <article>
+        <header>
+           <h1 style="margin: 0 0 0.4em 0;">{{ contest.titulo }}</h1>
+        </header>
+        <p>Todavía no se ha presentado nadie al concurso.</p>
+        
+        <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+        <a class="btn btn-success" href="{{ path('photo_new', { 'contestId': contest.id }) }}">{{ 'main.photoContestParticipe' | trans }}</a>
+      </article>
+    {% endif %}
+    
+
+    
+
+
+{% endblock %}
+
+{% block javascripts %}{% endblock %}
+
+
+
+{% block paginador %}
+
+{% endblock %} 

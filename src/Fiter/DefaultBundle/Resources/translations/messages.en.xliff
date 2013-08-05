@@ -283,6 +283,72 @@
             </trans-unit> 
 
 
+
+
+
+
+            <trans-unit id="65">
+                <source>main.photoContest</source>
+                <target>Photo contest</target>
+            </trans-unit>
+            <trans-unit id="66">
+                <source>main.photoContests</source>
+                <target>Photo contests</target>
+            </trans-unit>
+            <trans-unit id="67">
+                <source>main.photoContestParticipe</source>
+                <target>Participate</target>
+            </trans-unit>
+            <trans-unit id="68">
+                <source>main.photoContestCreate</source>
+                <target>Create a Contest</target>
+            </trans-unit>
+            <trans-unit id="69">
+                <source>main.fechaInicio</source>
+                <target>Start date</target>
+            </trans-unit>
+            <trans-unit id="70">
+                <source>main.fechaVotaciones</source>
+                <target>Vote date</target>
+            </trans-unit>
+            <trans-unit id="71">
+                <source>main.fechaFin</source>
+                <target>End date</target>
+            </trans-unit>
+            <trans-unit id="72">
+                <source>main.contests</source>
+                <target>Contests</target>
+            </trans-unit>
+            <trans-unit id="73">
+                <source>main.photoContestVerFotos</source>
+                <target>View photos</target>
+            </trans-unit>
+            <trans-unit id="74">
+                <source>main.allPhotoContests</source>
+                <target>All photos of the contests</target>
+            </trans-unit>
+            <trans-unit id="75">
+                <source>main.phtotoContestVoteSucces</source>
+                <target>Successfully issued Vote.</target>
+            </trans-unit>
+            <trans-unit id="76">
+                <source>main.phtotoContestVoteError</source>
+                <target>You have already voted earlier this photo</target>
+            </trans-unit>
+            <trans-unit id="77">
+                <source>main.phtotoContestVoteErrorFechaVotaciones %fecha%</source>
+                <target>Voting will begin on %fecha%</target>
+            </trans-unit>
+            <trans-unit id="78">
+                <source>main.phtotoContestVoteErrorFechaFin %fecha%</source>
+                <target>Voting ended at %fecha%</target>
+            </trans-unit>
+            <trans-unit id="79">
+                <source>main.phtotoContestUserHasPhotoError</source>
+                <target>You are participating in this contest</target>
+            </trans-unit>
+
+
         </body>
     </file>
 </xliff>

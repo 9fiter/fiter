@@ -17,7 +17,7 @@
 
 
 
-        <link rel="stylesheet" href="/css/normalize.min.css">
+        <link rel="stylesheet" href="/css/normalize.min.css?v={{css_version2}}">
 
         <link rel="stylesheet" href="/css/main.css">
         
@@ -124,6 +124,7 @@
                     <li><a href="{{ path('fiter_contact') }}">{{ 'main.contacto' | trans }}</a></li>
                     <li><a href="{{ path('poll') }}">{{ 'main.polls' | trans }}</a></li>
                     <li><a href="/phpbb3/">Foro</a></li>
+                    <li><a href="{{ path('contest') }}">{{ 'main.contests' | trans }}</a></li>
                     
 
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}                       
@@ -181,11 +182,13 @@
                         </a>
                     </div>
                     
+                    {#
                     <a style="display:block" href="http://dejamejugar.enjin.com" target="_blank">
                      <div style="background-image:url(/img/vipbanner.png); height:137px;background-color:#000" class="banner300-300 sombra">
                         <span class="mcdonations">Donaciones VIP</span>
                     </div>
                     </a>
+                    #}<br/>
 
                     <div class="banner300-300 sombra">
                         <a href="{{ path('teamspeak_connect')}}">

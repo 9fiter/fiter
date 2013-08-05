@@ -281,6 +281,76 @@
                 <source>mc.BannedIps</source>
                 <target>IP's baneadas</target>
             </trans-unit> 
+
+
+
+
+
+
+            <trans-unit id="65">
+                <source>main.photoContest</source>
+                <target>Concurs de fotos</target>
+            </trans-unit>
+            <trans-unit id="66">
+                <source>main.photoContests</source>
+                <target>Concursos de fotos</target>
+            </trans-unit>
+            <trans-unit id="67">
+                <source>main.photoContestParticipe</source>
+                <target>Participa</target>
+            </trans-unit>
+            <trans-unit id="68">
+                <source>main.photoContestCreate</source>
+                <target>Crear un concurs</target>
+            </trans-unit>
+            <trans-unit id="69">
+                <source>main.fechaInicio</source>
+                <target>Data d'inici</target>
+            </trans-unit>
+            <trans-unit id="70">
+                <source>main.fechaVotaciones</source>
+                <target>Data de votacions</target>
+            </trans-unit>
+            <trans-unit id="71">
+                <source>main.fechaFin</source>
+                <target>Data de fi</target>
+            </trans-unit>
+            <trans-unit id="72">
+                <source>main.contests</source>
+                <target>Concursos</target>
+            </trans-unit>
+            <trans-unit id="73">
+                <source>main.photoContestVerFotos</source>
+                <target>Veure fotos</target>
+            </trans-unit>
+            <trans-unit id="74">
+                <source>main.allPhotoContests</source>
+                <target>Totes les fotos dels concursos</target>
+            </trans-unit>
+            <trans-unit id="75">
+                <source>main.phtotoContestVoteSucces</source>
+                <target>Vot emès correctament.</target>
+            </trans-unit>
+            <trans-unit id="76">
+                <source>main.phtotoContestVoteError</source>
+                <target>Ja has votat anteriorment aquesta foto</target>
+            </trans-unit>
+            <trans-unit id="77">
+                <source>main.phtotoContestVoteErrorFechaVotaciones %fecha%</source>
+                <target>Les votacions començaran el %fecha%</target>
+            </trans-unit>
+            <trans-unit id="78">
+                <source>main.phtotoContestVoteErrorFechaFin %fecha%</source>
+                <target>Les votacions van acabar el %fecha%</target>
+            </trans-unit>
+            <trans-unit id="79">
+                <source>main.phtotoContestUserHasPhotoError</source>
+                <target>Ja estàs participant en aquest concurs</target>
+            </trans-unit>
+
+
+
+
             
 
         </body>

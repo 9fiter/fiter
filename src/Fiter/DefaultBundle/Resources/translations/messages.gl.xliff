@@ -279,6 +279,76 @@
                 <target>IP's baneadas</target>
             </trans-unit> 
 
+
+
+
+
+
+
+
+
+
+            <trans-unit id="65">
+                <source>main.photoContest</source>
+                <target>Concurso de fotos</target>
+            </trans-unit>
+            <trans-unit id="66">
+                <source>main.photoContests</source>
+                <target>Concursos de fotos</target>
+            </trans-unit>
+            <trans-unit id="67">
+                <source>main.photoContestParticipe</source>
+                <target>Participa</target>
+            </trans-unit>
+            <trans-unit id="68">
+                <source>main.photoContestCreate</source>
+                <target>Crear un concurso</target>
+            </trans-unit>
+            <trans-unit id="69">
+                <source>main.fechaInicio</source>
+                <target>Data de inicio</target>
+            </trans-unit>
+            <trans-unit id="70">
+                <source>main.fechaVotaciones</source>
+                <target>Data de votacions</target>
+            </trans-unit>
+            <trans-unit id="71">
+                <source>main.fechaFin</source>
+                <target>Data de fin</target>
+            </trans-unit>
+            <trans-unit id="72">
+                <source>main.contests</source>
+                <target>Concursos</target>
+            </trans-unit>
+            <trans-unit id="73">
+                <source>main.photoContestVerFotos</source>
+                <target>Ver fotos</target>
+            </trans-unit>
+            <trans-unit id="74">
+                <source>main.allPhotoContests</source>
+                <target>Todas as fotos dos concursos</target>
+            </trans-unit>
+            <trans-unit id="75">
+                <source>main.phtotoContestVoteSucces</source>
+                <target>Voto emitido correctamente.</target>
+            </trans-unit>
+            <trans-unit id="76">
+                <source>main.phtotoContestVoteError</source>
+                <target>Xa votaches anteriormente esta foto</target>
+            </trans-unit>
+            <trans-unit id="77">
+                <source>main.phtotoContestVoteErrorFechaVotaciones %fecha%</source>
+                <target>A votacions comezarán o %fecha%</target>
+            </trans-unit>
+            <trans-unit id="78">
+                <source>main.phtotoContestVoteErrorFechaFin %fecha%</source>
+                <target>As votacions terminaron o %fecha%</target>
+            </trans-unit>
+            <trans-unit id="79">
+                <source>main.phtotoContestUserHasPhotoError</source>
+                <target>Xa estas participando neste concurso</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

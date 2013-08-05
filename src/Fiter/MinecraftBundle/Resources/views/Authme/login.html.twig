@@ -6,12 +6,12 @@
 
 <h2>Minecraft login</h2>
 
-<form action="{{ path('authme_checkpassword') }}" method="post">
+<form id="minecraft_login_form" action="{{ path('authme_checkpassword') }}" method="post">
     <label>{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}:</label>
-    <input name="user" type="text" required="required"/><br/>
+    <input name="user" type="text" required="required" autocomplete="off"/><br/>
 
     <label>{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}:</label>
-    <input type="password" name="pass" required="required" /><br/><br/>
+    <input type="password" name="pass" required="required" autocomplete="off"/><br/><br/>
     <button type="submit">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
 </form>
 

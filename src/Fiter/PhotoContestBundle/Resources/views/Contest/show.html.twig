@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ entity.titulo }} - {{ 'main.photoContest' | trans }} - {{ app.request.host }}{% endblock %}
+
+{% block main %}
+<div>
+{% for flashMessage in app.session.flashbag.get('notice') %}
+  <div class="flash-notice">
+      {{ flashMessage }}
+  </div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('error') %}
+  <div class="flash-error">
+      {{ flashMessage }}
+  </div>
+{% endfor %}
+</div>
+<article>
+    <header>
+       <h3><a href="{{ path('contest_show', { 'id': entity.id }) }}">{{ entity.titulo }}</a></h3>
+       {% include 'FiterPhotoContestBundle:Contest:parcial/datos.html.twig' with {'entity': entity} %}
+    </header>
+    
+
+    {{ entity.descripcion|raw }}<br/>
+
+    <form id="contest_delete_form" action="{{ path('contest_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+    </form>
+
+    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+
+    {% if ( is_granted('ROLE_ADMIN')) %}
+        <a class="btn btn-success" href="{{ path('contest_edit', { 'id': entity.id }) }}">{{ 'main.edit' | trans }}</a>
+        <button class="btn btn-danger" form="contest_delete_form" type="submit">{{ 'main.delete' | trans }}</button>  
+    {% endif %}
+
+    <a class="btn btn-primary" href="{{ path('contest') }}">{{ 'main.back' | trans }}</a>
+    <a class="btn btn-success" href="{{ path('photo_new', { 'contestId': entity.id }) }}">{{ 'main.photoContestParticipe' | trans }}</a>
+
+
+
+
+    <a class="btn btn-success" href="{{ path('photo_by_context', { 'contestSlug': entity.slug }) }}">{{ 'main.photoContestVerFotos' | trans }}</a>
+
+</article>
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

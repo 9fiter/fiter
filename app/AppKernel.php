@@ -39,27 +39,18 @@ class AppKernel extends Kernel
             new Bait\PollBundle\BaitPollBundle(),
             new Fiter\PollBundle\FiterPollBundle(),
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
-            
             new Sonata\jQueryBundle\SonatajQueryBundle(),
-        new Sonata\BlockBundle\SonataBlockBundle(),
-        //new Sonata\CacheBundle\SonataCacheBundle(),
-        new Sonata\AdminBundle\SonataAdminBundle(),
-        new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
-        new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-
-
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            //new Sonata\CacheBundle\SonataCacheBundle(),
+            new Sonata\AdminBundle\SonataAdminBundle(),
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Fiter\TeamspeakBundle\FiterTeamspeakBundle(),
             new Fiter\MinecraftBundle\FiterMinecraftBundle(),
-            
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
-
             new PunkAve\FileUploaderBundle\PunkAveFileUploaderBundle(),
-
-            
             new Raindrop\GeoipBundle\RaindropGeoipBundle(),
-
-
-
+            new Fiter\PhotoContestBundle\FiterPhotoContestBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

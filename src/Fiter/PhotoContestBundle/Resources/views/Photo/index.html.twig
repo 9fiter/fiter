@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ 'main.photoContest' | trans }} - {{ app.request.host }}{% endblock %}
+
+{% block main %}
+<article>
+    <header>
+       <h2>{{ 'main.allPhotoContests' | trans }}</h2>
+       
+       {#<a href="{{ path('photo_new', { 'contestId': entity.id }) }}">{{ 'main.photoContestParticipe' | trans }}</a>#}
+    </header>
+
+    {% for entity in entities %}
+
+        <a href="{{ path('photo_show', { 'id': entity.id }) }}">
+            <img style="float: left;margin-right: .7em;margin-bottom:1em;" src="{{ asset(  ['/uploads/photoContest/', entity.path]|join  )|imagine_filter('thumb_120x80') }}" alt="imagen no encontrada" />
+        </a>
+        {# <a href="{{ path('photo_edit', { 'id': entity.id }) }}">edit</a> #}
+
+    {% endfor %}
+
+    <br/><br/>
+</article>
+
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

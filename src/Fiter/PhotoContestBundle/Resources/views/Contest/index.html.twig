@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ 'main.photoContests' | trans }} - {{ app.request.host }}{% endblock %}
+
+{% block main %}
+    {% if entities|length > 0 %}
+        {% for entity in entities %}
+        <article>
+            <header>
+               <h3><a href="{{ path('contest_show', { 'id': entity.id }) }}">{{ entity.titulo }}</a></h3>
+               {% include 'FiterPhotoContestBundle:Contest:parcial/datos.html.twig' with {'entity': entity} %}
+            </header>
+            
+            <a href="{{ path('contest_show', { 'id': entity.id }) }}">
+                <img style="float: left;margin-right: .7em;margin-bottom:1em;" src="{{ asset(  ['/uploads/photoContest/', entity.path]|join  )|imagine_filter('thumb_170x114') }}" alt="imagen no encontrada" />
+            </a>
+            {{ entity.descripcion(true)|striptags|raw }}<br/>
+            {#<a href="{{ path('contest_edit', { 'id': entity.id }) }}">edit</a>#}
+            <br/>
+        </article>
+        {% endfor %}
+    {% else %}
+        <p>No hay ningun concurso publicado.</p>
+    {% endif %}
+
+    {% if ( is_granted('ROLE_ADMIN')) %}
+        <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+        <a class="btn btn-success" href="{{ path('contest_new') }}">{{ 'main.photoContestCreate' | trans }}</a>
+    {% endif %}
+
+
+    <article>
+    </article>
+
+    
+{% endblock %}
+
+{% block javascripts %}{% endblock %}
+    
+    

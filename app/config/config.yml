@@ -32,7 +32,8 @@ twig:
         description: %description%
         twitter_feed: %twitter_feed%
         web_path: %web_path%
-        css_version: "0.16"
+        css_version: "0.17"
+        css_version2: "0.1"
         isprod: %isprod%
 
         googleAnalytics_id: %googleAnalytics_id%
@@ -105,6 +106,7 @@ doctrine:
                 connection:       minecraft
                 mappings:
                     FiterMinecraftBundle: ~
+                    FiterPhotoContestBundle: ~
 
 
 
@@ -219,10 +221,14 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [50, 50], mode: outbound, allow_upscale: true }
+        thumb_120x80:
+            quality: 75
+            filters:
+                thumbnail: { size: [120, 80], mode: outbound, allow_upscale: true }
         thumb_170x114:
             quality: 75
             filters:
-                thumbnail: { size: [170, 114], mode: outbound, allow_upscale: true }   
+                thumbnail: { size: [170, 114], mode: outbound, allow_upscale: true }
         thumb_666x375:
             quality: 75
             filters:

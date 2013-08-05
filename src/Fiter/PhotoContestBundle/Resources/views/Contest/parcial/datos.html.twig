@@ -1,0 +1,17 @@
+{% if (entity.usuario == app.user or is_granted('ROLE_ADMIN')) %}
+    <span class="bloque">
+        <img class="ico" alt="editar" src="/img/edit.png" />
+        <a href="{{ path('contest_edit', { 'id': entity.id }) }}">{{ 'main.editar' | trans }}</a>
+    </span>
+{% endif %}
+
+<p>
+    {{ 'main.por' | trans }} <a href="#">{{ entity.usuario }} </a>
+    {% if entity.fechaPublicacion %}{{ entity.fechaPublicacion|time_ago_in_words }}{% endif %}
+        <img class="ico" alt="visitas" src="/img/ojo.png" /> {{ entity.visitas }}
+        {#<a href="{{ path('articulo_like', { 'id': entity.id }) }}"><img class="ico" alt="likes" src="/img/like.png" /></a> {{ entity.likes }}
+        <a href="{{ path('articulo_dislike', { 'id': entity.id }) }}"><img class="ico" alt="likes" src="/img/dislike.png" /></a> {{ entity.disLikes }}
+        #}
+    <br/>
+</p>
+

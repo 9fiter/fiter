@@ -1418,3 +1418,25 @@ font-weight: bolder;
 .vetealforo a:hover{
 color: #79DFFF;
 }
+
+
+
+
+
+
+
+.flash-error {
+background-color: #C02D2D;
+color: #E9E9E9;
+padding: .3em;
+margin: 0 0 1em 0;
+box-shadow: 1px 1px 11px 0px #3D3D3D;
+}
+
+.flash-notice {
+background-color: #6EC02D;
+color: #FFFFFF;
+padding: .3em;
+margin: 0 0 1em 0;
+box-shadow: 1px 1px 11px 0px #3D3D3D;
+}

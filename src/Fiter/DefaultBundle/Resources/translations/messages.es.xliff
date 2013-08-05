@@ -289,6 +289,79 @@
 
 
 
+
+
+
+
+
+
+
+            <trans-unit id="65">
+                <source>main.photoContest</source>
+                <target>Concurso de fotos</target>
+            </trans-unit>
+            <trans-unit id="66">
+                <source>main.photoContests</source>
+                <target>Concursos de fotos</target>
+            </trans-unit>
+            <trans-unit id="67">
+                <source>main.photoContestParticipe</source>
+                <target>Participa</target>
+            </trans-unit>
+            <trans-unit id="68">
+                <source>main.photoContestCreate</source>
+                <target>Crear un concurso</target>
+            </trans-unit>
+            <trans-unit id="69">
+                <source>main.fechaInicio</source>
+                <target>Fecha de inicio</target>
+            </trans-unit>
+            <trans-unit id="70">
+                <source>main.fechaVotaciones</source>
+                <target>Fecha de votaciones</target>
+            </trans-unit>
+            <trans-unit id="71">
+                <source>main.fechaFin</source>
+                <target>Fecha de fin</target>
+            </trans-unit>
+            <trans-unit id="72">
+                <source>main.contests</source>
+                <target>Concursos</target>
+            </trans-unit>
+            <trans-unit id="73">
+                <source>main.photoContestVerFotos</source>
+                <target>Ver fotos</target>
+            </trans-unit>
+            <trans-unit id="74">
+                <source>main.allPhotoContests</source>
+                <target>Todas las fotos de los concursos</target>
+            </trans-unit>
+            <trans-unit id="75">
+                <source>main.phtotoContestVoteSucces</source>
+                <target>Voto emitido correctamente.</target>
+            </trans-unit>
+            <trans-unit id="76">
+                <source>main.phtotoContestVoteError</source>
+                <target>Ya has votado anteriormente esta foto</target>
+            </trans-unit>
+            <trans-unit id="77">
+                <source>main.phtotoContestVoteErrorFechaVotaciones %fecha%</source>
+                <target>Las votaciones comenzarán el %fecha%</target>
+            </trans-unit>
+            <trans-unit id="78">
+                <source>main.phtotoContestVoteErrorFechaFin %fecha%</source>
+                <target>Las votaciones terminaron el %fecha%</target>
+            </trans-unit>
+            <trans-unit id="79">
+                <source>main.phtotoContestUserHasPhotoError</source>
+                <target>Ya estas participando en este concurso</target>
+            </trans-unit>
+
+
+
+
+
+
             
 
 

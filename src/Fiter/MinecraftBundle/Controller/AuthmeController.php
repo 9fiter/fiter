@@ -56,7 +56,7 @@ class AuthmeController extends Controller{
         if($res){
             $session  = $this->get("session");
             $session->set("MinecraftUser", $user);
-            return new RedirectResponse($this->generateUrl('authme'));
+            return new RedirectResponse($this->generateUrl('contest'));
         }else return new RedirectResponse($this->generateUrl('authme_login'));
     }
 

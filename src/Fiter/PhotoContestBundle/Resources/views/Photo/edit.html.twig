@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ 'main.photoEdit' | trans }} - {{ app.request.host }}{% endblock %}
+
+{% block main %}
+<article>
+    <header>
+       <h2>{{ 'main.photoEdit' | trans }}</h2>
+    </header>
+
+    <form action="{{ path('photo_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+	    {{ form_widget(edit_form) }}
+	    <button type="submit">Edit</button>
+	</form>
+
+	<a href="{{ path('photo') }}">Back to the list</a>
+	<form action="{{ path('photo_delete', { 'id': entity.id }) }}" method="post">
+	    {{ form_widget(delete_form) }}
+	    <button type="submit">Delete</button>
+	</form>
+
+</article>
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

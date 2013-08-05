@@ -1,12 +1,13 @@
+fiter_photo_contest:
+    resource: "@FiterPhotoContestBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}/minecraft/
 
 articulo_show_permanent:
     pattern:  /art/pl/{id}
     defaults: { _controller: FiterDefaultBundle:Articulo:show }
     requirements:
         _method:  GET|POST
-
-
-
 
 fiter_minecraft:
     resource: "@FiterMinecraftBundle/Controller/"
