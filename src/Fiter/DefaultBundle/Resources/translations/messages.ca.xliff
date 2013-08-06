@@ -348,6 +348,11 @@
                 <target>Ja estàs participant en aquest concurs</target>
             </trans-unit>
 
+            <trans-unit id="80">
+                <source>main.send</source>
+                <target>Enviar</target>
+            </trans-unit>
+
 
 
 

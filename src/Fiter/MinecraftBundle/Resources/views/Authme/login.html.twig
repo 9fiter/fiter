@@ -6,13 +6,14 @@
 
 <h2>Minecraft login</h2>
 
-<form id="minecraft_login_form" action="{{ path('authme_checkpassword') }}" method="post">
-    <label>{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}:</label>
+<form id="minecraft_login_form" action="{{ path('authme_checkpassword') }}" method="post" autocomplete="off">
+    <label>{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
     <input name="user" type="text" required="required" autocomplete="off"/><br/>
-
-    <label>{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}:</label>
-    <input type="password" name="pass" required="required" autocomplete="off"/><br/><br/>
-    <button type="submit">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+    <label>{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+    <input type="password" name="pass" required="required"/><br/><br/>
 </form>
+
+<link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+<button form="minecraft_login_form" class="btn btn-success" type="submit">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
 
 {% endblock %}

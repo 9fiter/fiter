@@ -436,6 +436,36 @@ class Contest{
     private $noActualizar;
 
 
+
+    private $iniciado;
+    /**
+     * Set iniciado
+     * @param boolean $iniciado
+     * @return Photo
+     */
+    public function setIniciado($iniciado){
+        $this->iniciado = $iniciado;
+        return $this;
+    }
+    /**
+     * Get iniciado
+     * @return boolean 
+     */
+    public function getIniciado(){ return $this->iniciado; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * @Assert\File(maxSize="6000000")
      */

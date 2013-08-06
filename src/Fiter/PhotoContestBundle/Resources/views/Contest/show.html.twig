@@ -20,9 +20,14 @@
        <h3><a href="{{ path('contest_show', { 'id': entity.id }) }}">{{ entity.titulo }}</a></h3>
        {% include 'FiterPhotoContestBundle:Contest:parcial/datos.html.twig' with {'entity': entity} %}
     </header>
-    
 
-    {{ entity.descripcion|raw }}<br/>
+    {{ entity.descripcion|raw }}
+
+    <h3>Fechas</h3>
+    <p>El concurso empieza el dia {{entity.fechaInicio|date("d-m-Y H:i:s")}}</p>
+    <p>Las votaciones empiezan el dia {{entity.fechaInicio|date("d-m-Y H:i:s")}}</p>
+    <p>El concurso termina el dia {{entity.fechaInicio|date("d-m-Y H:i:s")}}</p>
+    <br/>
 
     <form id="contest_delete_form" action="{{ path('contest_delete', { 'id': entity.id }) }}" method="post">
         {{ form_widget(delete_form) }}
@@ -38,10 +43,9 @@
     <a class="btn btn-primary" href="{{ path('contest') }}">{{ 'main.back' | trans }}</a>
     <a class="btn btn-success" href="{{ path('photo_new', { 'contestId': entity.id }) }}">{{ 'main.photoContestParticipe' | trans }}</a>
 
-
-
-
-    <a class="btn btn-success" href="{{ path('photo_by_context', { 'contestSlug': entity.slug }) }}">{{ 'main.photoContestVerFotos' | trans }}</a>
+    {% if entity.iniciado %}
+      <a class="btn btn-success" href="{{ path('photo_by_context', { 'contestSlug': entity.slug }) }}">{{ 'main.photoContestVerFotos' | trans }}</a>
+    {% endif %}
 
 </article>
 {% endblock %}

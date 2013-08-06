@@ -11,4 +11,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class ContestRepository extends EntityRepository{
 
+
+
+	 public function findAllContestByFechaInicioDQL(){
+        $em = $this->getEntityManager('minecraft');
+        $consulta = $em->createQuery('
+            SELECT o FROM FiterPhotoContestBundle:Contest o
+            WHERE o.activo=true
+            ORDER BY o.fechaInicio DESC
+            ');
+        return $consulta;
+    }
+    public function findAllContestByFechaInicio(){
+        return $this->findAllContestByFechaInicioDQL()->getResult();
+    }   
+
+
+
 }

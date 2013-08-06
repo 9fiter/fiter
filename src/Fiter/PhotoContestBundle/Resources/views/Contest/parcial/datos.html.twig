@@ -8,10 +8,17 @@
 <p>
     {{ 'main.por' | trans }} <a href="#">{{ entity.usuario }} </a>
     {% if entity.fechaPublicacion %}{{ entity.fechaPublicacion|time_ago_in_words }}{% endif %}
-        <img class="ico" alt="visitas" src="/img/ojo.png" /> {{ entity.visitas }}
-        {#<a href="{{ path('articulo_like', { 'id': entity.id }) }}"><img class="ico" alt="likes" src="/img/like.png" /></a> {{ entity.likes }}
-        <a href="{{ path('articulo_dislike', { 'id': entity.id }) }}"><img class="ico" alt="likes" src="/img/dislike.png" /></a> {{ entity.disLikes }}
-        #}
+        
+    <img class="ico" alt="visitas" src="/img/ojo.png" /> {{ entity.visitas }}
+
+    {% if entity.iniciado %}
+        <span class="activo"></span>Activo
+    {% else %}
+        <span class="activo rojo"></span>Inactivo
+    {% endif %}
+
+    {#<a href="{{ path('articulo_like', { 'id': entity.id }) }}"><img class="ico" alt="likes" src="/img/like.png" /></a> {{ entity.likes }}
+    <a href="{{ path('articulo_dislike', { 'id': entity.id }) }}"><img class="ico" alt="likes" src="/img/dislike.png" /></a> {{ entity.disLikes }}
+    #}
     <br/>
 </p>
-

@@ -25,7 +25,16 @@ class ContestController extends Controller{
      */
     public function indexAction(){
         $em = $this->getDoctrine()->getManager('minecraft');
-        $entities = $em->getRepository('FiterPhotoContestBundle:Contest')->findAll();
+        $entities = $em->getRepository('FiterPhotoContestBundle:Contest')->findAllContestByFechaInicio();
+
+        $fechaActual=new \DateTime("now");
+        foreach ($entities as $entity) {
+            $fechaInicio=$entity->getFechaInicio();
+            $fechaFin=$entity->getFechaFin();
+            if($fechaActual>$fechaInicio && $fechaActual<$fechaFin) $entity->setIniciado(1);
+            else $entity->setIniciado(0);
+        }
+
         return array(
             'entities' => $entities,
         );
@@ -44,7 +53,13 @@ class ContestController extends Controller{
         $entity->incrementaVisitas();
         $em->persist($entity);
         $em->flush();
-        
+
+        $fechaActual=new \DateTime("now");
+        $fechaInicio=$entity->getFechaInicio();
+        $fechaFin=$entity->getFechaFin();
+        if($fechaActual>$fechaInicio && $fechaActual<$fechaFin) $entity->setIniciado(1);
+        else $entity->setIniciado(0);
+
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),

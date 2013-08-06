@@ -1440,3 +1440,19 @@ padding: .3em;
 margin: 0 0 1em 0;
 box-shadow: 1px 1px 11px 0px #3D3D3D;
 }
+
+
+
+
+span.activo{
+  background-color: #96D859;
+  width: 1em;
+  height: 1em;
+  border-radius: 1em;
+  margin: 0 .4em;
+  box-shadow: 1px 1px 5px 0px #494949;
+  display: inline-block;
+}
+span.rojo{
+  background-color: #E74F4F;
+}

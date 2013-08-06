@@ -348,6 +348,11 @@
                 <target>You are participating in this contest</target>
             </trans-unit>
 
+            <trans-unit id="80">
+                <source>main.send</source>
+                <target>Send</target>
+            </trans-unit>
+
 
         </body>
     </file>

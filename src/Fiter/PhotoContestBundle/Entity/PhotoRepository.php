@@ -27,4 +27,28 @@ class PhotoRepository extends EntityRepository{
         return $this->findAllPhotoActiveContestDQL($slug)->getResult();
     }
 
+
+
+
+
+
+
+
+    public function findAllPhotoContestUserDQL($contestId, $username){
+        $em = $this->getEntityManager('minecraft');
+        $consulta = $em->createQuery('
+            SELECT o FROM FiterPhotoContestBundle:Photo o
+            JOIN o.contest c
+            WHERE c.id = :contestId 
+            AND o.usuario = :username
+            ');
+        $consulta->setParameter('contestId', $contestId);
+        $consulta->setParameter('username', $username);
+        return $consulta;
+    }
+    public function findAllPhotoContestUser($contestId, $username){
+        return $this->findAllPhotoContestUserDQL($contestId, $username)->getResult();
+    }
+
+
 }

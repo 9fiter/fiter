@@ -166,7 +166,6 @@ class PhotoController extends Controller {
             $entities = $em->getRepository('FiterPhotoContestBundle:Photo')->findAllPhotoActiveContest($contestSlug)
         )->getResult();
 
-
         if($entities){
             $entity=$entities[0];
             $entity->incrementaVisitas();
@@ -212,13 +211,10 @@ class PhotoController extends Controller {
         $em->persist($entity);
         $em->flush();
 
-
         $fechaActual = new \DateTime("now");
         if($entity->getContest()[0]->getFechaFin() > $fechaActual ){
             $entity->setUsuario('oculto');    
         }
-
-
 
         return array(
             'entity'      => $entity,
@@ -234,21 +230,32 @@ class PhotoController extends Controller {
         $session  = $this->get("session");
         $user = $session->get("MinecraftUser");
         if(!$user) return $this->redirect($this->generateUrl('authme_login'));
-
-
         $em = $this->getDoctrine()->getEntityManager('minecraft');
-        $userHasPhoto = $em->getRepository('FiterPhotoContestBundle:Photo')->findByUsuario($user);
+        $contest = $em->getRepository('FiterPhotoContestBundle:Contest')->find($contestId);
+
+        $fechaInicio=$contest->getFechaInicio();
+        $fechaVotaciones=$contest->getFechaVotaciones();
+        //$fechaFin=$contest->getFechaFin();
+        $fechaActual=new \DateTime("now");
+        if($fechaActual<$fechaInicio){
+            $translated = $this->get('translator')->trans('main.phtotoContestNotInit');
+            $session->getFlashBag()->add('error', $translated);
+            $referer = $request->headers->get('referer');      
+            return new RedirectResponse($referer);
+        }
+        if($fechaActual>$fechaVotaciones){
+            $translated = $this->get('translator')->trans('main.phtotoContestNoNewParticipants');
+            $session->getFlashBag()->add('error', $translated);
+            $referer = $request->headers->get('referer');      
+            return new RedirectResponse($referer);
+        }
+        $userHasPhoto = $em->getRepository('FiterPhotoContestBundle:Photo')->findAllPhotoContestUser($contestId, $user);
         if($userHasPhoto){
             $translated = $this->get('translator')->trans('main.phtotoContestUserHasPhotoError');
             $session->getFlashBag()->add('error', $translated);
-
             $referer = $request->headers->get('referer');      
             return new RedirectResponse($referer);
-
         }
-
-
-
         $entity = new Photo();
         $contest = $em->getRepository('FiterPhotoContestBundle:Contest')->find($contestId);
         if (!$contest) throw $this->createNotFoundException('Unable to find Contest entity.');
