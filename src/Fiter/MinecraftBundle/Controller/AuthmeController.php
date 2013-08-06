@@ -70,6 +70,42 @@ class AuthmeController extends Controller{
     }
 
     /**
+     * show regions
+     * @Route("/regions", name="authme_regions")
+     * @Template()
+     */
+    public function regionsAction(){
+        $securityContext = $this->get('security.context');
+        if(!$securityContext->isGranted('ROLE_ADMIN')) throw new AccessDeniedException("No tienes permiso para ver las IP's baneadas");
+
+        $mc_folder = $this->container->getParameter('minecraft_folder');
+        $ruta = $mc_folder."plugins/WorldGuard/worlds/CRAFTOPIA/regions.yml";
+
+        if(file_exists($ruta)){
+            //$str = ""; foreach ($archivo as $key => $value) $str=$str.$value;
+            $info =  yaml_parse_file($ruta); //ladybug_dump($info);
+            //$info['timestamps']['login'] = date('Y-m-d H:i:s',$info['timestamps']['login']/ 1000) ;
+            //$info['timestamps']['logout'] = date('Y-m-d H:i:s',$info['timestamps']['logout']/ 1000) ;
+            //$info['timestamps']['lastteleport'] = date('Y-m-d H:i:s',$info['timestamps']['lastteleport']/ 1000) ;
+        }else throw $this->createNotFoundException('No se ha encontrado el archivo: regions.yml');
+
+        ladybug_dump($info);
+        return array(
+            //'username' => $username,
+            'info' => $info,
+        );
+    }
+
+
+
+
+
+
+
+
+
+
+    /**
      * show banned users
      * @Route("/banned/ips", name="authme_banned_ips")
      * @Template()

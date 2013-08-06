@@ -352,7 +352,16 @@
             <trans-unit id="80">
                 <source>main.send</source>
                 <target>Enviar</target>
+            </trans-unit>           
+            <trans-unit id="81">
+                <source>main.phtotoContestNotInit</source>
+                <target>O concurso ainda non comezou</target>
             </trans-unit>
+            <trans-unit id="82">
+                <source>main.phtotoContestNoNewParticipants</source>
+                <target>Non se admiten novos participantes neste concurso</target>
+            </trans-unit>
+
 
         </body>
     </file>

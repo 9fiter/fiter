@@ -25,8 +25,8 @@
 
     <h3>Fechas</h3>
     <p>El concurso empieza el dia {{entity.fechaInicio|date("d-m-Y H:i:s")}}</p>
-    <p>Las votaciones empiezan el dia {{entity.fechaInicio|date("d-m-Y H:i:s")}}</p>
-    <p>El concurso termina el dia {{entity.fechaInicio|date("d-m-Y H:i:s")}}</p>
+    <p>Las votaciones empiezan el dia {{entity.fechaVotaciones|date("d-m-Y H:i:s")}}</p>
+    <p>El concurso termina el dia {{entity.fechaFin|date("d-m-Y H:i:s")}}</p>
     <br/>
 
     <form id="contest_delete_form" action="{{ path('contest_delete', { 'id': entity.id }) }}" method="post">

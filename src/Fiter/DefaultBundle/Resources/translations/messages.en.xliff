@@ -352,6 +352,14 @@
                 <source>main.send</source>
                 <target>Send</target>
             </trans-unit>
+            <trans-unit id="81">
+                <source>main.phtotoContestNotInit</source>
+                <target>The contest has not yet begun</target>
+            </trans-unit>
+            <trans-unit id="82">
+                <source>main.phtotoContestNoNewParticipants</source>
+                <target>No new participants in this contest</target>
+            </trans-unit>
 
 
         </body>
