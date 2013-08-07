@@ -27,6 +27,12 @@ class ContestController extends Controller{
         $em = $this->getDoctrine()->getManager('minecraft');
         $entities = $em->getRepository('FiterPhotoContestBundle:Contest')->findAllContestByFechaInicio();
 
+        $session  = $this->get("session");
+        $user = $session->get("MinecraftUser");
+        $usuario = null;
+        if($user) $usuario = $em->getRepository('FiterMinecraftBundle:Authme')->findOneByUsername($user);
+        
+        //ladybug_dump($usuario);
         $fechaActual=new \DateTime("now");
         foreach ($entities as $entity) {
             $fechaInicio=$entity->getFechaInicio();
@@ -37,6 +43,7 @@ class ContestController extends Controller{
 
         return array(
             'entities' => $entities,
+            'usuario' => $usuario,
         );
     }
     /**
@@ -60,8 +67,15 @@ class ContestController extends Controller{
         if($fechaActual>$fechaInicio && $fechaActual<$fechaFin) $entity->setIniciado(1);
         else $entity->setIniciado(0);
 
+
+        $session  = $this->get("session");
+        $user = $session->get("MinecraftUser");
+        $usuario = null;
+        if($user) $usuario = $em->getRepository('FiterMinecraftBundle:Authme')->findOneByUsername($user);
+
         return array(
             'entity'      => $entity,
+            'usuario' => $usuario,
             'delete_form' => $deleteForm->createView(),
         );
     }

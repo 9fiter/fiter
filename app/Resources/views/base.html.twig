@@ -166,6 +166,9 @@
             {% block asideR %}
             <aside class="asideRight">
                 <section class="col300">
+
+                    {% block minecraft_login %}{% endblock %}
+
                     {% render "FiterMinecraftBundle:Default:minecraft" %}
                     
                     <div style="position:relative;height:137px;background-color:#000" class="banner300-300 sombra">

@@ -15,6 +15,8 @@
   </div>
 {% endfor %}
 </div>
+
+
 <article>
     <header>
        <h3><a href="{{ path('contest_show', { 'id': entity.id }) }}">{{ entity.titulo }}</a></h3>
@@ -51,3 +53,8 @@
 {% endblock %}
 
 {% block javascripts %}{% endblock %}
+
+
+{% block minecraft_login %}
+    {% include 'FiterMinecraftBundle:Authme:parcial/logedUser.html.twig' %}
+{% endblock %}

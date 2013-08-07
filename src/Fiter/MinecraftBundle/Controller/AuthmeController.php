@@ -32,6 +32,26 @@ class AuthmeController extends Controller{
         return array();
     }
 
+
+    /**
+     * logout
+     * @Route("/logout", name="authme_logout")
+     * @Template()
+     */
+    public function logoutAction(Request $request){
+        $session  = $this->get("session");
+//        ladybug_dump($session);
+        $session->set("MinecraftUser", null );
+
+
+        $referer = $request->headers->get('referer');      
+        return new RedirectResponse($referer);
+    }
+
+
+
+
+
     /**
      * checkpassword
      * @Route("/checkpassword", name="authme_checkpassword")

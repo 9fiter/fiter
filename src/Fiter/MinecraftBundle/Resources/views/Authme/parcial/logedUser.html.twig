@@ -1,0 +1,23 @@
+<style>
+.ib{ float:left;display:inline-block; }
+.loggeduser{ display: inline-block;margin-bottom: 1em; }
+</style>
+<link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+<div class="loggeduser">
+    {% if usuario %}
+        Bienvenido <strong>{{ usuario.username }}</strong><br/>  
+        <div style="float:left;margin-right:3px;width:53px;height:53px">
+            <img src="{{ path('authme_skin', { 'id': usuario.id, 't' : '1' }) }}" />
+        </div>
+        <img style="float:left;heigth:53px" src="/img/flags/res-36x36/{{usuario.countryCode|lower}}.png">
+        {{usuario.city}} ({{usuario.region}}) <br/>
+        {{usuario.countryName}}- {{usuario.countryCode}}<br/>
+        <a class="ib" href="{{ path('authme_logout')}}">Desconectar</a>
+    {% else %}
+        <div style="float:left;margin-right:3px;width:53px;height:53px">
+            <img src="/mcskin/minecraft.php?u=char&a=true" />
+        </div>
+        <span class="ib">No estas logueado</span><br/>
+        <a class="ib btn btn-success" href="{{ path('authme_login')}}">Inicia sesión</a>
+    {% endif %}
+</div>

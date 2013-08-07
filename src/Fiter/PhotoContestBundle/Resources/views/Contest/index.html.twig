@@ -3,6 +3,7 @@
 {% block title %}{{ 'main.photoContests' | trans }} - {{ app.request.host }}{% endblock %}
 
 {% block main %}
+    
     {% if entities|length > 0 %}
         {% for entity in entities %}
         <article>
@@ -35,6 +36,11 @@
 {% endblock %}
 
 {% block javascripts %}{% endblock %}
+
+
+{% block minecraft_login %}
+    {% include 'FiterMinecraftBundle:Authme:parcial/logedUser.html.twig' %}
+{% endblock %}
     
 
 
