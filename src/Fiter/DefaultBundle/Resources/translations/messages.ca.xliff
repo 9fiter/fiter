@@ -458,7 +458,7 @@
                 <target>Termes i condicions</target>
             </trans-unit>
             <trans-unit id="102">
-                <source>main.termsAndConditions1</source>
+                <source>main.TermsAndConditions1</source>
                 <target>Donar per alguna cosa a la botiga no et protegeix de la moderació, o fins i tot un banc al servidor. Si trenques les regles, seràs castigat d'acord a la gravetat del delicte.</target>
             </trans-unit>
             <trans-unit id="103">

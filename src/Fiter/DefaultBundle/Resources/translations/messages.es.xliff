@@ -472,7 +472,7 @@
                 <target>Terminos y condiciones</target>
             </trans-unit>
             <trans-unit id="102">
-                <source>main.termsAndConditions1</source>
+                <source>main.TermsAndConditions1</source>
                 <target>Donar por algo en la tienda no te protege de la moderación, o incluso un ban en el servidor. Si rompes las reglas, serás castigado de acuerdo a la gravedad del delito.</target>
             </trans-unit>
             <trans-unit id="103">

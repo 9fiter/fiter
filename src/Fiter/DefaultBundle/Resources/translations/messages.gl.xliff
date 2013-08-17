@@ -449,7 +449,7 @@
                 <target>Termos e condicions</target>
             </trans-unit>
             <trans-unit id="102">
-                <source>main.termsAndConditions1</source>
+                <source>main.TermsAndConditions1</source>
                 <target>Doar por algo na tenda non te protexe da moderación, ou mesmo un ban no servidor. Se rompes as regras, serás castigado dacordo á gravidade do delito</target>
             </trans-unit>
             <trans-unit id="103">
