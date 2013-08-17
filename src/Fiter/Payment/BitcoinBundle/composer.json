@@ -1,0 +1,27 @@
+{
+    "name": "fiter/payment-bitcoin-bundle",
+    "type": "symfony-bundle",
+    "description": "Payment Bundle providing access to the Bitcoind daemon",
+    "keywords": ["payment", "bitcoin"],
+    "homepage": "http://dejamejugar.com/bundles/FiterPaymentBitcoinBundle",
+    "license": "Apache2",
+    "authors": [
+        {
+            "name": "dejamejugar",
+            "email": "dejemajugar.com@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": "~2.0",
+        "jms/payment-core-bundle": "~1.0",
+        "nbobtc/bitcoind-bundle": "dev-master"
+    },
+    "require-dev": {
+        "symfony/browser-kit": "*"
+    },
+    "autoload": {
+        "psr-0": { "Fiter\\Payment\\BitcoinBundle": "" }
+    },
+    "target-dir": "Fiter/Payment/BitcoinBundle"
+}

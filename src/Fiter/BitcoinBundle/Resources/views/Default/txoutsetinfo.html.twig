@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ app.request.host }}{% endblock %}
+ 
+{% block main %} 
+    <h2>Bitcoin txoutsetinfo</h2>
+	{#<p>{{ladybug_dump(txoutsetinfo)}}</p>#}
+	<strong>height:</strong> {{ txoutsetinfo.height }}<br/>
+	<strong>bestblock:</strong> {{ txoutsetinfo.bestblock }}<br/>
+    <strong>transactions:</strong> {{ txoutsetinfo.transactions }}<br/>
+    <strong>txouts:</strong> {{ txoutsetinfo.txouts }}<br/>
+    <strong>bytes_serialized:</strong> {{ txoutsetinfo.bytes_serialized }}<br/>
+    <strong>hash_serialized:</strong> {{ txoutsetinfo.hash_serialized }}<br/>
+    <strong>total_amount:</strong> {{ txoutsetinfo.total_amount }}<br/>
+{% endblock %}

@@ -22,16 +22,15 @@ use \Symfony\Component\Yaml\Parser;
  */
 class AuthmeController extends Controller{
 
-
     /**
      * login
      * @Route("/login", name="authme_login")
      * @Template()
      */
     public function loginAction(Request $request){
-        return array();
+        $referer = $request->headers->get('referer'); 
+        return array('referer' => $referer);
     }
-
 
     /**
      * logout
@@ -40,17 +39,10 @@ class AuthmeController extends Controller{
      */
     public function logoutAction(Request $request){
         $session  = $this->get("session");
-//        ladybug_dump($session);
         $session->set("MinecraftUser", null );
-
-
         $referer = $request->headers->get('referer');      
         return new RedirectResponse($referer);
     }
-
-
-
-
 
     /**
      * checkpassword
@@ -61,6 +53,7 @@ class AuthmeController extends Controller{
         $post = $this->get('request')->request->all();
         $user = $post['user'];
         $pass = $post['pass'];
+        $referer = $post['referer'];
         $em = $this->getDoctrine()->getManager('minecraft');
         $entity = $em->getRepository('FiterMinecraftBundle:Authme')->findOneByUsername($user);
         $res = false;
@@ -76,7 +69,8 @@ class AuthmeController extends Controller{
         if($res){
             $session  = $this->get("session");
             $session->set("MinecraftUser", $user);
-            return new RedirectResponse($this->generateUrl('contest'));
+            //return new RedirectResponse($this->generateUrl('contest'));
+            return new RedirectResponse($referer);
         }else return new RedirectResponse($this->generateUrl('authme_login'));
     }
 

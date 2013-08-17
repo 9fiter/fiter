@@ -384,6 +384,167 @@
 
 
 
+            <trans-unit id="83">
+                <source>form.label.paypal_express_checkout</source>
+                <target>Paypal</target>
+            </trans-unit>
+
+            <trans-unit id="84">
+                <source>form.label.bitcoin_express_checkout</source>
+                <target>Bitcoin</target>
+            </trans-unit>
+
+
+
+
+
+
+
+
+
+
+            <trans-unit id="85">
+                <source>main.donations</source>
+                <target>Donaciones</target>
+            </trans-unit>
+            <trans-unit id="86">
+                <source>main.products</source>
+                <target>Productos</target>
+            </trans-unit>
+            <trans-unit id="87">
+                <source>main.createProduct</source>
+                <target>Crear un producto</target>
+            </trans-unit>
+            <trans-unit id="88">
+                <source>main.add</source>
+                <target>Añadir</target>
+            </trans-unit>
+            <trans-unit id="89">
+                <source>main.price</source>
+                <target>Precio</target>
+            </trans-unit>
+            <trans-unit id="90">
+                <source>main.expiresin</source>
+                <target>Expira en</target>
+            </trans-unit>
+            <trans-unit id="91">
+                <source>main.productEdit</source>
+                <target>Editar producto</target>
+            </trans-unit>
+            <trans-unit id="92">
+                <source>main.productCreate</source>
+                <target>Crear producto</target>
+            </trans-unit>
+            <trans-unit id="93">
+                <source>main.cart</source>
+                <target>Carrito</target>
+            </trans-unit>
+            <trans-unit id="94">
+                <source>main.donationCart</source>
+                <target>Carrito de donaciones</target>
+            </trans-unit>
+            <trans-unit id="95">
+                <source>main.donationCartEmpty</source>
+                <target>El carrito de donaciones está vacio</target>
+            </trans-unit>
+            <trans-unit id="96">
+                <source>main.donationCartEmpty2</source>
+                <target>No hay ningun producto en tu carrito</target>
+            </trans-unit>
+            <trans-unit id="97">
+                <source>main.weAccept</source>
+                <target>Aceptamos:</target>
+            </trans-unit>
+            <trans-unit id="98">
+                <source>main.iAgree</source>
+                <target>Acepto los </target>
+            </trans-unit>
+            <trans-unit id="99">
+                <source>main.termsAndConditions</source>
+                <target>terminos y condiciones </target>
+            </trans-unit>
+            <trans-unit id="100">
+                <source>main.ofThisPurchase</source>
+                <target>de esta compra.</target>
+            </trans-unit>
+            <trans-unit id="101">
+                <source>main.TermsAndConditions</source>
+                <target>Terminos y condiciones</target>
+            </trans-unit>
+            <trans-unit id="102">
+                <source>main.termsAndConditions1</source>
+                <target>Donar por algo en la tienda no te protege de la moderación, o incluso un ban en el servidor. Si rompes las reglas, serás castigado de acuerdo a la gravedad del delito.</target>
+            </trans-unit>
+            <trans-unit id="103">
+                <source>main.TermsAndConditions2</source>
+                <target>Las compras no son reembolsables. Son consideradas como donaciónes.</target>
+            </trans-unit>
+            <trans-unit id="104">
+                <source>main.TermsAndConditions3</source>
+                <target>Por favor, póngase en contacto con nosotros antes de presentar una disputa en PayPal. Las disputas de PayPal no autorizadas conducen a un ban y no habrá ninguna garantía de que su dinero sea devuelto.</target>
+            </trans-unit>
+            <trans-unit id="105">
+                <source>main.TermsAndConditions4</source>
+                <target>Los permisos para los rangos pueden cambiar con el tiempo.</target>
+            </trans-unit>
+            <trans-unit id="106">
+                <source>main.qty</source>
+                <target>Uds</target>
+            </trans-unit>
+            <trans-unit id="107">
+                <source>main.subTotal</source>
+                <target>Sub total</target>
+            </trans-unit>
+            <trans-unit id="108">
+                <source>main.options</source>
+                <target>Opciones</target>
+            </trans-unit>
+            <trans-unit id="109">
+                <source>main.mcUser</source>
+                <target>Usuario de minecraft</target>
+            </trans-unit>
+            <trans-unit id="110">
+                <source>main.checkout</source>
+                <target>Pagar</target>
+            </trans-unit>
+            <trans-unit id="111">
+                <source>main.continueShopping</source>
+                <target>Continuar comprando</target>
+            </trans-unit>
+            <trans-unit id="112">
+                <source>main.clearCart</source>
+                <target>Limpiar carrito</target>
+            </trans-unit>
+            <trans-unit id="113">
+                <source>main.totalPrice</source>
+                <target>Precio total</target>
+            </trans-unit>
+            <trans-unit id="114">
+                <source>main.update</source>
+                <target>Actualizar</target>
+            </trans-unit>
+            <trans-unit id="115">
+                <source>main.paymentDetails</source>
+                <target>Detalles del pedido</target>
+            </trans-unit>
+            <trans-unit id="116">
+                <source>main.paymentThanks</source>
+                <target>Los productos adquiridos están siendo añadidos a la cuenta de %name%</target>
+            </trans-unit>
+            <trans-unit id="117">
+                <source>main.thanks</source>
+                <target>Gracias</target>
+            </trans-unit>
+
+            <trans-unit id="118">
+                <source>main.notlogued</source>
+                <target>Debes estar logueado como un usuario de minecraft.</target>
+            </trans-unit>
+
+            
+            
+
+
 
 
 

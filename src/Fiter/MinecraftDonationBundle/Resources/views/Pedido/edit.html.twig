@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Pedido edit - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+    <h1>Pedido edit</h1>
+    <form id="pedido_update" action="{{ path('pedido_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+        {{ form_widget(edit_form) }}
+    </form>
+    <form id="pedido_delete" action="{{ path('pedido_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+    </form>
+    <br/>
+
+    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+    <button class="btn btn-success" form="pedido_update" type="submit">Edit</button>
+    <a class="btn" href="{{ path('pedido') }}">Back to the list</a>
+    <button class="btn btn-danger" form="pedido_delete" type="submit">Delete</button>
+{% endblock %}

@@ -362,6 +362,172 @@
             </trans-unit>
 
 
+            <trans-unit id="83">
+                <source>form.label.paypal_express_checkout</source>
+                <target>Paypal</target>
+            </trans-unit>
+            <trans-unit id="84">
+                <source>form.label.bitcoin_express_checkout</source>
+                <target>Bitcoin</target>
+            </trans-unit>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <trans-unit id="85">
+                <source>main.donations</source>
+                <target>Donacions</target>
+            </trans-unit>
+            <trans-unit id="86">
+                <source>main.products</source>
+                <target>Productes</target>
+            </trans-unit>
+            <trans-unit id="87">
+                <source>main.createProduct</source>
+                <target>Crear un producte</target>
+            </trans-unit>
+            <trans-unit id="88">
+                <source>main.add</source>
+                <target>Afegir</target>
+            </trans-unit>
+            <trans-unit id="89">
+                <source>main.price</source>
+                <target>Preu</target>
+            </trans-unit>
+            <trans-unit id="90">
+                <source>main.expiresin</source>
+                <target>Expira en</target>
+            </trans-unit>
+            <trans-unit id="91">
+                <source>main.productEdit</source>
+                <target>Edita producte</target>
+            </trans-unit>
+            <trans-unit id="92">
+                <source>main.productCreate</source>
+                <target>Crear producte</target>
+            </trans-unit>
+            <trans-unit id="93">
+                <source>main.cart</source>
+                <target>Carret</target>
+            </trans-unit>
+            <trans-unit id="94">
+                <source>main.donationCart</source>
+                <target>Carret de donacions</target>
+            </trans-unit>
+            <trans-unit id="95">
+                <source>main.donationCartEmpty</source>
+                <target>El carret de donacions està buit</target>
+            </trans-unit>
+            <trans-unit id="96">
+                <source>main.donationCartEmpty2</source>
+                <target>No hi ha cap producte en el carret</target>
+            </trans-unit>
+            <trans-unit id="97">
+                <source>main.weAccept</source>
+                <target>Acceptem:</target>
+            </trans-unit>
+            <trans-unit id="98">
+                <source>main.iAgree</source>
+                <target>accepto els </target>
+            </trans-unit>
+            <trans-unit id="99">
+                <source>main.termsAndConditions</source>
+                <target>termes i condicions </target>
+            </trans-unit>
+            <trans-unit id="100">
+                <source>main.ofThisPurchase</source>
+                <target>d'aquesta compra.</target>
+            </trans-unit>
+            <trans-unit id="101">
+                <source>main.TermsAndConditions</source>
+                <target>Termes i condicions</target>
+            </trans-unit>
+            <trans-unit id="102">
+                <source>main.termsAndConditions1</source>
+                <target>Donar per alguna cosa a la botiga no et protegeix de la moderació, o fins i tot un banc al servidor. Si trenques les regles, seràs castigat d'acord a la gravetat del delicte.</target>
+            </trans-unit>
+            <trans-unit id="103">
+                <source>main.TermsAndConditions2</source>
+                <target>Les compres no són reemborsables. Són considerades com a donacions.</target>
+            </trans-unit>
+            <trans-unit id="104">
+                <source>main.TermsAndConditions3</source>
+                <target>Por favor, póngase en contacto con nosotros antes de presentar una disputa en PayPal. Las disputas de PayPal no autorizadas conducen a un ban y no habrá ninguna garantía de que su dinero sea devuelto.</target>
+            </trans-unit>
+            <trans-unit id="105">
+                <source>main.TermsAndConditions4</source>
+                <target>Si us plau, poseu-vos en contacte amb nosaltres abans de presentar una disputa a PayPal. Les disputes de PayPal no autoritzades condueixen a un banc i no hi haurà cap garantia que els seus diners sigui retornat.</target>
+            </trans-unit>
+            <trans-unit id="106">
+                <source>main.qty</source>
+                <target>Uds</target>
+            </trans-unit>
+            <trans-unit id="107">
+                <source>main.subTotal</source>
+                <target>Sub total</target>
+            </trans-unit>
+            <trans-unit id="108">
+                <source>main.options</source>
+                <target>Opcions</target>
+            </trans-unit>
+            <trans-unit id="109">
+                <source>main.mcUser</source>
+                <target>Usuari de minecraft</target>
+            </trans-unit>
+            <trans-unit id="110">
+                <source>main.checkout</source>
+                <target>Pagar</target>
+            </trans-unit>
+            <trans-unit id="111">
+                <source>main.continueShopping</source>
+                <target>Continuar comprant</target>
+            </trans-unit>
+            <trans-unit id="112">
+                <source>main.clearCart</source>
+                <target>Netejar carret</target>
+            </trans-unit>
+            <trans-unit id="113">
+                <source>main.totalPrice</source>
+                <target>Preu total</target>
+            </trans-unit>
+            <trans-unit id="114">
+                <source>main.update</source>
+                <target>Actualitzar</target>
+            </trans-unit>
+            <trans-unit id="115">
+                <source>main.paymentDetails</source>
+                <target>Detalls de la comanda</target>
+            </trans-unit>
+            <trans-unit id="116">
+                <source>main.paymentThanks</source>
+                <target>Els productes adquirits estan sent afegits al compte de %name%</target>
+            </trans-unit>
+            <trans-unit id="117">
+                <source>main.thanks</source>
+                <target>Gràcies</target>
+            </trans-unit>
+            <trans-unit id="118">
+                <source>main.notlogued</source>
+                <target>Has d'estar loguejat com un usuari de minecraft.</target>
+            </trans-unit>
+
+
+
 
 
             

@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ app.request.host }}{% endblock %}
+ 
+{% block main %} 
+<h2>Bitcoind getaddressesbyaccount {{account}}</h2>
+
+
+<strong>account: </strong> {{account}} <br/>
+{% for address in addresses %} 
+	<strong>address: </strong> {{address}} <br/>
+{% endfor %}
+
+{% endblock %}

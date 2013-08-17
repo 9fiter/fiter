@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ "main.thanks"|trans }} - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+<article>
+<h2>{{ "main.thanks"|trans }}</h2>
+
+<p>{{ "main.paymentThanks"|trans({'%name%': username}) }}</p>
+
+
+<link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+<a href="{{ path('product') }}" class="btn btn-success">{{ 'main.continueShopping' | trans }}</a>
+
+</article>
+
+{% endblock %}
+
+
+
+ 

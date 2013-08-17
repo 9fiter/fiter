@@ -32,7 +32,7 @@ twig:
         description: %description%
         twitter_feed: %twitter_feed%
         web_path: %web_path%
-        css_version: "0.18"
+        css_version: "0.19"
         css_version2: "0.1"
         isprod: %isprod%
 
@@ -91,10 +91,12 @@ doctrine:
                 #auto_mapping: true
                 connection:       default
                 mappings:
+                    FiterMinecraftDonationBundle: ~
                     FiterDefaultBundle: ~             
                     FiterPollBundle: ~
                     RaulFraileLadybugBundle: ~
                     FOSCommentBundle: ~
+                    JMSPaymentCoreBundle: ~
                     gedmo_translatable:
                         type: annotation
                         prefix: Gedmo\Translatable\Entity
@@ -155,7 +157,62 @@ services:
         class: Fiter\DefaultBundle\Twig\TwigExtension
         tags:
             - { name: twig.extension }
+    #payment.plugin.paypal_express_checkout:
+    #    #class: PaypalPlugin
+    #    class: JMS\Payment\PaypalBundle\Plugin\ExpressCheckoutPlugin
+    #    tags: [{name: payment.plugin}]
 
+    #payment.plugin.credit_card:
+    #    class: Fiter\DefaultBundle\Util\CreditCardPlugin
+    #    tags: [{name: payment.plugin}]
+    #credit_card_type:
+    #    class: CreditCardType
+    #    tags:
+    #        - { name: form.type, alias: credit_card }
+    #        - { name: payment.method_type }
+
+
+
+jms_payment_core:
+    secret: test
+
+fiter_payment_bitcoin:
+    username: "%fiter_payment_bitcoin_username%"
+    password: "%fiter_payment_bitcoin_password%"
+    signature: "%fiter_payment_bitcoin_signature%"
+    debug: true
+    return_url: ~ #http://fiter.local/app_dev.php/es/minecraft/donation/payments/return
+    cancel_url: ~ #http://fiter.local/app_dev.php/es/minecraft/donation/payments/cancel
+
+jms_payment_paypal:
+    username: "%jms_payment_paypal_username%"
+    password: "%jms_payment_paypal_password%"
+    signature: "%jms_payment_paypal_signature%"
+    debug: true
+    return_url: ~ #http://fiter.local/app_dev.php/es/minecraft/donation/payments/return
+    cancel_url: ~ #http://fiter.local/app_dev.php/es/minecraft/donation/payments/cancel
+    #return_url: http://paypal.test/payment
+    #cancel_url: http://paypal.test/payment
+
+
+
+
+
+# sensio_framework_extra:
+#     view:
+#         annotations: false
+
+# jms_di_extra:
+#     locations:
+#         all_bundles: false
+#         bundles: [FiterMinecraftDonationBundle]
+#         directories: ["%kernel.root_dir%/../src"]
+#     automatic_controller_injections:
+#         properties:
+#             request: "@request"
+#             router: "@router"
+#         method_calls:
+#             setRouter: ["@router"]
 
 
 
@@ -229,6 +286,11 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [170, 114], mode: outbound, allow_upscale: true }
+
+        thumb_180x156:
+            quality: 75
+            filters:
+                thumbnail: { size: [180, 156], mode: outbound, allow_upscale: true }
         thumb_666x375:
             quality: 75
             filters:
@@ -366,10 +428,15 @@ sonata_block:
             #renderer_class: Sonata\BlockBundle\Block\TraceableBlockRenderer
             #template:       SonataBlockBundle:Profiler:block.html.twig
 
-
 a2lix_translation_form:
     #object_manager:             # [optional] Defaults to doctrine.orm.entity_manager. Name of the object manager. For instance, 'doctrine.orm.default_entity_manager' or 'doctrine_mongodb.odm.default_document_manager'
     locales: [gl, ca, en]       # [optional] Array of the translation locales (The default locale have to be excluded). Can also be specified in the form builder.
     default_required: false     # [optional] Defaults to false. In this case, translation fields are not mark as required with HTML5.
     use_aop: true               # [optional] Defaults to false.
 
+bitcoind:             
+    schema:   %bitcoind_schema%
+    username: %bitcoind_username%
+    password: %bitcoind_password%
+    host:     %bitcoind_host%
+    port:     %bitcoind_port%

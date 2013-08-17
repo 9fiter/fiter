@@ -1,0 +1,142 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ 'main.cart' | trans }} - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+
+<link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="flash-error">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+
+<h3>{{ 'main.donationCart' | trans }}</h3>
+
+<div>
+	{% if(emptycart) %}
+		<p>{{ 'main.donationCartEmpty' | trans }}</p>
+		<p>{{ 'main.donationCartEmpty2' | trans }}</p>
+	{% else %}
+		<table class="donationcart">
+		  <thead>
+		    <tr>
+		        <th class="left">{{ 'main.products' | trans }}</th>
+				<th>{{ 'main.price' | trans }}</th>
+				<th class="right">{{ 'main.qty' | trans }}</th>
+				<th>{{ 'main.subTotal' | trans }}</th>
+				<th>{{ 'main.options' | trans }}</td>
+		    </tr>
+		  </thead>
+		  
+		  <tbody>
+		  	{% set total = 0.00 %}
+		  	{% for product in cart.products %}
+		        <tr>
+			        <td class="left">{{product['product'].name }}</td>
+					<td>{{product['product'].price }}€</td>
+					<td>
+						<form method="POST" id="update_form" action="{{ path('update_product', { 'productId': product['product'].id }) }}">
+							<input type="number" name="qty" name="id" value="{{product['qty']}}" />
+						</form>
+					</td>
+					{% set subtotal = product['product'].price*product['qty'] %}
+					{% set total = total+subtotal %}
+					<td class="price">{{ subtotal }}€</td>
+					<td>
+						<button form="update_form" class="btn btn-success" type="submit">{{ 'main.update' | trans }}</button>
+						<a class="btn btn-danger" href="{{ path('delete_product', { 'productId': product['product'].id }) }}">{{ 'main.delete' | trans }}</a>
+					</td>
+			    </tr>
+		    {% endfor %}
+		  </tbody>
+		  <tfoot>
+		  	<tr>
+		        <td>&nbsp;</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+		    </tr>
+		    <tr>
+		        <td></td>
+				<td></td>
+				<td style="text-align:right"><strong>{{ 'main.totalPrice' | trans }}: &nbsp;</strong></td>
+				<td><span class="price">{{total}}€</span></td>
+				<td></td>
+		    </tr>
+		  </tfoot>
+		</table>
+	{% endif %}
+
+	<h3>{{ 'main.mcUser' | trans }}:</h3>
+	{% include 'FiterMinecraftBundle:Authme:parcial/logedUser.html.twig' %}
+
+
+	<h3>{{ 'main.weAccept' | trans }}</h3>
+	<div class="checkout">
+		{#<img class="" src="/bundles/fiterminecraftdonation/images/bitcoin.png" />#}
+		<img src="/bundles/fiterminecraftdonation/images/paypal.png" />
+	</div>
+
+	{#
+	<div class="lovebitcoin clearfix">
+		<img src="/bundles/fiterminecraftdonation/images/love_bitcoin.png" />
+		<div><span>Paga con bitcoin y beneficiate de un descuento del 3%</span></div>
+	</div>
+	#}
+	<p class="agreement">
+		<form id="agreeandcheckout" action="{{ path('pedido_nuevo') }}" method="get">
+			<input id="agreement" type="checkbox" value="true" name="agreement" required>
+			<span>
+				<label for="agreement">{{ 'main.iAgree' | trans }}<a id="btn_terms" href="">{{ 'main.termsAndConditions' | trans }}</a>{{ 'main.ofThisPurchase' | trans }}</label>
+			</span>
+
+
+		</form>
+	</p>
+
+	<div id="divterms" style="display:none">
+		<h3>{{ 'main.TermsAndConditions' | trans }}</h3>
+		<ul>
+			<li>{{ 'main.TermsAndConditions1' | trans }}</li>
+			<li>{{ 'main.TermsAndConditions2' | trans }}</li>
+			<li>{{ 'main.TermsAndConditions3' | trans }}</li>
+			<li>{{ 'main.TermsAndConditions4' | trans }}</li>
+		</ul>
+	</div>
+
+	<button form="agreeandcheckout" type="submit" class="btn btn-success">{{ 'main.checkout' | trans }}</button>
+	<a href="{{ path('product') }}" class="btn">{{ 'main.continueShopping' | trans }}</a>
+	<a href="{{ path('donation_cart_clear') }}" class="btn btn-danger">{{ 'main.clearCart' | trans }}</a>
+
+
+</div>
+
+
+<script>
+$(document).ready(function() {
+	$( "#btn_terms" ).click(function(e) {
+		e.preventDefault();
+		$( "#divterms" ).animate({
+			height: "toggle"
+		}, 500, function() {
+			//alert( "Handler for .click() called." );
+		});
+	});
+});
+</script>
+
+{% endblock %}
+
+
+
+ 
+

@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ app.request.host }}{% endblock %}
+ 
+{% block main %} 
+    <h2>Bitcoin mininginfo</h2>
+	{#<p>{{ladybug_dump(mininginfo)}}</p>#}
+    <strong>blocks:</strong> {{ mininginfo.blocks }}<br/>
+    <strong>currentblocksize:</strong> {{mininginfo.currentblocksize}}<br/>
+	<strong>currentblocktx:</strong> {{mininginfo.currentblocktx}}<br/>
+	<strong>difficulty:</strong> {{mininginfo.difficulty}}<br/>
+	<strong>errors:</strong> {% if mininginfo.errors=="" %}false{% else %} {{mininginfo.errors}}{% endif %}<br/>
+	<strong>generate:</strong> {% if mininginfo.generate %}true{% else %}false{% endif %}<br/>
+	<strong>genproclimit:</strong> {{mininginfo.genproclimit}}<br/>
+	<strong>hashespersec:</strong> {{mininginfo.hashespersec}}<br/>
+	<strong>pooledtx:</strong> {{mininginfo.pooledtx}}<br/>
+	<strong>testnet:</strong> {% if mininginfo.testnet %}true{% else %}false{% endif %}<br/>
+{% endblock %}

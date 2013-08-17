@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ 'main.productCreate' | trans }} - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+    <h2>{{ 'main.productCreate' | trans }}</h2>
+    <form id="productnew" action="{{ path('product_create') }}" method="post" {{ form_enctype(form) }}>
+	    {{ form_errors(form) }}  
+
+	    {{ form_label(form.name) }}
+        {{ form_widget(form.activo) }}<span>{{ form_label(form.activo,label|default(null)) }}</span>
+        {{ form_widget(form.name) }}
+
+        <img id="blah" src="/img/vacio.png" alt="your image" />
+        {{ form_label(form.imagen) }}      
+        {{ form_widget(form.mostrarImagen) }}<span>{{ form_label(form.mostrarImagen,label|default(null)) }}</span><br>
+        {{ form_widget(form.imagen) }}
+
+	    {{ form_rest(form) }}
+	</form>
+
+	<br/>
+    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+    <button class="btn btn-success" form="productnew" type="submit">{{ 'main.save' | trans }}</button>
+    <a class="btn" href="{{ path('product') }}">{{ 'main.back' | trans }}</a>
+{% endblock %}
+
+
+{% block javascripts %}
+	<script type="text/javascript" src="/js/formoid/jquery.uniform.min.js"></script>
+	<script type="text/javascript"> 
+	    $("form").find("input[type=file]").uniform();
+	    $("form").find("input[type=file]").change(function() {
+	        readURL(this)
+	    });
+	    $(".uploader span.filename").text("{{ 'main.noFileSelected' | trans }}");
+	    $(".uploader span.action").text("Seleccionar");
+	</script>
+{% endblock %}

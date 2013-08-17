@@ -65,7 +65,10 @@
         "a2lix/translation-form-bundle": "0.*@dev",
 
         "punkave/symfony2-file-uploader-bundle": "master",
-        "raindrop/geoip-bundle": "dev-master"
+        "raindrop/geoip-bundle": "dev-master",
+        "nbobtc/bitcoind-bundle": "dev-master",
+        "jms/payment-paypal-bundle": "dev-master",
+        "jms/payment-core-bundle": "dev-master"
 
 
 

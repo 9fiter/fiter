@@ -55,3 +55,14 @@ parameters:
 
     infolinks_pid: XXXXXXX
     infolinks_wsid: 0
+
+
+
+
+
+
+    bitcoind_schema:   http
+    bitcoind_username: ~
+    bitcoind_password: ~
+    bitcoind_host:     localhost
+    bitcoind_port:     8332

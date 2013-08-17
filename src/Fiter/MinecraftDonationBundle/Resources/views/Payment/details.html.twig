@@ -1,0 +1,104 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ 'main.paymentDetails' | trans }} - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+
+	{% for flashMessage in app.session.flashbag.get('notice') %}
+	    <div class="flash-notice">
+	        {{ flashMessage }}
+	    </div>
+	{% endfor %}
+	{% for flashMessage in app.session.flashbag.get('error') %}
+	    <div class="flash-error">
+	        {{ flashMessage }}
+	    </div>
+	{% endfor %}
+
+	<h2>{{ 'main.paymentDetails' | trans }}</h2>
+
+	<table class="donationcart">
+		  <thead>
+		    <tr>
+		      	<th>{{ 'main.products' | trans }}</th>
+				<th>{{ 'main.price' | trans }}</th>
+				<th>{{ 'main.qty' | trans }}</th>
+				<th>{{ 'main.subTotal' | trans }}</th>
+		    </tr>
+		  </thead>
+		  
+		  <tbody>
+		  	{% set total = 0.00 %}
+		  	{% for product in cart.products %}
+		        <tr>
+			        <td class="left">{{product['product'].name }}</td>
+					<td>{{product['product'].price }}€</td>
+					<td>{{product['qty']}}</td>
+					{% set subtotal = product['product'].price*product['qty'] %}
+					{% set total = total+subtotal %}
+					<td class="price">{{ subtotal }}€</td>
+			    </tr>
+		    {% endfor %}
+		  </tbody>
+		  <tfoot>
+		  	<tr>
+		        <td>&nbsp;</td>
+				<td></td>
+				<td></td>
+				<td></td>
+		    </tr>
+		    <tr>
+		        <td></td>
+				<td></td>
+				<td style="text-align:right"><strong>Total price: &nbsp;</strong></td>
+				<td><span class="price">{{total}}€</span></td>
+		    </tr>
+		  </tfoot>
+		</table>
+
+	<h3>{{ 'main.mcUser' | trans }}:</h3>
+	{% include 'FiterMinecraftBundle:Authme:parcial/logedUser.html.twig' %}
+	
+	<form id="paymentdetails" action="" method="post" {{ form_enctype(form) }}>
+	    {{ form_errors(form) }}  
+
+	 		{#{ladybug_dump(form)}#}
+	        {#{ form_widget(form.method) }#}
+	        {#{ form_label(form.method) }#}
+	     	
+
+
+{#{ladybug_dump(form.method)}#}
+
+	     	
+
+			{{ form_widget(form.method, {'attr': {'class': 'paymentMethod'}}) }}
+
+
+			
+	        <label for="jms_choose_payment_method_method_0" class="required">
+	        	<img src="/bundles/fiterminecraftdonation/images/paypal.png" />
+	        </label>
+
+	        {#{ form_label(form.method) }#}
+	        {#
+	        <label for="jms_choose_payment_method_method_1" class="required">
+	        	<img src="/bundles/fiterminecraftdonation/images/bitcoin.png" />
+	        </label>
+			#}
+
+	        {#{ form_label(form.data_paypal_express_checkout) }#}
+	        {#{ form_widget(form.data_paypal_express_checkout) }#}
+	        {{ form_widget(form.data_paypal_express_checkout) }}
+	        {#{ form_widget(form.data_bitcoin_express_checkout) }#}
+	    {{ form_rest(form) }}
+	</form>
+
+	<br/>
+	<link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+	<button class="btn btn-success" form="paymentdetails" type="submit">{{ 'main.checkout' | trans }}</button>
+	<a href="{{ path('product') }}" class="btn">{{ 'main.continueShopping' | trans }}</a>
+	<a class="btn" href="{{ path('donation_cart') }}">{{ 'main.back' | trans }}</a>
+	<a href="{{ path('donation_cart_clear') }}" class="btn btn-danger">{{ 'main.clearCart' | trans }}</a>
+
+{% endblock %}

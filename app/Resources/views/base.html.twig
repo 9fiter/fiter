@@ -171,7 +171,7 @@
 
                     {% render "FiterMinecraftBundle:Default:minecraft" %}
                     
-                    <div style="position:relative;height:137px;background-color:#000" class="banner300-300 sombra">
+                    <div style="position:relative;height:137px;background-color:#000;margin-bottom: 1.5em;" class="banner300-300 sombra">
                         <img class="asd" src="/img/Minecraft-Logo.png">
                         <a class="mcuser s1" href="{{ path('authme_online')}}">{{ 'main.onlineUsers' | trans }}</a>
                         <a class="mcuser s2" href="{{ path('authme')}}">{{ 'main.registeredUsers' | trans }}</a>
@@ -191,7 +191,35 @@
                         <span class="mcdonations">Donaciones VIP</span>
                     </div>
                     </a>
-                    #}<br/>
+                    #}
+
+
+
+
+
+
+
+
+                    {% if ( is_granted('ROLE_ADMIN')) %}
+                        <div class="banner300-300">
+                            <a style="display:block" href="{{ path('product')}}" target="_blank">
+                                <div style="background-image:url(/img/vipbanner.png); height:137px;background-color:#000" class="banner300-300 sombra">
+                                    <span class="mcdonations">Donaciones VIP</span>
+                                </div>
+                            </a>
+                        </div>            
+                    {% endif %}
+                       
+                    
+
+
+
+
+                    
+                
+
+
+
 
                     <div class="banner300-300 sombra">
                         <a href="{{ path('teamspeak_connect')}}">

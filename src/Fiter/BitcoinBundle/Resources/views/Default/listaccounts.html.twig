@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ app.request.host }}{% endblock %}
+ 
+{% block main %} 
+	<style>
+	.listaccounts th,
+	.listaccounts td{ 
+		padding-left: .6em;
+		padding-right: .6em;
+		text-align: left;
+		border: 1px solid #D3D3D3;
+	}
+	</style>
+    <h2>Bitcoind listaccounts</h2>
+    <table class="listaccounts">
+		<tr>
+			<th>account</th>
+			<th>balance</th>
+		</tr>
+		{% for account in listaccounts %} 
+		<tr>
+			<td><a href="{{ path('bitcoin_getaddressesbyaccount', { 'account': account.account }) }}">{{ account.account }}</a></td>
+			<td style="text-align: right">{{ account.balance }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}

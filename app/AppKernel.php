@@ -51,6 +51,15 @@ class AppKernel extends Kernel
             new PunkAve\FileUploaderBundle\PunkAveFileUploaderBundle(),
             new Raindrop\GeoipBundle\RaindropGeoipBundle(),
             new Fiter\PhotoContestBundle\FiterPhotoContestBundle(),
+            new Nbobtc\Bundle\BitcoindBundle\BitcoindBundle(),
+            new Fiter\BitcoinBundle\FiterBitcoinBundle(),
+            new Fiter\MinecraftDonationBundle\FiterMinecraftDonationBundle(),
+            new JMS\Payment\CoreBundle\JMSPaymentCoreBundle(),
+            new JMS\Payment\PaypalBundle\JMSPaymentPaypalBundle(),
+            
+
+
+            new Fiter\Payment\BitcoinBundle\FiterPaymentBitcoinBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

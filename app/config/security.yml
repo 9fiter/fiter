@@ -54,6 +54,7 @@ security:
         - { path: ^/(es|en|gl|ca)/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/(es|en|gl|ca)/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/(es|en|gl|ca)/admin/, role: ROLE_ADMIN }
+        - { path: ^/(es|en|gl|ca)/bitcoin/, role: ROLE_ADMIN }
         - { path: ^/(es|en|gl|ca)/(categorias|categories)$, role: ROLE_ADMIN }
         - { path: ^/(es|en|gl|ca)/medio, role: ROLE_ADMIN }
         - { path: ^/(es|en|gl|ca)/answer, role: ROLE_USER }

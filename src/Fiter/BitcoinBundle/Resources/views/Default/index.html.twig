@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ app.request.host }}{% endblock %}
+ 
+{% block main %} 
+    <h2>Bitcoin</h2>
+    <a href="{{ path('bitcoin_listaccounts') }}">listaccounts</a><br/>
+    <a href="{{ path('bitcoin_getnewaddress_form') }}">getnewaddress</a><br/>    
+    <a href="{{ path('bitcoin_help') }}">help</a><br/>
+    <br/>
+    
+    <strong>Info</strong><br/>
+    <a href="{{ path('bitcoin_getinfo') }}">getinfo</a><br/>
+    <a href="{{ path('bitcoin_mininginfo') }}">minninginfo</a><br/>
+    <a href="{{ path('bitcoin_peerinfo') }}">peerinfo</a><br/>
+    <a href="{{ path('bitcoin_txoutsetinfo') }}">txoutsetinfo</a><br/>
+{% endblock %}

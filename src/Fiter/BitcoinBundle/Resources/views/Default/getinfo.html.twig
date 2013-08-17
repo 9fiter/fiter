@@ -1,0 +1,30 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ app.request.host }}{% endblock %}
+ 
+{% block main %} 
+    <h2>info</h2>
+    <strong>version:</strong> {{ info.version }}<br/>
+    <strong>protocolversion:</strong> {{info.protocolversion}}<br/>
+	<strong>walletversion:</strong> {{info.walletversion}}<br/>
+	<strong>balance:</strong> {{info.balance}}<br/>
+	<strong>blocks:</strong> {{info.blocks}}<br/>
+	<strong>timeoffset:</strong> {{info.timeoffset}}<br/>
+	<strong>connections:</strong> {{info.connections}}<br/>
+	<strong>proxy:</strong> {{info.proxy}}<br/>
+	<strong>difficulty:</strong> {{info.difficulty}}<br/>
+	<strong>testnet:</strong> {% if info.testnet %}true{% else %}false{% endif %}<br/>
+	<strong>keypoololdest:</strong> {{info.keypoololdest}}<br/>
+	<strong>keypoolsize:</strong> {{info.keypoolsize}}<br/>
+	<strong>paytxfee:</strong> {{info.paytxfee}}<br/>
+	<strong>errors:</strong> {% if info.errors=="" %}false{% else %} {{info.errors}}{% endif %}<br/>
+	{#% for key, value in info|cast_to_array %} 
+    	<p>{{ value }}: {{ key }}<p/>
+	{% endfor %#}
+	
+	<br/>
+    <strong>connectioncount:</strong> {{ connectioncount }}<br/>
+{% endblock %}
+    
+    
+   

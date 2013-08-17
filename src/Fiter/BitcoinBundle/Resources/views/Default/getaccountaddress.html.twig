@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+	{% for flashMessage in app.session.flashbag.get('notice') %}
+	    <div class="flash-notice">
+	        {{ flashMessage }}
+	    </div>
+	{% endfor %} 
+    <h2>Bitcoin getaccountaddress</h2>
+	<strong>account: </strong> {{account}}<br/>
+	<strong>address: </strong> {{accountaddress}}<br/>
+{% endblock %}

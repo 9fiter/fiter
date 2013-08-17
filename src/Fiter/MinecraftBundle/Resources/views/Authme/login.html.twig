@@ -11,6 +11,7 @@
     <input name="user" type="text" required="required" autocomplete="off"/><br/>
     <label>{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
     <input type="password" name="pass" required="required"/><br/><br/>
+    <input type="hidden" name="referer" value="{{referer}}"/><br/><br/>
 </form>
 
 <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />

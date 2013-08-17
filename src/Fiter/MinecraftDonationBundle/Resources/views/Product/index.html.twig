@@ -1,0 +1,61 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ 'main.products' | trans }} - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+    <style>
+    ul.donation{
+        list-style: none;
+        margin:0;
+        padding:0;
+        margin-bottom: 1em;
+        display: inline-block;
+    }
+    ul.donation li{
+        float: left;
+        margin-right:.5em;
+    }
+    ul.donation li img{
+        display:block;
+        margin-bottom:.5em;
+    }
+    ul.donation li span{
+        font-size: 1.7em;
+        font-weight: 700;
+        vertical-align: sub;
+    }
+    ul.donation .price{
+        font-size: 1.4em;
+        font-weight: 700;
+        vertical-align: super;
+    }
+    ul.donation li button{
+        margin-right:.3em;
+    }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+
+
+
+    
+
+
+    <a class="btn btn-success" href="{{ path('product_new') }}">{{ 'main.createProduct' | trans }}</a><br/>
+
+    <ul class="donation">
+        {% for entity in entities %}
+        <li>
+            <h3><a href="{{ path('product_show', { 'id': entity.id }) }}">{{ entity.name }}</a></h3>
+            <a href="{{ path('product_show', { 'id': entity.id }) }}">
+                {% if entity.path %}
+                    <img class="product_image sombra" src="{{ asset(['uploads/products/', entity.path]|join)|imagine_filter('thumb_180x156') }}" alt="{{ entity.name}}" />
+                {% else %}
+                    <img class="product_image sombra" src="/bundles/fiterminecraftdonation/images/vip1.jpg">
+                {% endif %}
+            </a>
+            <a class="btn btn-success" href="{{ path('add_product', { 'productId': entity.id }) }}">{{ 'main.add' | trans }}</a>
+            <span>{{ entity.price }}€</span>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

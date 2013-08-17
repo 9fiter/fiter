@@ -1,0 +1,9 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ app.request.host }}{% endblock %}
+ 
+{% block main %} 
+    <h2>Bitcoin getreceivedbyaddress</h2>
+    <strong>address: </strong> {{address}}<br/>
+    <strong>received: </strong> {{received}}<br/>
+{% endblock %}

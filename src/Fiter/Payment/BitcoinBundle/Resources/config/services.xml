@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="payment.plugin.bitcoin_express_checkout.class">Fiter\Payment\BitcoinBundle\Plugin\ExpressCheckoutPlugin</parameter>
+        <parameter key="payment.bitcoin.express_checkout.return_url"></parameter>
+        <parameter key="payment.bitcoin.express_checkout.cancel_url"></parameter>
+
+        <parameter key="payment.bitcoin.authentication_strategy.token.class">Fiter\Payment\BitcoinBundle\Client\Authentication\TokenAuthenticationStrategy</parameter>
+        <parameter key="payment.bitcoin.username"></parameter>
+        <parameter key="payment.bitcoin.password"></parameter>
+        <parameter key="payment.bitcoin.signature"></parameter>
+        
+        <parameter key="payment.form.bitcoin_express_checkout_type.class">Fiter\Payment\BitcoinBundle\Form\ExpressCheckoutType</parameter>
+
+        <parameter key="payment.bitcoin.client.class">Fiter\Payment\BitcoinBundle\Client\Client</parameter>
+    </parameters>
+
+    <services>
+        <service id="payment.bitcoin.authentication_strategy.token" class="%payment.bitcoin.authentication_strategy.token.class%">
+            <argument>%payment.bitcoin.username%</argument>
+            <argument>%payment.bitcoin.password%</argument>
+            <argument>%payment.bitcoin.signature%</argument>
+        </service>
+
+        <service id="payment.bitcoin.authentication_strategy" alias="payment.bitcoin.authentication_strategy.token" />
+
+        <service id="payment.plugin.bitcoin_express_checkout" class="%payment.plugin.bitcoin_express_checkout.class%">
+            <argument>%payment.bitcoin.express_checkout.return_url%</argument>
+            <argument>%payment.bitcoin.express_checkout.cancel_url%</argument>
+            <argument type="service" id="payment.bitcoin.client" />
+            <tag name="payment.plugin" />
+        </service>
+
+        <service id="payment.bitcoin.client" class="%payment.bitcoin.client.class%">
+            <argument type="service" id="payment.bitcoin.authentication_strategy" />
+            <argument>%payment.bitcoin.debug%</argument>
+        </service>
+        
+        <service id="payment.form.bitcoin_express_checkout_type" class="%payment.form.bitcoin_express_checkout_type.class%">
+            <tag name="payment.method_form_type" />
+            <tag name="form.type" alias="bitcoin_express_checkout" />
+        </service>
+    </services>
+</container>

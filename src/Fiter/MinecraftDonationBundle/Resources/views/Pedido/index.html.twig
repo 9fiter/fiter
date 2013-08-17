@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Products - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+    <h2>Pedido list</h2>
+    {% for entity in entities %}
+            <a href="{{ path('pedido_show', { 'id': entity.id }) }}">{{ entity.id }}</a> - {{ entity.orderNumber }} - {{ entity.amount }}€
+            <a href="{{ path('pedido_show', { 'id': entity.id }) }}">show</a>
+            {#<a href="{{ path('pedido_edit', { 'id': entity.id }) }}">edit</a>#}
+            <br/>
+            
+    {% endfor %}
+    
+    <br/><br/>
+    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+    <a class="btn btn-success" href="{{ path('pedido_new') }}">Create a new pedido</a>
+{% endblock %}

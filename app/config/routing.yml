@@ -1,3 +1,13 @@
+fiter_minecraft_donation:
+    resource: "@FiterMinecraftDonationBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}/minecraft/donation
+
+fiter_bitcoin:
+    resource: "@FiterBitcoinBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}
+
 fiter_photo_contest:
     resource: "@FiterPhotoContestBundle/Controller/"
     type:     annotation

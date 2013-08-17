@@ -1,0 +1,182 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Pedido - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+    <h1>Pedido</h1>
+    <strong>Id: </strong>{{ entity.id }}<br/>
+    <strong>Ordernumber: </strong>{{ entity.orderNumber }}<br/>
+    <strong>Amount: </strong>{{ entity.amount }}€<br/>
+    {% if(entity.paymentInstruction) %}
+        <strong>paymentInstruction: </strong>{{ entity.paymentInstruction.id }}<br/>
+    {% endif %}
+
+    <h2>Cart details</h2>
+    {#{ladybug_dump(cart)}#}
+    <table class="donationcart">
+          <thead>
+            <tr>
+              <th>Item</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Sub Total</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            {% set total = 0.00 %}
+            {% if 'products' in cart|keys %}
+                {% for product in cart.products %}
+                    <tr>
+                        <td>{#{product['product'].name }#}</td>
+                        <td>{{product['price'] }}€</td>
+                        <td>{{product['qty']}}</td>
+                        {% set subtotal = product['price']*product['qty'] %}
+                        {% set total = total+subtotal %}
+                        <td class="price">{{ subtotal }}€</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+          </tbody>
+          <tfoot>
+            <tr>
+                <td>&nbsp;</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td style="text-align:right"><strong>Total price: &nbsp;</strong></td>
+                <td><span class="price">{{total}}€</span></td>
+            </tr>
+          </tfoot>
+        </table>
+
+
+
+
+
+    {% if(entity.paymentInstruction)%}
+        <h2>Payment instruction</h2>
+        {#{ladybug_dump(entity.paymentInstruction)}#}
+        <strong>id: </strong>{{entity.paymentInstruction.id}}<br/>
+        <strong>amount: </strong>{{entity.paymentInstruction.amount}}<br/>
+        <strong>approvedAmount: </strong>{{entity.paymentInstruction.approvedAmount}}<br/>
+        <strong>approvingAmount: </strong>{{entity.paymentInstruction.approvingAmount}}<br/>
+        <strong>createdAt: </strong>{{entity.paymentInstruction.createdAt|date}}<br/>
+        <strong>creditedAmount: </strong>{{entity.paymentInstruction.creditedAmount}}<br/>
+        <strong>creditingAmount: </strong>{{entity.paymentInstruction.creditingAmount}}<br/>
+        <strong>credits: </strong>{#{entity.paymentInstruction.credits}#}
+        {#{ladybug_dump(entity.paymentInstruction.credits)}#}
+        {{ladybug_dump(entity.paymentInstruction.credits.toArray() )}}
+        {% for credit in entity.paymentInstruction.credits.toArray() %}
+            <strong>id: </strong>{{credit.id}}<br/>   
+        {% endfor %}
+        <strong>currency: </strong>{{entity.paymentInstruction.currency}}<br/>
+        <strong>depositedAmount: </strong>{{entity.paymentInstruction.depositedAmount}}<br/>
+        <strong>depositingAmount: </strong>{{entity.paymentInstruction.depositingAmount}}<br/>
+
+
+        {% if(entity.paymentInstruction.extendedData.all()) %}
+            <strong>extendedData: </strong>{#{entity.paymentInstruction.extendedData}#}
+            {#{ladybug_dump(entity.paymentInstruction.extendedData)}#}
+            {#{ladybug_dump(entity.paymentInstruction.extendedData.all() )}#}
+            <div style="padding-left:2em;">
+                <strong>return_url: </strong>{{entity.paymentInstruction.extendedData.all().return_url[0] }}<br/>
+                <strong>cancel_url: </strong>{{entity.paymentInstruction.extendedData.all().cancel_url[0] }}<br/>
+                {% if "express_checkout_token" in entity.paymentInstruction.extendedData.all()|keys %}
+                    <strong>express_checkout_token: </strong>{{entity.paymentInstruction.extendedData.all().express_checkout_token[0] }}<br/>
+                {% endif %}
+                {% if "paypal_payer_id" in entity.paymentInstruction.extendedData.all()|keys %}
+                    <strong>paypal_payer_id: </strong>{{entity.paymentInstruction.extendedData.all().paypal_payer_id[0] }}<br/>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <strong>paymentSystemName: </strong>{{entity.paymentInstruction.paymentSystemName}}<br/>
+        {# <strong>payments: </strong>{{entity.paymentInstruction.payments}} #}
+        
+        <strong>pendingTransaction: </strong>{{entity.paymentInstruction.pendingTransaction}}<br/>
+        <strong>reversingApprovedAmount: </strong>{{entity.paymentInstruction.reversingApprovedAmount}}<br/>
+        <strong>reversingCreditedAmount: </strong>{{entity.paymentInstruction.reversingCreditedAmount}}<br/>
+        <strong>reversingDepositedAmount: </strong>{{entity.paymentInstruction.reversingDepositedAmount}}<br/>
+        <strong>state: </strong>{{entity.paymentInstruction.state}}<br/>
+        <strong>updatedAt: </strong>{{entity.paymentInstruction.updatedAt|date}}<br/>
+
+
+        <h2>Payments</h2>
+        {#{ladybug_dump(entity.paymentInstruction.payments )}#}
+        {#{ladybug_dump(entity.paymentInstruction.payments.toArray() )}#}
+        {% for payment in entity.paymentInstruction.payments.toArray() %}
+            <strong>id: </strong>{{payment.id }}<br/> 
+            {#<strong>paymentInstruction: </strong>{{payment.paymentInstruction }}<br/>#}
+            <strong>approvedAmount: </strong>{{payment.approvedAmount }}<br/>
+            <strong>approvingAmount: </strong>{{payment.approvingAmount }}<br/>
+            <strong>createdAt: </strong>{{payment.createdAt|date }}<br/>
+            <strong>creditedAmount: </strong>{{payment.creditedAmount }}<br/>
+            <strong>creditingAmount: </strong>{{payment.creditingAmount }}<br/>
+            <strong>depositTransactions: </strong>{#{payment.depositTransactions }#}<br/>
+            {{ladybug_dump(payment.depositTransactions.toArray() ) }}
+
+            <strong>depositedAmount: </strong>{{payment.depositedAmount }}<br/>
+            <strong>depositingAmount: </strong>{{payment.depositingAmount }}<br/>
+            <strong>expirationDate: </strong>{{payment.expirationDate|date }}<br/>
+            <strong>pendingTransaction: </strong>{{payment.pendingTransaction }}<br/>
+            <strong>reverseApprovalTransactions: </strong>{#{payment.reverseApprovalTransactions }#}<br/>
+            {{ladybug_dump(payment.reverseApprovalTransactions.toArray() ) }}
+
+            <strong>reverseDepositTransactions: </strong>{#{payment.reverseDepositTransactions }#}<br/>
+            {{ladybug_dump(payment.reverseDepositTransactions.toArray() ) }}
+
+            <strong>reversingApprovedAmount: </strong>{{payment.reversingApprovedAmount }}<br/>
+            <strong>reversingCreditedAmount: </strong>{{payment.reversingCreditedAmount }}<br/>
+            <strong>reversingDepositedAmount: </strong>{{payment.reversingDepositedAmount }}<br/>
+            <strong>state: </strong>{{payment.state }}<br/>
+            <strong>targetAmount: </strong>{{payment.targetAmount }}<br/>
+            <strong>transactions: </strong>{#{payment.transactions }#}<br/>
+            <strong>updatedAt: </strong>{{payment.updatedAt|date }}<br/>
+            
+            <h2>Approve transaction: </h2>{#{payment.approveTransaction }#}<br/>
+            {#{ladybug_dump(payment.approveTransaction ) }#}
+            <div style="padding-left:2em;">
+                <strong>id: </strong>{{payment.approveTransaction.id}}<br/>
+                <strong>createdAt: </strong>{{payment.approveTransaction.createdAt|date}}<br/>
+                <strong>credit: </strong>{{payment.approveTransaction.credit}}<br/>
+                <strong>extendedData: </strong>{#{payment.approveTransaction.extendedData}#}<br/>
+                <strong>payment: </strong>{#{payment.approveTransaction.payment}#}<br/>
+                <strong>processedAmount: </strong>{{payment.approveTransaction.processedAmount}}<br/>
+                <strong>reasonCode: </strong>{{payment.approveTransaction.reasonCode}}<br/>
+                <strong>referenceNumber: </strong>{{payment.approveTransaction.referenceNumber}}<br/>
+                <strong>requestedAmount: </strong>{{payment.approveTransaction.requestedAmount}}<br/>
+                <strong>responseCode: </strong>{{payment.approveTransaction.responseCode}}<br/>
+                <strong>state: </strong>{{payment.approveTransaction.state}}<br/>
+                <strong>trackingId: </strong>{{payment.approveTransaction.trackingId}}<br/>
+                <strong>transactionType: </strong>{{payment.approveTransaction.transactionType}}<br/>
+                <strong>updatedAt: </strong>{{payment.approveTransaction.updatedAt|date}}<br/>
+            </div>
+            
+        {% endfor %}
+    {% endif %}
+
+
+    {#Payment: <a href="{{ path('payment_details', { 'orderId': entity.id }) }}">pagar</a> #}
+
+    <form id="pedido_delete" action="{{ path('pedido_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+    </form>
+
+    <br/>
+    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+    {#<a class="btn btn-success" href="{{ path('pedido_edit', { 'id': entity.id }) }}">Edit</a>#}
+    <a class="btn" href="{{ path('pedido') }}">Back to the list</a>
+    {#<button class="btn btn-danger" form="pedido_delete" type="submit">Delete</button>#}
+{% endblock %}
+
+
+
+
+
+
+

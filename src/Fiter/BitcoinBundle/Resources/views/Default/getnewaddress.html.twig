@@ -1,0 +1,9 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ app.request.host }}{% endblock %}
+ 
+{% block main %} 
+    <h2>Bitcoind getnewaddres {{account}}</h2>
+    <strong>account: </strong> {{account}}<br/>
+    <strong>accountaddress: </strong> {{accountaddress}}<br/>   
+{% endblock %}
