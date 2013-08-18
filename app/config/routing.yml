@@ -1,3 +1,7 @@
+wikp_payment_mtgox:
+    resource: "@WikpPaymentMtgoxBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}/mtgox
+
 fiter_minecraft_donation:
     resource: "@FiterMinecraftDonationBundle/Controller/"
     type:     annotation

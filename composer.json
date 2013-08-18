@@ -68,7 +68,8 @@
         "raindrop/geoip-bundle": "dev-master",
         "nbobtc/bitcoind-bundle": "dev-master",
         "jms/payment-paypal-bundle": "dev-master",
-        "jms/payment-core-bundle": "dev-master"
+        "jms/payment-core-bundle": "dev-master",
+        "wikp/payment-mtgox-bundle": "dev-master"
 
 
 

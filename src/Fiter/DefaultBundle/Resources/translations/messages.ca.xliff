@@ -528,6 +528,36 @@
 
 
 
+            <trans-unit id="119">
+                <source>form.label.wikp_mtgox_ipn</source>
+                <target>MtGox</target>
+            </trans-unit>
+
+            <trans-unit id="120">
+                <source>main.select</source>
+                <target>Seleccionar</target>
+            </trans-unit>
+
+
+            <trans-unit id="121">
+                <source>main.showMiniaturas</source>
+                <target>Mostra imatges</target>
+            </trans-unit>
+            <trans-unit id="122">
+                <source>main.showSlide</source>
+                <target>Mostra slide</target>
+            </trans-unit>
+            <trans-unit id="123">
+                <source>main.subcategorias</source>
+                <target>Subcategories</target>
+            </trans-unit>
+            <trans-unit id="124">
+                <source>main.seleccionaSubcategorias</source>
+                <target>Selecciona subcategories...</target>
+            </trans-unit>
+
+
+
 
 
             

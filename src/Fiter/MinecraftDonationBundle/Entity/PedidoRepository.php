@@ -11,5 +11,9 @@ use Doctrine\ORM\EntityRepository;
  * repository methods below.
  */
 class PedidoRepository extends EntityRepository{
+
+	public function getOrderById($id){
+        return $this->find($id);
+    }
 	
 }

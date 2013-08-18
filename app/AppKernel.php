@@ -60,6 +60,7 @@ class AppKernel extends Kernel
 
 
             new Fiter\Payment\BitcoinBundle\FiterPaymentBitcoinBundle(),
+            new Wikp\PaymentMtgoxBundle\WikpPaymentMtgoxBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

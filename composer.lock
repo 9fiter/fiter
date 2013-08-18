@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "48843f8ef3a7fe2bb7a426aab240065e",
+    "hash": "75cb107851f491941acfc0305949432a",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -411,12 +411,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/common.git",
-                "reference": "9c6b8615a988117dec83bdbb0fad80afef23eab8"
+                "reference": "f28a39065d455b6df1c989ea6590e971a1f0256d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/common/zipball/9c6b8615a988117dec83bdbb0fad80afef23eab8",
-                "reference": "9c6b8615a988117dec83bdbb0fad80afef23eab8",
+                "url": "https://api.github.com/repos/doctrine/common/zipball/f28a39065d455b6df1c989ea6590e971a1f0256d",
+                "reference": "f28a39065d455b6df1c989ea6590e971a1f0256d",
                 "shasum": ""
             },
             "require": {
@@ -477,7 +477,7 @@
                 "persistence",
                 "spl"
             ],
-            "time": "2013-07-30 05:35:10"
+            "time": "2013-08-17 18:48:00"
         },
         {
             "name": "doctrine/data-fixtures",
@@ -1187,12 +1187,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "8e40b3eb7ea199aab60dea9d1335e825d5138f81"
+                "reference": "0.13.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/8e40b3eb7ea199aab60dea9d1335e825d5138f81",
-                "reference": "8e40b3eb7ea199aab60dea9d1335e825d5138f81",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/0.13.1",
+                "reference": "0.13.1",
                 "shasum": ""
             },
             "require": {
@@ -1253,7 +1253,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2013-08-14 21:03:19"
+            "time": "2013-08-15 13:30:47"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -1330,12 +1330,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/l3pp4rd/DoctrineExtensions.git",
-                "reference": "e96cbd02225541821cebd0f4a3fc8e1fe9e1c71e"
+                "reference": "v2.3.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/e96cbd02225541821cebd0f4a3fc8e1fe9e1c71e",
-                "reference": "e96cbd02225541821cebd0f4a3fc8e1fe9e1c71e",
+                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/v2.3.7",
+                "reference": "v2.3.7",
                 "shasum": ""
             },
             "require": {
@@ -1402,7 +1402,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2013-08-14 20:38:51"
+            "time": "2013-08-18 07:18:44"
         },
         {
             "name": "genemu/form-bundle",
@@ -2060,12 +2060,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "9e0fcd00a374e9ad484687628c6c25ab1083ea5a"
+                "reference": "89a43cbe84e079bcd81d82889b03ded9abda2f47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/9e0fcd00a374e9ad484687628c6c25ab1083ea5a",
-                "reference": "9e0fcd00a374e9ad484687628c6c25ab1083ea5a",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/89a43cbe84e079bcd81d82889b03ded9abda2f47",
+                "reference": "89a43cbe84e079bcd81d82889b03ded9abda2f47",
                 "shasum": ""
             },
             "require": {
@@ -2090,7 +2090,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.13-dev"
+                    "dev-master": "0.14-dev"
                 }
             },
             "autoload": {
@@ -2119,7 +2119,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2013-07-29 13:39:49"
+            "time": "2013-08-17 18:17:07"
         },
         {
             "name": "jms/serializer-bundle",
@@ -2128,12 +2128,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/JMSSerializerBundle.git",
-                "reference": "5531198a73c4adee669a8a2d1452999349822771"
+                "reference": "07b6b6a2ba6566fd25d3db3177ef7e82255a2757"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/5531198a73c4adee669a8a2d1452999349822771",
-                "reference": "5531198a73c4adee669a8a2d1452999349822771",
+                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/07b6b6a2ba6566fd25d3db3177ef7e82255a2757",
+                "reference": "07b6b6a2ba6566fd25d3db3177ef7e82255a2757",
                 "shasum": ""
             },
             "require": {
@@ -2160,7 +2160,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.12-dev"
+                    "dev-master": "0.13-dev"
                 }
             },
             "autoload": {
@@ -2189,7 +2189,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2013-07-29 12:36:36"
+            "time": "2013-08-17 18:18:35"
         },
         {
             "name": "knplabs/knp-menu",
@@ -3942,6 +3942,52 @@
             "time": "2013-08-07 12:53:34"
         },
         {
+            "name": "wikp/payment-mtgox-bundle",
+            "version": "dev-master",
+            "target-dir": "Wikp/PaymentMtgoxBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wikp/PaymentMtgoxBundle.git",
+                "reference": "bb10847c862c3fa235f00fee80719bc263eda02a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wikp/PaymentMtgoxBundle/zipball/bb10847c862c3fa235f00fee80719bc263eda02a",
+                "reference": "bb10847c862c3fa235f00fee80719bc263eda02a",
+                "shasum": ""
+            },
+            "require": {
+                "jms/payment-core-bundle": "dev-master",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "symfony/browser-kit": "2.1.x-dev"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Wikp\\PaymentMtgoxBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Piotr Wikieł",
+                    "email": "piotr.wikiel@gmail.com"
+                }
+            ],
+            "description": "Bundle for creating payment system based on MtGox.com (Bitcoin cryptocurrency",
+            "homepage": "http://github.com/wikp/PaymentMtgoxBundle",
+            "keywords": [
+                "bitcoin",
+                "payment"
+            ],
+            "time": "2013-02-25 10:45:25"
+        },
+        {
             "name": "willdurand/negotiation",
             "version": "dev-master",
             "source": {
@@ -4023,7 +4069,8 @@
         "raindrop/geoip-bundle": 20,
         "nbobtc/bitcoind-bundle": 20,
         "jms/payment-paypal-bundle": 20,
-        "jms/payment-core-bundle": 20
+        "jms/payment-core-bundle": 20,
+        "wikp/payment-mtgox-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"

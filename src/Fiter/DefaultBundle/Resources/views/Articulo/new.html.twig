@@ -26,9 +26,22 @@
             
         {{ form_label(form.contenido) }}
         {{ form_widget(form.mostrarContenido) }}<span>{{ form_label(form.mostrarContenido,label|default(null)) }}</span><br>
-        {{ form_widget(form.contenido) }}
+        {#{ form_widget(form.contenido) }#}
 
-        {{ form_row(form.translations) }}
+        <div class="container">
+            <ul id="tab" class="nav nav-tabs">
+                <li class="active"><a href="#tab0" data-toggle="tab"><label>Es</label></a></li>
+                {% for translation in form.translations.children %}
+                <li><a href="#tab{{loop.index}}" data-toggle="tab">{{ form_label(translation) }}</a></li>
+                {% endfor %}
+            </ul>
+            <div class="tab-content">
+                {% for translation in form.translations.children %}
+                    <div class="tab-pane fade in active" id="tab0">{{ form_widget(form.contenido) }}</div>
+                    <div class="tab-pane fade" id="tab{{loop.index}}">{{ form_widget(translation) }}</div>
+                {% endfor %}
+            </div>
+        </div>
         
         {{ form_label(form.videosYoutube) }}
         <ul class="videosYoutube" data-prototype="{{ form_widget(form.videosYoutube.vars.prototype)|e }}">
@@ -94,7 +107,10 @@
     $('.chzn-search input').css('width','100%');
     
     $("#fiter_defaultbundle_articulotype_categoria").data("chosen").default_text = "{{ 'main.seleccionaCategorias' | trans }}";
+    $("#fiter_defaultbundle_articulotype_subCategoria").data("chosen").default_text = "{{ 'main.seleccionaSubcategorias' | trans }}";
+    
     $("#fiter_defaultbundle_articulotype_categoria").trigger("liszt:updated");
+    $("#fiter_defaultbundle_articulotype_subCategoria").trigger("liszt:updated");
     $("li.search-field input").css("width","auto");
 </script>
 <link rel="stylesheet" href="/js/chosen/chosen.css" />
@@ -110,8 +126,8 @@
     $("form").find("input[type=file]").change(function() {
         readURL(this)
     });
-    $(".uploader span.filename").text("{{ 'main.noFileSelected' | trans }}");
-    $(".uploader span.action").text("Seleccionar");
+    $(".uploader22 span.filename").text("{{ 'main.noFileSelected' | trans }}");
+    $(".uploader22 span.action").text("{{ 'main.select' | trans }}");
     
     $("#form_add_articulo").submit(function(e){
         //e.preventDefault();
@@ -142,4 +158,5 @@
         //$(this).submit();
     });
 </script>
+<script type="text/javascript" src="/bundles/fiterdefault/js/bootstrap.min.js" />
 {% endblock %}

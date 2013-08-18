@@ -525,7 +525,31 @@
                 <source>main.notlogued</source>
                 <target>You must be logged in as a minecraft user.</target>
             </trans-unit>
+            <trans-unit id="119">
+                <source>form.label.wikp_mtgox_ipn</source>
+                <target>MtGox</target>
+            </trans-unit>
+            <trans-unit id="120">
+                <source>main.select</source>
+                <target>Select</target>
+            </trans-unit>
 
+            <trans-unit id="121">
+                <source>main.showMiniaturas</source>
+                <target>Show miniatures</target>
+            </trans-unit>
+            <trans-unit id="122">
+                <source>main.showSlide</source>
+                <target>Show slide</target>
+            </trans-unit>
+            <trans-unit id="123">
+                <source>main.subcategorias</source>
+                <target>Subcategories</target>
+            </trans-unit>
+            <trans-unit id="124">
+                <source>main.seleccionaSubcategorias</source>
+                <target>Select subcategories...</target>
+            </trans-unit>
 
 
 

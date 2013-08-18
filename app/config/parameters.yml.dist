@@ -78,3 +78,7 @@ parameters:
     fiter_payment_bitcoin_username: user-facilitator_api1.gmail.com
     fiter_payment_bitcoin_password: 1376557490
     fiter_payment_bitcoin_signature: A70rO0.Z0aDC8OtNSbcRASesddDaHAIeG3r9JJaZH0rZY8MDxsp6ygTnb
+
+
+    mtgox_api_key:    your-mtgox-api-key
+    mtgox_api_secret: "+your-mtgox-api-secret=="

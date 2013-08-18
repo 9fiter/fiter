@@ -512,6 +512,30 @@
                 <source>main.thanks</source>
                 <target>Grazas</target>
             </trans-unit>
+            <trans-unit id="119">
+                <source>form.label.wikp_mtgox_ipn</source>
+                <target>MtGox</target>
+            </trans-unit>
+            <trans-unit id="120">
+                <source>main.select</source>
+                <target>Seleccionar</target>
+            </trans-unit>
+            <trans-unit id="121">
+                <source>main.showMiniaturas</source>
+                <target>Mostrar miniaturas</target>
+            </trans-unit>
+            <trans-unit id="122">
+                <source>main.showSlide</source>
+                <target>Mostrar slide</target>
+            </trans-unit>
+            <trans-unit id="123">
+                <source>main.subcategorias</source>
+                <target>Subcategorias</target>
+            </trans-unit>
+            <trans-unit id="124">
+                <source>main.seleccionaSubcategorias</source>
+                <target>Selecciona subcategorias...</target>
+            </trans-unit>
 
 
         </body>

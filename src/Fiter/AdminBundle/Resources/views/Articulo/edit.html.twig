@@ -75,7 +75,9 @@
 <script type="text/javascript" src="/js/formoid/jquery.uniform.min.js"></script>
 <script type="text/javascript"> 
     $("form").find("input[type=file]").uniform();
-    $(".uploader span.filename").text("No se ha seleccionado ningún archivo");
-    $(".uploader span.action").text("Seleccionar");
+    $(".uploader span.filename").text("{{ 'main.noFileSelected' | trans }}");
+    $(".uploader span.action").text("{{ 'main.select' | trans }}");
+    $(".uploader22 span.filename").text("{{ 'main.noFileSelected' | trans }}");
+    $(".uploader22 span.action").text("{{ 'main.select' | trans }}");
 </script>
 {% endblock %}    

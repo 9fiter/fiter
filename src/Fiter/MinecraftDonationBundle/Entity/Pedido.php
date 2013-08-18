@@ -4,7 +4,7 @@ namespace Fiter\MinecraftDonationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Payment\CoreBundle\Entity\PaymentInstruction;
-
+use Wikp\PaymentMtgoxBundle\Plugin\OrderInterface;
 
 
 /**
@@ -12,7 +12,12 @@ use JMS\Payment\CoreBundle\Entity\PaymentInstruction;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Fiter\MinecraftDonationBundle\Entity\PedidoRepository")
  */
-class Pedido{
+class Pedido {
+
+    const STATUS_NEW = 0;
+    const STATUS_FINISHED = 1;
+    const STATUS_CANCELLED = 2;
+
 
     /**
      * @var integer
@@ -46,6 +51,7 @@ class Pedido{
     public function __construct(){
         //$this->amount = $amount;
         //$this->orderNumber = $orderNumber;
+        $this->status = self::STATUS_NEW;
     }
     public function __toString(){ return $this->getOrderNumber(); }
     public function getOrderNumber(){ return $this->orderNumber; }
@@ -58,5 +64,7 @@ class Pedido{
     public function setCart($cart){ $this->cart = $cart; }
     public function getUser(){ return $this->user; }
     public function setUser($user){ $this->user = $user; }
+    public function cancel(){ $this->status = self::STATUS_CANCELLED;}
+    public function approve(){ $this->status = self::STATUS_FINISHED; }
 
 }
