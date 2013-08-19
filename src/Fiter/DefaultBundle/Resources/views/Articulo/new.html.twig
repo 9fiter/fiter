@@ -28,7 +28,7 @@
         {{ form_widget(form.mostrarContenido) }}<span>{{ form_label(form.mostrarContenido,label|default(null)) }}</span><br>
         {#{ form_widget(form.contenido) }#}
 
-        <div class="container">
+        <div>
             <ul id="tab" class="nav nav-tabs">
                 <li class="active"><a href="#tab0" data-toggle="tab"><label>Es</label></a></li>
                 {% for translation in form.translations.children %}

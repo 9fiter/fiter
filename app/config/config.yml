@@ -32,7 +32,7 @@ twig:
         description: %description%
         twitter_feed: %twitter_feed%
         web_path: %web_path%
-        css_version: "0.20"
+        css_version: "0.21"
         css_version2: "0.1"
         isprod: %isprod%
 
