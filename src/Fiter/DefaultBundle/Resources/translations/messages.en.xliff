@@ -550,6 +550,10 @@
                 <source>main.seleccionaSubcategorias</source>
                 <target>Select subcategories...</target>
             </trans-unit>
+            <trans-unit id="125">
+                <source>main.onlyValidCharUsername</source>
+                <target>Only [a-z0-9_-] characters in username</target>
+            </trans-unit>
 
 
 

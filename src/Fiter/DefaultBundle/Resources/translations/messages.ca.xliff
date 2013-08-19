@@ -556,6 +556,10 @@
                 <target>Selecciona subcategories...</target>
             </trans-unit>
 
+            <trans-unit id="125">
+                <source>main.onlyValidCharUsername</source>
+                <target>Només Caràcters [a-z0-9_-] en el Nom d'usuari</target>
+            </trans-unit>
 
 
 

@@ -1,10 +1,10 @@
 <nav {% if oculto == true %}class="oculto"{% endif %}>
 <ul class="menuLateral before">
-    <li {% if slug=="inicio" %}class="activa"{% endif %}>
+    <li class="cat {% if slug=="inicio" %}activa{% endif %}">
         <a href="{{ path( 'inicio' ) }}">Inicio</a>
     </li>
     {% for entity in entities %}
-    <li {% if slug==entity.slug %}class="activa"{% endif %}>
+    <li class="cat {% if slug==entity.slug %}activa{% endif %}">
         {% if tipo=='medio' %}
             <a href="{{ path('mediocategoria', { 'slug': entity.slug }) }}">{{ entity.nombre }}</a> 
         {% else %}
@@ -12,9 +12,9 @@
         {% endif %}        
     </li>
     <li class="subcat">
-        <ul style="margin-left:.5em;">
+        <ul style="">
             {% for subcategoria in entity.subcategoria %}
-            <li {% if slug==subcategoria.slug %}class="activa"{% endif %}>
+            <li class="subcatIn {% if slug==subcategoria.slug %}activa{% endif %}">
                 <a href="{{ path('articulosubcategoria', { 'slugCategoria': entity.slug, 'slug': subcategoria.slug }) }}">{{ subcategoria.nombre}}</a>
             </li>
             {% endfor %}

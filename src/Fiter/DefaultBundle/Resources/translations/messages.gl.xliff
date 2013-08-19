@@ -537,6 +537,11 @@
                 <target>Selecciona subcategorias...</target>
             </trans-unit>
 
+            <trans-unit id="125">
+                <source>main.onlyValidCharUsername</source>
+                <target>So caracteres [a-z0-9_-] no nome de usuario</target>
+            </trans-unit>
+
 
         </body>
     </file>
