@@ -33,14 +33,16 @@
         margin-right:.3em;
     }
     </style>
-    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
 
 
 
     
 
 
-    <a class="btn btn-success" href="{{ path('product_new') }}">{{ 'main.createProduct' | trans }}</a><br/>
+    <a class="btn btn-success" href="{{ path('product_new') }}">
+        <i class="icon-large icon-plus-sign"></i>
+        {{ 'main.createProduct' | trans }}
+    </a><br/>
 
     <ul class="donation">
         {% for entity in entities %}
@@ -53,7 +55,9 @@
                     <img class="product_image sombra" src="/bundles/fiterminecraftdonation/images/vip1.jpg">
                 {% endif %}
             </a>
-            <a class="btn btn-success" href="{{ path('add_product', { 'productId': entity.id }) }}">{{ 'main.add' | trans }}</a>
+            <a class="btn btn-success" href="{{ path('add_product', { 'productId': entity.id }) }}">
+                <i class="icon-large icon-shopping-cart"></i>{{ 'main.add' | trans }}
+            </a>
             <span>{{ entity.price }}€</span>
         </li>
         {% endfor %}

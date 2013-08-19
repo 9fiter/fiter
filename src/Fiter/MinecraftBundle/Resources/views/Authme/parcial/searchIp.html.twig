@@ -7,8 +7,10 @@
 <form action="{{ path('authme_search_ip') }}" method="get">
 	IP:
     <div style="display:inline-block;width:100%">
-        <input name="q" style="max-width:500px" type="text"/>
-        <button class="btn" type="submit">{{ 'main.buscar' | trans }}</button>
+        <input name="q" style="max-width:490px" type="text"/>
+        <button class="btn btn-primary" type="submit">
+        	<i class="icon-search"></i>{{ 'main.buscar' | trans }}
+        </button>
     </div>
 </form>
 </br>

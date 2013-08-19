@@ -103,10 +103,31 @@
 	</form>
 
 	<br/>
-	<link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
-	<button class="btn btn-success" form="paymentdetails" type="submit">{{ 'main.checkout' | trans }}</button>
-	<a href="{{ path('product') }}" class="btn">{{ 'main.continueShopping' | trans }}</a>
-	<a class="btn" href="{{ path('donation_cart') }}">{{ 'main.back' | trans }}</a>
-	<a href="{{ path('donation_cart_clear') }}" class="btn btn-danger">{{ 'main.clearCart' | trans }}</a>
+	<button class="btn btn-success" form="paymentdetails" type="submit">
+		<i class="icon-large icon-circle-arrow-right"></i>{{ 'main.checkout' | trans }}
+	</button>
+	<a href="{{ path('product') }}" class="btn btn-primary">
+		<i class="icon-large icon-shopping-cart"></i>{{ 'main.continueShopping' | trans }}
+	</a>
+	<a class="btn btn-primary" href="{{ path('donation_cart') }}">
+		<i class="icon-large icon-circle-arrow-left"></i>{{ 'main.back' | trans }}
+	</a>
+	<a href="{{ path('donation_cart_clear') }}" class="btn btn-danger">
+		<i class="icon-large icon-shopping-cart"></i>{{ 'main.clearCart' | trans }}
+	</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {% endblock %}

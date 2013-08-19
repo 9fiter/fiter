@@ -46,11 +46,12 @@
 		
 	    {{ form_rest(form) }}
 	    <br/>
-    	<link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
 	    {#% if not alreadyAnswered %#}
         	<button class="btn btn-success" type="submit">{{ 'main.save' | trans }}</button>
     	{#% endif %#}
-	    <button class="btn btn-primary" href="{{ path('poll') }}">{{ 'main.backList' | trans }}</button>
+	    <a class="btn btn-primary" href="{{ path('poll') }}">
+	    	{{ 'main.backList' | trans }}
+	    </a>
 	    <br/><br/>
 	</form>
     

@@ -2,7 +2,6 @@
 .ib{ float:left;display:inline-block; }
 .loggeduser{ display: inline-block;margin-bottom: 1em; }
 </style>
-<link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
 <div class="loggeduser">
     {% if usuario %}
         Bienvenido <strong>{{ usuario.username }}</strong><br/>  
@@ -18,6 +17,8 @@
             <img src="/mcskin/minecraft.php?u=char&a=true" />
         </div>
         <span class="ib">No estas logueado</span><br/>
-        <a class="ib btn btn-success" href="{{ path('authme_login')}}">Inicia sesión</a>
+        <a class="ib btn btn-success" href="{{ path('authme_login')}}">
+            <i class="icon-large icon-user"></i>Inicia sesión
+        </a>
     {% endif %}
 </div>

@@ -64,7 +64,6 @@
 
         {{ entity.descripcion|raw }}<br/>
 
-        <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
         <a class="btn btn-primary" href="{{ path('photo') }}">{{ 'main.back' | trans }}</a>
         <a class="btn btn-success" href="{{ path('photo_new', { 'contestId': entity.id }) }}">{{ 'main.photoContestParticipe' | trans }}</a>
         {#<a class="btn btn-success" href="{{ path('photo_edit', { 'id': entity.id }) }}">{{ 'main.edit' | trans }}</a>
@@ -93,7 +92,6 @@
         </header>
         <p>Todavía no se ha presentado nadie al concurso.</p>
         
-        <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
         <a class="btn btn-success" href="{{ path('photo_new', { 'contestId': contest.id }) }}">{{ 'main.photoContestParticipe' | trans }}</a>
       </article>
     {% endif %}

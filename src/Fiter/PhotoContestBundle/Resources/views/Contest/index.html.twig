@@ -25,8 +25,9 @@
     {% endif %}
 
     {% if ( is_granted('ROLE_ADMIN')) %}
-        <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
-        <a class="btn btn-success" href="{{ path('contest_new') }}">{{ 'main.photoContestCreate' | trans }}</a>
+        <a class="btn btn-success" href="{{ path('contest_new') }}">
+            <i class="icon-large icon-plus-sign"></i>{{ 'main.photoContestCreate' | trans }}
+        </a>
     {% endif %}
 
 

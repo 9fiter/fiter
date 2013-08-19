@@ -14,7 +14,6 @@
     {% include 'FiterMinecraftBundle:Authme:parcial/bannedDatos.html.twig' %}
 
     {% if ( is_granted('ROLE_ADMIN')) %}
-        <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
         <a class="btn btn-success" href="{{ path('authme_pardon', { 'username': ban[0] }) }}">Perdonar usuario</a>
     {% endif %}
     
