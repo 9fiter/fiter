@@ -94,7 +94,7 @@ body > footer{
 header + nav {margin-top: .5em;margin-bottom: 1.5em;padding:  .5em 1% 0 1%;}
 
 
-.icon-bar {    display: block;width: 26px;height: 4px;    background-color: whiteSmoke;margin: 0 auto 5px;
+.Ticon-bar {    display: block;width: 26px;height: 4px;    background-color: whiteSmoke;margin: 0 auto 5px;
  -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
          border-radius: 3px;

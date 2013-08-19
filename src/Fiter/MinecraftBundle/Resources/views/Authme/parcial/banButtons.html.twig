@@ -1,7 +1,78 @@
 {% if ( is_granted('ROLE_ADMIN')) %}
-    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
-    <a class="btn btn-primary" href="{{ path('authme_ban', { 'username': entity.username }) }}">Banear usuario</a>
-    <a class="btn btn-danger" href="{{ path('authme_banIp', { 'ip': entity.ip }) }}">Banear IP</a>
-    <a class="btn btn-success" href="{{ path('authme_pardon', { 'username': entity.username }) }}">Perdonar usuario</a>
+	<div id="delete{{entity.id}}" class="modal hide fade in" style="display: none; ">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>Eliminar cuenta</h3>
+        </div>
+        <div class="modal-body">
+            <h4>Eliminar cuenta de usuario</h4>
+            <p>Estas seguro que deseas eliminar esta cuenta de usuario?</p>             
+        </div>
+        <div class="modal-footer">
+            <input class="btn btn-danger" form="form_delete_authme" type="submit" value="Eliminar cuenta"></input>
+            <!--<a href="#" class="btn btn-success">Call to action</a>-->
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+        </div>
+    </div>
+    <a data-toggle="modal" href="#delete{{entity.id}}" class="btn btn-danger">Eliminar cuenta</a>
+
+	<div id="banip{{entity.id}}" class="modal hide fade in" style="display: none; ">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>Banear usuario</h3>
+        </div>
+        <div class="modal-body">
+            <h4>Banear usuario</h4>
+            <p>Estas seguro que deseas banear este usuario?</p>             
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-danger" href="{{ path('authme_banIp', { 'ip': entity.ip }) }}">Banear IP</a>
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+        </div>
+    </div>
+    <a data-toggle="modal" href="#banip{{entity.id}}" class="btn btn-danger">Banear IP</a>
+
+
+    <div id="ban{{entity.id}}" class="modal hide fade in" style="display: none; ">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>Banear usuario</h3>
+        </div>
+        <div class="modal-body">
+            <h4>Banear usuario</h4>
+            <p>Estas seguro que deseas banear este usuario?</p>             
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-primary" href="{{ path('authme_ban', { 'username': entity.username }) }}">Banear usuario</a>
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+        </div>
+    </div>
+    <a data-toggle="modal" href="#ban{{entity.id}}" class="btn btn-primary">Banear usuario</a>
+
+
+    <div id="pardon{{entity.id}}" class="modal hide fade in" style="display: none; ">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>Perdonar usuario</h3>
+        </div>
+        <div class="modal-body">
+            <h4>Perdonar usuario</h4>
+            <p>Estas seguro que deseas perdonar a este usuario?</p>             
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-success" href="{{ path('authme_pardon', { 'username': entity.username }) }}">Perdonar usuario</a>
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+        </div>
+    </div>
+    <a data-toggle="modal" href="#pardon{{entity.id}}" class="btn btn-success">Perdonar usuario</a>
+
+
+
+    
+
+
+
     <a href="{{ path('authme_info', { 'username': entity.username }) }}" class="btn btn-success">Mas info</a><br/><br/>
 {% endif %}
+
+

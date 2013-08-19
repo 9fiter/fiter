@@ -225,32 +225,39 @@ trsteel_ckeditor:
     class: Trsteel\CkeditorBundle\Form\Type\CkeditorType
     transformers: ['strip_js', 'strip_css', 'strip_comments']
     #toolbar: ['document', 'clipboard', 'editing', 'basicstyles', 'paragraph', 'links', '/', 'insert', 'styles', 'tools']
-    toolbar: ['document', 'clipboard', 'editing', 'basicstyles', 'paragraph', 'links', 'insert', 'styles', 'tools']
+    toolbar: ['document','styles','basicstyles','paragraph', 'tools', 'clipboard', 'editing',   'links', 'insert']
     toolbar_groups:
         #document: ['Source','-','-','Templates']
-        document: ['Source','-']
-        #clipboard: ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo']
-        clipboard: []
-        #editing: ['Find','Replace','-','SelectAll']
-        editing: ['Find','Replace']
+        #clipboard: ['Undo','Redo']
+        document: ['Source']
+        clipboard: ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo']
+        
+        editing: ['Find','Replace','-','SelectAll']
+        #editing: ['Find','Replace']
         #basicstyles: ['Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat']
         basicstyles: ['Bold','Strike','RemoveFormat']
         #paragraph: ['NumberedList','BulletedList','-','Outdent','Indent','-','JustifyLeft', 'JustifyCenter','JustifyRight','JustifyBlock']
 
-        paragraph: ['JustifyLeft', 'JustifyCenter','JustifyRight','JustifyBlock']
+        paragraph: ['NumberedList','BulletedList','JustifyLeft', 'JustifyCenter','JustifyRight','JustifyBlock']
 
         links: ['Link','Unlink','Anchor']
+        #tools: ['Maximize', 'ShowBlocks']
+        tools: ['ShowBlocks','Maximize']
+        insert: ['Image','Flash','HorizontalRule']
         #insert: ['Image','Flash','Table','HorizontalRule']
-        insert: ['Image']
         #styles: ['Styles','Format']
         styles: ['Format']
-        #tools: ['Maximize', 'ShowBlocks']
-        tools: ['ShowBlocks']
+        
     ui_color: '#eeeeee'
     startup_outline_blocks: false
     #width: 97% #Integer or %
     height: 300 #Integer or %
-    language: "%locale%"        
+    language: "%locale%"  
+    contents_css: ['/bundles/fiterdefault/css/CkeditorBundle-contents.css']
+    force_paste_as_plaintext: true
+
+
+
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'

@@ -822,7 +822,7 @@ class AuthmeController extends Controller{
      */
     public function deleteAction(Request $request, $id){
         $securityContext = $this->get('security.context');
-        if(!$securityContext->isGranted('ROLE_ADMINo')) throw new AccessDeniedException('No tienes permiso para eliminar usuarios');
+        if(!$securityContext->isGranted('ROLE_ADMIN')) throw new AccessDeniedException('No tienes permiso para eliminar usuarios');
         $form = $this->createDeleteForm($id);
         $form->bind($request);
         if ($form->isValid()) {
