@@ -847,8 +847,10 @@ class AuthmeController extends Controller{
                 $mc_folder."plugins/Essentials/userdata/$username.yml",
                 $mc_folder."plugins/AntiXRayData/PlayerData/$username",
                 $mc_folder."cache/$username.cache"
-            )
-            foreach ($archivos as $archivo) if(file_exists($archivo)) unlink ($archivo);
+            );
+            foreach ($archivos as $archivo) {
+                if(file_exists($archivo)) unlink ($archivo);
+            }
         }
         return $this->redirect($this->generateUrl('authme'));
     }
