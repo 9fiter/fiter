@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Minecraft {{ 'main.usuarios' | trans }} - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+
+<h2>Ip perdonada</h2>
+
+La ip <strong>{{ip}}</strong> ha sido perdonada satisfactoriamente.</br></br>
+
+{% include 'FiterMinecraftBundle:Authme:parcial/search.html.twig' %}
+
+{% endblock %}
+
+
+
+ 

@@ -68,6 +68,34 @@
 
 
 
+
+
+
+
+
+
+
+    <div id="pardonip{{entity.id}}" class="modal hide fade in" style="display: none; ">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>Perdonar IP</h3>
+        </div>
+        <div class="modal-body">
+            <h4>Perdonar IP</h4>
+            <p>Estas seguro que deseas perdonar la IP de este usuario?</p>             
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-success" href="{{ path('authme_pardon_ip', { 'ip': entity.ip }) }}">Perdonar IP</a>
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+        </div>
+    </div>
+    <a data-toggle="modal" href="#pardonip{{entity.id}}" class="btn btn-success">Perdonar IP</a>
+
+
+
+
+    
+
     
 
 
