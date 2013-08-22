@@ -830,6 +830,7 @@ class AuthmeController extends Controller{
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager('minecraft');
             $entity = $em->getRepository('FiterMinecraftBundle:Authme')->find($id);
+            $username= $entity->getUserName();
             if (!$entity) throw $this->createNotFoundException('Unable to find Authme entity.');
             $em->remove($entity);
             $em->flush();
@@ -838,6 +839,16 @@ class AuthmeController extends Controller{
             $pass = $this->container->getParameter('minecraft_websend_pass');
             $websend->connect($pass);
             $websend->doCommandAsConsole("authme reload");
+
+            $mc_folder = $this->container->getParameter('minecraft_folder');
+
+            $archivos = array(
+                $mc_folder."CRAFTOPIA/players/$username.dat",
+                $mc_folder."plugins/Essentials/userdata/$username.yml",
+                $mc_folder."plugins/AntiXRayData/PlayerData/$username",
+                $mc_folder."cache/$username.cache"
+            )
+            foreach ($archivos as $archivo) if(file_exists($archivo)) unlink ($archivo);
         }
         return $this->redirect($this->generateUrl('authme'));
     }
