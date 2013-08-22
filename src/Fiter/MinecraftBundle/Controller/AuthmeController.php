@@ -252,12 +252,14 @@ class AuthmeController extends Controller{
         $websend = $this->get('fiter.websend');
         $pass = $this->container->getParameter('minecraft_websend_pass');
         $websend->connect($pass);
-        $websend->doCommandAsConsole("w esemoi hola esemoi");
+        //$websend->doCommandAsConsole("w esemoi hola esemoi");
         //$websend->doCommandAsPlayer('!dejamejugar.com','udrul');
         //$websend->doCommandAsConsole('say dejamejugar.com');
         //$websend->doCommandAsConsole('ban esemoi testing bans');
         //$websend->doCommandAsConsole('pardon esemoi');
         //ladybug_dump($websend);
+
+        $websend->doCommandAsConsole("banip $ip baneado");
         return array(
             'ip' => $ip
         );
@@ -275,7 +277,7 @@ class AuthmeController extends Controller{
         $websend = $this->get('fiter.websend');
         $pass = $this->container->getParameter('minecraft_websend_pass');
         $websend->connect($pass);
-        $websend->doCommandAsConsole('ban esemoi');
+        $websend->doCommandAsConsole("ban ".$username);
         return array(
             'username' => $username
         );
@@ -831,6 +833,11 @@ class AuthmeController extends Controller{
             if (!$entity) throw $this->createNotFoundException('Unable to find Authme entity.');
             $em->remove($entity);
             $em->flush();
+
+            $websend = $this->get('fiter.websend');
+            $pass = $this->container->getParameter('minecraft_websend_pass');
+            $websend->connect($pass);
+            $websend->doCommandAsConsole("authme reload");
         }
         return $this->redirect($this->generateUrl('authme'));
     }
