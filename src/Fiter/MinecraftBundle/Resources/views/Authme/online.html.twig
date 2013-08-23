@@ -14,8 +14,6 @@
     
     <!--<strong>Register:</strong> &nbsp;{{ entity.created|date("Y-m-d h:i:s") }} ({{ entity.created|time_ago_in_words }})<br/>-->
 
-
-
     <strong>{{ 'mc.Lastlogin' | trans }}:</strong> {{ entity.lastlogin }} ({{ entity.lastlogin|time_ago_in_words }})<br/>
     <img style="float:left;margin-right:3px" src='/mcskin/minecraft.php?u={{ entity.username }}&a=true' />
     <!--<img style="float:left;margin-right:3px" src="{{ path('authme_skin', { 'id': entity.id, 't' : '1' }) }}" />-->
@@ -25,16 +23,9 @@
     <!--<strong>&nbsp;IP:</strong> {#{ entity.ip }#}<br/>-->
     <strong>&nbsp;Premium:</strong> {% if entity.premium==1 %}Si{% else %}No{% endif %}<br/>
 
-    {% include 'FiterMinecraftBundle:Authme:parcial/banButtons.html.twig' %}
+    {#% include 'FiterMinecraftBundle:Authme:parcial/banButtons.html.twig' %#}
 
     <div style="clear:both"></div>
-    <!--
-    X: {{ entity.x }}<br/>
-    Y: {{ entity.y }}<br/>
-    Z: {{ entity.z }}<br/>
-    Password: {#{ entity.password }#}<br/>
-    World: {{ entity.world }}<br/>
-    Email: {{ entity.email }}<br/>-->
     <br/><br/>
 {% endfor %}
 {#<a href="{{ path('authme_new') }}">Create a new entry</a>#}

@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Minecraft server start - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+
+<h2>Minecraft server start</h2>
+
+{% for output in outputs %}
+    <pre>{{output}}</pre>
+{% endfor %}
+
+
+{% endblock %}

@@ -1,0 +1,108 @@
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %} 
+    
+<h2>Minecraft server</h2><br/>
+<div id="minecraft_server_start" class="modal hide fade in" style="display: none; ">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>Arrancar el servidor de minecraft</h3>
+    </div>
+    <div class="modal-body">
+        <!--<h4>Arrancar el servidor de minecraft</h4>-->
+        <p>Estas seguro que deseas arrancar el servidor de minecraft?</p>             
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-success" href="{{ path('minecraft_server_start')}}">Start</a>
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+    </div>
+</div>
+<a data-toggle="modal" href="#minecraft_server_start" class="btn btn-success">Start</a>
+
+
+<div id="minecraft_server_stop" class="modal hide fade in" style="display: none; ">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>Parar el servidor de minecraft</h3>
+    </div>
+    <div class="modal-body">
+        <!--<h4>Parar el servidor de minecraft</h4>-->
+        <p>Estas seguro que deseas parar el servidor de minecraft?</p>             
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-primary" href="{{ path('minecraft_server_stop')}}">Stop</a>
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+    </div>
+</div>
+<a data-toggle="modal" href="#minecraft_server_stop" class="btn btn-primary">Stop</a>
+
+<div id="minecraft_server_stop_force" class="modal hide fade in" style="display: none; ">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>Forzar la parada del servidor de minecraft</h3>
+    </div>
+    <div class="modal-body">
+        <!--<h4>Forzar la parada del servidor de minecraft</h4>-->
+        <p>Estas seguro que deseas forzar la parada del servidor de minecraft?</p>             
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-danger" href="{{ path('minecraft_server_stop_force')}}">Force stop</a>
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+    </div>
+</div>
+<a data-toggle="modal" href="#minecraft_server_stop_force" class="btn btn-danger">Force stop</a>
+
+
+<style>
+div.scroll{ width:100%;margin-bottom:2em;max-height:400px;overflow-y: auto; }
+</style>
+
+
+<h2>Log</h2> 
+<div class="scroll">
+    <pre>{{log}}</pre>
+</div>
+
+
+<h2>Backups</h2>
+<div class="scroll">
+    <pre>{{backups}}</pre>
+</div>
+
+
+
+
+<div id="bkp_all" class="modal hide fade in" style="display: none; ">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>Hacer un copia de seguridad completa</h3>
+    </div>
+    <div class="modal-body">
+        <h4>Estas seguro que deseas hacer un copia de seguridad completa?</h4>
+        <p>Esto puede hacer que el servidor se ralentize durante unos minutos</p>             
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-danger" href="{{ path('backup_all')}}">Copia de seguridad completa</a>
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+    </div>
+</div>
+<a data-toggle="modal" href="#bkp_all" class="btn btn-danger">Completa</a>
+
+
+<div id="backup_minecraft_folder" class="modal hide fade in" style="display: none; ">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>Hacer un copia de seguridad de la carpeta de minecraft</h3>
+    </div>
+    <div class="modal-body">
+        <!--<h4></h4>-->
+        <p>Estas seguro que deseas hacer un copia de seguridad de la carpeta de minecraft?</p>             
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-primary" href="{#{ path('backup_minecraft_folder')}#}">Copia de seguridad de la carpeta de minecraft</a>
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+    </div>
+</div>
+<a data-toggle="modal" href="#backup_minecraft_folder_disabled" class="btn btn-primary" disabled>Carpeta de minecraft</a>

@@ -12,6 +12,10 @@ class DefaultController extends Controller{
      * @Template()
      */
     public function indexAction(){
-        return $this->forward('FiterAdminBundle:Articulo:index');
+        //return $this->forward('FiterAdminBundle:Articulo:index');
+       
+        return array(
+        	//'foo' => $foo,
+        );
     }
 }

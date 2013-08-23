@@ -13,6 +13,13 @@ parameters:
     minecraft_database_user:     root
     minecraft_database_password: ~
 
+    phpbb3_database_driver:   pdo_mysql
+    phpbb3_database_host:     127.0.0.1
+    phpbb3_database_port:     ~
+    phpbb3_database_name:     phpbb3
+    phpbb3_database_user:     root
+    phpbb3_database_password: ~
+
     #default email
     #mailer_transport:  smtp
     #mailer_host:       127.0.0.1
@@ -82,3 +89,9 @@ parameters:
 
     mtgox_api_key:    your-mtgox-api-key
     mtgox_api_secret: "+your-mtgox-api-secret=="
+
+    shell.host: 127.0.0.1
+    shell.user: root
+    shell.pass: toor
+
+    backup_folder: /home/backup

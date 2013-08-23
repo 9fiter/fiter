@@ -1,3 +1,8 @@
+fiter_backup:
+    resource: "@FiterBackupBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}/admin/backup
+
 wikp_payment_mtgox:
     resource: "@WikpPaymentMtgoxBundle/Resources/config/routing.yml"
     prefix:   /{_locale}/mtgox

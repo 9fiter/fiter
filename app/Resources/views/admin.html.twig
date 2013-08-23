@@ -16,9 +16,14 @@
         <link rel="stylesheet" href="/css/main.css">
         
         <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
-        
+
+        <script src="/js/jquery-1.7.min.js"></script>
+
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="/css/estructura.css" type="text/css"/>
+
+        <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css?v={{css_version}}" />
+        <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap-responsive.min.css" />  
         
         <style type="text/css">
             body{background-image: url('data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAEBAQEBAQEBAQECAQEBAgIBAQEBAgICAgICAgIDAgICAgICAwMDAwQDAwMEBAUFBAQGBgYGBgcHBwcHBwcHBwf/2wBDAQEBAQICAgQDAwQGBQQFBgcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwf/wAARCAAEAAQDAREAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAACv/EAB8QAAEDBQADAAAAAAAAAAAAAAMBBAYCBQcRFBIVIv/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwAvmLxx3M8GsmSsnRamVTiSdPu78a9y1pUfjdlYNtt2F3ACjwAEdHwNN62u1VVUP//Z');}
@@ -41,13 +46,12 @@
         
         <div id="contenidoBody">
             <div id="menuCategorias">
-            
             </div>
             {% block header %}
                 <header>
                     <div class="cabecera">
                         <a href="{{path('admin_inicio') }}">
-                            <img class="logo" alt="logo" src="/img/dejamejugar.png" />
+                            <img class="logo" alt="logo" src="/img/dejamejugar2.png" />
                         </a>
                     </div>
                     {% include 'FiterDefaultBundle:Articulo:parcial/formBuscar.html.twig' %}
@@ -84,7 +88,7 @@
                             {% endif %}</a>
                             {% if ( is_granted('ROLE_ADMIN')) %}
                                 <a href="{{ path('portada') }}">Frontend</a>
-                                <a href="{{ path('sonata_admin_dashboard') }}">Sonata</a>
+                                {#<a href="{{ path('sonata_admin_dashboard') }}">Sonata</a>#}
                             {% endif %}
 
                         </span>
@@ -107,18 +111,23 @@
             {% endblock %}
 
             {% block nav %}
-            <nav>
+          
+            <nav>  
                 <ul>
-                    <li><a href="{{ path('admin_articulo') }}">{{ 'main.articulos' | trans }}</a></li>
-                    <li><a href="{{ path('admin_articulo_new') }}">{{ 'main.addArticulo' | trans }}</a></li>
-                    <li><a href="{{ path('admin_categoria') }}">{{ 'main.categorias' | trans }}</a></li>
-                    <!-- <li><a href="{#{ path('fos_user_profile_show') }#}">{#{ 'main.perfil' | trans }#}</a></li>
-                    <li><a href="{#{ path('fos_user_profile_index') }#}">{#{ 'main.usuarios' | trans }#}</a></li> -->
-                    <li><a href="{{ path('admin_poll') }}">{{ 'main.polls' | trans }}</a></li>
-                    <li><a href="{{ path('admin_poll_new') }}">{{ 'main.addPoll' | trans }}</a></li>
-                    <li><a href="{{ path('teamspeak') }}">Teamspeak</a></li>
-                </ul>
+                    <li><a href="{{ path('articulo') }}">{{ 'main.articulos' | trans }}</a></li>
+                    <li><a href="{{ path('fiter_contact') }}">{{ 'main.contacto' | trans }}</a></li>
+                    <li><a href="{{ path('poll') }}">{{ 'main.polls' | trans }}</a></li>
+                    <li><a href="/phpbb3/">Foro</a></li>
+                    <li><a href="{{ path('contest') }}">{{ 'main.contests' | trans }}</a></li>
+                    <li><a href="{{ path('articulo_new') }}">{{ 'main.addArticulo' | trans }}</a></li>
+                    <li><a href="{{ path('fos_user_profile_show') }}">{{ 'main.perfil' | trans }}</a></li>
+                    <li><a href="{{ path('fos_user_profile_index') }}">{{ 'main.usuarios' | trans }}</a></li>
+                    <li><a href="{{ path('poll_new') }}">{{ 'main.addPoll' | trans }}</a></li>
+                    <li><a href="{{ path('articulolikeusuario', { 'nombre': app.user.username }) }}">Likes</a></li>
+                    <li><a href="{{ path('categoria') }}">{{ 'main.categorias' | trans }}</a></li>
+                </ul>  
             </nav>
+         
             {% endblock %}
 
             <aside class="asideLeft">
@@ -136,6 +145,24 @@
             {% block asideR %}
             <aside class="asideRight">
                 <section class="col300">
+
+                    {% block minecraft_login %}{% endblock %}
+
+                    {% render "FiterMinecraftBundle:Default:minecraft" %}
+                    
+                    <div style="position:relative;height:137px;background-color:#000;margin-bottom: 1.5em;" class="banner300-300 sombra">
+                        <img class="asd" src="/img/Minecraft-Logo.png">
+                        <a class="mcuser s1" href="{{ path('authme_online')}}">{{ 'main.onlineUsers' | trans }}</a>
+                        <a class="mcuser s2" href="{{ path('authme')}}">{{ 'main.registeredUsers' | trans }}</a>
+
+
+                        
+                        
+                        <a class="mcuser s3" href="{{ path('authme_show_skin')}}">{{ 'main.userSkins' | trans }}</a>
+                        <a href="{{ path('authme_online')}}">
+                            <img alt="minecraft_users" src="/img/bannerusuarios.png"/>
+                        </a>
+                    </div>
                     
                     {% block listaMasVistos %}
                     <header><h3 id="listaMasVistos">Más vistos</h3></header>
@@ -272,12 +299,14 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.8.3.min.js"><\/script>')</script>
         -->
-        <script src="/js/jquery-1.7.min.js"></script>
+
+         <!--<script src="/js/jquery-1.7.min.js"></script> -->
         <script src="/js/plugins.js"></script>
-        <script src="/js/ztwitterfeed/jquery.ztwitterfeed.min.js" type="text/javascript"></script>
-        {% block javascripts %}{% endblock %}
+        <!--<script src="/js/ztwitterfeed/jquery.ztwitterfeed.min.js" type="text/javascript"></script>-->
         <script src="/js/main.js"></script>
-        
+        <script src="/js/jquery.cookie.js"></script>
+
+        {% block javascripts %}{% endblock %}
         <!--<script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

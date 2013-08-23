@@ -95,10 +95,10 @@
                                 Anónimo
                             {% endif %}</a>
                             {% if ( is_granted('ROLE_ADMIN')) %}
-                                {#<a href="{{ path('admin_inicio') }}">{{ 'main.admin' | trans }}</a>#}
-                                <a href="{{ path('sonata_admin_dashboard') }}">Sonata</a>
+                                <a href="{{ path('admin_inicio') }}">{{ 'main.admin' | trans }}</a>
+                                {#<a href="{{ path('sonata_admin_dashboard') }}">Sonata</a>
                                 <a href="{{ path('authme_main') }}">Minecraft</a>
-                                <a href="{{ path('teamspeak') }}">Teamspeak</a>
+                                <a href="{{ path('teamspeak') }}">Teamspeak</a>#}
                             {% endif %}
                         </span>
                     </div>

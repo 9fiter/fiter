@@ -3,14 +3,10 @@
 </a>
 
 {% if entity.skin == 1%}
-<a href="http://www.minecraft.net/profile/skin/remote?url=http://{{domain}}/mcskin/img/{{entity.username}}.png" class="btn btn-success">Ponte este skin</a>
+	<a href="http://www.minecraft.net/profile/skin/remote?url=http://{{domain}}/mcskin/img/{{entity.username}}.png" class="btn btn-success">Ponte este skin</a>
 {% endif %}
-<a href="{{ path('authme_skin', { 'id': entity.id, 't' : '0' }) }}" type="application/octet-stream" download class="btn btn-success">{{ 'main.skinDownload' | trans }}</a><br/>
-<div id="skinpreview"></div>
 
-{#
-<form name="imageform">
-	<strong>{{ 'main.skinSelect' | trans }}:</strong> <input type=file name="fileinput" accept="image/png"><br>
-	{{ 'main.skinAccepts' | trans }}
-</form><br/><br/>
-#}
+<a href="{{ path('authme_skin', { 'id': entity.id, 't' : '0' }) }}" type="application/octet-stream" download class="btn btn-success">
+    <i class="icon-large icon-download-alt"></i>{{ 'main.skinDownload' | trans }}
+</a>
+<div id="skinpreview"></div>

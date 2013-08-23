@@ -43,6 +43,8 @@
     {% render "FiterMinecraftBundle:Jobs:showUser" with { 'username': entity.username } %}
     {% render "FiterMinecraftBundle:Skillz:showUser" with { 'username': entity.username } %}
     <br/>
+    
+
     {% include 'FiterMinecraftBundle:Authme:parcial/skinPreview.html.twig' %}
     {% render "FiterDefaultBundle:Default:map" with { lat : entity.latitude , lang :entity.longitude, height : 300, zoom :2 } %}
 

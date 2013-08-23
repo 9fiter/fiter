@@ -170,8 +170,9 @@ services:
     #    tags:
     #        - { name: form.type, alias: credit_card }
     #        - { name: payment.method_type }
-
-
+    shell:
+        class:        Fiter\DefaultBundle\Util\Shell
+        arguments:    ["%shell.host%","%shell.user%","%shell.pass%"]
 
 jms_payment_core:
     secret: test
