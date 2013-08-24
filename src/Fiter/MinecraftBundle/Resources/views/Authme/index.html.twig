@@ -6,6 +6,7 @@
 
 <h2>Minecraft {{ 'main.usuarios' | trans }}</h2>
 
+<!--INFOLINKS_OFF-->
 {% include 'FiterMinecraftBundle:Authme:parcial/search.html.twig' %}
 
 {% for entity in entities %}
@@ -24,6 +25,7 @@
 {% endfor %}
 {#<a href="{{ path('authme_new') }}">Create a new entry</a>#}
 <script type="text/javascript" src="/bundles/fiterdefault/js/bootstrap.min.js"></script>
+<!--INFOLINKS_ON-->
 {% endblock %}
 
 
