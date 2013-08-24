@@ -77,17 +77,17 @@
 
 			
 	        <label for="jms_choose_payment_method_method_0" class="required">
-	        	<img src="/bundles/fiterminecraftdonation/images/paypal.png" />
+	        	<img src="/bundles/fiterminecraftdonation/images/mtgox.png" />
 	        </label>
 
 	        {#{ form_label(form.method) }#}
 	        
 	        <label for="jms_choose_payment_method_method_1" class="required">
-	        	<img src="/bundles/fiterminecraftdonation/images/bitcoin.png" />
+	        	<img src="/bundles/fiterminecraftdonation/images/paypal.png" />
 	        </label>
 
 	        <label for="jms_choose_payment_method_method_2" class="required">
-	        	<img src="/bundles/fiterminecraftdonation/images/mtgox.png" />
+	        	<img src="/bundles/fiterminecraftdonation/images/bitcoin.png" />
 	        </label>
 			
 
@@ -95,10 +95,10 @@
 	        {#{ form_widget(form.data_paypal_express_checkout) }#}
 	        {{ form_widget(form.data_paypal_express_checkout) }}
 	        {{ form_widget(form.data_bitcoin_express_checkout) }}
-
+	        {{ form_widget(form.data_wikp_mtgox_ipn) }}
 
 	        
-	        {{ form_widget(form.data_wikp_mtgox_ipn) }}
+	        
 	    {{ form_rest(form) }}
 	</form>
 
