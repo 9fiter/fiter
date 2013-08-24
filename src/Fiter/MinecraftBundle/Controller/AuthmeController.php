@@ -209,7 +209,7 @@ class AuthmeController extends Controller{
      * @Route("/pardon/ip/{ip}", name="authme_pardon_ip")
      * @Template()
      */
-    public function pardonIpAction($ip){
+    public function pardonIpAction(Request $request, $ip){
         $securityContext = $this->get('security.context');
         if(!$securityContext->isGranted('ROLE_ADMIN')) throw new AccessDeniedException("No tienes permiso para perdonar IP's");
 
@@ -217,9 +217,10 @@ class AuthmeController extends Controller{
         $pass = $this->container->getParameter('minecraft_websend_pass');
         $websend->connect($pass);
         $websend->doCommandAsConsole("pardon-ip ".$ip);
-        return array(
-            'ip' => $ip
-        );
+
+        $referer = $request->headers->get('referer');       
+        $request->getSession()->setFlash('notice', "La ip $ip ha sido perdonada satisfactoriamente.");
+        return new RedirectResponse($referer);
     }
 
     /**
@@ -227,7 +228,7 @@ class AuthmeController extends Controller{
      * @Route("/pardon/{username}", name="authme_pardon")
      * @Template()
      */
-    public function pardonAction($username){
+    public function pardonAction(Request $request, $username){
         $securityContext = $this->get('security.context');
         if(!$securityContext->isGranted('ROLE_ADMIN')) throw new AccessDeniedException('No tienes permiso para perdonar usuarios');
 
@@ -235,9 +236,10 @@ class AuthmeController extends Controller{
         $pass = $this->container->getParameter('minecraft_websend_pass');
         $websend->connect($pass);
         $websend->doCommandAsConsole("pardon ".$username);
-        return array(
-            'username' => $username
-        );
+
+        $referer = $request->headers->get('referer');       
+        $request->getSession()->setFlash('notice', "El usuario $username ha sido perdonado satisfactoriamente.");
+        return new RedirectResponse($referer);
     }
 
     /**
@@ -245,7 +247,7 @@ class AuthmeController extends Controller{
      * @Route("/banIp/{ip}", name="authme_banIp")
      * @Template()
      */
-    public function banIpAction($ip){
+    public function banIpAction(Request $request, $ip){
         $securityContext = $this->get('security.context');
         if(!$securityContext->isGranted('ROLE_ADMIN')) throw new AccessDeniedException("No tienes permiso para bannear IP's.");
 
@@ -258,11 +260,11 @@ class AuthmeController extends Controller{
         //$websend->doCommandAsConsole('ban esemoi testing bans');
         //$websend->doCommandAsConsole('pardon esemoi');
         //ladybug_dump($websend);
-
         $websend->doCommandAsConsole("banip $ip baneado");
-        return array(
-            'ip' => $ip
-        );
+
+        $referer = $request->headers->get('referer');       
+        $request->getSession()->setFlash('notice', "La ip $ip ha sido baneada satisfactoriamente.");
+        return new RedirectResponse($referer);
     }
 
     /**
@@ -270,7 +272,7 @@ class AuthmeController extends Controller{
      * @Route("/ban/{username}", name="authme_ban")
      * @Template("FiterMinecraftBundle:Authme:ban.html.twig")
      */
-    public function banAction($username){
+    public function banAction(Request $request, $username){
         $securityContext = $this->get('security.context');
         if(!$securityContext->isGranted('ROLE_ADMIN')) throw new AccessDeniedException("No tienes permiso para bannear usuarios.");
 
@@ -278,9 +280,10 @@ class AuthmeController extends Controller{
         $pass = $this->container->getParameter('minecraft_websend_pass');
         $websend->connect($pass);
         $websend->doCommandAsConsole("ban ".$username);
-        return array(
-            'username' => $username
-        );
+
+        $referer = $request->headers->get('referer');       
+        $request->getSession()->setFlash('notice', "El usuario $username ha sido baneado satisfactoriamente.");
+        return new RedirectResponse($referer);
     }
 
     /**

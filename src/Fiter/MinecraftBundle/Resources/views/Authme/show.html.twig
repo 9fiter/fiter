@@ -4,7 +4,13 @@
  
 {% block main %}
 
-{% include 'FiterMinecraftBundle:Authme:parcial/search.html.twig' %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %} 
+    
+    {% include 'FiterMinecraftBundle:Authme:parcial/search.html.twig' %}
 
     <h2>{{ entity.username }}</h2>	
     <!--<strong>Register:</strong> &nbsp;{#{ entity.created|date("Y-m-d h:i:s") }#} ({#{ entity.created|time_ago_in_words }#})<br/>-->

@@ -21,6 +21,7 @@ class GetFlagsCommand extends ContainerAwareCommand{
         $em = $this->getContainer()->get('doctrine')->getEntityManager('minecraft');
         $entities = $em->getRepository('FiterMinecraftBundle:Authme')->findAll();
         $geoip = $this->getContainer()->get('raindrop.geoip');
+        $counter=0;
         foreach ($entities as $entity){
             if($entity->getCountryName()==null){
                 //$geoip = $this->get('raindrop.geoip')->lookup($entity->getIp());
@@ -48,10 +49,11 @@ class GetFlagsCommand extends ContainerAwareCommand{
                     }          
                     $em->persist($entity);
                     $em->flush();
+                    $counter++;
                 }
             }
         }
 
-        $output->writeln('OK');
+        $output->writeln("Actualizados $counter registros.");
     }
 }
