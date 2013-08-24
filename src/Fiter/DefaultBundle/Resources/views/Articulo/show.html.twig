@@ -23,7 +23,7 @@
 
 
     
-    {% if entity.getTranslations|length > 0 %}
+    {% if entity.getTranslations|length > 1 %}
         <h3>Traducciones:</h3>
         {% if app.request.locale!="es" %}
             <a href="{{ path('articulo_show', { 'id': entity.id, 'slug': entity.slug, '_locale': 'es' }) }}"><img src="/img/flags/es.png" alt=""></a>
