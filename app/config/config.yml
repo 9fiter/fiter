@@ -158,7 +158,8 @@ services:
         tags:
             - { name: twig.extension }
     wikp_payment_mtgox.form.type.ipn:
-        class: Wikp\PaymentMtgoxBundle\Form\MtgoxIpnType
+        #class: Wikp\PaymentMtgoxBundle\Form\MtgoxIpnType
+        class: Fiter\MinecraftDonationBundle\Form\MtgoxIpnType
         arguments:
             - %wikp_payment_mtgox.api_secret%
         tags:
