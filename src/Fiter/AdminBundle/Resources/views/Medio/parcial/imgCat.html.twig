@@ -1,7 +1,7 @@
 <a href="{{ path('admin_medio_show', { 'id': entity.id , 'slug': entity.slug}) }}">
     {% if entity.path %}
-        <img style="float: left;margin-right: .7em;" src="{{ asset(  ['/uploads/medios/', entity.path]|join  )|imagine_filter('thumb_170x114') }}" alt="imagen no encontrada" />
+        <img style="float: left;margin-right: .7em;" src="{{ asset(  ['/uploads/medios/', entity.path]|join  )|imagine_filter('thumb_170x114') }}" alt="{{entity.titulo}}" />
     {% elseif entity.categoria[0].path %}
-        <img style="float: left;margin-right: .7em;" src="{{ asset(  ['/uploads/categoriaimages/', entity.categoria[0].path]|join  )|imagine_filter('thumb_170x114') }}" alt="imagen no encontrada" />
+        <img style="float: left;margin-right: .7em;" src="{{ asset(  ['/uploads/categoriaimages/', entity.categoria[0].path]|join  )|imagine_filter('thumb_170x114') }}" alt="{{entity.titulo}}" />
     {% endif %}
 </a>

@@ -34,7 +34,7 @@
         </header>
       
 
-        <img style="margin-bottom:1em;" src="{{ asset(  ['/uploads/photoContest/', entity.path]|join  )|imagine_filter('thumb_666x375') }}" alt="imagen no encontrada" />
+        <img style="margin-bottom:1em;" src="{{ asset(  ['/uploads/photoContest/', entity.path]|join  )|imagine_filter('thumb_666x375') }}" alt="{{ entity.titulo }}" />
 
         <div>
         <section style="margin: .5em auto 0 auto;" class="paginador">

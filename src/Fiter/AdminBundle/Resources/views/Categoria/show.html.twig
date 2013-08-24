@@ -11,7 +11,7 @@
     </header>
     
     {% if entity.path %}
-        <img class="imgCategoria clearfix" src="{{ asset(['uploads/categoriaimages/', entity.path]|join) }}" alt="imagen no encontrada" />
+        <img class="imgCategoria clearfix" src="{{ asset(['uploads/categoriaimages/', entity.path]|join) }}" alt="{{entity.titulo}}" />
     {% endif %}
     <div style="clear: both;"></div>    
         

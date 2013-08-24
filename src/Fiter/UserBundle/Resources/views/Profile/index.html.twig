@@ -10,9 +10,9 @@
             <a class="nombre" href="{{ path('articulousuario', { 'nombre': entity.username }) }}">{{entity.username}}</a><br/>
             <a href="{{ path('articulousuario', { 'nombre': entity.username }) }}">
             {% if entity.path %}
-                <img class="sombra" src="{{ asset(  ['/uploads/userimages/', entity.path]|join  )|imagine_filter('thumb_50x50') }}" alt="imagen no encontrada" />
+                <img class="sombra" src="{{ asset(  ['/uploads/userimages/', entity.path]|join  )|imagine_filter('thumb_50x50') }}" alt="{{entity.username}}" />
             {% else %}
-                <img class="sombra" src="/uploads/userimages/anon.png" alt="imagen no encontrada" />
+                <img class="sombra" src="/uploads/userimages/anon.png" alt="anon" />
             {% endif %}
             </a>
         </div>

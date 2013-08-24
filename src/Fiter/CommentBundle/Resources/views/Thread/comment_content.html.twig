@@ -24,7 +24,7 @@
                     {% else %}
                         src="{{ asset(  ['uploads/userimages/', 'anon', '.png']|join  )|imagine_filter('thumb_50x50') }}"
                     {% endif %}
-                    alt="imagen no encontrada" />
+                    alt="{{comment.authorName}}" />
                 {% endif %}
     
                 <a class="fos_comment_comment_authorname" 

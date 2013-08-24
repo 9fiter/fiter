@@ -9,7 +9,7 @@
         <header>
             {% if entity.path %}
                 <img style="float: left;height: 50px;margin-right: .7em;"
-                     src="{{ asset(  ['/uploads/categoriaimages/', entity.path]|join  )|imagine_filter('thumb_50x50') }}" alt="imagen no encontrada" />
+                     src="{{ asset(  ['/uploads/categoriaimages/', entity.path]|join  )|imagine_filter('thumb_50x50') }}" alt="{{entity.titulo}}" />
   
             {% endif %}
             <h3><a href="{{ path('admin_categoria_show', { 'id': entity.id, 'slug': entity.slug }) }}">{{ entity.nombre }}</a></h3>

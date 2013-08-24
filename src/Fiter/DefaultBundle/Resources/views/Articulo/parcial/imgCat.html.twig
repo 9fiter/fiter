@@ -1,11 +1,11 @@
 <a href="{{ path('articulo_show', { 'id': entity.id, 'slug': entity.slug }) }}">
     {% if entity.path %}
-        <img style="float: left;margin-right: .7em;" src="{{ asset(  ['/uploads/documents/', entity.path]|join  )|imagine_filter('thumb_170x114') }}" alt="imagen no encontrada" />
+        <img style="float: left;margin-right: .7em;" src="{{ asset(  ['/uploads/documents/', entity.path]|join  )|imagine_filter('thumb_170x114') }}" alt="{{ entity.titulo }}" />
     {% elseif entity.categoria[0].path %}
-        <img style="float: left;margin-right: .7em;" src="{{ asset(  ['/uploads/categoriaimages/', entity.categoria[0].path]|join  )|imagine_filter('thumb_170x114') }}" alt="imagen no encontrada" />
+        <img style="float: left;margin-right: .7em;" src="{{ asset(  ['/uploads/categoriaimages/', entity.categoria[0].path]|join  )|imagine_filter('thumb_170x114') }}" alt="{{entity.categoria[0].nombre}}" />
     {#% elseif entity.path2 %#}
-        <!-- <img style="float: left;margin-right: .7em;" src="{#{ asset(  ['/uploads/categoriaimages/', entity.path2]|join  )|imagine_filter('thumb_170x114') }#}" alt="imagen no encontrada" /> -->
+        <!-- <img style="float: left;margin-right: .7em;" src="{#{ asset(  ['/uploads/categoriaimages/', entity.path2]|join  )|imagine_filter('thumb_170x114') }#}" alt="" /> -->
     {% else %}
-    	<img style="float: left;margin-right: .7em;" src="/img/category_170_114.png" alt="imagen no encontrada" />
+    	<img style="float: left;margin-right: .7em;" src="/img/category_170_114.png" alt="" />
     {% endif %}
 </a>

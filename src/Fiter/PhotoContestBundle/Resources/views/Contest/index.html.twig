@@ -13,7 +13,7 @@
             </header>
             
             <a href="{{ path('contest_show', { 'id': entity.id }) }}">
-                <img style="float: left;margin-right: .7em;margin-bottom:1em;" src="{{ asset(  ['/uploads/photoContest/', entity.path]|join  )|imagine_filter('thumb_170x114') }}" alt="imagen no encontrada" />
+                <img style="float: left;margin-right: .7em;margin-bottom:1em;" src="{{ asset(  ['/uploads/photoContest/', entity.path]|join  )|imagine_filter('thumb_170x114') }}" alt="{{ entity.titulo }}" />
             </a>
             {{ entity.descripcion(true)|striptags|raw }}<br/>
             {#<a href="{{ path('contest_edit', { 'id': entity.id }) }}">edit</a>#}

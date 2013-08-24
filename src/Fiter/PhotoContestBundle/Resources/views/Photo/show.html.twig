@@ -20,7 +20,7 @@
        {% include 'FiterPhotoContestBundle:Photo:parcial/datos.html.twig' with {'entity': entity} %}
     </header>
 
-    <img style="margin-bottom:1em;" src="{{ asset(  ['/uploads/photoContest/', entity.path]|join  )|imagine_filter('thumb_666x375') }}" alt="imagen no encontrada" />
+    <img style="margin-bottom:1em;" src="{{ asset(  ['/uploads/photoContest/', entity.path]|join  )|imagine_filter('thumb_666x375') }}" alt="{{ entity.titulo }}" />
 
     {{ entity.descripcion|raw }}<br/>
 

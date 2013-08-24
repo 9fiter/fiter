@@ -9,7 +9,7 @@
             </span>
     </header>
     {% if user.path %}
-        <img class="imgCategoria" src="{{ asset(['uploads/userimages/', user.path]|join) }}" alt="imagen no encontrada" />
+        <img class="imgCategoria" src="{{ asset(['uploads/userimages/', user.path]|join) }}" alt="{{user.username}}" />
     {% endif %}
     <div style="clear: both;"></div>
 

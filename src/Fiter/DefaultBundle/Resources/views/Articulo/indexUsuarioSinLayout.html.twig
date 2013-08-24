@@ -11,9 +11,9 @@
         
     <a href="{{ path('articulo_show', { 'id': entity.id , 'slug': entity.slug}) }}">
         {% if entity.path %}
-            <img class="imgCategoria" src="{{ asset(['uploads/documents/', entity.path]|join) }}" alt="{{ entity.titulo}} imagen no encontrada" />
+            <img class="imgCategoria" src="{{ asset(['uploads/documents/', entity.path]|join) }}" alt="{{ entity.titulo}}" />
         {% elseif entity.categoria[0].path %}
-            <img style="float: left;margin-right: .7em;" src="{{ asset(  ['/uploads/categoriaimages/', entity.categoria[0].path]|join  )|imagine_filter('thumb_170x114') }}" alt="imagen no encontrada" />
+            <img style="float: left;margin-right: .7em;" src="{{ asset(  ['/uploads/categoriaimages/', entity.categoria[0].path]|join  )|imagine_filter('thumb_170x114') }}" alt="{{ entity.titulo}}" />
         {% endif %}
     </a>
         

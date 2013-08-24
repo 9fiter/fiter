@@ -10,7 +10,7 @@
     </header>
        
     {% if entity.path and entity.mostrarImagen %}
-        <img src="{{ asset(['uploads/medios/', entity.path]|join) }}" alt="{{ entity.titulo}} imagen no encontrada" class="imgMedio" />
+        <img src="{{ asset(['uploads/medios/', entity.path]|join) }}" alt="{{ entity.titulo}}" class="imgMedio" />
     {% endif %}
         
     <div style="clear: both"></div>
