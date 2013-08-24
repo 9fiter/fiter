@@ -157,6 +157,13 @@ services:
         class: Fiter\DefaultBundle\Twig\TwigExtension
         tags:
             - { name: twig.extension }
+    wikp_payment_mtgox.form.type.ipn:
+        class: Wikp\PaymentMtgoxBundle\Form\MtgoxIpnType
+        arguments:
+            - %wikp_payment_mtgox.api_secret%
+        tags:
+            - { name: payment.method_form_type }
+            - { name: form.type, alias: wikp_mtgox_ipn }
     #payment.plugin.paypal_express_checkout:
     #    #class: PaypalPlugin
     #    class: JMS\Payment\PaypalBundle\Plugin\ExpressCheckoutPlugin
