@@ -33,8 +33,10 @@
         {% for translation in entity.getTranslations %}
             {% if translation.getField=="titulo" %}
             {% if translation.getLocale!=app.request.locale %}
+            {% if translation.getContent %}
                 <a href="{{ path('articulo_show', { 'id': entity.id, 'slug': entity.slug, '_locale': translation.getLocale }) }}"><img src="/img/flags/{{translation.getLocale}}.png" alt=""></a>
                 {{translation.getContent|raw}}<br/><br/>
+            {% endif %}
             {% endif %}
             {% endif %}
         {% endfor %}
