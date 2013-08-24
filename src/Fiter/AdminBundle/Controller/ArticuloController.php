@@ -144,6 +144,7 @@ class ArticuloController extends Controller
         $deleteForm = $this->createDeleteForm($id);
         return array(
             'entity'      => $entity,
+            'titulo'      => $entity->getTitulo(),
             'delete_form' => $deleteForm->createView(),
         );
     }
