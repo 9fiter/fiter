@@ -3,17 +3,24 @@
 {% block title %}Página principal{% endblock %}
 
 {% block main %}
-<article>
-    <header>
-        <h1>Admin</h1>
-    </header>
 
-        <a href="{{ path('sonata_admin_dashboard') }}">Sonata</a><br/>
-        <a href="{{ path('authme_main') }}">Minecraft</a><br/>
-        <a href="{{ path('teamspeak') }}">Teamspeak</a><br/>
+	{% for flashMessage in app.session.flashbag.get('notice') %}
+	    <div class="flash-notice">
+	        {{ flashMessage }}
+	    </div>
+	{% endfor %} 
 
-        {% render "FiterBackupBundle:Default:index" %}
+	<article>
+	    <header>
+	        <h1>Admin</h1>
+	    </header>
+	    
+	        <a href="{{ path('sonata_admin_dashboard') }}">Sonata</a><br/>
+	        <a href="{{ path('authme_main') }}">Minecraft</a><br/>
+	        <a href="{{ path('teamspeak') }}">Teamspeak</a><br/>
 
-	<script type="text/javascript" src="/bundles/fiterdefault/js/bootstrap.min.js"></script>
-</article>
+	        {% render "FiterBackupBundle:Default:index" %}
+
+		<script type="text/javascript" src="/bundles/fiterdefault/js/bootstrap.min.js"></script>
+	</article>
 {% endblock %}

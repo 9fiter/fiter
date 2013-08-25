@@ -1,10 +1,5 @@
-{% for flashMessage in app.session.flashbag.get('notice') %}
-    <div class="flash-notice">
-        {{ flashMessage }}
-    </div>
-{% endfor %} 
-    
-<h2>Minecraft server</h2><br/>
+  
+<h2>Minecraft server</h2>
 <div id="minecraft_server_start" class="modal hide fade in" style="display: none; ">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">×</a>
@@ -60,21 +55,19 @@ div.scroll{ width:100%;margin-bottom:2em;max-height:400px;overflow-y: auto; }
 </style>
 
 
-<h2>Log</h2> 
-<div class="scroll">
-    <pre>{{log}}</pre>
-</div>
-
-
-<h2>Backups</h2>
+<h2>Completed Backups</h2>
 <div class="scroll">
     <pre>{{backups}}</pre>
 </div>
 
+{% if backupstemp %}
+    <h2>Running backups</h2>
+    <div class="scroll">
+        <pre>{{backupstemp}}</pre>
+    </div>
+{% endif %}
 
-
-
-<div id="bkp_all" class="modal hide fade in" style="display: none; ">
+<div id="bkp_full" class="modal hide fade in" style="display: none; ">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">×</a>
         <h3>Hacer un copia de seguridad completa</h3>
@@ -84,25 +77,32 @@ div.scroll{ width:100%;margin-bottom:2em;max-height:400px;overflow-y: auto; }
         <p>Esto puede hacer que el servidor se ralentize durante unos minutos</p>             
     </div>
     <div class="modal-footer">
-        <a class="btn btn-danger" href="{{ path('backup_all')}}">Copia de seguridad completa</a>
+        <a class="btn btn-danger" href="{{ path('backup_full')}}">Copia de seguridad completa</a>
         <a href="#" class="btn" data-dismiss="modal">Close</a>
     </div>
 </div>
-<a data-toggle="modal" href="#bkp_all" class="btn btn-danger">Completa</a>
+<a data-toggle="modal" href="#bkp_full" class="btn btn-danger">Completa</a>
 
-
-<div id="backup_minecraft_folder" class="modal hide fade in" style="display: none; ">
+<div id="bkp_diff" class="modal hide fade in" style="display: none; ">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">×</a>
-        <h3>Hacer un copia de seguridad de la carpeta de minecraft</h3>
+        <h3>Hacer un copia de seguridad diferencial</h3>
     </div>
     <div class="modal-body">
-        <!--<h4></h4>-->
-        <p>Estas seguro que deseas hacer un copia de seguridad de la carpeta de minecraft?</p>             
+        <h4>Estas seguro que deseas hacer un copia de seguridad diferencial?</h4>
+        <p>Esto puede hacer que el servidor se ralentize durante unos minutos</p>             
     </div>
     <div class="modal-footer">
-        <a class="btn btn-primary" href="{#{ path('backup_minecraft_folder')}#}">Copia de seguridad de la carpeta de minecraft</a>
+        <a class="btn btn-primary" href="{{ path('backup_diff')}}">Copia de seguridad diferencial</a>
         <a href="#" class="btn" data-dismiss="modal">Close</a>
     </div>
 </div>
-<a data-toggle="modal" href="#backup_minecraft_folder_disabled" class="btn btn-primary" disabled>Carpeta de minecraft</a>
+<a data-toggle="modal" href="#bkp_diff" class="btn btn-primary">Diferencial</a>
+
+
+
+
+<h2>Server log</h2> 
+<div class="scroll">
+    <pre>{{log}}</pre>
+</div>

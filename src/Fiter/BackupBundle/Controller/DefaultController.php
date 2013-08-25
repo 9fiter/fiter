@@ -22,48 +22,81 @@ class DefaultController extends Controller{
     	$mc_folder = $this->container->getParameter('minecraft_folder');
     	$bkp_folder = $this->container->getParameter('backup_folder');
 
-    	$backups = shell_exec("ls $bkp_folder | grep -v scripts");
+    	//$backups = shell_exec("ls -la $bkp_folder | grep -v scripts temp");
+
+        $backups = shell_exec("ls -la --block-size=M $bkp_folder | nawk '".'{printf("%-60s\t%s\n" , $9,$5) }'."' | grep bz2");
+
+
+
+   
+
+        //$backupstemp = shell_exec("ls -la $bkp_folder/temp | grep -v scripts");
+        $backupstemp = shell_exec("ls -la --block-size=M $bkp_folder/temp | nawk '".'{printf("%-60s\t%s\n" , $9,$5) }'."' | grep bz2");
+
+
         $log = shell_exec('tail  -n 1000 '.$mc_folder.'server.log |  grep "\(SEVERE\|WARNING\)"');
 
         return array(
         	'backups' => $backups,
+            'backupstemp' => $backupstemp,
         	'log' => $log,
         );
     }
     /**
-     * @Route("/all", name="backup_all")
+     * @Route("/full", name="backup_full")
      * @Template()
      */
-    public function allAction(Request $request){
-    	$bkp_folder = $this->container->getParameter('backup_folder');
-
+    public function fullAction(Request $request){
+    	
     	$kernel = $this->get('kernel');
 		$scripts_path = $kernel->locateResource('@FiterBackupBundle/scripts');
-
+        $bkp_folder = $this->container->getParameter('backup_folder');
 		$fiter_path = str_replace("/app", "", $kernel->getRootDir());
+        $mc_folder = $this->container->getParameter('minecraft_folder');
 
-    	$mc_db_name = $this->container->getParameter('minecraft_database_name');
-    	$mc_db_user = $this->container->getParameter('minecraft_database_user');
-    	$mc_db_pass = $this->container->getParameter('minecraft_database_password');
-    	$mc_folder = $this->container->getParameter('minecraft_folder');
+    	//$mc_db_name = $this->container->getParameter('minecraft_database_name');
+    	//$mc_db_user = $this->container->getParameter('minecraft_database_user');
+    	//$mc_db_pass = $this->container->getParameter('minecraft_database_password');
 
-    	$fiter_db_name = $this->container->getParameter('database_name');
-    	$fiter_db_user = $this->container->getParameter('database_user');
-    	$fiter_db_pass = $this->container->getParameter('database_password');
+        //$fiter_db_name = $this->container->getParameter('database_name');
+        //$fiter_db_user = $this->container->getParameter('database_user');
+        //$fiter_db_pass = $this->container->getParameter('database_password');
 
-    	$phpbb3_db_name = $this->container->getParameter('phpbb3_database_name');
-    	$phpbb3_db_user = $this->container->getParameter('phpbb3_database_user');
-    	$phpbb3_db_pass = $this->container->getParameter('phpbb3_database_password');
+        //$phpbb3_db_name = $this->container->getParameter('phpbb3_database_name');
+        //$phpbb3_db_user = $this->container->getParameter('phpbb3_database_user');
+        //$phpbb3_db_pass = $this->container->getParameter('phpbb3_database_password');
 
     	$shell = $this->get('shell');
-    	//                              1           2             3    4           5           6           7          8              9              10             11              12              13              14                                                    
-    	$cmd = "sh $scripts_path/bkp.sh $bkp_folder $scripts_path null $mc_db_name $mc_db_user $mc_db_pass $mc_folder $fiter_db_name $fiter_db_user $fiter_db_pass $phpbb3_db_name $phpbb3_db_user $phpbb3_db_pass $fiter_path > /dev/null &";
+        $cmd = "sh $scripts_path/makebkpfull.sh $bkp_folder $scripts_path $mc_folder $fiter_path > $bkp_folder/debug.log &";
 		$shell->cmd($cmd);
 
 		$referer = $request->headers->get('referer');       
         $request->getSession()->setFlash('notice', "Copia de seguridad inciada");
         return new RedirectResponse($referer);
     }
+
+    /**
+     * @Route("/diff", name="backup_diff")
+     * @Template()
+     */
+    public function diffAction(Request $request){
+        
+        $kernel = $this->get('kernel');
+        $scripts_path = $kernel->locateResource('@FiterBackupBundle/scripts');
+        $bkp_folder = $this->container->getParameter('backup_folder');
+        $fiter_path = str_replace("/app", "", $kernel->getRootDir());
+        $mc_folder = $this->container->getParameter('minecraft_folder');
+
+        $shell = $this->get('shell');
+        $cmd = "sh $scripts_path/makebkpdiff.sh $bkp_folder $scripts_path $mc_folder $fiter_path > $bkp_folder/debug.log &";
+        $shell->cmd($cmd);
+
+        $referer = $request->headers->get('referer');       
+        $request->getSession()->setFlash('notice', "Copia de seguridad inciada");
+        return new RedirectResponse($referer);
+    }
+
+
     /**
      * @Route("/minecraft/server/start", name="minecraft_server_start")
      * @Template()
