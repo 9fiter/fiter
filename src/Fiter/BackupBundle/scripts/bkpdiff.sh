@@ -6,8 +6,8 @@ mc_path=$4
 mc_skin_path=$5
 file=$6
 
-echo tar -jcvf $bkp_path/temp/$file --exclude-from=$exclude $fiter_uploads_path $mc_path $mc_skin_path -N $(date +"%F %T")
-tar -jcvf $bkp_path/temp/$file --exclude-from=$exclude $fiter_uploads_path $mc_path $mc_skin_path -N $(date +"%F %T")
+echo tar -jcvf $bkp_path/temp/$file --exclude-from=$exclude $fiter_uploads_path $mc_path $mc_skin_path -N $(date +"%Y-%m-01 00:00:00")
+tar -jcvf $bkp_path/temp/$file --exclude-from=$exclude $fiter_uploads_path $mc_path $mc_skin_path -N $(date +"%Y-%m-01 00:00:00")
 
 mv $bkp_path/temp/$file $bkp_path/$file
 
