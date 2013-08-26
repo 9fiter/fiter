@@ -1,3 +1,7 @@
+BCCCronManagerBundle:
+    resource: "@BCCCronManagerBundle/Resources/config/routing.xml"
+    prefix:   /{_locale}/admin/cron
+
 fiter_backup:
     resource: "@FiterBackupBundle/Controller/"
     type:     annotation
