@@ -5,11 +5,6 @@ fiter_uploads_path=$3
 mc_skin_path=$4
 file=$5
 
-for var in "$@"
-do
-    echo "$var"
-done
-
 echo tar -jcvf $bkp_path/temp/$file --exclude-from=$exclude $fiter_uploads_path $mc_skin_path
 tar -jcvf $bkp_path/temp/$file --exclude-from=$exclude $fiter_uploads_path $mc_skin_path
 

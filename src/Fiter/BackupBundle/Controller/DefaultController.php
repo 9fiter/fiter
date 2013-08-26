@@ -14,6 +14,23 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 class DefaultController extends Controller{
 
     /**
+     * @Route("/delete/all", name="backup_delete_all")
+     * @Template()
+     */
+    public function deleteallAction(Request $request){
+        
+        $bkp_folder = $this->container->getParameter('backup_folder');
+        $delete = shell_exec("rm -R $bkp_folder/2* && rm -R $bkp_folder/temp/2*");
+
+        $referer = $request->headers->get('referer');       
+        $request->getSession()->setFlash('notice', "Copias de seguridad eliminadas");
+        return new RedirectResponse($referer);
+
+        
+    }
+
+
+    /**
      * @Route("/", name="backup")
      * @Template()
      */
