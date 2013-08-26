@@ -67,7 +67,7 @@ class DefaultController extends Controller{
         //$phpbb3_db_pass = $this->container->getParameter('phpbb3_database_password');
 
     	$shell = $this->get('shell');
-        $cmd = "sh $scripts_path/makebkpfull.sh $bkp_folder $scripts_path $mc_folder $fiter_path > $bkp_folder/debug.log &";
+        $cmd = "sh $scripts_path/makebkpfull.sh $bkp_folder $scripts_path $mc_folder $fiter_path > /dev/null &";
 		$shell->cmd($cmd);
 
 		$referer = $request->headers->get('referer');       
@@ -88,7 +88,7 @@ class DefaultController extends Controller{
         $mc_folder = $this->container->getParameter('minecraft_folder');
 
         $shell = $this->get('shell');
-        $cmd = "sh $scripts_path/makebkpdiff.sh $bkp_folder $scripts_path $mc_folder $fiter_path > $bkp_folder/debug.log &";
+        $cmd = "sh $scripts_path/makebkpdiff.sh $bkp_folder $scripts_path $mc_folder $fiter_path > /dev/null &";
         $shell->cmd($cmd);
 
         $referer = $request->headers->get('referer');       
