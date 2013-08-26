@@ -70,34 +70,51 @@ div.scroll{ width:100%;margin-bottom:2em;max-height:400px;overflow-y: auto; }
 <div id="bkp_full" class="modal hide fade in" style="display: none; ">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">×</a>
-        <h3>Hacer un copia de seguridad completa</h3>
+        <h3>Hacer un copia de seguridad de fiter completa</h3>
     </div>
     <div class="modal-body">
-        <h4>Estas seguro que deseas hacer un copia de seguridad completa?</h4>
+        <h4>Estas seguro que deseas hacer un copia de seguridad de fiter completa?</h4>
         <p>Esto puede hacer que el servidor se ralentize durante unos minutos</p>             
     </div>
     <div class="modal-footer">
-        <a class="btn btn-danger" href="{{ path('backup_full')}}">Copia de seguridad completa</a>
+        <a class="btn btn-danger" href="{{ path('backup_full')}}">Copia de seguridad de fiter completa</a>
         <a href="#" class="btn" data-dismiss="modal">Close</a>
     </div>
 </div>
-<a data-toggle="modal" href="#bkp_full" class="btn btn-danger">Completa</a>
+<a data-toggle="modal" href="#bkp_full" class="btn btn-danger">Fiter Completa</a>
 
 <div id="bkp_diff" class="modal hide fade in" style="display: none; ">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">×</a>
-        <h3>Hacer un copia de seguridad diferencial</h3>
+        <h3>Hacer un copia de seguridad de fiter diferencial</h3>
     </div>
     <div class="modal-body">
-        <h4>Estas seguro que deseas hacer un copia de seguridad diferencial?</h4>
+        <h4>Estas seguro que deseas hacer un copia de seguridad de fiter diferencial?</h4>
         <p>Esto puede hacer que el servidor se ralentize durante unos minutos</p>             
     </div>
     <div class="modal-footer">
-        <a class="btn btn-primary" href="{{ path('backup_diff')}}">Copia de seguridad diferencial</a>
+        <a class="btn btn-primary" href="{{ path('backup_diff')}}">Copia de seguridad de fiter diferencial</a>
         <a href="#" class="btn" data-dismiss="modal">Close</a>
     </div>
 </div>
-<a data-toggle="modal" href="#bkp_diff" class="btn btn-primary">Diferencial</a>
+<a data-toggle="modal" href="#bkp_diff" class="btn btn-primary">Fiter Diferencial</a>
+
+
+<div id="bkp_fullmc" class="modal hide fade in" style="display: none; ">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>Hacer un copia de seguridad de minecraft completa</h3>
+    </div>
+    <div class="modal-body">
+        <h4>Estas seguro que deseas hacer un copia de seguridad de minecraft completa?</h4>
+        <p>Esto puede hacer que el servidor se ralentize durante unos minutos</p>             
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-danger" href="{{ path('backup_fullmc')}}">Copia de seguridad minecraft completa</a>
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+    </div>
+</div>
+<a data-toggle="modal" href="#bkp_fullmc" class="btn btn-danger">MC Completa</a>
 
 
 

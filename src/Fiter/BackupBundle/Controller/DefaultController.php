@@ -24,14 +24,14 @@ class DefaultController extends Controller{
 
     	//$backups = shell_exec("ls -la $bkp_folder | grep -v scripts temp");
 
-        $backups = shell_exec("ls -la --block-size=M $bkp_folder | nawk '".'{printf("%-60s\t%s\n" , $9,$5) }'."' | grep bz2");
+        $backups = shell_exec("ls -la --block-size=M $bkp_folder | nawk '".'{printf("%-60s\t%s\n" , $9,$5) }'."' | grep bz2 | grep -v log");
 
 
 
    
 
         //$backupstemp = shell_exec("ls -la $bkp_folder/temp | grep -v scripts");
-        $backupstemp = shell_exec("ls -la --block-size=M $bkp_folder/temp | nawk '".'{printf("%-60s\t%s\n" , $9,$5) }'."' | grep bz2");
+        $backupstemp = shell_exec("ls -la --block-size=M $bkp_folder/temp | nawk '".'{printf("%-60s\t%s\n" , $9,$5) }'."' | grep bz2 | grep -v log");
 
 
         $log = shell_exec('tail  -n 1000 '.$mc_folder.'server.log |  grep "\(SEVERE\|WARNING\)"');
@@ -43,20 +43,39 @@ class DefaultController extends Controller{
         );
     }
     /**
+     * @Route("/fullmc", name="backup_fullmc")
+     * @Template()
+     */
+    public function fullmcAction(Request $request){
+        
+        $kernel = $this->get('kernel');
+        $scripts_path = $kernel->locateResource('@FiterBackupBundle/scripts');
+        $bkp_folder = $this->container->getParameter('backup_folder');
+        $mc_folder = $this->container->getParameter('minecraft_folder');
+
+
+        $shell = $this->get('shell');
+        $cmd = "sh $scripts_path/makebkpfullmc.sh $bkp_folder $scripts_path $mc_folder > /dev/null &";
+        $shell->cmd($cmd);
+
+        $referer = $request->headers->get('referer');       
+        $request->getSession()->setFlash('notice', "Copia de seguridad completa inciada");
+        return new RedirectResponse($referer);
+    }
+    /**
      * @Route("/full", name="backup_full")
      * @Template()
      */
     public function fullAction(Request $request){
-    	
-    	$kernel = $this->get('kernel');
-		$scripts_path = $kernel->locateResource('@FiterBackupBundle/scripts');
+        
+        $kernel = $this->get('kernel');
+        $scripts_path = $kernel->locateResource('@FiterBackupBundle/scripts');
         $bkp_folder = $this->container->getParameter('backup_folder');
-		$fiter_path = str_replace("/app", "", $kernel->getRootDir());
-        $mc_folder = $this->container->getParameter('minecraft_folder');
+        $fiter_path = str_replace("/app", "", $kernel->getRootDir());
 
-    	//$mc_db_name = $this->container->getParameter('minecraft_database_name');
-    	//$mc_db_user = $this->container->getParameter('minecraft_database_user');
-    	//$mc_db_pass = $this->container->getParameter('minecraft_database_password');
+        //$mc_db_name = $this->container->getParameter('minecraft_database_name');
+        //$mc_db_user = $this->container->getParameter('minecraft_database_user');
+        //$mc_db_pass = $this->container->getParameter('minecraft_database_password');
 
         //$fiter_db_name = $this->container->getParameter('database_name');
         //$fiter_db_user = $this->container->getParameter('database_user');
@@ -66,11 +85,11 @@ class DefaultController extends Controller{
         //$phpbb3_db_user = $this->container->getParameter('phpbb3_database_user');
         //$phpbb3_db_pass = $this->container->getParameter('phpbb3_database_password');
 
-    	$shell = $this->get('shell');
-        $cmd = "sh $scripts_path/makebkpfull.sh $bkp_folder $scripts_path $mc_folder $fiter_path > /dev/null &";
-		$shell->cmd($cmd);
+        $shell = $this->get('shell');
+        $cmd = "sh $scripts_path/makebkpfull.sh $bkp_folder $scripts_path $fiter_path > /dev/null &";
+        $shell->cmd($cmd);
 
-		$referer = $request->headers->get('referer');       
+        $referer = $request->headers->get('referer');       
         $request->getSession()->setFlash('notice', "Copia de seguridad completa inciada");
         return new RedirectResponse($referer);
     }
@@ -85,10 +104,9 @@ class DefaultController extends Controller{
         $scripts_path = $kernel->locateResource('@FiterBackupBundle/scripts');
         $bkp_folder = $this->container->getParameter('backup_folder');
         $fiter_path = str_replace("/app", "", $kernel->getRootDir());
-        $mc_folder = $this->container->getParameter('minecraft_folder');
 
         $shell = $this->get('shell');
-        $cmd = "sh $scripts_path/makebkpdiff.sh $bkp_folder $scripts_path $mc_folder $fiter_path > /dev/null &";
+        $cmd = "sh $scripts_path/makebkpdiff.sh $bkp_folder $scripts_path $fiter_path > /dev/null &";
         $shell->cmd($cmd);
 
         $referer = $request->headers->get('referer');       
