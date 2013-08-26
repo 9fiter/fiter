@@ -71,7 +71,7 @@ class DefaultController extends Controller{
 		$shell->cmd($cmd);
 
 		$referer = $request->headers->get('referer');       
-        $request->getSession()->setFlash('notice', "Copia de seguridad inciada");
+        $request->getSession()->setFlash('notice', "Copia de seguridad completa inciada");
         return new RedirectResponse($referer);
     }
 
