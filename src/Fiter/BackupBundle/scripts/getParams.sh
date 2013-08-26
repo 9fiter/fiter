@@ -3,7 +3,7 @@ installpath=$2
 mc_path=$3
 fiter_path=$4
 
-now=$(date +'%Y-%m-%d-%T')
+now=$(date +'%Y%m%d%H%M%S')
 exclude=$installpath/exclude
 
 mc_skin_path=$fiter_path/web/mcskin/img
