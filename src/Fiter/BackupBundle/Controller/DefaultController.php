@@ -103,7 +103,7 @@ class DefaultController extends Controller{
         //$phpbb3_db_pass = $this->container->getParameter('phpbb3_database_password');
 
         $shell = $this->get('shell');
-        $cmd = "sh $scripts_path/makebkpfull.sh $bkp_folder $scripts_path $fiter_path > /dev/null &";
+        $cmd = "sh $scripts_path/full.sh > /dev/null &";
         //ladybug_dump($cmd);
         $shell->cmd($cmd);
 
