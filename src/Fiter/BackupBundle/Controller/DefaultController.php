@@ -39,12 +39,10 @@ class DefaultController extends Controller{
     	$mc_folder = $this->container->getParameter('minecraft_folder');
     	$bkp_folder = $this->container->getParameter('backup_folder');
         $backups = shell_exec("ls -la --block-size=M $bkp_folder | nawk '".'{printf("%-60s\t%s\n" , $9,$5) }'."' | grep bz2 | grep -v log");
-        $backupstemp = shell_exec("ls -la --block-size=M $bkp_folder/temp | nawk '".'{printf("%-60s\t%s\n" , $9,$5) }'."' | grep bz2 | grep -v log");
         $log = shell_exec('tail  -n 1000 '.$mc_folder.'server.log |  grep "\(SEVERE\|WARNING\)"');
 
         return array(
         	'backups' => $backups,
-            'backupstemp' => $backupstemp,
         	'log' => $log,
         );
     }
