@@ -61,9 +61,9 @@ class DefaultController extends Controller{
 
         $shell = $this->get('shell');
         //$cmd = "sh $scripts_path/makebkpfullmc.sh $bkp_folder $scripts_path $mc_folder > /dev/null &";
-        //$cmd = "sh $scripts_path/makebkpfullmc.sh $bkp_folder $scripts_path $mc_folder &";
+        $cmd = "sh $scripts_path/makebkpfullmc.sh $bkp_folder $scripts_path $mc_folder &";
 
-        $cmd = "nohup sh $scripts_path/makebkpfullmc.sh $bkp_folder $scripts_path $mc_folder > /home/backup/tar.output.txt 2> /home/backup/tar.errors.txt < /dev/null &";
+        //$cmd = "nohup sh $scripts_path/makebkpfullmc.sh $bkp_folder $scripts_path $mc_folder > /home/backup/tar.output.txt 2> /home/backup/tar.errors.txt < /dev/null &";
 
 
         $shell->cmd($cmd);
