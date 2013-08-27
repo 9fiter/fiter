@@ -58,16 +58,7 @@ class DefaultController extends Controller{
         $mc_folder = $this->container->getParameter('minecraft_folder');
 
         $shell = $this->get('shell');
-        //$cmd = "sh $scripts_path/makebkpfullmc.sh $bkp_folder $scripts_path $mc_folder > /dev/null &";
-
-
-
         $cmd = "bash $scripts_path/mcfull.sh $bkp_folder $scripts_path $mc_folder &";
-
-
-        //$cmd = "nohup sh $scripts_path/makebkpfullmc.sh $bkp_folder $scripts_path $mc_folder > /home/backup/tar.output.txt 2> /home/backup/tar.errors.txt < /dev/null &";
-
-
         $shell->cmd($cmd);
 
         $referer = $request->headers->get('referer');       
@@ -84,18 +75,6 @@ class DefaultController extends Controller{
         $scripts_path = $kernel->locateResource('@FiterBackupBundle/scripts');
         $bkp_folder = $this->container->getParameter('backup_folder');
         $fiter_path = str_replace("/app", "", $kernel->getRootDir());
-
-        //$mc_db_name = $this->container->getParameter('minecraft_database_name');
-        //$mc_db_user = $this->container->getParameter('minecraft_database_user');
-        //$mc_db_pass = $this->container->getParameter('minecraft_database_password');
-
-        //$fiter_db_name = $this->container->getParameter('database_name');
-        //$fiter_db_user = $this->container->getParameter('database_user');
-        //$fiter_db_pass = $this->container->getParameter('database_password');
-
-        //$phpbb3_db_name = $this->container->getParameter('phpbb3_database_name');
-        //$phpbb3_db_user = $this->container->getParameter('phpbb3_database_user');
-        //$phpbb3_db_pass = $this->container->getParameter('phpbb3_database_password');
 
         $shell = $this->get('shell');
         $cmd = "bash $scripts_path/full.sh $bkp_folder $scripts_path $fiter_path &";
@@ -125,7 +104,6 @@ class DefaultController extends Controller{
         $request->getSession()->setFlash('notice', "Copia de seguridad inciada");
         return new RedirectResponse($referer);
     }
-
 
     /**
      * @Route("/minecraft/server/start", name="minecraft_server_start")
