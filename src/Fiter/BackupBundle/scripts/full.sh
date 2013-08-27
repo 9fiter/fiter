@@ -1,4 +1,4 @@
-#!/bin/bash -xv
+#!/bin/bash
 now=$(date +'%Y%m%d%H%M%S')
 file=${now}_fullbackup_fiter.tar.bz2
 
