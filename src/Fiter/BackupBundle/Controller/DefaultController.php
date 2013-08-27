@@ -114,7 +114,8 @@ class DefaultController extends Controller{
         $fiter_path = str_replace("/app", "", $kernel->getRootDir());
 
         $shell = $this->get('shell');
-        $cmd = "sh $scripts_path/makebkpdiff.sh $bkp_folder $scripts_path $fiter_path > /dev/null &";
+        //$cmd = "sh $scripts_path/makebkpdiff.sh $bkp_folder $scripts_path $fiter_path > /dev/null &";
+        $cmd = "bash $scripts_path/diff.sh $bkp_folder $scripts_path $fiter_path &";
         $shell->cmd($cmd);
 
         $referer = $request->headers->get('referer');       
