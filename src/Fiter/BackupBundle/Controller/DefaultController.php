@@ -91,7 +91,7 @@ class DefaultController extends Controller{
         //$phpbb3_db_pass = $this->container->getParameter('phpbb3_database_password');
 
         $shell = $this->get('shell');
-        $cmd = "sh $scripts_path/full.sh > /dev/null &";
+        $cmd = "sh $scripts_path/full.sh > /home/backup/test.log &";
         ladybug_dump($cmd);
         ladybug_dump($shell);
         $res=$shell->cmd($cmd);
