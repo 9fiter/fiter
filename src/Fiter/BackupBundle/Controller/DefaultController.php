@@ -96,12 +96,12 @@ class DefaultController extends Controller{
         //$phpbb3_db_pass = $this->container->getParameter('phpbb3_database_password');
 
         $shell = $this->get('shell');
-        //$cmd = "bash $scripts_path/full.sh >/dev/null &";
+        $cmd = "bash $scripts_path/full.sh &";
 
 
 
 
-        $cmd = "nohup sh $scripts_path/full.sh > /home/backup/tar.output.txt 2> /home/backup/tar.errors.txt < /dev/null &";
+        //$cmd = "nohup sh $scripts_path/full.sh > /home/backup/tar.output.txt 2> /home/backup/tar.errors.txt < /dev/null &";
 
 
 
