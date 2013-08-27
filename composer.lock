@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "c85418528fa4b1c9bbb79a5da4901f91",
+    "hash": "2ee3f89fe5164fb30fa2d34b7d1684cf",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -1279,12 +1279,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "541645b59aa64120fbc5ed46bfda06afd27ac042"
+                "reference": "bd985308564efec63bf22ad9d5effcc866f02231"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/541645b59aa64120fbc5ed46bfda06afd27ac042",
-                "reference": "541645b59aa64120fbc5ed46bfda06afd27ac042",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/bd985308564efec63bf22ad9d5effcc866f02231",
+                "reference": "bd985308564efec63bf22ad9d5effcc866f02231",
                 "shasum": ""
             },
             "require": {
@@ -1345,7 +1345,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2013-08-22 13:05:04"
+            "time": "2013-08-26 21:35:25"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -3427,12 +3427,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataBlockBundle.git",
-                "reference": "2.1.2"
+                "reference": "3f18e2df3171bb1149f55ffcb34ecc41169bf15f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/2.1.2",
-                "reference": "2.1.2",
+                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/3f18e2df3171bb1149f55ffcb34ecc41169bf15f",
+                "reference": "3f18e2df3171bb1149f55ffcb34ecc41169bf15f",
                 "shasum": ""
             },
             "require": {
@@ -4322,7 +4322,8 @@
         "jms/payment-core-bundle": 20,
         "wikp/payment-mtgox-bundle": 20,
         "symfony/console": 20,
-        "bcc/cron-manager-bundle": 20
+        "bcc/cron-manager-bundle": 20,
+        "leafo/lessphp": 20
     },
     "platform": {
         "php": ">=5.3.3"

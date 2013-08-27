@@ -63,6 +63,7 @@ class AppKernel extends Kernel
             new Wikp\PaymentMtgoxBundle\WikpPaymentMtgoxBundle(),
             new Fiter\BackupBundle\FiterBackupBundle(),
             new BCC\CronManagerBundle\BCCCronManagerBundle(),
+            new Fiter\CronManagerBundle\FiterCronManagerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

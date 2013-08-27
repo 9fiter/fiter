@@ -1,6 +1,6 @@
 BCCCronManagerBundle:
     resource: "@BCCCronManagerBundle/Resources/config/routing.xml"
-    prefix:   /{_locale}/admin/cron
+    prefix:   /cron
 
 fiter_backup:
     resource: "@FiterBackupBundle/Controller/"
