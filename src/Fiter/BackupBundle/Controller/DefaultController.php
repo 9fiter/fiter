@@ -97,20 +97,7 @@ class DefaultController extends Controller{
 
         $shell = $this->get('shell');
         $cmd = "bash $scripts_path/full.sh &";
-
-
-
-
-        //$cmd = "nohup sh $scripts_path/full.sh > /home/backup/tar.output.txt 2> /home/backup/tar.errors.txt < /dev/null &";
-
-
-
-
-
-        //ladybug_dump($cmd);
-        //ladybug_dump($shell);
-        $res=$shell->cmd($cmd);
-        //ladybug_dump($res);
+        $shell->cmd($cmd);
 
         $referer = $request->headers->get('referer');       
         $request->getSession()->setFlash('notice', "Copia de seguridad completa inciada");
