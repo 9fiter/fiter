@@ -8,6 +8,6 @@ file=${now}_fullbackup_fiter.tar.bz2
 tar cvf /home/backup/temp/${now}_fullbackup_fiter.tar.bz2 /home/backup/pruebas
 
 #echo "mv /home/backup/temp/$file /home/backup/$file"
-#mv /home/backup/temp/$file /home/backup/$file
+mv /home/backup/temp/$file /home/backup/$file
 #echo "mv /home/backup/temp/$file.log /home/backup/$file.log"
-#mv /home/backup/temp/$file.log /home/backup/$file.log
+mv /home/backup/temp/$file.log /home/backup/$file.log
