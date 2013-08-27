@@ -60,8 +60,8 @@ class DefaultController extends Controller{
         $mc_folder = $this->container->getParameter('minecraft_folder');
 
         $shell = $this->get('shell');
-        //$cmd = "sh $scripts_path/makebkpfullmc.sh $bkp_folder $scripts_path $mc_folder > /dev/null &";
-        $cmd = "sh $scripts_path/makebkpfullmc.sh $bkp_folder $scripts_path $mc_folder &";
+        $cmd = "sh $scripts_path/makebkpfullmc.sh $bkp_folder $scripts_path $mc_folder > /dev/null &";
+
 
         //$cmd = "nohup sh $scripts_path/makebkpfullmc.sh $bkp_folder $scripts_path $mc_folder > /home/backup/tar.output.txt 2> /home/backup/tar.errors.txt < /dev/null &";
 
@@ -96,7 +96,17 @@ class DefaultController extends Controller{
         //$phpbb3_db_pass = $this->container->getParameter('phpbb3_database_password');
 
         $shell = $this->get('shell');
-        $cmd = "bash $scripts_path/full.sh >/dev/null &";
+        //$cmd = "bash $scripts_path/full.sh >/dev/null &";
+
+
+
+
+        $cmd = "nohup sh $scripts_path/full.sh > /home/backup/tar.output.txt 2> /home/backup/tar.errors.txt < /dev/null &";
+
+
+
+
+
         //ladybug_dump($cmd);
         //ladybug_dump($shell);
         $res=$shell->cmd($cmd);
