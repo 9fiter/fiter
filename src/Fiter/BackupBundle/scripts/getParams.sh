@@ -2,7 +2,7 @@ bkp_path=$1
 installpath=$2
 fiter_path=$3
 
-now=$(date +'%Y%m%d%H%M%S')
+now=$(date +'%Y-%m-%d:%H-%M-%S')
 exclude=$installpath/exclude
 
 mc_skin_path=$fiter_path/web/mcskin/img

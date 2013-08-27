@@ -96,7 +96,7 @@ class DefaultController extends Controller{
         //$phpbb3_db_pass = $this->container->getParameter('phpbb3_database_password');
 
         $shell = $this->get('shell');
-        $cmd = "bash $scripts_path/full.sh &";
+        $cmd = "bash $scripts_path/full.sh $bkp_folder $scripts_path $fiter_path &";
         $shell->cmd($cmd);
 
         $referer = $request->headers->get('referer');       
