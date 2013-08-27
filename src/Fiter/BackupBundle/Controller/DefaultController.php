@@ -58,7 +58,11 @@ class DefaultController extends Controller{
         $mc_folder = $this->container->getParameter('minecraft_folder');
 
         $shell = $this->get('shell');
-        $cmd = "sh $scripts_path/makebkpfullmc.sh $bkp_folder $scripts_path $mc_folder > /dev/null &";
+        //$cmd = "sh $scripts_path/makebkpfullmc.sh $bkp_folder $scripts_path $mc_folder > /dev/null &";
+
+
+
+        $cmd = "bash $scripts_path/mcfull.sh $bkp_folder $scripts_path $mc_folder &";
 
 
         //$cmd = "nohup sh $scripts_path/makebkpfullmc.sh $bkp_folder $scripts_path $mc_folder > /home/backup/tar.output.txt 2> /home/backup/tar.errors.txt < /dev/null &";
@@ -114,7 +118,6 @@ class DefaultController extends Controller{
         $fiter_path = str_replace("/app", "", $kernel->getRootDir());
 
         $shell = $this->get('shell');
-        //$cmd = "sh $scripts_path/makebkpdiff.sh $bkp_folder $scripts_path $fiter_path > /dev/null &";
         $cmd = "bash $scripts_path/diff.sh $bkp_folder $scripts_path $fiter_path &";
         $shell->cmd($cmd);
 
