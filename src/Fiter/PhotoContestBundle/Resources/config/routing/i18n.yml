@@ -1,0 +1,140 @@
+# contest controller
+contest:
+    locales:
+        es: "/concursos"
+        en: "/contests"
+        gl: "/concursos"
+        ca: "/concursos"
+    defaults: { _controller: FiterPhotoContestBundle:Contest:index }
+
+contest_show:
+    locales:
+        es: "/concurso/{id}/{slug}/ver"
+        en: "/contest/{id}/{slug}/show"
+        gl: "/concurso/{id}/{slug}/ver"
+        ca: "/concurs/{id}/{slug}/veure"
+    defaults: { _controller: FiterPhotoContestBundle:Contest:show }
+
+contest_new:
+    locales:
+        es: "/concurso/añadir"
+        en: "/contest/new"
+        gl: "/concurso/engadir"
+        ca: "/concurs/afegir"
+    defaults: { _controller: FiterPhotoContestBundle:Contest:new }
+
+contest_edit:
+    locales:
+        es: "/concurso/{id}/editar"
+        en: "/contest/{id}/edit"
+        gl: "/concurso/{id}/editar"
+        ca: "/concurs/{id}/modificar"
+    defaults: { _controller: FiterPhotoContestBundle:Contest:edit }
+
+contest_delete:
+    locales:
+        es: "/concurso/{id}/eliminar"
+        en: "/contest/{id}/delete"
+        gl: "/concurso/{id}/eliminar"
+        ca: "/concurs/{id}/eliminar"
+    defaults: { _controller: FiterPhotoContestBundle:Contest:delete }
+
+contest_create:
+    locales:
+        es: "/concurso/crear"
+        en: "/contest/create"
+        gl: "/concurso/crear"
+        ca: "/concurs/crear"
+    defaults: { _controller: FiterPhotoContestBundle:Contest:create }
+
+contest_update:
+    locales:
+        es: "/concurso/{id}/actualizar"
+        en: "/contest/{id}/update"
+        gl: "/concurso/{id}/actualizar"
+        ca: "/concurs/{id}/actualitzar"
+    defaults: { _controller: FiterPhotoContestBundle:Contest:update }
+
+# photo controller
+
+photo_like:
+    locales:
+        es: "/foto/{id}/like"
+        en: "/photo/{id}/like"
+        gl: "/foto/{id}/like"
+        ca: "/foto/{id}/like"
+    defaults: { _controller: FiterPhotoContestBundle:Photo:like }
+
+photo_dislike:
+    locales:
+        es: "/foto/{id}/dislike"
+        en: "/photo/{id}/dislike"
+        gl: "/foto/{id}/dislike"
+        ca: "/foto/{id}/dislike"
+    defaults: { _controller: FiterPhotoContestBundle:Photo:disLike }
+
+photo_by_context:
+    locales:
+        es: "/fotos/concurso/{contestSlug}"
+        en: "/photos/contest/{contestSlug}"
+        gl: "/fotos/concurso/{contestSlug}"
+        ca: "/fotos/concurs/{contestSlug}"
+    defaults: { _controller: FiterPhotoContestBundle:Photo:indexByContest }
+
+photo:
+    locales:
+        es: "/foto"
+        en: "/photo"
+        gl: "/foto"
+        ca: "/foto"
+    defaults: { _controller: FiterPhotoContestBundle:Photo:index }
+
+photo_show:
+    locales:
+        es: "/foto/{id}/ver"
+        en: "/photo/{id}/show"
+        gl: "/foto/{id}/ver"
+        ca: "/foto/{id}/veure"
+    defaults: { _controller: FiterPhotoContestBundle:Photo:show }
+
+photo_new:
+    locales:
+        es: "/foto/{contestId}/participa"
+        en: "/photo/{contestId}/involved"
+        gl: "/foto/{contestId}/participa"
+        ca: "/foto/{contestId}/participa"
+    defaults: { _controller: FiterPhotoContestBundle:Photo:new }
+
+photo_create:
+    locales:
+        es: "/foto/{contestId}/crear"
+        en: "/photo/{contestId}/create"
+        gl: "/foto/{contestId}/crear"
+        ca: "/foto/{contestId}/crear"
+    defaults: 
+        _controller: FiterPhotoContestBundle:Photo:create
+        _template: FiterPhotoContestBundle:Photo:new
+
+photo_edit:
+    locales:
+        es: "/foto/{id}/editar"
+        en: "/photo/{id}/edit"
+        gl: "/foto/{id}/editar"
+        ca: "/foto/{id}/modificar"
+    defaults: { _controller: FiterPhotoContestBundle:Photo:edit }
+
+photo_update:
+    locales:
+        es: "/foto/{id}/actualizar"
+        en: "/photo/{id}/update"
+        gl: "/foto/{id}/actualizar"
+        ca: "/foto/{id}/actualitzar"
+    defaults: { _controller: FiterPhotoContestBundle:Photo:update }
+
+photo_delete:
+    locales:
+        es: "/foto/{id}/eliminar"
+        en: "/photo/{id}/delete"
+        gl: "/foto/{id}/eliminar"
+        ca: "/foto/{id}/eliminar"
+    defaults: { _controller: FiterPhotoContestBundle:Photo:delete }

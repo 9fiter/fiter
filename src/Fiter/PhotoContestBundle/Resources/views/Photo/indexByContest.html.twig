@@ -27,7 +27,7 @@
       {% for entity in entities %}
       <article>
         <header>
-           <h1 style="margin: 0 0 0.4em 0;"><a href="{{ path('contest_show', { 'id': contest.id }) }}">{{ contest.titulo }}</a></h1>
+           <h1 style="margin: 0 0 0.4em 0;"><a href="{{ path('contest_show', { 'id': contest.id, 'slug': contest.slug }) }}">{{ contest.titulo }}</a></h1>
            {#<a href="{{ path('photo_new', { 'contestId': entity.id }) }}">{{ 'main.photoContestParticipe' | trans }}</a>#}
            <h3><a href="#{#{ path('photo_show', { 'id': entity.id }) }#}">{{ entity.titulo }}</a></h3>
            {% include 'FiterPhotoContestBundle:Photo:parcial/datos.html.twig' with {'entity': entity} %}

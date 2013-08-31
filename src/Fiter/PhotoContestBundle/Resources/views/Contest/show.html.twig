@@ -19,7 +19,7 @@
 
 <article>
     <header>
-       <h3><a href="{{ path('contest_show', { 'id': entity.id }) }}">{{ entity.titulo }}</a></h3>
+       <h3><a href="{{ path('contest_show', { 'id': entity.id, 'slug': entity.slug }) }}">{{ entity.titulo }}</a></h3>
        {% include 'FiterPhotoContestBundle:Contest:parcial/datos.html.twig' with {'entity': entity} %}
     </header>
 

@@ -26,7 +26,7 @@ class PhotoController extends Controller {
         /**
      * Adds a like to an Photo entity.
      *
-     * @Route("/{id}/like", name="photo_like")
+     * @Route("/{id}/like", name="_photo_like")
      * @Template()
      */
     public function likeAction(Request $request, $id){
@@ -87,7 +87,7 @@ class PhotoController extends Controller {
     /**
      * Adds a dislike to an Photo entity.
      *
-     * @Route("/{id}/dislike", name="photo_dislike")
+     * @Route("/{id}/dislike", name="_photo_dislike")
      * @Template()
      */
     public function disLikeAction(Request $request, $id){
@@ -150,7 +150,7 @@ class PhotoController extends Controller {
 
     /**
      * Lists Photo entities by contest.
-     * @Route("/contest/{contestSlug}", name="photo_by_context")
+     * @Route("/contest/{contestSlug}", name="_photo_by_context")
      * @Template()
      */
     public function indexByContestAction($contestSlug){
@@ -186,7 +186,7 @@ class PhotoController extends Controller {
     }
     /**
      * Lists all Photo entities.
-     * @Route("/", name="photo")
+     * @Route("/", name="_photo")
      * @Template()
      */
     public function indexAction(){
@@ -198,7 +198,7 @@ class PhotoController extends Controller {
     }
     /**
      * Finds and displays a Photo entity.
-     * @Route("/{id}/show", name="photo_show")
+     * @Route("/{id}/show", name="_photo_show")
      * @Template()
      */
     public function showAction($id){
@@ -223,7 +223,7 @@ class PhotoController extends Controller {
     }
     /**
      * Displays a form to create a new Photo entity.
-     * @Route("/{contestId}/participa", name="photo_new")
+     * @Route("/{contestId}/participa", name="_photo_new")
      * @Template()
      */
     public function newAction(Request $request, $contestId) {
@@ -271,7 +271,7 @@ class PhotoController extends Controller {
     }
     /**
      * Creates a new Photo entity.
-     * @Route("/{contestId}/create", name="photo_create")
+     * @Route("/{contestId}/create", name="_photo_create")
      * @Method("POST")
      * @Template("FiterPhotoContestBundle:Photo:new.html.twig")
      */
@@ -325,7 +325,7 @@ class PhotoController extends Controller {
     }
     /**
      * Edits an existing Photo entity.
-     * @Route("/{id}/update", name="photo_update")
+     * @Route("/{id}/update", name="_photo_update")
      * @Method("POST")
      * @Template("FiterPhotoContestBundle:Photo:edit.html.twig")
      */
@@ -349,7 +349,7 @@ class PhotoController extends Controller {
     }
     /**
      * Deletes a Photo entity.
-     * @Route("/{id}/delete", name="photo_delete")
+     * @Route("/{id}/delete", name="_photo_delete")
      * @Method("POST")
      */
     public function deleteAction(Request $request, $id) {

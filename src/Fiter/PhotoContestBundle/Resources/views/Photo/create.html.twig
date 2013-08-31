@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ 'main.photoContest' | trans }}
+ - {{ app.request.host }}{% endblock %}
+
+{% block main %}
+<article>
+    <header style="margin-bottom: 1em;">
+       <h1 style="margin-bottom:0;">{{ 'main.photoContest' | trans }}</h1>
+       <h3>{{contest.titulo}}</h3>
+    </header>
+    <p>Bienvenido <strong>{{user}}</strong></p>
+    
+
+    <form id="photo_create_form" action="{{ path('photo_create', { 'contestId': contest.id }) }}" method="post" {{ form_enctype(form) }}>
+	    {{ form_widget(form) }}
+	</form>
+    <br/>
+    {{contest.descripcion|raw}}<br/>
+
+	<br/>
+	<button class="btn btn-success" form="photo_create_form" type="submit">{{ 'main.send' | trans }}</button>
+	<a class="btn btn-primary" href="{{ path('photo') }}">{{ 'main.back' | trans }}</a>
+
+</article>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript" src="/js/formoid/jquery.uniform.min.js"></script>
+<script type="text/javascript"> 
+    $("form").find("input[type=file]").uniform();
+    $("form").find("input[type=file]").change(function() {
+        readURL(this)
+    });
+    $(".uploader span.filename").text("{{ 'main.noFileSelected' | trans }}");
+    $(".uploader span.action").text("Seleccionar");
+</script>
+{% endblock %}

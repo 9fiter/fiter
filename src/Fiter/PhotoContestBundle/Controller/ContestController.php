@@ -20,7 +20,7 @@ class ContestController extends Controller{
 
     /**
      * Lists all Contest entities.
-     * @Route("/", name="contest")
+     * @Route("/", name="_contest")
      * @Template()
      */
     public function indexAction(){
@@ -48,10 +48,10 @@ class ContestController extends Controller{
     }
     /**
      * Finds and displays a Contest entity.
-     * @Route("/{id}/show", name="contest_show")
+     * @Route("/{id}/{slug}/show", name="_contest_show")
      * @Template()
      */
-    public function showAction($id){
+    public function showAction($id, $slug){
         $em = $this->getDoctrine()->getManager('minecraft');
         $entity = $em->getRepository('FiterPhotoContestBundle:Contest')->find($id);
         if (!$entity) throw $this->createNotFoundException('Unable to find Contest entity.');
@@ -81,7 +81,7 @@ class ContestController extends Controller{
     }
     /**
      * Displays a form to create a new Contest entity.
-     * @Route("/new", name="contest_new")
+     * @Route("/new", name="_contest_new")
      * @Template()
      */
     public function newAction(){
@@ -94,7 +94,7 @@ class ContestController extends Controller{
     }
     /**
      * Creates a new Contest entity.
-     * @Route("/create", name="contest_create")
+     * @Route("/create", name="_contest_create")
      * @Method("POST")
      * @Template("FiterPhotoContestBundle:Contest:new.html.twig")
      */
@@ -120,7 +120,7 @@ class ContestController extends Controller{
     }
     /**
      * Displays a form to edit an existing Contest entity.
-     * @Route("/{id}/edit", name="contest_edit")
+     * @Route("/{id}/edit", name="_contest_edit")
      * @Template()
      */
     public function editAction($id){
@@ -137,7 +137,7 @@ class ContestController extends Controller{
     }
     /**
      * Edits an existing Contest entity.
-     * @Route("/{id}/update", name="contest_update")
+     * @Route("/{id}/update", name="_contest_update")
      * @Method("POST")
      * @Template("FiterPhotoContestBundle:Contest:edit.html.twig")
      */
