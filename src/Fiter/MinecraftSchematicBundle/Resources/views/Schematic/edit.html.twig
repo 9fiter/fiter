@@ -1,0 +1,177 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}Editar schematic - {{ app.request.host }}{% endblock %}
+ 
+{% block main %}
+
+    <!--
+    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/blueimp-gallery.min.css" />
+    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/jquery.fileupload-ui.css" />
+    -->
+
+    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/bootstrap-responsive.min.css" />
+
+   
+    <script src="/bundles/fiterdefault/js/jquery-ui.min.js"></script>
+    <script src="/bundles/fiterdefault/js/underscore-min.js"></script> 
+    <script src="/bundles/punkavefileuploader/js/jquery.fileupload.js"></script>
+    <script src="/bundles/punkavefileuploader/js/FileUploader.js"></script>
+
+    {% include "PunkAveFileUploaderBundle:Default:templates.html.twig" %}
+
+    <form id="edit-formm" class="edit-form" action="{{ path('schematic_update', { id: entity.id,'slug': entity.slug }) }}" method="post" {{ form_enctype(edit_form) }}>
+        {#{ form_widget(edit_form) }#}
+
+        {{ form_errors(edit_form) }}  
+            
+        {{ form_label(edit_form.titulo) }}
+        {{ form_widget(edit_form.activo) }}<span>{{ form_label(edit_form.activo,label|default(null)) }}</span>
+        {{ form_widget(edit_form.activarComentarios) }}<span>{{ form_label(edit_form.activarComentarios,label|default(null)) }}</span><br>
+        {{ form_widget(edit_form.titulo) }}
+            
+        {#{ form_row(edit_form.categoria) }}
+        {{ form_row(edit_form.subCategoria) }#}
+        
+        {% if edit_form.vars.value.path %}
+            <img id="blah" src="/uploads/documents/schematic/{{ edit_form.vars.value.path }}" alt="your image" />
+        {% else %}
+            <img id="blah" src="/img/vacio.png" alt="your image" />
+        {% endif %}<br/> 
+        {{ form_label(edit_form.imagen) }}     
+        {{ form_widget(edit_form.mostrarImagen) }}<span>{{ form_label(edit_form.mostrarImagen,label|default(null)) }}</span><br>
+        {{ form_widget(edit_form.imagen) }}  
+
+
+        <label>Galería de imágenes</label>
+
+        {{ form_widget(edit_form.mostrarMiniaturas) }}<span>{{ form_label(edit_form.mostrarMiniaturas,label|default(null)) }}</span>
+        {{ form_widget(edit_form.mostrarSlide) }}<span>{{ form_label(edit_form.mostrarSlide,label|default(null)) }}</span><br>
+        {# Hydrated by javascript #}
+        <div class="file-uploader"></div>
+
+
+        {% if existingFiles|length > 0 %}
+            <label>Enlaces de la galería de imágenes</label><br/>
+
+            {% for file in existingFiles %}
+                /uploads/schematicImgs/{{entity.id}}/large/{{file}}<br/>
+            {% endfor %}
+            <br/><br/>
+        {% endif %}
+  
+        {{ form_label(edit_form.contenido) }}    
+        {{ form_widget(edit_form.mostrarContenido) }}<span>{{ form_label(edit_form.mostrarContenido,label|default(null)) }}</span><br>
+        {{ form_widget(edit_form.contenido) }}
+        
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+
+
+
+        
+        
+
+
+
+
+            
+        {{ form_row(edit_form.aleatorio) }}    
+        {{ form_row(edit_form._token) }}    
+            
+        {{ form_rest(edit_form) }}
+        <br/><br/>
+
+
+
+
+    </form>
+
+
+    <form id="form_delete_schematic" action="{{ path('schematic_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+    </form>
+    
+    <button class="btn btn-success" form="edit-formm" type="submit">{{ 'main.save' | trans }}</button>
+    <button class="btn btn-danger" form="form_delete_schematic" type="submit">{{ 'main.delete' | trans }}</button>
+    <button class="btn btn-primary" href="{{ path('schematic') }}">{{ 'main.back' | trans }}</button>
+
+
+    <br/><br/>
+    <script type="text/javascript">
+
+    // Enable the file uploader
+
+    $(function() {
+        new PunkAveFileUploader({ 
+            'uploadUrl': {{ path('schematic_upload', { editId: entity.id }) | json_encode | raw }},
+            //'viewUrl': '{{ '/uploads/tmp/attachments/' ~ entity.id | json_encode | raw }}',
+            'viewUrl': '{{ '/uploads/tmp/schematicImgs/' ~ entity.id }}',
+            'el': '.file-uploader',
+            'existingFiles': {{ existingFiles | json_encode | raw }},
+            'delaySubmitWhileUploading': '.edit-form'
+        });
+    });
+    </script>
+
+
+
+
+
+<!--
+    <h2>Editar artículo</h2>
+
+    <form id="form_update_schematic" action="{{ path('schematic_update', { 'id': entity.id, 'slug': entity.slug  }) }}" method="post" {{ form_enctype(edit_form) }}>
+        
+-->
+{% endblock %}
+    
+    
+    
+    
+{% block javascripts %}
+<script src="/js/chosen/chosen.jquery.js"></script>
+<script type="text/javascript"> 
+    //$("#fiter_defaultbundle_schematictype_categoria").chosen();
+    //$("#fiter_defaultbundle_schematictype_subCategoria").chosen();
+
+    //$('#fiter_defaultbundle_schematictype_categoria_chzn').css('width','100%');
+    //$('#fiter_defaultbundle_schematictype_subCategoria_chzn').css('width','100%');
+    //$('.chzn-drop').css('width','100%');
+    //$('.chzn-search input').css('width','100%');
+    
+    //$("#fiter_defaultbundle_schematictype_categoria").data("chosen").default_text = "{{ 'main.seleccionaCategorias' | trans }}";
+    //$("#fiter_defaultbundle_schematictype_subCategoria").data("chosen").default_text = "{{ 'main.seleccionaSubcategorias' | trans }}";
+    //$("#fiter_defaultbundle_schematictype_categoria").trigger("liszt:updated");
+    //$("#fiter_defaultbundle_schematictype_subCategoria").trigger("liszt:updated");
+    //$("li.search-field input").css("width","auto");
+</script>
+<link rel="stylesheet" href="/js/chosen/chosen.css" />
+<style>
+        #fiter_defaultbundle_schematictype_categoria{width: 100%;}
+        #fiter_defaultbundle_schematictype_categoria_chzn{width: 100%;}
+</style>
+
+<script type="text/javascript" src="/js/formoid/jquery.uniform.min.js"></script>
+<script type="text/javascript"> 
+$(function () {
+    $("form").find("input[type=file]").uniform();
+    $(".uploader span.filename").text("{{ 'main.noFileSelected' | trans }}");
+    $(".uploader span.action").text("{{ 'main.select' | trans }}");
+    $(".uploader22 span.filename").text("{{ 'main.noFileSelected' | trans }}");
+    $(".uploader22 span.action").text("{{ 'main.select' | trans }}");
+});
+
+</script>
+<script type="text/javascript" src="/bundles/fiterdefault/js/bootstrap.min.js" />
+{% endblock %}    

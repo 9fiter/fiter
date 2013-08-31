@@ -46,15 +46,15 @@
         {# Hydrated by javascript #}
         <div class="file-uploader"></div>
 
+        {% if existingFiles|length > 0 %}
+            <label>Enlaces de la galería de imágenes</label><br/>
 
-        <label>Enlaces de la galería de imágenes</label><br/>
-
-        {% for file in existingFiles %}
-            /uploads/attachments/{{entity.id}}/large/{{file}}<br/>
-        {% endfor %}
-        <br/><br/>
-  
-  
+            {% for file in existingFiles %}
+                /uploads/attachments/{{entity.id}}/large/{{file}}<br/>
+            {% endfor %}
+            <br/>
+        {% endif %}
+        <br/>
             
         
         {{ form_label(edit_form.contenido) }}

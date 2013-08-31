@@ -98,6 +98,7 @@ doctrine:
                     RaulFraileLadybugBundle: ~
                     FOSCommentBundle: ~
                     JMSPaymentCoreBundle: ~
+                    FiterMinecraftSchematicBundle: ~
                     gedmo_translatable:
                         type: annotation
                         prefix: Gedmo\Translatable\Entity

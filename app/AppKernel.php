@@ -64,6 +64,7 @@ class AppKernel extends Kernel
             new Fiter\BackupBundle\FiterBackupBundle(),
             new BCC\CronManagerBundle\BCCCronManagerBundle(),
             new Fiter\CronManagerBundle\FiterCronManagerBundle(),
+            new Fiter\MinecraftSchematicBundle\FiterMinecraftSchematicBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

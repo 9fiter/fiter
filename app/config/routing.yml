@@ -1,3 +1,8 @@
+fiter_minecraft_schematic:
+    resource: "@FiterMinecraftSchematicBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}/minecraft
+
 BCCCronManagerBundle:
     resource: "@BCCCronManagerBundle/Resources/config/routing.xml"
     prefix:   /cron

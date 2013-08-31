@@ -1,0 +1,157 @@
+{% extends '::base.html.twig' %}
+     
+{% block title %}{{ entity.titulo }} - {{ app.request.host }}{% endblock %}
+
+{% block main %}
+<article>
+    <header>
+        <h3><a href="{{ path('schematic_show', { 'id': entity.id, 'slug': entity.slug }) }}">{{ entity.titulo }}</a></h3>
+        {% include 'FiterMinecraftSchematicBundle:Schematic:parcial/datos.html.twig' with {'entity': entity} %}
+    </header>
+
+    {% if entity.path and entity.mostrarImagen %}
+        <div id="menu_imagen">
+            <div class="menu">
+                <a target="_blank" href="{{ asset(['uploads/documents/schematic/', entity.path]|join) }}"><img src="/img/lupa27.png" title="Aumentar" /></a>
+                {#<a target="_blank" href="{{ asset(['uploads/documents/', entity.path]|join) }}"><img src="/img/lupa27.png" title="Descargar" /></a>#}
+            </div>
+            <img id="menu_imagen" src="{{ asset(['uploads/documents/schematic/', entity.path]|join) }}" alt="{{ entity.titulo}}" class="imgArticulo" />
+        </div>
+    {% endif %}
+        
+    <div style="clear: both"></div>
+
+
+    
+   
+
+
+   
+    <div>{{ entity.contenido|raw }}</div>
+    <div style="clear: both"></div>
+    
+
+    {% set fbimage = "" %} 
+    {% if entity.path %}
+        {% set fbimage = asset(  ['/uploads/documents/', entity.path]|join  )|imagine_filter('thumb_170x114') %} 
+    {% elseif entity.categoria[0].path is defined %}
+        {% set fbimage = asset(  ['/uploads/categoriaimages/', entity.categoria[0].path]|join  )|imagine_filter('thumb_170x114') %} 
+    {% endif %}
+    {% set fbimage = app.request.schemeAndHttpHost ~ fbimage %} 
+
+
+    {% if files|length > 0 %}
+        {% if entity.mostrarMiniaturas %}
+            {% for file in files %}
+                <img src="/uploads/schematicImgs/{{entity.id}}/thumbnails/{{file}}" onclick="cambiar({{loop.index0}});">
+            {% endfor %}
+            <br/><br/>
+        {% endif %}
+        {% if entity.mostrarSlide %}
+            <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/responsiveslides.css" />
+            <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/themes.css" />
+            <script src="/bundles/fiterdefault/js/responsiveslides.min.js"></script>
+            <script>
+            var a = null;
+            $(function () {
+              // Slideshow
+              a = $("#slides1").responsiveSlides({
+                auto: false,
+                pagination: true,
+                nav: true,
+                fade: 500,
+                maxwidth: 800
+              });
+            });
+            function reset(){
+                a.find('li').removeClass('rslides1_on');
+                a.find('li').css('float','none');
+                a.find('li').css('opacity','0');
+                a.find('li').css('z-index','1');
+            }
+            function cambiar(pagina){
+                reset();
+                $(a.find('li').get(pagina)).addClass("rslides1_on");
+                $(a.find('li').get(pagina)).css('float','left');
+                $(a.find('li').get(pagina)).css('opacity','1');
+                $(a.find('li').get(pagina)).css('z-index','2');
+            }
+            </script>
+            <div class="rslides_container sombra">
+                <ul id="slides1" class="rslides">
+                {% for file in files %}
+                    <li>
+                      <img src="/uploads/schematicImgs/{{entity.id}}/large/{{file}}">
+                      <!--<p class="caption">Donec id elit non mi porta gravida at eget metus.</p>-->
+                    </li>
+                {% endfor %}
+                </ul>
+            </div><br/><br/>
+        {% endif %}
+    {% endif %}
+
+    
+    <div class="share_buttons"> 
+        <h4>Compartir en:</h4><br/>
+        <a target="_blank" href="http://www.facebook.com/sharer.php?s=100&p[title]={{ entity.titulo }}&p[summary]={{ entity.contenido(true)|striptags|raw }}&p[url]={{ app.request.schemeAndHttpHost }}{{ path('schematic_show', { 'id': entity.id, 'slug': entity.slug }) }}&&p[images][0]={{ fbimage }}{#{ app.request.schemeAndHttpHost }}{{ asset(['uploads/documents/', entity.path]|join) }#}"><div class="social_facebook"></div>
+        </a>
+
+        <a target="_blank" href="http://twitter.com/home?status=#url"><div class="social_twitter"></div></a>
+        <a target="_blank" href="https://plusone.google.com/_/+1/confirm?hl=en&amp;url=#{{ path('schematic_show', { 'id': entity.id, 'slug': entity.slug }) }}"><div class="social_google"></div></a>
+    </div>  
+    
+    {#% if entity.videosYoutube or entity.canalYoutube or entity.listasYoutube %}
+        <div id="my-widget1"></div>
+    {% endif %#} 
+       
+    {% if entity.activarComentarios %}   
+        <div class="comentarios"><a href="#">Comentarios</a></div>
+        
+        <div id="fos_comment_thread" data-thread="{{ thread.id }}">
+        {% include 'FiterCommentBundle:Thread:comments.html.twig' with {
+            'comments': comments,
+            'thread': thread
+        } %}
+        </div>
+        <script src="/js/35a8e64_comments_1.js"></script>
+    {% else %}
+        <div class="vetealforo">
+            <p>Los comentarios de este artículo están desactivados.</p>
+            <p><a href="/phpbb3/">Utiliza el Foro</a></p>
+        </div>
+    {% endif %}
+</article>   
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="/js/jquery-ui.js"></script>      
+    <script type="text/javascript" src="/js/jQuery.tubeplayer.js"></script>
+    <script type="text/javascript" src="/js/videoSearch.js"></script>
+    <script type="text/javascript" src="/js/videoSearchStr.js"></script>
+    <script type="text/javascript" src="/js/ytApi.js"></script>
+    {#% if entity.videosYoutube|length or entity.canalYoutube or entity.listasYoutube|length %}
+       <script>
+            $(document).ready(function(){
+                $( "#my-widget1" ).videoSearch({
+                     {% if entity.videosYoutube|length  %}
+                        videoInicial: "{{entity.videosYoutube['0'].enlace|youtube_id}}",
+                     {% endif %}     
+                        busquedaInicial: "{{ entity.titulo }}",
+                        listaVideos: [ {% for video in entity.videosYoutube %}"{{video.enlace|youtube_id}}"{% if loop.last != loop.index %},{% endif %}{% endfor %} ],
+                        listaPlaylists: [ {% for lista in entity.listasYoutube %}"{{lista.enlace|youtube_playlist_id}}"{% if loop.last != loop.index %},{% endif %}{% endfor %} ],
+                        canal: "{{ entity.canalYoutube|youtube_user_id }}",
+                });
+            });
+        </script>
+    {% endif %#}     
+   
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/themes/moi/jquery.ui.all.css"/>
+    <link rel="stylesheet" href="/css/default.css"/>
+
+   
+
+
+{% endblock %}

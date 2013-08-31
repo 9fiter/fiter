@@ -1,0 +1,123 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ 'main.addArticulo' | trans }} - {{ app.request.host }}{% endblock %}
+
+{% block main %}
+<article>
+    <header>
+       <h2>{{ 'main.addSchematic' | trans }}</h2>
+    </header>
+    <form id="form_add_schematic" action="{{ path('schematic_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}  
+            
+        {{ form_label(form.titulo) }}
+        {{ form_widget(form.activo) }}<span>{{ form_label(form.activo,label|default(null)) }}</span>
+        {{ form_widget(form.activarComentarios) }}<span>{{ form_label(form.activarComentarios,label|default(null)) }}</span><br>
+        
+        {{ form_widget(form.titulo) }}
+            
+        {#{ form_row(form.categoria) }}
+        {{ form_row(form.subCategoria) }#}
+            
+        <img id="blah" src="/img/vacio.png" alt="your image" />
+        {{ form_label(form.imagen) }}      
+        {{ form_widget(form.mostrarImagen) }}<span>{{ form_label(form.mostrarImagen,label|default(null)) }}</span><br>
+        {{ form_widget(form.imagen) }}
+            
+        {{ form_label(form.schematic) }}      
+        {{ form_widget(form.schematic) }}
+
+        {{ form_label(form.contenido) }}
+        {{ form_widget(form.mostrarContenido) }}<span>{{ form_label(form.mostrarContenido,label|default(null)) }}</span><br>
+        {{ form_widget(form.contenido) }}
+
+        {#
+        {{ form_label(form.videosYoutube) }}
+        <ul class="videosYoutube" data-prototype="{{ form_widget(form.videosYoutube.vars.prototype)|e }}">
+            {% for videoYoutube in form.videosYoutube %}
+                <li>{{ form_row(videoYoutube.enlace) }}</li>
+            {% endfor %}
+        </ul>
+        #}  
+        
+        {{ form_row(form.aleatorio) }}  
+        {{ form_row(form._token) }}  
+
+        {{ form_rest(form) }}
+    </form>
+
+    
+
+
+    <br/>
+    <button id="form_add_schematic_submit" class="btn btn-success" form="form_add_schematic" type="submit">{{ 'main.save' | trans }}</button>
+    <button class="btn btn-primary" href="{{ path('schematic') }}">{{ 'main.back' | trans }}</button>
+
+
+
+
+</article>
+{% endblock %}
+
+{% block javascripts %}
+<script src="/js/chosen/chosen.jquery.js"></script>
+<script type="text/javascript"> 
+    //$("#fiter_defaultbundle_schematictype_categoria").chosen();
+    //$("#fiter_defaultbundle_schematictype_subCategoria").chosen();
+
+
+
+    
+
+
+
+
+    //$('#fiter_defaultbundle_schematictype_categoria_chzn').css('width','100%');
+    //$('#fiter_defaultbundle_schematictype_subCategoria_chzn').css('width','100%');
+    //$('.chzn-drop').css('width','100%');
+    //$('.chzn-search input').css('width','100%');
+    
+    //$("#fiter_defaultbundle_schematictype_categoria").data("chosen").default_text = "{{ 'main.seleccionaCategorias' | trans }}";
+    //$("#fiter_defaultbundle_schematictype_subCategoria").data("chosen").default_text = "{{ 'main.seleccionaSubcategorias' | trans }}";
+    
+    //$("#fiter_defaultbundle_schematictype_categoria").trigger("liszt:updated");
+    //$("#fiter_defaultbundle_schematictype_subCategoria").trigger("liszt:updated");
+    //$("li.search-field input").css("width","auto");
+</script>
+<link rel="stylesheet" href="/js/chosen/chosen.css" />
+<style>
+        #fiter_defaultbundle_schematictype_categoria{width: 100%;}
+        #fiter_defaultbundle_schematictype_categoria_chzn{width: 100%;}
+</style>
+
+
+<script type="text/javascript" src="/js/formoid/jquery.uniform.min.js"></script>
+<script type="text/javascript"> 
+    $("form").find("input[type=file]").uniform();
+    $("form").find("input[type=file]").change(function() {
+        readURL(this)
+    });
+    $(".uploader22 span.filename").text("{{ 'main.noFileSelected' | trans }}");
+    $(".uploader22 span.action").text("{{ 'main.select' | trans }}");
+    
+    $("#form_add_schematic").submit(function(e){
+        
+        //var inputsVideosYoutube = $('.videosYoutube input');
+        //var removeVideosYoutube = $('.videosYoutube a.remove_tag_link');
+        //for (var i=0;i<inputsVideosYoutube.size();i++){ 
+        //    if(inputsVideosYoutube.get(i).value.length==0){
+        //        removeVideosYoutube.trigger('click');
+        //    }
+        //}
+    
+       
+
+        //$(this).submit();
+    });
+</script>
+<script type="text/javascript" src="/bundles/fiterdefault/js/bootstrap.min.js" />
+{% endblock %}
+
+
+
+
