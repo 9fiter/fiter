@@ -33,8 +33,8 @@ twig:
         description: %description%
         twitter_feed: %twitter_feed%
         web_path: %web_path%
-        css_version: "0.22"
-        css_version2: "0.1"
+        css_version: "0.23"
+        css_version2: "0.11"
         isprod: %isprod%
 
         googleAnalytics_id: %googleAnalytics_id%
