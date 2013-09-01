@@ -130,21 +130,15 @@ class CategoriaController extends Controller{
      */
     public function editAction($id,$slug){
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('FiterDefaultBundle:Categoria')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Categoria entity.');
-        }
-        
+        if (!$entity) throw $this->createNotFoundException('Unable to find Categoria entity.');
         $securityContext = $this->get('security.context');
         if (false === $securityContext->isGranted('EDIT', $entity)){  // verifica el acceso para edición
-            throw new AccessDeniedException('No tienes permiso para editar esta categoría');
+            if(!$securityContext->isGranted('ROLE_ADMIN'))
+                throw new AccessDeniedException('No tienes permiso para editar esta categoría');
         }
-
         $editForm = $this->createForm(new CategoriaType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
-
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),

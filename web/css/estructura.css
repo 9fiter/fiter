@@ -136,7 +136,7 @@ body > footer ul{margin:0 3%;padding:0;list-style: none;}
 
 ul.recorta li{display: inline-block;overflow-y: hidden;height:  1.8em;width: 100%;text-align: left;}
 
-ul.menuLateral li{margin: 0 ;padding: 0 ; }
+/*ul.menuLateral li{margin: 0 ;padding: 0 ; }
 
 ul.menuLateral li a{display: block;
                  position: relative;
@@ -164,7 +164,51 @@ ul.menuLateral > li.activa > a,
 ul.menuLateral > li:hover > a{
     color: #fff;
     text-shadow: 0px 0px 10px rgba(255, 255, 255, .99);
+}*/
+
+
+ul.menuLateral > li ul{margin-left: .3em;}
+
+ul.menuLateral li{margin: 0 ;padding: 0 ; }
+
+ul.menuLateral li a{display: block;
+                 position: relative;
+top: -2px;
 }
+ul.menuLateral li {font-size: 1em;line-height: 1.5em;margin-bottom: .1em;}
+
+
+ul.menuLateral > li > ul > li.listaActiva,
+ul.menuLateral > li > ul > li a:hover,
+ul.menuLateral > li.listaActiva a,
+ul.menuLateral > li > a:hover,
+ul.menuLateral > li ul li a:hover{background-color: #5FADC5;     
+      -webkit-box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 1);
+              box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .3);
+}
+
+ul.menuLateral > li li a{background-color: transparent;     
+      -webkit-box-shadow: none;
+              box-shadow: none;
+}
+
+/**/ul.menuLateral > li > ul > li.listaActiva > a,
+ul.menuLateral > li > ul > li > a:hover,
+ul.menuLateral > li.listaActiva > a,
+ul.menuLateral > li > a:hover {
+    color: #fff;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, .99);
+}
+
+
+
+
+
+
+
+
+
+
 h3 a, h2, a, h3{ text-shadow: 1px 1px 1px rgba(150, 150, 150, .4); }
 
 ul li{padding-bottom: .2em; }
@@ -1650,9 +1694,7 @@ width: 163px;
 }
 
 
-#contenidoBody aside.asideLeft nav ul li ul li{
-  padding-left: .3em;
-}
+
 
 
 

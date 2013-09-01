@@ -9,7 +9,7 @@
         <header>
             {% if entity.path %}
                 <img class="indexCategorias"
-                     src="{{ asset(  ['/uploads/categoriaimages/', entity.path]|join  )|imagine_filter('thumb_50x50') }}" alt="{{entity.titulo}}" />
+                     src="{{ asset(  ['/uploads/categoriaimages/', entity.path]|join  )|imagine_filter('thumb_50x50') }}" alt="{{entity.nombre}}" />
             {% else %}
                 <img class="indexCategorias" src="/img/category_50_50.png" alt="" />
             {% endif %}

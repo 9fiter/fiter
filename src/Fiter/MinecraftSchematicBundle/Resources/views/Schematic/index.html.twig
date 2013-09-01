@@ -16,10 +16,15 @@
 {% block main %} 
     <article>
         <header>
-            <h2>{{ 'main.schematics' | trans }}</h2>
+            <h2>Schematics</h2>
         </header>
 
-        <a href="{{ path('schematic_new') }}">{{ 'main.addNewSchematic' | trans }}</a><br/>
+        <a href="{{ path('schematic_new') }}" class="btn btn-primary">
+            <i class="icon-large icon-plus-sign"></i>{{ 'main.addSchematic' | trans }}
+        </a>
+        <br/>
+
+
         <style>
         .asdddd{
             display:inline-block;
@@ -34,7 +39,7 @@
 
         <div class="asdddd">
             
-            <h3><a href="{{ path('schematic_show', { 'id': entity.id }) }}">{{ entity.titulo }}</a></h3>
+            <h3><a href="{{ path('schematic_show', { 'id': entity.id, 'slug': entity.slug  }) }}">{{ entity.titulo }}</a></h3>
             {#% include 'FiterDefaultBundle:Articulo:parcial/datos.html.twig' with {'entity': entity, 'busqueda': true} %#}
            
             

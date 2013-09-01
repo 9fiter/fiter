@@ -54,7 +54,7 @@ class SchematicController extends Controller
     /**
      * Finds and displays a Schematic entity.
      *
-     * @Route("/{id}/show", name="schematic_show")
+     * @Route("/{id}/{slug}/show", name="schematic_show")
      * @Route("/plsch/{id}", name="schematic_show_permanent")
      * @Template()
      */

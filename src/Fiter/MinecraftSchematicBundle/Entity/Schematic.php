@@ -440,16 +440,8 @@ class Schematic{
     private $aleatorio;
     public function setAleatorio($aleatorio){$this->aleatorio=$aleatorio;}
     public function getAleatorio(){return $this->aleatorio;}
-    public function getWebPath(){
-            return null === $this->path
-                    ? null
-                    : $this->getUploadDir().'/'.$this->path;
-    }
-    protected function getUploadRootDir(){
-            // the absolute directory path where uploaded
-            // documents should be saved
-            return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
+    
+    
 
 
 
@@ -494,6 +486,17 @@ class Schematic{
     */
     public function getPath(){ return $this->path;}
     protected function getUploadDir(){ return 'uploads/documents/schematic';}
+    public function getWebPath(){
+            return null === $this->path
+                    ? null
+                    : $this->getUploadDir().'/'.$this->path;
+    }
+    protected function getUploadRootDir(){
+            // the absolute directory path where uploaded
+            // documents should be saved
+            return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
     public function getAbsolutePath(){
     return null === $this->path
         ? null
@@ -551,10 +554,20 @@ class Schematic{
     */
     public function getPathSchematic(){ return $this->pathSchematic;}
     protected function getUploadDirSchematic(){ return 'uploads/schematics';}
+    public function getWebPathSchematic(){
+            return null === $this->pathSchematic
+                    ? null
+                    : $this->getUploadDirSchematic().'/'.$this->pathSchematic;
+    }
+    protected function getUploadRootDirSchematic(){
+            // the absolute directory path where uploaded
+            // documents should be saved
+            return __DIR__.'/../../../../web/'.$this->getUploadDirSchematic();
+    }
     public function getAbsolutePathSchematic(){
     return null === $this->pathSchematic
         ? null
-        : $this->getUploadRootDir().'/'.$this->pathSchematic;
+        : $this->getUploadRootDirSchematic().'/'.$this->pathSchematic;
     }
 
 
@@ -574,6 +587,7 @@ class Schematic{
     public function preUpload()    {
         $this->slug=Util::getSlug($this->titulo);
         if($this->noActualizar==false) $this->setFechaActualizacion(new \DateTime("now"));
+
         if (null !== $this->imagen) {
             if (file_exists($this->getAbsolutePath())) unlink($this->getAbsolutePath()); //borrar la imagen anterior si existe
             $filename = sha1(uniqid(mt_rand(), true));
@@ -583,7 +597,9 @@ class Schematic{
         if (null !== $this->schematic) {
             if (file_exists($this->getAbsolutePathSchematic())) unlink($this->getAbsolutePathSchematic()); //borrar el schematic anterior si existe
             $filename = sha1(uniqid(mt_rand(), true));
-            $this->pathSchematic = $filename.'.schematic';
+            //$this->pathSchematic = $filename.'.'.$this->schematic->guessExtension();
+            ladybug_dump($this->schematic);
+            $this->pathSchematic = $filename.'_'.$this->schematic->getClientOriginalName();
         }
     }
     /**
@@ -591,13 +607,14 @@ class Schematic{
      * @ORM\PostUpdate()
      */
     public function upload(){
-        if (null === $this->imagen)  return;
-        $this->imagen->move($this->getUploadRootDir(), $this->path);
-        unset($this->imagen);
-
-        if (null === $this->schematic)  return;
-        $this->schematic->move($this->getUploadRootDir(), $this->pathSchematic);
-        unset($this->schematic);
+        if (null !== $this->imagen) {
+            $this->imagen->move($this->getUploadRootDir(), $this->path);
+            unset($this->imagen);
+        }
+        if (null !== $this->schematic) {
+            $this->schematic->move($this->getUploadRootDirSchematic(), $this->pathSchematic);
+            unset($this->schematic);
+        }
     }
     /**
      * @ORM\PostRemove()

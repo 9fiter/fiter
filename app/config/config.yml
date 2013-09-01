@@ -462,3 +462,10 @@ bitcoind:
     password: %bitcoind_password%
     host:     %bitcoind_host%
     port:     %bitcoind_port%
+
+
+knp_menu:
+    twig:  # use "twig: false" to disable the Twig extension and the TwigRenderer
+        template: knp_menu.html.twig
+    templating: false # if true, enables the helper for PHP templates
+    default_renderer: twig # The renderer to use, list is also available by default

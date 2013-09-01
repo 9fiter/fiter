@@ -59,6 +59,9 @@
             {% endfor %}
             <br/><br/>
         {% endif %}
+
+        {{ form_label(edit_form.schematic) }}      
+        {{ form_widget(edit_form.schematic) }}
   
         {{ form_label(edit_form.contenido) }}    
         {{ form_widget(edit_form.mostrarContenido) }}<span>{{ form_label(edit_form.mostrarContenido,label|default(null)) }}</span><br>

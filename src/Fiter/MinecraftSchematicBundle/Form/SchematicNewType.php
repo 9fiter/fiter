@@ -52,7 +52,7 @@ class SchematicNewType extends AbstractType{
             ->add('aleatorio', 'hidden', array('data' => 'true'))
             ->add('schematic', 'file' ,array(
                  'required' => false,
-                 'label'=> 'main.schematic',
+                 'label'=> 'Schematic',
             ))
 
 
