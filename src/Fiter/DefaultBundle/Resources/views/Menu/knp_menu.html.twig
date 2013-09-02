@@ -15,8 +15,10 @@
 {% endblock %}
 
 {% block root %}
+<nav>
 {% set listAttributes = item.childrenAttributes %}
 {{ block('list') -}}
+</nav>
 {% endblock %}
 
 {% block list %}

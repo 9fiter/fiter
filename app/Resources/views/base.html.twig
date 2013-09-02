@@ -127,7 +127,7 @@
                     <li><a href="{{ path('fiter_contact') }}">{{ 'main.contacto' | trans }}</a></li>
                     <li><a href="{{ path('poll') }}">{{ 'main.polls' | trans }}</a></li>
                     <li><a href="/phpbb3/">Foro</a></li>
-                    <!--<li><a href="{{ path('contest') }}">{{ 'main.contests' | trans }}</a></li>-->
+                    <li><a href="{{ path('contest') }}">{{ 'main.contests' | trans }}</a></li>
                     
 
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}                       
@@ -157,12 +157,8 @@
             <aside class="asideLeft">
             {% block asideL %}    
                 {#% render 'FiterDefaultBundle:Categoria:menu' with {'slug': "inicio", 'tipo':'articulo'} %#}
-                <!--<nav>{{ knp_menu_render('FiterDefaultBundle:Builder:mainMenu') }}</nav>-->
-                <nav>
-                    {% set menuItem = knp_menu_get('FiterDefaultBundle:Builder:mainMenu', [], { 'active': 'main.inicio'| trans  }) %}
-
-                    {{ knp_menu_render(menuItem, {'template': 'FiterDefaultBundle:Menu:knp_menu.html.twig'}) }}
-                </nav>
+                {% set menuItem = knp_menu_get('FiterDefaultBundle:Builder:mainMenu', [], { 'active': 'main.inicio'| trans  }) %}
+                {{ knp_menu_render(menuItem, {'template': 'FiterDefaultBundle:Menu:knp_menu.html.twig'}) }}
             {% endblock %}
             </aside>
 

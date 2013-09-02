@@ -64,5 +64,7 @@
 {% endblock %}
 
 {% block asideL %}    
-    {% render 'FiterDefaultBundle:Categoria:menu' with {'slug': categoriaSlug} %}
+    {#% render 'FiterDefaultBundle:Categoria:menu' with {'slug': categoriaSlug} %#}
+    {% set menuItem = knp_menu_get('FiterDefaultBundle:Builder:mainMenu', [], { 'active': categoriaSlug }) %}
+    {{ knp_menu_render(menuItem, {'template': 'FiterDefaultBundle:Menu:knp_menu.html.twig'}) }}
 {% endblock %}  
