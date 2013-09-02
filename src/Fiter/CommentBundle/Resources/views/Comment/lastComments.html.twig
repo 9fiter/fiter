@@ -26,7 +26,7 @@
     	<a href="{{ path('admin_articulousuario', { 'nombre': r.comment.authorName }) }}">
 			{% if r.comment.authorName %}{{r.comment.authorName}}{% else %}Anónimo{% endif %}
 		</a><br/>
-		{{r.articulo.titulo|slice(0, 50)}}..<br/>
+		{{r.articulo.titulo|slice(0, 37)}}..<br/>
 	</div>
 
 	<div style="clear:both"></div>
