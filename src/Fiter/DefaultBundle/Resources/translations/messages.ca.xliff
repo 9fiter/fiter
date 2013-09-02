@@ -570,6 +570,10 @@
                 <source>main.download</source>
                 <target>Descarregar</target>
             </trans-unit>
+            <trans-unit id="128">
+                <source>main.mustBeLoggedToComment</source>
+                <target>Has d'estar loguejat per poder publicar comentaris.</target>
+            </trans-unit>
 
 
             

@@ -553,6 +553,7 @@ class ArticuloController extends Controller{
      * @Template()
      */
     public function showAction($id,$slug="permanent"){
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FiterDefaultBundle:Articulo')->find($id);

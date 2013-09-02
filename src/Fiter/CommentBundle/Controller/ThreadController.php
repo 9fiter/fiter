@@ -462,8 +462,12 @@ class ThreadController extends Controller
      * @return View
      * @todo Add support for comment parent (in form?)
      */
-    public function postThreadCommentsAction(Request $request, $id)
-    {
+    public function postThreadCommentsAction(Request $request, $id){
+
+        $usr= $this->get('security.context')->getToken()->getUser();
+        if($usr=="anon.") return $this->render('FiterCommentBundle:Thread:login.html.twig');
+        
+
         $thread = $this->container->get('fos_comment.manager.thread')->findThreadById($id);
         if (!$thread) {
             throw new NotFoundHttpException(sprintf('Thread with identifier of "%s" does not exist', $id));

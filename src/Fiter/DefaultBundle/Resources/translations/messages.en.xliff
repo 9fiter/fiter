@@ -562,6 +562,10 @@
                 <source>main.download</source>
                 <target>Download</target>
             </trans-unit>
+            <trans-unit id="128">
+                <source>main.mustBeLoggedToComment</source>
+                <target>You must be logged in to post comments.</target>
+            </trans-unit>
 
 
 
