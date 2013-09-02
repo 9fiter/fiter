@@ -1,3 +1,22 @@
-{% for comment in comments %}
-	{% if comment.author %}{{comment.author}}{% else %}Anónimo{% endif %} - {{comment.body}}<br/>
+{% for r in res %}
+<div style="margin-bottom:.9em;">
+	{% if r.comment.authorName %}
+        <img class="imgComentario" style="float:left;width:40px;height:40px"
+        {% if file_exists(web_path~asset(  ['uploads/userimages/', r.comment.authorName, '.png']|join )) %}
+            src="{{ asset(  ['uploads/userimages/', r.comment.authorName, '.png']|join  )|imagine_filter('thumb_50x50') }}" 
+        {% else %}
+            src="{{ asset(  ['uploads/userimages/', 'anon', '.png']|join  )|imagine_filter('thumb_50x50') }}"
+        {% endif %}
+        alt="{{r.comment.authorName}}" />
+    {% endif %}
+
+    <div style="float:left">
+		{% if r.comment.authorName %}{{r.comment.authorName}}{% else %}Anónimo{% endif %} - 
+		<!--{{r.articulo.titulo}}<br/>-->
+		{{r.comment.body}}<br/>
+	</div>
+	<div style="clear:both"></div>	
+</div>
 {% endfor %}
+
+<a class="btn btn-success" href="#">Ver más</a>

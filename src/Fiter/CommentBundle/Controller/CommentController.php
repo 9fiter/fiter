@@ -20,8 +20,21 @@ class CommentController extends Controller{
         );
         $query->setMaxResults(6);
         $comments = $query->getResult();
+
+        $res = array();
+
+        foreach ($comments as $key => $comment) {
+        	$id=\str_replace("type_", "",$comment->getThread()->getId());
+        	$articulo = $em->getRepository('FiterDefaultBundle:Articulo')->find($id);
+        	//ladybug_dump($articulo);
+        	//ladybug_dump($comment);
+        	$res[]= array(
+			    "comment" => $comment,
+			    "articulo" => $articulo,
+			);
+        }
         return array(
-            'comments' => $comments
+            'res' => $res
         );
     }
 

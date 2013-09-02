@@ -193,14 +193,10 @@
                 </section>
 
                 <section class="col300">
-                    
-                    
-                    <div class="banner300-300"><img alt="responsive" src="/img/banner-responsive.jpg" /></div>
-                    
+                    <!--<div class="banner300-300"><img alt="responsive" src="/img/banner-responsive.jpg" /></div>-->
                     <div id="twitterweb"></div>
-                    
-                    <div class="banner300-300"><img alt="freesoft" src="/img/banner-freesoft.jpg" /></div>
-                    
+                    <!--<div class="banner300-300"><img alt="freesoft" src="/img/banner-freesoft.jpg" /></div>-->
+
                     <header><h3>Siguenos en:</h3></header>
                     <div>
                         <figure>
@@ -226,6 +222,12 @@
                         <div style="clear:both"></div>
                     </div>
                     <br/>
+                    
+                    <h3>Últimos comentarios</h3>
+                    <div class="banner300-300">
+                        {% render 'FiterCommentBundle:Comment:lastComments'  %}
+                    </div>
+
                 </section>
 
             </aside>    
