@@ -6,6 +6,7 @@
 	margin-bottom:.9em;
 	text-align: left;
 }
+.art_lnk{color: #818181;}
 </style>
 {% for r in res %}
 <div class="contenedor_comentarios">
@@ -26,7 +27,7 @@
     	<a href="{{ path('admin_articulousuario', { 'nombre': r.comment.authorName }) }}">
 			{% if r.comment.authorName %}{{r.comment.authorName}}{% else %}Anónimo{% endif %}
 		</a><br/>
-		<a href="{{ path('admin_articulo_show', { 'id': r.articulo.id , 'slug': r.articulo.slug}) }}">
+		<a class="art_lnk" href="{{ path('admin_articulo_show', { 'id': r.articulo.id , 'slug': r.articulo.slug}) }}">
 			{{r.articulo.titulo|slice(0, 37)}}..
 		</a><br/>
 	</div>
