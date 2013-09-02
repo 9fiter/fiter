@@ -1,0 +1,3 @@
+{% for comment in comments %}
+	{% if comment.author %}{{comment.author}}{% else %}Anónimo{% endif %} - {{comment.body}}<br/>
+{% endfor %}

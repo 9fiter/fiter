@@ -116,6 +116,12 @@ fos_comment_api:
     prefix: /api
     defaults: { _format: html }
 
+fiter_comment:
+    resource: "@FiterCommentBundle/Controller/"
+    type:     annotation
+    prefix:   /comment/
+    defaults: { _locale: es }
+
 fiter_default:
     resource: "@FiterDefaultBundle/Controller/"
     type:     annotation
