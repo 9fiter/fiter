@@ -680,7 +680,7 @@ class Articulo{
     /**
      * Set rss
      * @param string $rss
-     * @return Medio
+     * @return Articulo
      */
     public function setRss($rss){
         $this->rss = $rss;
@@ -704,7 +704,7 @@ class Articulo{
     /**
      * Set twitter
      * @param string $twitter
-     * @return Medio
+     * @return Articulo
      */
     public function setTwitter($twitter){
         $this->twitter = $twitter;

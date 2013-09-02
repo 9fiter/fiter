@@ -133,8 +133,6 @@
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}                       
                         <li><a href="{{ path('articulo_new') }}">{{ 'main.addArticulo' | trans }}</a></li>
                         <!-- <li><a href="{#{ path('categoria') }#}">{#{ 'main.categorias' | trans }#}</a></li> -->
-                        <!-- <li><a href="{#{ path('medio') }#}">Medios</a></li>
-                        <li><a href="{#{ path('medio_new') }#}">Añadir medio</a></li> -->
                         <li><a href="{{ path('fos_user_profile_show') }}">{{ 'main.perfil' | trans }}</a></li>
                         <li><a href="{{ path('fos_user_profile_index') }}">{{ 'main.usuarios' | trans }}</a></li>
                         <li><a href="{{ path('poll_new') }}">{{ 'main.addPoll' | trans }}</a></li>

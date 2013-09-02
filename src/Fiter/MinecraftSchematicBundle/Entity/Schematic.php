@@ -598,7 +598,7 @@ class Schematic{
             if (file_exists($this->getAbsolutePathSchematic())) unlink($this->getAbsolutePathSchematic()); //borrar el schematic anterior si existe
             $filename = sha1(uniqid(mt_rand(), true));
             //$this->pathSchematic = $filename.'.'.$this->schematic->guessExtension();
-            ladybug_dump($this->schematic);
+            //ladybug_dump($this->schematic);
             $this->pathSchematic = $filename.'_'.$this->schematic->getClientOriginalName();
         }
     }
