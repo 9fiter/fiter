@@ -21,24 +21,25 @@
         
     <div style="clear: both"></div>
 
-
-    
-    <br/>
-    {% if app.request.locale!="es" %}
-        <a href="{{ path('articulo_show', { 'id': entity.id, 'slug': entity.slug, '_locale': 'es' }) }}"><img src="/img/flags/es.png" alt="es"></a>{#{ entity.titulo }#}
-    {% endif %}
-    {% for translation in entity.getTranslations %}
-        {% if translation.getField=="titulo" %}
-            {% if translation.getLocale!=app.request.locale %}
-                {% if translation.getLocale!="es" %}
-                    {% if translation.getContent %}
-                        <a href="{{ path('articulo_show', { 'id': entity.id, 'slug': entity.slug, '_locale': translation.getLocale }) }}"><img src="/img/flags/{{translation.getLocale}}.png" alt="{{translation.getLocale}}"></a>{#{translation.getContent|raw}#}
+    {% if entity.getTranslations | length > 0 %}
+        <br/>
+        {% if app.request.locale!="es" %}
+            <a href="{{ path('articulo_show', { 'id': entity.id, 'slug': entity.slug, '_locale': 'es' }) }}"><img src="/img/flags/es.png" alt="es"></a>{#{ entity.titulo }#}
+        {% endif %}
+        {% for translation in entity.getTranslations %}
+            {% if translation.getField=="titulo" %}
+                {% if translation.getLocale!=app.request.locale %}
+                    {% if translation.getLocale!="es" %}
+                        {% if translation.getContent %}
+                            <a href="{{ path('articulo_show', { 'id': entity.id, 'slug': entity.slug, '_locale': translation.getLocale }) }}"><img src="/img/flags/{{translation.getLocale}}.png" alt="{{translation.getLocale}}"></a>{#{translation.getContent|raw}#}
+                        {% endif %}
                     {% endif %}
                 {% endif %}
             {% endif %}
-        {% endif %}
-    {% endfor %}
-    <br/><br/>
+
+        {% endfor %}
+        <br/><br/>
+    {% endif %}
     
 
 
