@@ -119,7 +119,7 @@ fos_comment_api:
 fiter_comment:
     resource: "@FiterCommentBundle/Controller/"
     type:     annotation
-    prefix:   /comment/
+    prefix:   /{_locale}/admin/comment/
     defaults: { _locale: es }
 
 fiter_default:

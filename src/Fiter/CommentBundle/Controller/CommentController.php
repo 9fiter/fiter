@@ -38,11 +38,6 @@ class CommentController extends Controller{
         );
     }
 
-
-
-
-
-
     /**
      * Returns a flat array of last comments.
      * @Route("/index", name="fos_comment_index")
