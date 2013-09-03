@@ -2,6 +2,13 @@
     <span class="bloque">
         <img class="ico" alt="editar" src="/img/edit.png" />
         <a href="{{ path('articulo_edit', { 'id': entity.id, 'slug': entity.slug }) }}">{{ 'main.editar' | trans }}</a>
+
+        {% if (is_granted('ROLE_EDITOR') or is_granted('ROLE_REDACTOR') or is_granted('ROLE_ADMIN')) %}
+            {% if not entity.activo %}
+                <span class="activo rojo"></span>Inactivo
+            {% endif %}
+        {% endif %}
+
     </span>
 {% endif %}
 

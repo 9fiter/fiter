@@ -37,7 +37,7 @@ class Articulo{
 
     /**
      * @var string
-     * @ORM\Column(name="titulo", type="string", length=255)
+     * @ORM\Column(name="titulo", type="string", length=255, nullable=true)
      * @Gedmo\Translatable
      */
     private $titulo;
@@ -50,7 +50,7 @@ class Articulo{
 
     /**
      * @var string
-     * @ORM\Column(name="contenido", type="text")
+     * @ORM\Column(name="contenido", type="text", nullable=true)
      * @Gedmo\Translatable
      */
     private $contenido;
@@ -445,7 +445,7 @@ class Articulo{
         $this->titulo="";
         $this->slug="sin-titulo";
         //$this->path="d7cce7ab70c708fe1c91df139a0333b4031357d8.jpeg";
-        $this->activo=true;
+        $this->activo=false;
         $this->likes=0;
         $this->disLikes=0;
         $this->visitas=0;

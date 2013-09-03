@@ -30,6 +30,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[1] = new Articulo();
         $articulo[1]->setUsuario($this->getReference('usr-moi'));
+        $articulo[1]->setActivo(true);
         $articulo[1]->setTitulo('Contenidos traducibles a varios idiomas');
         $articulo[1]->setContenido('   
             <p>El contenido de este artículo está traducido a los idiomas galego, catalan, español e inglés.</p>
@@ -90,6 +91,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[2] = new Articulo();
         $articulo[2]->setUsuario($this->getReference('usr-anon'));
+        $articulo[2]->setActivo(true);
         $articulo[2]->setTitulo('Rutas internacionalizadas');
         $articulo[2]->setContenido('
             <p>Como podrás observar, las rutas de la aplicación, además de ser totalmente descriptivas, son traducidas al idioma seleccionado para visualizar la página web. Esto es posible gracias al bundle BeSimpleI18nRoutingBundle evita hacerte copiar y pegar las rutas para diferentes idiomas y adicionalmente permite traducir determinados parámetros de enrutamiento a diferentes idiomas mediante un backend de traducción ya sea mediante Symfony o Doctrine DBAL + cache.</p>
@@ -130,6 +132,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[3] = new Articulo();
         $articulo[3]->setUsuario($this->getReference('usr-anon'));
+        $articulo[3]->setActivo(true);
         $articulo[3]->setTitulo('Diseño adaptable a todo tipo de dispositivos');
         $articulo[3]->setContenido('   
             <p>Este sitio web utiliza HTML5 y está construida sobre la base HTML5-Boilerplate, apoyandose en twig, un motor de plantillas para php y utilizando las técnicas mobile first y responsive web design para permitir un diseño adaptable a todo tipo de dispositivos, desde smartphones a ordenadores de escritorio pasando por tablets e incluso se adapta a los futuros dispositivos.</p>            
@@ -178,6 +181,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
 
         // $articulo[4] = new Articulo();
         // $articulo[4]->setUsuario($this->getReference('usr-anon'));
+        // $articulo[4]->setActivo(true);
         // $articulo[4]->setTitulo('Phasellus condimentum dignissim tincidunt');
         // $articulo[4]->setContenido('   
         //     <p><i>Proin sodales libero eget ante</i>. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. <b>Praesent libero</b>. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. </p>
@@ -194,6 +198,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[5] = new Articulo();
         $articulo[5]->setUsuario($this->getReference('usr-anon'));
+        $articulo[5]->setActivo(true);
         $articulo[5]->setTitulo('Ut sed massa sit amet justo tincidunt luctus');
         $articulo[5]->setContenido('   
             <p>Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. <b>Quisque volutpat condimentum velit</b>. Nunc feugiat mi a tellus consequat imperdiet. <b>Fusce ac turpis quis ligula lacinia aliquet</b>. Vestibulum sapien. Proin quam. Etiam ultrices. <i>Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa</i>. Suspendisse in justo eu magna luctus suscipit. </p>
@@ -213,6 +218,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[6] = new Articulo();
         $articulo[6]->setUsuario($this->getReference('usr-anon'));
+        $articulo[6]->setActivo(true);
         $articulo[6]->setTitulo('Morbi vitae urna lectus, non aliquet odio. In sit amet imperdiet arcu');
         $articulo[6]->setContenido('   
             <p>Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. <i>Sed cursus ante dapibus diam</i>. Proin ut ligula vel nunc egestas porttitor. <b>Curabitur tortor</b>. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. <i>Mauris massa</i>. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. <b>Sed dignissim lacinia nunc</b>. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. </p>
@@ -233,6 +239,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[7] = new Articulo();
         $articulo[7]->setUsuario($this->getReference('usr-anon'));
+        $articulo[7]->setActivo(true);
         $articulo[7]->setTitulo('Phasellus bibendum metus nec elit sodales ac semper dolor commodo');
         $articulo[7]->setContenido('   
             <p>Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas et, augue. Vestibulum tincidunt malesuada tellus. </p>
@@ -247,6 +254,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[8] = new Articulo();
         $articulo[8]->setUsuario($this->getReference('usr-anon'));
+        $articulo[8]->setActivo(true);
         $articulo[8]->setTitulo('Vivamus consectetur malesuada ligula, et congue nunc scelerisque');
         $articulo[8]->setContenido('   
             <p>Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. <b>Integer lacinia sollicitudin massa</b>. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo. Sed pretium blandit orci. <b>Nulla facilisi</b>. Ut eu diam at pede suscipit sodales. Aenean lectus elit, fermentum non, convallis id, sagittis at, neque. Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula. </p>
@@ -265,6 +273,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[9] = new Articulo();
         $articulo[9]->setUsuario($this->getReference('usr-anon'));
+        $articulo[9]->setActivo(true);
         $articulo[9]->setTitulo('Praesent placerat rhoncus nulla, a porttitor justo imperdiet ut');
         $articulo[9]->setContenido('   
             <p>Praesent mauris. Fusce nec tellus sed augue semper porta. <b>Praesent libero</b>. Mauris massa. <i>Sed aliquet risus a tortor</i>. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. </p>
@@ -279,6 +288,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[10] = new Articulo();
         $articulo[10]->setUsuario($this->getReference('usr-anon'));
+        $articulo[10]->setActivo(true);
         $articulo[10]->setTitulo('Quisque vulputate, urna nec rhoncus sagittis');
         $articulo[10]->setContenido('   
             <p>Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. </p>
@@ -299,6 +309,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[11] = new Articulo();
         $articulo[11]->setUsuario($this->getReference('usr-anon'));
+        $articulo[11]->setActivo(true);
         $articulo[11]->setTitulo('Nullam sed ipsum dui, nec rutrum nisl. Integer sed eros nunc, at tincidunt arcu');
         $articulo[11]->setContenido('   
             <p>Ut fringilla. <b>Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh</b>. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. </p>
@@ -320,6 +331,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[12] = new Articulo();
         $articulo[12]->setUsuario($this->getReference('usr-anon'));
+        $articulo[12]->setActivo(true);
         $articulo[12]->setTitulo('Sed luctus massa in nibh placerat et suscipit metus adipiscing');
         $articulo[12]->setContenido('   
             <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. <b>Vivamus consectetuer risus et tortor</b>. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. </p>
@@ -339,6 +351,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[13] = new Articulo();
         $articulo[13]->setUsuario($this->getReference('usr-anon'));
+        $articulo[13]->setActivo(true);
         $articulo[13]->setTitulo('Sed aliquet risus a tortor. Integer id quam');
         $articulo[13]->setContenido('   
             <p>Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. <b>Curabitur sit amet mauris</b>. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo. Sed pretium blandit orci. Ut eu diam at pede suscipit sodales. <b>Proin sodales libero eget ante</b>. Aenean lectus elit, fermentum non, convallis id, sagittis at, neque. Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula. Nulla ut felis in purus aliquam imperdiet. </p>
@@ -355,6 +368,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[14] = new Articulo();
         $articulo[14]->setUsuario($this->getReference('usr-anon'));
+        $articulo[14]->setActivo(true);
         $articulo[14]->setTitulo('Suspendisse quis neque nulla, sed ultricies eros');
         $articulo[14]->setContenido('   
             <p>Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. <b>Curabitur sit amet mauris</b>. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo. Sed pretium blandit orci. Ut eu diam at pede suscipit sodales. <b>Proin sodales libero eget ante</b>. Aenean lectus elit, fermentum non, convallis id, sagittis at, neque. Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula. Nulla ut felis in purus aliquam imperdiet. </p>
@@ -367,6 +381,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[15] = new Articulo();
         $articulo[15]->setUsuario($this->getReference('usr-anon'));
+        $articulo[15]->setActivo(true);
         $articulo[15]->setTitulo('Nam non tellus urna, eu pellentesque augue');
         $articulo[15]->setContenido('   
             <p>Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. <b>Curabitur sit amet mauris</b>. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo. Sed pretium blandit orci. Ut eu diam at pede suscipit sodales. <b>Proin sodales libero eget ante</b>. Aenean lectus elit, fermentum non, convallis id, sagittis at, neque. Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula. Nulla ut felis in purus aliquam imperdiet. </p>
@@ -379,6 +394,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[16] = new Articulo();
         $articulo[16]->setUsuario($this->getReference('usr-anon'));
+        $articulo[16]->setActivo(true);
         $articulo[16]->setTitulo('Maecenas aliquam arcu at ante faucibus et vestibulum risus lobortis');
         $articulo[16]->setContenido('   
             <p>Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. <b>Curabitur sit amet mauris</b>. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo. Sed pretium blandit orci. Ut eu diam at pede suscipit sodales. <b>Proin sodales libero eget ante</b>. Aenean lectus elit, fermentum non, convallis id, sagittis at, neque. Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula. Nulla ut felis in purus aliquam imperdiet. </p>
@@ -390,6 +406,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[17] = new Articulo();
         $articulo[17]->setUsuario($this->getReference('usr-anon'));
+        $articulo[17]->setActivo(true);
         $articulo[17]->setTitulo('Proin sodales libero eget ante mauris massa');
         $articulo[17]->setContenido('   
             <p>Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. <b>Curabitur sit amet mauris</b>. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo. Sed pretium blandit orci. Ut eu diam at pede suscipit sodales. <b>Proin sodales libero eget ante</b>. Aenean lectus elit, fermentum non, convallis id, sagittis at, neque. Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula. Nulla ut felis in purus aliquam imperdiet. </p>
@@ -403,6 +420,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[18] = new Articulo();
         $articulo[18]->setUsuario($this->getReference('usr-anon'));
+        $articulo[18]->setActivo(true);
         $articulo[18]->setTitulo('Maecenas aliquet mollis lectus');
         $articulo[18]->setContenido('   
             <p>Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. <b>Curabitur sit amet mauris</b>. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo. Sed pretium blandit orci. Ut eu diam at pede suscipit sodales. <b>Proin sodales libero eget ante</b>. Aenean lectus elit, fermentum non, convallis id, sagittis at, neque. Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula. Nulla ut felis in purus aliquam imperdiet. </p>
@@ -417,6 +435,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[19] = new Articulo();
         $articulo[19]->setUsuario($this->getReference('usr-anon'));
+        $articulo[19]->setActivo(true);
         $articulo[19]->setTitulo('Pellentesque habitant morbi tristique senectus et netus');
         $articulo[19]->setContenido('   
             <p>Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. <b>Curabitur sit amet mauris</b>. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo. Sed pretium blandit orci. Ut eu diam at pede suscipit sodales. <b>Proin sodales libero eget ante</b>. Aenean lectus elit, fermentum non, convallis id, sagittis at, neque. Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula. Nulla ut felis in purus aliquam imperdiet. </p>
@@ -430,6 +449,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[20] = new Articulo();
         $articulo[20]->setUsuario($this->getReference('usr-anon'));
+        $articulo[20]->setActivo(true);
         $articulo[20]->setTitulo('Aenean quam scelerisque sem at dolor');
         $articulo[20]->setContenido('
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. <i>Proin sodales libero eget ante</i>. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. </p>
@@ -449,6 +469,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[21] = new Articulo();
         $articulo[21]->setUsuario($this->getReference('usr-anon'));
+        $articulo[21]->setActivo(true);
         $articulo[21]->setTitulo('Nunc nec tortor a odio elementum viverra nec vel justo');
         $articulo[21]->setContenido('   
             <p>Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. <b>Curabitur sit amet mauris</b>. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo. Sed pretium blandit orci. Ut eu diam at pede suscipit sodales. <b>Proin sodales libero eget ante</b>. Aenean lectus elit, fermentum non, convallis id, sagittis at, neque. Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula. Nulla ut felis in purus aliquam imperdiet. </p>
@@ -460,6 +481,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[22] = new Articulo();
         $articulo[22]->setUsuario($this->getReference('usr-anon'));
+        $articulo[22]->setActivo(true);
         $articulo[22]->setTitulo('Phasellus condimentum dignissim tincidunt');
         $articulo[22]->setContenido('   
             <p><i>Proin sodales libero eget ante</i>. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. <b>Praesent libero</b>. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. </p>
@@ -474,6 +496,7 @@ class Articulos extends AbstractFixture implements OrderedFixtureInterface, Cont
         
         $articulo[23] = new Articulo();
         $articulo[23]->setUsuario($this->getReference('usr-anon'));
+        $articulo[23]->setActivo(true);
         $articulo[23]->setTitulo('Ut sed massa sit amet justo tincidunt luctus');
         $articulo[23]->setContenido('   
             <p>Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. <b>Quisque volutpat condimentum velit</b>. Nunc feugiat mi a tellus consequat imperdiet. <b>Fusce ac turpis quis ligula lacinia aliquet</b>. Vestibulum sapien. Proin quam. Etiam ultrices. <i>Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa</i>. Suspendisse in justo eu magna luctus suscipit. </p>

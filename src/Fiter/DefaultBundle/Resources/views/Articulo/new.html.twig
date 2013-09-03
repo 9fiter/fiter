@@ -11,7 +11,14 @@
         {{ form_errors(form) }}  
             
         {{ form_label(form.titulo) }}
-        {{ form_widget(form.activo) }}<span>{{ form_label(form.activo,label|default(null)) }}</span>
+        
+
+        {% if is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+            {{ form_widget(form.activo) }}<span>{{ form_label(form.activo,label|default(null)) }}</span>
+        {% endif %}
+        {#
+            
+        #}
         {{ form_widget(form.activarComentarios) }}<span>{{ form_label(form.activarComentarios,label|default(null)) }}</span><br>
         
         {{ form_widget(form.titulo) }}
@@ -93,13 +100,6 @@
 <script type="text/javascript"> 
     $("#fiter_defaultbundle_articulotype_categoria").chosen();
     $("#fiter_defaultbundle_articulotype_subCategoria").chosen();
-
-
-
-    
-
-
-
 
     $('#fiter_defaultbundle_articulotype_categoria_chzn').css('width','100%');
     $('#fiter_defaultbundle_articulotype_subCategoria_chzn').css('width','100%');

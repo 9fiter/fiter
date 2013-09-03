@@ -197,7 +197,6 @@ class ArticuloRepository extends EntityRepository{
             JOIN o.usuario c
             JOIN o.categoria u
             WHERE c.username = :nombre
-            AND o.activo=true
             ORDER BY o.fechaPublicacion DESC
             ');
         $consulta->setParameter('nombre', $nombre);

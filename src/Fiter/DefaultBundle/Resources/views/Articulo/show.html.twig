@@ -5,6 +5,15 @@
 {% block main %}
 <article>
     <header>
+    
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+              <div class="alert alert-info">{{ flashMessage }}</div>
+        {% endfor %}
+
+        {% for flashMessage in app.session.flashbag.get('error') %}
+              <div class="alert alert-error">{{ flashMessage }}</div>
+        {% endfor %}
+
         <h3><a href="{{ path('articulo_show', { 'id': entity.id, 'slug': entity.slug }) }}">{{ entity.titulo }}</a></h3>
         {% include 'FiterDefaultBundle:Articulo:parcial/datos.html.twig' with {'entity': entity} %}
     </header>

@@ -1,6 +1,15 @@
 {% extends '::base.html.twig' %}
  
 {% block main %}
+	
+	{% for flashMessage in app.session.flashbag.get('notice') %}
+          <div class="alert alert-info">{{ flashMessage }}</div>
+    {% endfor %}
+
+    {% for flashMessage in app.session.flashbag.get('error') %}
+          <div class="alert alert-error">{{ flashMessage }}</div>
+    {% endfor %}
+
 	<h2>Likes de {{nombre}}</h2>
     {% include "FiterDefaultBundle:Articulo:indexLikeUsuarioSinLayout.html.twig" %}
 {% endblock %}

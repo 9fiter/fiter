@@ -183,6 +183,11 @@ services:
     shell:
         class:        Fiter\DefaultBundle\Util\Shell
         arguments:    ["%shell.host%","%shell.user%","%shell.pass%"]
+    form.type.articulo:
+        class: Fiter\DefaultBundle\Form\ArticuloType
+        arguments: ["@security.context"]
+        tags:
+            - { name: form.type, alias: fiter_defaultbundle_articulotype }
 
 jms_payment_core:
     secret: test

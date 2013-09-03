@@ -318,7 +318,13 @@ class ArticuloController extends Controller{
      * @Route("/nuevo", name="_articulo_new")
      * @Template()
      */
-    public function newAction(){
+    public function newAction(Request $request){
+        if (false === $this->get('security.context')->isGranted('ROLE_REDACTOR') and 
+            false === $this->get('security.context')->isGranted('ROLE_EDITOR')) {
+                $referer = $request->headers->get('referer');       
+                $request->getSession()->setFlash('error', "Solo redactores y editores pueden añadir artículos.");
+                return new RedirectResponse($referer);
+        }
         $entity = new Articulo();
         $tag1 = new VideoYoutube();
         $tag1->setEnlace('');
@@ -334,7 +340,10 @@ class ArticuloController extends Controller{
         $entity->getListasYoutube()->add($tag3);
 
         $locale = $this->get('request')->getLocale();
-        $form   = $this->createForm(new ArticuloType(), $entity, array('label' => $locale));
+
+        //$form   = $this->createForm(new ArticuloType(), $entity, array('label' => $locale));
+        $form = $this->createForm($this->get('form.type.articulo'), $entity, array('label' => $locale));
+
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
@@ -359,7 +368,8 @@ class ArticuloController extends Controller{
             $usr= $this->get('security.context')->getToken()->getUser();
             $entity->setUsuario($usr);        
         }
-        $form = $this->createForm(new ArticuloType(), $entity);
+        //$form = $this->createForm(new ArticuloType(), $entity);
+        $form = $this->createForm($this->get('form.type.articulo'), $entity);
         $form->bind($request);
         //ladybug_dump($form);
         if ($form->isValid()) {
@@ -478,7 +488,7 @@ class ArticuloController extends Controller{
         // $entity->getListasYoutube()->add($tag2);
         $securityContext = $this->get('security.context');
         if (false === $securityContext->isGranted('EDIT', $entity)){  // verifica el acceso para edición
-            if(!$securityContext->isGranted('ROLE_ADMIN'))
+            if(!$securityContext->isGranted('ROLE_ADMIN') and !$securityContext->isGranted('ROLE_EDITOR'))
                 throw new AccessDeniedException('No tienes permiso para editar este artículo');
         }
 
@@ -501,7 +511,8 @@ class ArticuloController extends Controller{
         //$em->persist($entity);
         //$em->flush();
 
-        $editForm = $this->createForm(new ArticuloType(), $entity);
+        //$editForm = $this->createForm(new ArticuloType(), $entity);
+        $editForm = $this->createForm($this->get('form.type.articulo'), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
 
@@ -642,7 +653,8 @@ class ArticuloController extends Controller{
             $originalTags[] = $videoYoutube;
         }
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new ArticuloType(), $entity);
+        //$editForm = $this->createForm(new ArticuloType(), $entity);
+        $editForm = $this->createForm($this->get('form.type.articulo'), $entity);
         $editForm->bind($request);
         if ($editForm->isValid()) {
             foreach ($entity->getVideosYoutube() as $videoYoutube) {

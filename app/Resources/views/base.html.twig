@@ -129,9 +129,11 @@
                     <li><a href="/phpbb3/">Foro</a></li>
                     <li><a href="{{ path('contest') }}">{{ 'main.contests' | trans }}</a></li>
                     
+                    {% if (is_granted("ROLE_REDACTOR") or is_granted("ROLE_EDITOR") or is_granted("ROLE_ADMIN"))%}
+                        <li><a href="{{ path('articulo_new') }}">{{ 'main.addArticulo' | trans }}</a></li>
+                    {% endif %}
 
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}                       
-                        <li><a href="{{ path('articulo_new') }}">{{ 'main.addArticulo' | trans }}</a></li>
                         <!-- <li><a href="{#{ path('categoria') }#}">{#{ 'main.categorias' | trans }#}</a></li> -->
                         <li><a href="{{ path('fos_user_profile_show') }}">{{ 'main.perfil' | trans }}</a></li>
                         <li><a href="{{ path('fos_user_profile_index') }}">{{ 'main.usuarios' | trans }}</a></li>

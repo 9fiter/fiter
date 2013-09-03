@@ -9,19 +9,39 @@ use Symfony\Component\HttpFoundation\Session;
 
 use Fiter\PollBundle\Form\PollType;
 
+use Symfony\Component\Security\Core\SecurityContext;
+
 
 class ArticuloType extends AbstractType{
 
-    public function buildForm(FormBuilderInterface $builder, array $options){     
-        $locale = $options['label'];
-        //$locale = 'es-ES';
+    private $securityContext;
+
+    public function __construct(SecurityContext $securityContext){
+        $this->securityContext = $securityContext;
+    }
+
+    public function buildForm(FormBuilderInterface $builder, array $options){ 
+        $locale = $options['label']; //$locale = 'es-ES';
+
+        $user = $this->securityContext->getToken()->getUser(); //ladybug_dump($user);
+        if ($user->hasRole('ROLE_EDITOR')){
+          $builder->add(
+            'activo', 'checkbox', array(
+            'required' => false,
+            'label'=> 'main.active',
+            'attr' => array('class' => 'myValue'),
+          ));
+        }else{
+          $builder->add(
+            'activo', 'checkbox', array(
+            'required' => false,
+            'label'=> 'main.active',
+            'attr' => array('class' => 'myValue'),
+            'disabled'=> 'true',
+          ));  
+        }
+
         $builder
-            //->add('usuario')
-            ->add('activo', 'checkbox', array(
-                 'required' => false,
-                 'label'=> 'main.active',
-                 'attr' => array('class' => 'myValue'),
-            ))
             ->add('activarComentarios', 'checkbox', array(
                  'required' => false,
                  'label'=> 'Activar comentarios',
@@ -69,8 +89,6 @@ class ArticuloType extends AbstractType{
             // ))
             //->add('translations', 'a2lix_translations')
 
-
-
             ->add('translations', 'a2lix_translations', array(
                 'label' => 'Traducciones',
                 'locales' => array('gl', 'ca', 'en'),   // [optional|required - depends on the presence in config.yml] See above
@@ -96,9 +114,6 @@ class ArticuloType extends AbstractType{
                     ),
                 )
             ))
-
-
-
 
             ->add('aleatorio', 'hidden', array('data' => 'true'))
             //->add('videosYoutube', 'collection', array('type' => new VideoYoutubeType()))  
@@ -153,6 +168,7 @@ class ArticuloType extends AbstractType{
     }
     public function setDefaultOptions(OptionsResolverInterface $resolver){
         $resolver->setDefaults(array(
+            'required'   => false,
             'data_class' => 'Fiter\DefaultBundle\Entity\Articulo'
         ));
     }

@@ -4,6 +4,14 @@
  
 {% block main %}
 
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+          <div class="alert alert-info">{{ flashMessage }}</div>
+    {% endfor %}
+
+    {% for flashMessage in app.session.flashbag.get('error') %}
+          <div class="alert alert-error">{{ flashMessage }}</div>
+    {% endfor %}
+
     <!--
     <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/blueimp-gallery.min.css" />
     <link rel="stylesheet" type="text/css" href="/bundles/fiterdefault/css/jquery.fileupload-ui.css" />
@@ -22,7 +30,11 @@
         {{ form_errors(edit_form) }}  
             
         {{ form_label(edit_form.titulo) }}
-        {{ form_widget(edit_form.activo) }}<span>{{ form_label(edit_form.activo,label|default(null)) }}</span>
+
+        {% if is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+            {{ form_widget(edit_form.activo) }}<span>{{ form_label(edit_form.activo,label|default(null)) }}</span>
+        {% endif %}
+        
         {{ form_widget(edit_form.activarComentarios) }}<span>{{ form_label(edit_form.activarComentarios,label|default(null)) }}</span><br>
         {{ form_widget(edit_form.titulo) }}
             

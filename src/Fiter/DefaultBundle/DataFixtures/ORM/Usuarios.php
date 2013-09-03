@@ -23,11 +23,30 @@ class Usuarios extends AbstractFixture implements OrderedFixtureInterface{
         $user2->setPlainPassword('rtrtrt');
         $user2->setenabled(true);
         $manager->persist($user2);
+
+        $user3 = new Usuario();
+        $user3->setUsername('editor');
+        $user3->setEmail('editor@example.com');
+        $user3->setPlainPassword('rtrtrt');
+        $user3->setenabled(true);
+        $user3 -> setRoles(array('ROLE_EDITOR'));
+        $manager->persist($user3);
+
+        $user4 = new Usuario();
+        $user4->setUsername('redactor');
+        $user4->setEmail('redactor@example.com');
+        $user4->setPlainPassword('rtrtrt');
+        $user4->setenabled(true);
+        $user4 -> setRoles(array('ROLE_REDACTOR'));
+        $manager->persist($user4);
+
         
         $manager->flush();
         
         $this->AddReference('usr-moi', $user);
         $this->AddReference('usr-anon', $user2);
+        $this->AddReference('usr-editor', $user3);
+        $this->AddReference('usr-redactor', $user4);
     }
 }
 ?>

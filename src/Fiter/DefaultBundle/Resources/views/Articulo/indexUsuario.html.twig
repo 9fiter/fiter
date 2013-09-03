@@ -11,5 +11,14 @@
 {% endblock %}
 
 {% block main %}
+	
+	{% for flashMessage in app.session.flashbag.get('notice') %}
+          <div class="alert alert-info">{{ flashMessage }}</div>
+    {% endfor %}
+
+    {% for flashMessage in app.session.flashbag.get('error') %}
+          <div class="alert alert-error">{{ flashMessage }}</div>
+    {% endfor %}
+
     {% include "FiterDefaultBundle:Articulo:indexUsuarioSinLayout.html.twig" %}
 {% endblock %}
