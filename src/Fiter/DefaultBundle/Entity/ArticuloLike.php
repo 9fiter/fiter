@@ -55,7 +55,7 @@ class ArticuloLike{
 
     /**
      * @ORM\ManyToOne(targetEntity="Articulo")
-     * @ORM\JoinColumn(name="articulo", referencedColumnName="id")
+     * @ORM\JoinColumn(name="articulo", referencedColumnName="id", onDelete="CASCADE")
      */
     private $articulo;
     /**
