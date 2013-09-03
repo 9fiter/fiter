@@ -1,0 +1,72 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ app.request.host }}{% endblock %}
+ 
+{% block rss_header %}
+<link rel="alternate" type="application/rss+xml" title="RSS de los artículos más recientes" href="{{ path('alt_articulo', { '_format': 'rss' }) }}" />
+{% endblock %}
+
+{% block rss_icon %}
+    <a href="{{ path('alt_articulo', { '_format': 'rss' }) }}">
+        <div class="socialmod_rss"></div>
+    </a>
+{% endblock %}
+
+
+{% block main %} 
+    <!-- <h2>{#{ 'main.inicio' | trans }#}</h2> -->
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+          <div class="alert alert-info">{{ flashMessage }}</div>
+    {% endfor %}
+
+    {% for flashMessage in app.session.flashbag.get('error') %}
+          <div class="alert alert-error">{{ flashMessage }}</div>
+    {% endfor %}
+
+    {% if ( is_granted('ROLE_ADMIN') or is_granted('ROLE_EDITOR') ) %}
+        <a class="btn btn-success" href="{{ path('articulo_inactivos') }}">Artículos inactivos</a><br/><br/>
+    {% endif %}
+
+    {% for entity in entities %}
+    <article>
+        <header>
+            <h3><a href="{{ path('articulo_show', { 'id': entity.id , 'slug': entity.slug}) }}">{{ entity.titulo }}</a></h3>
+            {% include 'FiterDefaultBundle:Articulo:parcial/datos.html.twig' with {'entity': entity, 'busqueda': true} %}
+        </header>
+        
+        {% include 'FiterDefaultBundle:Articulo:parcial/imgCat.html.twig' with {'entity': entity} %}
+            
+        <div>{{ entity.contenido(true)|striptags|raw }}</div>
+        <div style="clear: both;"></div>
+    </article>
+
+    {% endfor %}
+{% endblock %}
+    
+    
+    
+    
+{% block paginador %}
+<section style="" class="paginador">
+    <ul>
+        {% if paginador.currentPage > 1 %}
+            <li><a href="{{ path('articulo_inactivos', { 'page': paginador.previousPage}) }}">Anterior</a></li>
+        {% endif %}
+
+        {% for page in paginador.minPageInRange..paginador.maxPageInRange %}
+            {% if page == paginador.currentPage %}
+                <li class="active"><a href="#">{{ page }}</a></li>
+            {% else %}
+                <li><a href="{{ path('articulo_inactivos', { 'page': page }) }}">{{ page}}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if paginador.currentPage < paginador.lastPage %}
+            <li><a href="{{ path('articulo_inactivos', { 'page': paginador.nextPage })}}">Siguiente</a></li>
+        {% else %}
+            
+        {% endif %}
+    </ul>
+</section>
+{% endblock %}      

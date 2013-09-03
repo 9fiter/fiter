@@ -166,7 +166,7 @@ class ArticuloController extends Controller{
 
     /**
      * Lists all Articulo entities.
-     * @Template("FiterDefaultBundle:Articulo:index.html.twig")
+     * @Template()
      */
     public function inactivosAction(){
         $em = $this->getDoctrine()->getManager();
