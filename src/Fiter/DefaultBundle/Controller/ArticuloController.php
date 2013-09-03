@@ -165,6 +165,30 @@ class ArticuloController extends Controller{
     }
 
     /**
+     * Lists all Articulo entities.
+     * @Template("FiterDefaultBundle:Articulo:index.html.twig")
+     */
+    public function inactivosAction(){
+        $em = $this->getDoctrine()->getManager();
+        $paginador = $this->get('ideup.simple_paginator');
+        $paginador->setItemsPerPage(10);
+        $paginador->setMaxPagerItems(10);
+        $entities = 
+        $paginador->paginate(
+            $em->getRepository('FiterDefaultBundle:Articulo')->findTodosLosArticulosInactivosDQL()
+            //$em->getRepository('FiterDefaultBundle:Articulo')->findAllByLocale($this->getRequest()->getLocale())
+        )->getResult();
+        //if (!$entities) throw $this->createNotFoundException('No se ha encontrado ningun resultado');
+        //ladybug_dump($entities);
+        return array(
+            'entities' => $entities,
+            'paginador' => $paginador
+        );
+    }
+
+
+
+    /**
      * Lista articulos con más visitas
      *
      * @Route("/listaMasVistos", name="listaMasVistos")

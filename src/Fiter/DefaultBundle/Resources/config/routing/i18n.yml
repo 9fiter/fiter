@@ -18,6 +18,14 @@ articulo:
         ca: "/articles"
     defaults: { _controller: FiterDefaultBundle:Articulo:index }
 
+articulo_inactivos:
+    locales:
+        es: "/editor/articulos/inactivos"
+        en: "/editor/articles/inactive"
+        gl: "/editor/artigos/inactivos"
+        ca: "/editor/articles/inactivos"
+    defaults: { _controller: FiterDefaultBundle:Articulo:inactivos }
+
 articulocategoria:
     locales:
         es: "/categoria/{slug}.{_format}"

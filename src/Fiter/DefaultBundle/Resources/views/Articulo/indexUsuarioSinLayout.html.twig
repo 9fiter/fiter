@@ -1,24 +1,25 @@
 <h2>{{ "main.articulosDeNombre"|trans({'%name%': nombre}) }}</h2>
 
 {% for entity in entities %}
-<article>
-    <header>
-        <h3><a href="{{ path('articulo_show', { 'id': entity.id , 'slug': entity.slug}) }}">{{ entity.titulo }}</a></h3>
-        {% include 'FiterDefaultBundle:Articulo:parcial/datos.html.twig' with {'entity': entity} %}
-    </header>
-
-
-        
-    <a href="{{ path('articulo_show', { 'id': entity.id , 'slug': entity.slug}) }}">
-        {% if entity.path %}
-            <img class="imgCategoria" src="{{ asset(['uploads/documents/', entity.path]|join) }}" alt="{{ entity.titulo}}" />
-        {% elseif entity.categoria[0].path %}
-            <img style="float: left;margin-right: .7em;" src="{{ asset(  ['/uploads/categoriaimages/', entity.categoria[0].path]|join  )|imagine_filter('thumb_170x114') }}" alt="{{ entity.titulo}}" />
-        {% endif %}
-    </a>
-        
-    <div >{{ entity.contenido(true)|striptags|raw }}</div>
-    <div style="clear: both;"></div>
-</article>
+    {% set esPropietario = entity.usuario == app.user %}
+    {% if entity.activo or esPropietario or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        <article>
+            <header>
+                <h3><a href="{{ path('articulo_show', { 'id': entity.id , 'slug': entity.slug}) }}">{{ entity.titulo }}</a></h3>
+                {% include 'FiterDefaultBundle:Articulo:parcial/datos.html.twig' with {'entity': entity} %}
+            </header>
+                
+            <a href="{{ path('articulo_show', { 'id': entity.id , 'slug': entity.slug}) }}">
+                {% if entity.path %}
+                    <img class="imgCategoria" src="{{ asset(['uploads/documents/', entity.path]|join) }}" alt="{{ entity.titulo}}" />
+                {% elseif entity.categoria[0].path %}
+                    <img style="float: left;margin-right: .7em;" src="{{ asset(  ['/uploads/categoriaimages/', entity.categoria[0].path]|join  )|imagine_filter('thumb_170x114') }}" alt="{{ entity.titulo}}" />
+                {% endif %}
+            </a>
+                
+            <div >{{ entity.contenido(true)|striptags|raw }}</div>
+            <div style="clear: both;"></div>
+        </article>
+    {% endif %}
 {% endfor %}
 {% include "FiterDefaultBundle:Articulo:indexUsuarioPaginador.html.twig" %}

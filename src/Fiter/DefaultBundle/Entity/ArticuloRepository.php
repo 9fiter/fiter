@@ -204,5 +204,16 @@ class ArticuloRepository extends EntityRepository{
     }
     public function findAllArticulosUsuario($nombre){
         return $this->findAllArticulosUsuarioDQL($nombre)->getResult();
-    }    
+    }
+    public function findTodosLosArticulosInactivosDQL(){
+        $em = $this->getEntityManager();
+        $consulta = $em->createQuery('
+            SELECT o FROM FiterDefaultBundle:Articulo o
+            WHERE o.activo = false
+            ORDER BY o.fechaPublicacion DESC');
+        return $consulta;
+    }
+    public function findTodosLosArticulosInactivos(){
+        return $this->findTodosLosArticulosInactivosDQL()->getResult();
+    }  
 }

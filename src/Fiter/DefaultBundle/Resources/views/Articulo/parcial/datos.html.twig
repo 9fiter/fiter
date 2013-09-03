@@ -1,4 +1,4 @@
-{% if (entity.usuario == app.user or is_granted('ROLE_ADMIN')) %}
+{% if (entity.usuario == app.user or is_granted('ROLE_ADMIN') or is_granted('ROLE_EDITOR')) %}
     <span class="bloque">
         <img class="ico" alt="editar" src="/img/edit.png" />
         <a href="{{ path('articulo_edit', { 'id': entity.id, 'slug': entity.slug }) }}">{{ 'main.editar' | trans }}</a>
@@ -11,7 +11,6 @@
 
     </span>
 {% endif %}
-
 <p>
     {{ 'main.por' | trans }} <a href="{{ path('articulousuario', { 'nombre': entity.usuario }) }}">{{ entity.usuario }} </a>
     {#% if busqueda is not defined %#}
@@ -22,13 +21,9 @@
     {#% endif %#}
 
     {% if entity.fechaPublicacion %}{{ entity.fechaPublicacion|time_ago_in_words }}{% endif %}
-    
-
         <img class="ico" alt="visitas" src="/img/ojo.png" /> {{ entity.visitas }}
         <a href="{{ path('articulo_like', { 'id': entity.id }) }}"><img class="ico" alt="likes" src="/img/like.png" /></a> {{ entity.likes }}
         <a href="{{ path('articulo_dislike', { 'id': entity.id }) }}"><img class="ico" alt="likes" src="/img/dislike.png" /></a> {{ entity.disLikes }}
-  
     <br/>
-
 </p>
 

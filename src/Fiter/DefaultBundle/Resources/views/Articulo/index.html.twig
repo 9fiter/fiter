@@ -23,7 +23,11 @@
     {% for flashMessage in app.session.flashbag.get('error') %}
           <div class="alert alert-error">{{ flashMessage }}</div>
     {% endfor %}
-    
+
+    {% if ( is_granted('ROLE_ADMIN') or is_granted('ROLE_EDITOR') ) %}
+        <a class="btn btn-success" href="{{ path('articulo_inactivos') }}">Artículos inactivos</a><br/><br/>
+    {% endif %}
+
     {% for entity in entities %}
     <article>
         <header>
