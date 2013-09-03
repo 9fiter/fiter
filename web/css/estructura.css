@@ -1761,3 +1761,13 @@ box-shadow: 0px 0px 31px 0px #000;
 .minecraftStatus .name{ top: 63px; }
 .minecraftStatus .players{ top: 231px;}
 .minecraftStatus .ping{ top: 260px; }
+
+
+.contenedor_comentarios{
+  font-size: 13px;
+  line-height: 16px;
+  font: normal normal normal 12px/16px "Helvetica Neue",Arial,sans-serif;
+  margin-bottom:.9em;
+  text-align: left;
+}
+.art_lnk{color: #818181;}

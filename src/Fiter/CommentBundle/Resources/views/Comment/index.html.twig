@@ -1,0 +1,85 @@
+{% extends '::base.html.twig' %}
+ 
+{% block title %}{{ app.request.host }}{% endblock %}
+ 
+{% block rss_header %}
+<link rel="alternate" type="application/rss+xml" title="RSS de los artículos más recientes" href="{{ path('alt_articulo', { '_format': 'rss' }) }}" />
+{% endblock %}
+
+{% block rss_icon %}
+    <a href="{{ path('alt_articulo', { '_format': 'rss' }) }}">
+        <div class="socialmod_rss"></div>
+    </a>
+{% endblock %}
+
+{% block main %} 
+    <!-- <h2>{#{ 'main.inicio' | trans }#}</h2> -->
+    
+    <article>
+        <header>
+            <h3><a href="#">Comentarios</a></h3>
+        </header>
+
+        {% for r in res %}
+		<div class="contenedor_comentarios">
+			{% if r.comment.authorName %}
+
+				<a href="{{ path('admin_articulousuario', { 'nombre': r.comment.authorName }) }}">
+			        <img class="imgComentario" style="float:left;width:32px;height:32px"
+				        {% if file_exists(web_path~asset(  ['uploads/userimages/', r.comment.authorName, '.png']|join )) %}
+				            src="{{ asset(  ['uploads/userimages/', r.comment.authorName, '.png']|join  )|imagine_filter('thumb_50x50') }}" 
+				        {% else %}
+				            src="{{ asset(  ['uploads/userimages/', 'anon', '.png']|join  )|imagine_filter('thumb_50x50') }}"
+				        {% endif %}
+			        alt="{{r.comment.authorName}}" />
+		        </a>
+		    {% endif %}
+
+		    <div style="float:left">
+		    	<a href="{{ path('admin_articulousuario', { 'nombre': r.comment.authorName }) }}">
+					{% if r.comment.authorName %}{{r.comment.authorName}}{% else %}Anónimo{% endif %}
+				</a><br/>
+				<a class="art_lnk" href="{{ path('admin_articulo_show', { 'id': r.articulo.id , 'slug': r.articulo.slug}) }}">
+					{{r.articulo.titulo|slice(0, 37)}}..
+				</a><br/>
+			</div>
+
+			<div style="clear:both"></div>
+			<div style="margin: .4em 0px 0px 0px">
+			{{r.comment.body}}<br/>
+			</div>
+		</div>
+		{% endfor %}
+
+    </article>
+{% endblock %}
+    
+{% block paginador %}
+<section style="" class="paginador">
+    <ul>
+        {% if paginador.currentPage > 1 %}
+            <li><a href="{{ path('fos_comment_index', { 'page': paginador.previousPage}) }}">Anterior</a></li>
+        {% endif %}
+
+        {% for page in paginador.minPageInRange..paginador.maxPageInRange %}
+            {% if page == paginador.currentPage %}
+                <li class="active"><a href="#">{{ page }}</a></li>
+            {% else %}
+                <li><a href="{{ path('fos_comment_index', { 'page': page }) }}">{{ page}}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if paginador.currentPage < paginador.lastPage %}
+            <li><a href="{{ path('fos_comment_index', { 'page': paginador.nextPage })}}">Siguiente</a></li>
+        {% else %}
+            
+        {% endif %}
+    </ul>
+</section>
+{% endblock %}      
+
+
+
+
+
+
