@@ -183,7 +183,8 @@ ul.menuLateral > li > ul > li.listaActiva a,
 ul.menuLateral > li > ul > li > a:hover,
 ul.menuLateral > li.listaActiva > a,
 ul.menuLateral > li > a:hover,
-ul.menuLateral > li ul li a:hover{background-color: #5FADC5;     
+ul.menuLateral > li ul li a:hover{
+  background-color: #5FADC5;     
       -webkit-box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 1);
               box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .3);
 }
@@ -213,7 +214,28 @@ ul.menuLateral > li > a:hover {
 h3 a, h2, a, h3{ text-shadow: 1px 1px 1px rgba(150, 150, 150, .4); }
 
 ul li{padding-bottom: .2em; }
-ul.before li a:before {font-weight: 600;content: "\00AB";font-size: 1.8em;margin-right: 2px;position: relative;top:2px;padding-left: 1px;}
+
+
+
+ul.before > li > a:before {font-weight: 600;content: "\00AB";font-size: 1.8em; position: relative;top:2px; margin-right: 2px;padding-left: 1px;}
+
+nav > ul.before > li > a:before {margin-left: 2px;padding-right: 1px;padding-bottom: .1em;
+
+display: inline-block;
+-webkit-transform: rotate(180deg);
+-moz-transform: rotate(180deg);
+-o-transform: rotate(180deg);
+-ms-transform: rotate(180deg);
+transform: rotate(180deg);
+
+}
+
+
+
+
+
+
+
 ul li a {color:#818181}
 
 ul.listaMas li:hover a,

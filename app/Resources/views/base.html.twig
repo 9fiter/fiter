@@ -506,6 +506,37 @@
             <script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
         {% endif %}
 
+        
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <script type="text/javascript">
+            
+            $(document).ready(function() {
+                //li with fade class
+                //$("li > a").hover(function(){$(this).fadeOut(100);$(this).fadeIn(500);});  
+
+
+
+                //$( "li > a" ).hover().animate({background: "#000"}, 500)
+
+
+
+
+
+
+                $("ul.menuLateral li > a").hover(
+                  function(){
+                    $(this).animate({marginLeft:'.5em'},'1');
+                    //$(this).animate({ backgroundColor: "#5FADC5" }, '1');
+                  },
+                  function() {
+                    
+                    $(this).animate({marginLeft:'0'}, '1');
+                    //$(this).not('.listaActiva').animate({ backgroundColor: "#F5F5F5" }, '1');
+                  });
+                });
+            
+        </script>
+
     </body>
 </html>
 
