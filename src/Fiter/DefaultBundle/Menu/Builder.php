@@ -43,7 +43,8 @@ class Builder extends ContainerAware{
             ));
         }
         foreach ($entities as $entity) {
-            if ($entity->getNombre() == $active) {
+
+            if ($entity->getSlug() == $active) {
                 $menu->addChild( $entity->getNombre() , array(
                     'route' => 'articulocategoria',
                     'routeParameters' => array('slug' => $entity->getSlug()),
@@ -58,7 +59,7 @@ class Builder extends ContainerAware{
                 ));
             }
             foreach ($entity->getSubCategoria() as $subCategoria) {
-                if ($subCategoria->getNombre() == $active) {
+                if ($subCategoria->getSlug() == $active) {
                     $menu[$entity->getNombre()]->addChild( $subCategoria->getNombre() , array(
                         'route' => 'articulosubcategoria',
                         'routeParameters' => array(
