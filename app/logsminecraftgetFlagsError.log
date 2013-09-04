@@ -1,8 +1,0 @@
-
-
-                                                                                                                                                                                                                                                                      
-  [InvalidArgumentException]                                                                                                                                                                                                                                          
-  The directory "/home/web/fiter/app/cache/dev/annotations" is not writable. Both, the webserver and the console user need access. You can manage access rights for multiple users with "chmod +a". If your system does not support this, check out the acl package.  
-                                                                                                                                                                                                                                                                      
-
-

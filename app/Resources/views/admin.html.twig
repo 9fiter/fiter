@@ -57,10 +57,10 @@
                     {% include 'FiterDefaultBundle:Articulo:parcial/formBuscar.html.twig' %}
 
                     <div class="idioma">
-                        <a href="{{ path('admin_articulo', { '_locale': 'gl' }) }}"><img src="/img/flags/gl.png" alt=""></a>
-                        <a href="{{ path('admin_articulo', { '_locale': 'es' }) }}"><img src="/img/flags/es.png" alt=""></a>
-                        <a href="{{ path('admin_articulo', { '_locale': 'en' }) }}"><img src="/img/flags/en.png" alt=""></a>
-                        <!--<a href="{{ path('admin_articulo', { '_locale': 'es' }) }}"><img src="/img/flags/gl.png"></a>-->
+                        <a href="{{ path('articulo', { '_locale': 'gl' }) }}"><img src="/img/flags/gl.png" alt=""></a>
+                        <a href="{{ path('articulo', { '_locale': 'es' }) }}"><img src="/img/flags/es.png" alt=""></a>
+                        <a href="{{ path('articulo', { '_locale': 'en' }) }}"><img src="/img/flags/en.png" alt=""></a>
+                        <!--<a href="{{ path('articulo', { '_locale': 'es' }) }}"><img src="/img/flags/gl.png"></a>-->
                     </div>
 
                     <div class="usuario">
@@ -132,7 +132,9 @@
 
             <aside class="asideLeft">
             {% block asideL %}    
-                {% render 'FiterAdminBundle:Categoria:menu' with {'slug': "inicio"} %}
+                {#% render 'FiterAdminBundle:Categoria:menu' with {'slug': "inicio"} %#}
+                {% set menuItem = knp_menu_get('FiterDefaultBundle:Builder:mainMenu', [], { 'active': 'main.inicio'| trans  }) %}
+                {{ knp_menu_render(menuItem, {'template': 'FiterDefaultBundle:Menu:knp_menu.html.twig'}) }}
             {% endblock %}
             </aside>
 
@@ -176,18 +178,19 @@
                     <br/>
                     {% endblock %}
                     
+                    <!--
                     <div class="banner300-300">
                         <a href="http://symfony.com/">
                             <img alt="symfony" src="http://live.symfony.com/bundles/sensiosymfonylive/images/landing/sfl_portland.png"/>
                         </a>
                     </div>
+                    
                     <div class="banner300-300">
-                        <!--<img src="/img/banner-symfony.jpg"/></div>-->
                         <a href="http://www.phptherightway.com">
                             <img src="/img/med-rect-300x250.png" alt="PHP: The Right Way"/>
                         </a>
                     </div>
-                        
+                    -->    
                         
                         
                 </section>
