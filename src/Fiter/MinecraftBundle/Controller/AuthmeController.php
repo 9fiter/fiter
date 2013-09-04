@@ -289,7 +289,7 @@ class AuthmeController extends Controller{
     /**
      * Search Authme entities.
      * @Route("/search", name="authme_search")
-     * @Template("FiterMinecraftBundle:Authme:index.html.twig")
+     * @Template()
      */
     public function searchAction(Request $request){
         $em = $this->getDoctrine()->getManager('minecraft');
@@ -307,6 +307,7 @@ class AuthmeController extends Controller{
             $entity->setLastLogin(date('Y-m-d H:i:s',$entity->getLastLogin()/ 1000)) ;
         }
         return array(
+            'q' => $username,
             'entities' => $entities,
             'paginador' => $paginador,
         );
