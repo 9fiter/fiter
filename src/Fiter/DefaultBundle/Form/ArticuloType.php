@@ -24,7 +24,7 @@ class ArticuloType extends AbstractType{
         $locale = $options['label']; //$locale = 'es-ES';
 
         $user = $this->securityContext->getToken()->getUser(); //ladybug_dump($user);
-        if ($user->hasRole('ROLE_EDITOR')){
+        if ($user->hasRole('ROLE_EDITOR') or $user->hasRole('ROLE_ADMIN')){
           $builder->add(
             'activo', 'checkbox', array(
             'required' => false,
