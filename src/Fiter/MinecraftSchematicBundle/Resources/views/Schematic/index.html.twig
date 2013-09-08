@@ -63,19 +63,19 @@
 <section style="" class="paginador">
     <ul>
         {% if paginador.currentPage > 1 %}
-            <li><a href="{{ path('schema', { 'page': paginador.previousPage}) }}">Anterior</a></li>
+            <li><a href="{{ path('schematic', { 'page': paginador.previousPage}) }}">Anterior</a></li>
         {% endif %}
 
         {% for page in paginador.minPageInRange..paginador.maxPageInRange %}
             {% if page == paginador.currentPage %}
                 <li class="active"><a href="#">{{ page }}</a></li>
             {% else %}
-                <li><a href="{{ path('schema', { 'page': page }) }}">{{ page}}</a></li>
+                <li><a href="{{ path('schematic', { 'page': page }) }}">{{ page}}</a></li>
             {% endif %}
         {% endfor %}
 
         {% if paginador.currentPage < paginador.lastPage %}
-            <li><a href="{{ path('schema', { 'page': paginador.nextPage })}}">Siguiente</a></li>
+            <li><a href="{{ path('schematic', { 'page': paginador.nextPage })}}">Siguiente</a></li>
         {% else %}
             
         {% endif %}
