@@ -36,7 +36,7 @@ class SchematicController extends Controller
         
         $em = $this->getDoctrine()->getManager();
         $paginador = $this->get('ideup.simple_paginator');
-        $paginador->setItemsPerPage(10);
+        $paginador->setItemsPerPage(24);
         $paginador->setMaxPagerItems(10);
         $entities = 
         $paginador->paginate(
